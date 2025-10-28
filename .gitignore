@@ -40,3 +40,6 @@ Temporary Items
 *.swp
 *.swo
 *~
+
+# Local development configuration
+docs/config.local.json

@@ -998,23 +998,22 @@
                         <div
                           class="fusion-column-wrapper fusion-column-has-shadow fusion-flex-justify-content-flex-start fusion-content-layout-column"
                         >
-                          <!-- VERTAMA Contact Form - Replace YOUR-API-ENDPOINT-HERE with actual backend URL -->
+                          <!-- VERTAMA Contact Form - Configured via contact-form-handler.js -->
                           <form
-                            action="YOUR-API-ENDPOINT-HERE"
                             method="POST"
-                            class="wpcf7-form"
+                            class="wpcf7-form vertama-contact-form"
                             aria-label="Contact form"
                           >
                             <input type="hidden" name="language" value="fr" />
                             <input
                               type="hidden"
                               name="redirectSuccess"
-                              value="https://vertama.com/merci"
+                              value="../merci.html"
                             />
                             <input
                               type="hidden"
                               name="redirectError"
-                              value="https://vertama.com/fr/contact-2?error=1"
+                              value="index.html?error=1"
                             />
                             <!-- Honeypot field for spam protection (hidden from users) -->
                             <input
@@ -1344,6 +1343,9 @@
           }
         });
       </script>
+
+      <!-- VERTAMA Contact Form Configuration -->
+      <script src="../../assets/js/contact-form-handler.js"></script>
     </div>
     <section class="to-top-container to-top-right" aria-labelledby="awb-to-top-label">
       <a href="../../fr/contact-2/#" id="toTop" class="fusion-top-top-link">
