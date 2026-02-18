@@ -4,7 +4,7 @@ name: Build Static News Page
 on:
   push:
     paths:
-      - 'de/news/news/releases.json'
+      - 'docs/de/news/news/releases.json'
   workflow_dispatch:
 
 jobs:
@@ -33,6 +33,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add de/news/index.html
+          git add docs/de/news/index.html
           git diff --quiet && git diff --staged --quiet || \
             (git commit -m "Auto-build: Static news page updated" && git push)
