@@ -113,14 +113,15 @@
                         <script>
                             // Fallback: Wenn Platzhalter noch da ist (Build nie gelaufen)
                             (function() {
-                                var container = document.querySelector('.news-grid');
-                                if (container && container.innerHTML.indexOf('{{NEWS_CONTENT}}') !== -1) {
-                                    container.innerHTML = '<div style="text-align: center; padding: 60px 20px; grid-column: 1 / -1;">' +
-                                        '<h2 style="color: #666; margin-bottom: 15px;">Noch keine News veröffentlicht</h2>' +
-                                        '<p style="color: #999;">Bald gibt es hier Neuigkeiten!</p>' +
-                                        '</div>';
-                                }
-                            })();
+                                    var container = document.querySelector('.news-grid');
+                                    // Prüft, ob außer dem Script-Tag selbst kein Inhalt (Article) da ist
+                                    if (container && container.querySelectorAll('article').length === 0) {
+                                        container.innerHTML = '<div style="text-align: center; padding: 60px 20px; grid-column: 1 / -1;">' +
+                                            '<h2 style="color: #666; margin-bottom: 15px;">Noch keine News veröffentlicht</h2>' +
+                                            '<p style="color: #999;">Bald gibt es hier Neuigkeiten!</p>' +
+                                            '</div>';
+                                    }
+                                })();
                         </script>
                     </div>
                 </section>
