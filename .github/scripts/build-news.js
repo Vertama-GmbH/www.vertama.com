@@ -9,6 +9,10 @@ const fs = require('fs');
 const path = require('path');
 const { marked } = require('marked');
 
+// Arbeite immer vom Repo-Root aus
+const REPO_ROOT = path.join(__dirname, '../..');
+process.chdir(REPO_ROOT);
+
 // Konfiguration
 const NEWS_DIR = 'de/news/news';
 const RELEASES_FILE = path.join(NEWS_DIR, 'releases.json');
