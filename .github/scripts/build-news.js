@@ -9,15 +9,17 @@ const fs = require('fs');
 const path = require('path');
 const { marked } = require('marked');
 
-// Arbeite immer vom Repo-Root aus
+// Arbeite vom Repo-Root aus (NICHT docs/)
 const REPO_ROOT = path.join(__dirname, '../..');
 process.chdir(REPO_ROOT);
 
-// Konfiguration
-const NEWS_DIR = 'de/news/news';
+console.log(`📁 Working directory: ${process.cwd()}`);
+
+// Konfiguration - Pfade zeigen in docs/
+const NEWS_DIR = 'docs/de/news/news';
 const RELEASES_FILE = path.join(NEWS_DIR, 'releases.json');
-const TEMPLATE_FILE = 'de/news/template.html';
-const OUTPUT_FILE = 'de/news/index.html';
+const TEMPLATE_FILE = 'docs/de/news/template.html';
+const OUTPUT_FILE = 'docs/de/news/index.html';
 
 /**
  * Extrahiert Datum aus Dateinamen (Format: YYYY-MM-DD-*.md)
