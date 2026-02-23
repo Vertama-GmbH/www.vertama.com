@@ -86,19 +86,289 @@
         </main>
 
         <style>
-            .news-featured { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); padding: 40px; margin-bottom: 50px; border-left: 6px solid #0481a6; }
-            .news-featured .news-date { color: #0481a6; font-size: 0.95em; font-weight: 600; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
-            .news-featured h1 { color: #333; font-size: 2.2em; margin-bottom: 20px; line-height: 1.3; }
-            .news-featured p { color: #666; line-height: 1.8; margin-bottom: 15px; font-size: 1.05em; }
-            .older-news-section { margin-top: 60px; }
-            .older-news-title { color: #666; font-size: 1.2em; margin-bottom: 25px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0; }
-            .news-item { background: white; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow: hidden; transition: box-shadow 0.2s ease; }
-            .news-item-header { padding: 20px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; border-left: 4px solid #0481a6; }
-            .news-item-title { color: #333; font-size: 1.2em; font-weight: 600; margin: 0; }
-            .news-item-toggle { font-size: 1.5em; color: #0481a6; transition: transform 0.3s ease; }
-            .news-item.expanded .news-item-toggle { transform: rotate(180deg); }
-            .news-item-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 25px; }
-            .news-item.expanded .news-item-content { max-height: 5000px; padding: 0 25px 25px 25px; }
+            /* Featured News (neueste) */
+            .news-featured {
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                padding: 40px;
+                margin-bottom: 50px;
+                border-left: 6px solid #0481a6;
+            }
+            .news-featured .news-date {
+                color: #0481a6;
+                font-size: 0.95em;
+                font-weight: 600;
+                margin-bottom: 15px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            .news-featured h1,
+            .news-featured h2,
+            .news-featured h3,
+            .news-featured h4,
+            .news-featured h5,
+            .news-featured h6 {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+            }
+            .news-featured h1 {
+                color: #333;
+                font-size: 2.2em;
+                margin-bottom: 20px;
+                line-height: 1.3;
+            }
+            .news-featured h2 {
+                color: #333;
+                font-size: 1.8em;
+                margin: 25px 0 15px 0;
+            }
+            .news-featured h3 {
+                color: #555;
+                font-size: 1.3em;
+                margin: 20px 0 10px 0;
+            }
+            .news-featured p {
+                color: #666;
+                line-height: 1.8;
+                margin-bottom: 15px;
+                font-size: 1.05em;
+                word-wrap: break-word;
+            }
+            .news-featured ul,
+            .news-featured ol {
+                color: #666;
+                line-height: 1.8;
+                margin-left: 25px;
+            }
+            .news-featured a {
+                color: #0481a6;
+                text-decoration: none;
+                word-wrap: break-word;
+            }
+            .news-featured code {
+                background-color: #f4f4f4;
+                padding: 2px 6px;
+                border-radius: 3px;
+                font-family: 'Courier New', monospace;
+                word-wrap: break-word;
+            }
+            .news-featured blockquote {
+                border-left: 4px solid #0481a6;
+                padding-left: 20px;
+                margin: 20px 0;
+                color: #555;
+                font-style: italic;
+            }
+
+            /* Older News Section */
+            .older-news-section {
+                margin-top: 60px;
+            }
+            .older-news-title {
+                color: #666;
+                font-size: 1.2em;
+                margin-bottom: 25px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #e0e0e0;
+            }
+
+            /* Collapsible News Items */
+            .news-item {
+                background: white;
+                border-radius: 8px;
+                margin-bottom: 15px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+                overflow: hidden;
+                transition: box-shadow 0.2s ease;
+            }
+            .news-item:hover {
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            }
+            .news-item-header {
+                padding: 20px 25px;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                user-select: none;
+                border-left: 4px solid #0481a6;
+            }
+            .news-item-header:hover {
+                background: #f8f9fa;
+            }
+            .news-item-info {
+                flex: 1;
+                min-width: 0;
+                padding-right: 15px;
+            }
+            .news-item-date {
+                color: #0481a6;
+                font-size: 0.85em;
+                font-weight: 600;
+                margin-bottom: 5px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            .news-item-title {
+                color: #333;
+                font-size: 1.2em;
+                font-weight: 600;
+                margin: 0;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+            }
+            .news-item-toggle {
+                font-size: 1.5em;
+                color: #0481a6;
+                transition: transform 0.3s ease;
+                flex-shrink: 0;
+            }
+            .news-item.expanded .news-item-toggle {
+                transform: rotate(180deg);
+            }
+
+            /* Collapsible Content */
+            .news-item-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                padding: 0 25px;
+            }
+            .news-item.expanded .news-item-content {
+                max-height: 5000px;
+                padding: 0 25px 25px 25px;
+            }
+            .news-item-content h1,
+            .news-item-content h2,
+            .news-item-content h3,
+            .news-item-content h4,
+            .news-item-content h5,
+            .news-item-content h6 {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+            }
+            .news-item-content h2 {
+                color: #333;
+                font-size: 1.5em;
+                margin: 20px 0 15px 0;
+            }
+            .news-item-content h3 {
+                color: #555;
+                font-size: 1.2em;
+                margin: 15px 0 10px 0;
+            }
+            .news-item-content p {
+                color: #666;
+                line-height: 1.7;
+                margin-bottom: 15px;
+                word-wrap: break-word;
+            }
+            .news-item-content ul,
+            .news-item-content ol {
+                color: #666;
+                line-height: 1.7;
+                margin-left: 25px;
+            }
+            .news-item-content a {
+                color: #0481a6;
+                text-decoration: none;
+                word-wrap: break-word;
+            }
+            .news-item-content code {
+                background-color: #f4f4f4;
+                padding: 2px 6px;
+                border-radius: 3px;
+                font-family: 'Courier New', monospace;
+                font-size: 0.9em;
+                word-wrap: break-word;
+            }
+            .news-item-content pre {
+                background-color: #f4f4f4;
+                padding: 15px;
+                border-radius: 5px;
+                overflow-x: auto;
+                margin-bottom: 15px;
+            }
+            .news-item-content blockquote {
+                border-left: 4px solid #0481a6;
+                padding-left: 20px;
+                margin: 20px 0;
+                color: #555;
+                font-style: italic;
+            }
+
+            /* Mobile Responsive */
+            @media (max-width: 768px) {
+                .news-featured {
+                    padding: 25px;
+                }
+                .news-featured h1 {
+                    font-size: 1.6em;
+                }
+                .news-featured h2 {
+                    font-size: 1.4em;
+                }
+                .news-featured h3 {
+                    font-size: 1.1em;
+                }
+                .news-featured p {
+                    font-size: 1em;
+                }
+
+                .news-item-header {
+                    padding: 15px 20px;
+                }
+                .news-item-title {
+                    font-size: 1.05em;
+                }
+                .news-item-info {
+                    padding-right: 10px;
+                }
+                .news-item-content h2 {
+                    font-size: 1.3em;
+                }
+                .news-item-content h3 {
+                    font-size: 1.1em;
+                }
+                .news-item.expanded .news-item-content {
+                    padding: 0 20px 20px 20px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .news-featured {
+                    padding: 20px;
+                }
+                .news-featured h1 {
+                    font-size: 1.4em;
+                }
+                .news-featured h2 {
+                    font-size: 1.2em;
+                }
+                .news-featured h3 {
+                    font-size: 1em;
+                }
+
+                .news-item-header {
+                    padding: 12px 15px;
+                }
+                .news-item-title {
+                    font-size: 1em;
+                }
+                .news-item-toggle {
+                    font-size: 1.3em;
+                }
+                .news-item-content h2 {
+                    font-size: 1.2em;
+                }
+                .news-item-content h3 {
+                    font-size: 1em;
+                }
+            }
         </style>
 
         <div class="fusion-footer">
@@ -106,11 +376,7 @@
                 <div class="fusion-row">
                     <div class="fusion-columns fusion-columns-4 fusion-widget-area">
                         <div class="fusion-column col-lg-3 col-md-3 col-sm-3">
-                            <section
-                                    id="text-3"
-                                    class="fusion-footer-widget-column widget widget_text"
-                                    style="border-style: solid; border-color: transparent; border-width: 0px"
-                            >
+                            <section id="text-3" class="fusion-footer-widget-column widget widget_text" style="border-style: solid; border-color: transparent; border-width: 0px">
                                 <div class="textwidget">
                                     <p>
                                         <a href="../healthcareservices/">Healthcare Services</a><br />
@@ -123,17 +389,12 @@
                             </section>
                         </div>
                         <div class="fusion-column col-lg-3 col-md-3 col-sm-3">
-                            <section
-                                    id="text-4"
-                                    class="fusion-footer-widget-column widget widget_text"
-                                    style="border-style: solid; border-color: transparent; border-width: 0px"
-                            >
+                            <section id="text-4" class="fusion-footer-widget-column widget widget_text" style="border-style: solid; border-color: transparent; border-width: 0px">
                                 <div class="textwidget">
                                     <p>
                                         <a class="" href="../impressum/">Impressum</a><br />
                                         <a href="../datenschutz.html">Datenschutz</a><br />
-                                        <a class="" href="../cookie-hinweis-eu/">Cookie Hinweis (EU)</a
-                                        ><br />
+                                        <a class="" href="../cookie-hinweis-eu/">Cookie Hinweis (EU)</a><br />
                                         <a href="../agb/" target="_blank" rel="noopener">AGB</a>
                                     </p>
                                 </div>
@@ -141,33 +402,21 @@
                             </section>
                         </div>
                         <div class="fusion-column col-lg-3 col-md-3 col-sm-3">
-                            <section
-                                    id="text-8"
-                                    class="fusion-footer-widget-column widget widget_text"
-                                    style="border-style: solid; border-color: transparent; border-width: 0px"
-                            >
+                            <section id="text-8" class="fusion-footer-widget-column widget widget_text" style="border-style: solid; border-color: transparent; border-width: 0px">
                                 <div class="textwidget"></div>
                                 <div style="clear: both"></div>
                             </section>
                         </div>
                         <div class="fusion-column fusion-column-last col-lg-3 col-md-3 col-sm-3">
-                            <section
-                                    id="text-6"
-                                    class="fusion-footer-widget-column widget widget_text"
-                                    style="border-style: solid; border-color: transparent; border-width: 0px"
-                            >
-                                <div class="textwidget"><p>© VERTAMA GmbH <script>document.write(/\d{4}/.exec(Date())[0])</script>
-                                </p></div>
+                            <section id="text-6" class="fusion-footer-widget-column widget widget_text" style="border-style: solid; border-color: transparent; border-width: 0px">
+                                <div class="textwidget"><p>© VERTAMA GmbH <script>document.write(/\d{4}/.exec(Date())[0])</script></p></div>
                                 <div style="clear: both"></div>
                             </section>
                         </div>
                         <div class="fusion-clearfix"></div>
                     </div>
-                    <!-- fusion-columns -->
                 </div>
-                <!-- fusion-row -->
             </footer>
-            <!-- fusion-footer-widget-area -->
         </div>
     </div>
 </div>
