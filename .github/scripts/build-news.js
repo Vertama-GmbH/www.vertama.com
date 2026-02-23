@@ -50,16 +50,16 @@ function loadReleases() {
         console.log('{ "releases": ["2026-02-15-beispiel.md"] }');
         return [];
     }
-    
+
     try {
         const data = fs.readFileSync(RELEASES_FILE, 'utf-8');
         const json = JSON.parse(data);
-        
+
         if (!json.releases || !Array.isArray(json.releases)) {
             console.error('❌ releases.json muss ein "releases" Array enthalten');
             return [];
         }
-        
+
         return json.releases;
     } catch (error) {
         console.error(`❌ Fehler beim Lesen von releases.json: ${error.message}`);
@@ -73,90 +73,104 @@ function loadReleases() {
 function loadNewsItems() {
     const newsItems = [];
     const releasedFiles = loadReleases();
-    
+
     console.log(`📋 releases.json enthält ${releasedFiles.length} Dateien`);
-    
+
     for (const file of releasedFiles) {
         const filePath = path.join(NEWS_DIR, file);
-        
+
         // Prüfe ob Datei existiert
         if (!fs.existsSync(filePath)) {
             console.warn(`⚠️  Datei in releases.json nicht gefunden: ${file}`);
             continue;
         }
-        
+
         // Lade und konvertiere
         try {
             const markdown = fs.readFileSync(filePath, 'utf-8');
             const html = marked.parse(markdown);
             const date = extractDateFromFilename(file);
-            
+
             newsItems.push({
                 filename: file,
                 html: html,
                 date: date
             });
-            
+
             console.log(`✅ Geladen: ${file}`);
         } catch (error) {
             console.error(`❌ Fehler bei ${file}: ${error.message}`);
         }
     }
-    
+
     // Nach Datum sortieren (neueste zuerst)
     newsItems.sort((a, b) => {
         if (!a.date) return 1;
         if (!b.date) return -1;
         return b.date - a.date;
     });
-    
+
     return newsItems;
 }
 
 /**
  * Generiert HTML für alle News-Einträge
+ * Neueste News = Featured (vollständig sichtbar)
+ * Ältere News = Collapsible (ausklappbar)
  */
 function generateNewsHTML(newsItems) {
     if (newsItems.length === 0) {
-        return `
-<div style="text-align: center; padding: 60px 20px;">
-    <div style="font-size: 3em; margin-bottom: 20px;">📰</div>
-    <h2 style="color: #666; margin-bottom: 15px;">Noch keine News veröffentlicht</h2>
-    <p style="color: #999; margin-bottom: 30px;">
-        Füge Markdown-Dateien zu <code>releases.json</code> hinzu, um News zu veröffentlichen.
-    </p>
-    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; max-width: 500px; margin: 0 auto; text-align: left;">
-        <strong style="color: #333;">So geht's:</strong>
-        <ol style="color: #666; margin: 10px 0 0 20px; line-height: 1.8;">
-            <li>Markdown-Datei erstellen: <code>YYYY-MM-DD-titel.md</code></li>
-            <li>Dateinamen zu <code>releases.json</code> hinzufügen</li>
-            <li>Committen und pushen</li>
-        </ol>
-    </div>
-</div>
-`;
+        return '<div class="empty-state">' +
+            '<h2>Noch keine News veröffentlicht</h2>' +
+            '<p>Bald gibt es hier Neuigkeiten!</p>' +
+            '</div>';
     }
-    
+
     let html = '';
-    
-    for (const item of newsItems) {
-        html += '<article class="news-card">\n';
-        html += '  <div class="news-card-content">\n';
-        
-        // Datum hinzufügen
-        if (item.date) {
-            html += `    <div class="news-date">${formatDate(item.date)}</div>\n`;
-        }
-        
-        // Content
-        html += '    <div>\n';
-        html += item.html;
-        html += '    </div>\n';
-        
-        html += '  </div>\n';
-        html += '</article>\n';
+
+    // Erste News = Featured (vollständig)
+    const latest = newsItems[0];
+    html += '<div class="news-featured">\n';
+    if (latest.date) {
+        html += `  <div class="news-date">${formatDate(latest.date)}</div>\n`;
     }
-    
+    html += latest.html;
+    html += '</div>\n\n';
+
+    // Ältere News = Collapsible
+    if (newsItems.length > 1) {
+        html += '<div class="older-news-section">\n';
+        html += '  <h2 class="older-news-title">Ältere Meldungen</h2>\n\n';
+
+        for (let i = 1; i < newsItems.length; i++) {
+            const item = newsItems[i];
+
+            // Extrahiere Titel aus HTML (erste h1)
+            const titleMatch = item.html.match(/<h1[^>]*>(.*?)<\/h1>/);
+            const title = titleMatch ? titleMatch[1] : 'Ohne Titel';
+
+            // Entferne h1 aus Content (wird im Header angezeigt)
+            const contentWithoutH1 = item.html.replace(/<h1[^>]*>.*?<\/h1>/, '');
+
+            html += '  <div class="news-item">\n';
+            html += '    <div class="news-item-header">\n';
+            html += '      <div class="news-item-info">\n';
+            if (item.date) {
+                html += `        <div class="news-item-date">${formatDate(item.date)}</div>\n`;
+            }
+            html += `        <h3 class="news-item-title">${title}</h3>\n`;
+            html += '      </div>\n';
+            html += '      <div class="news-item-toggle">▼</div>\n';
+            html += '    </div>\n';
+            html += '    <div class="news-item-content">\n';
+            html += contentWithoutH1;
+            html += '    </div>\n';
+            html += '  </div>\n\n';
+        }
+
+        html += '</div>\n';
+    }
+
     return html;
 }
 
@@ -165,31 +179,48 @@ function generateNewsHTML(newsItems) {
  */
 function main() {
     console.log('🚀 Baue statische News-Seite...\n');
-    
+    console.log(`📁 Working directory: ${process.cwd()}\n`);
+
     // Lade Template
+    console.log(`🔍 Suche Template: ${TEMPLATE_FILE}`);
     if (!fs.existsSync(TEMPLATE_FILE)) {
         console.error(`❌ Template nicht gefunden: ${TEMPLATE_FILE}`);
+        console.error(`📂 Dateien im Verzeichnis:`);
+        console.error(fs.readdirSync('.'));
         process.exit(1);
     }
-    
+    console.log(`✅ Template gefunden\n`);
+
     let template = fs.readFileSync(TEMPLATE_FILE, 'utf-8');
-    
+
     // Lade nur veröffentlichte News
     const newsItems = loadNewsItems();
     console.log(`\n📰 ${newsItems.length} News-Artikel werden veröffentlicht`);
-    
+
+    if (newsItems.length === 0) {
+        console.log('⚠️  Keine News in releases.json! Erstelle leere Seite mit Platzhalter.\n');
+    }
+
     // Generiere HTML
     const newsHTML = generateNewsHTML(newsItems);
-    
+    console.log(`📝 Generiertes HTML ist ${newsHTML.length} Zeichen lang\n`);
+
     // Ersetze Platzhalter im Template
     const output = template.replace('{{NEWS_CONTENT}}', newsHTML);
-    
+
+    // Check ob Platzhalter ersetzt wurde
+    if (output.includes('{{NEWS_CONTENT}}')) {
+        console.error('⚠️  WARNUNG: Platzhalter wurde nicht ersetzt!');
+    } else {
+        console.log('✅ Platzhalter erfolgreich ersetzt\n');
+    }
+
     // Schreibe Output-Datei
     fs.writeFileSync(OUTPUT_FILE, output, 'utf-8');
-    
+
     console.log(`\n✅ Statische Seite erstellt: ${OUTPUT_FILE}`);
     console.log(`📊 ${newsItems.length} Artikel veröffentlicht\n`);
-    
+
     // Liste die veröffentlichten Artikel
     if (newsItems.length > 0) {
         console.log('📝 Veröffentlichte News:');

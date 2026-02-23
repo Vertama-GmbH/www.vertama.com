@@ -107,100 +107,222 @@
                 <section id="content" style="width: 100%;">
                     <h1 style="color: #0481a6; font-size: 2.5em; margin-bottom: 40px;">Aktuelles</h1>
 
-                    <div class="news-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px;">
+                    <div id="news-container">
                         {{NEWS_CONTENT}}
-
-                        <script>
-                            // Fallback: Wenn Platzhalter noch da ist (Build nie gelaufen)
-                            (function() {
-                                    var container = document.querySelector('.news-grid');
-                                    // Prüft, ob außer dem Script-Tag selbst kein Inhalt (Article) da ist
-                                    if (container && container.querySelectorAll('article').length === 0) {
-                                        container.innerHTML = '<div style="text-align: center; padding: 60px 20px; grid-column: 1 / -1;">' +
-                                            '<h2 style="color: #666; margin-bottom: 15px;">Noch keine News veröffentlicht</h2>' +
-                                            '<p style="color: #999;">Bald gibt es hier Neuigkeiten!</p>' +
-                                            '</div>';
-                                    }
-                                })();
-                        </script>
                     </div>
+
+                    <script>
+                        // Fallback für leere News
+                        (function() {
+                            var container = document.getElementById('news-container');
+                            if (container && container.querySelectorAll('.news-featured, .news-item, article').length === 0) {
+                                container.innerHTML = '<div style="text-align: center; padding: 80px 20px;">' +
+                                    '<h2 style="color: #666; margin-bottom: 15px;">Noch keine News veröffentlicht</h2>' +
+                                    '<p style="color: #999;">Bald gibt es hier Neuigkeiten!</p>' +
+                                    '</div>';
+                            }
+                        })();
+
+                        // Toggle functionality für ältere News
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var headers = document.querySelectorAll('.news-item-header');
+                            headers.forEach(function(header) {
+                                header.addEventListener('click', function() {
+                                    var item = this.parentElement;
+                                    item.classList.toggle('expanded');
+                                });
+                            });
+                        });
+                    </script>
                 </section>
             </div>
         </main>
 
         <style>
-            .news-card {
+            /* Featured News (neueste - vollständig sichtbar) */
+            .news-featured {
                 background: white;
                 border-radius: 12px;
-                overflow: hidden;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                padding: 40px;
+                margin-bottom: 50px;
+                border-left: 6px solid #0481a6;
             }
 
-            .news-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
-            }
-
-            .news-card-content {
-                padding: 30px;
-            }
-
-            .news-date {
+            .news-featured .news-date {
                 color: #0481a6;
-                font-size: 0.9em;
+                font-size: 0.95em;
                 font-weight: 600;
-                margin-bottom: 10px;
+                margin-bottom: 15px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
             }
 
-            .news-card h1 {
+            .news-featured h1 {
+                color: #333;
+                font-size: 2.2em;
+                margin-bottom: 20px;
+                line-height: 1.3;
+            }
+
+            .news-featured h2 {
                 color: #333;
                 font-size: 1.8em;
-                margin-bottom: 15px;
-                line-height: 1.3;
+                margin: 25px 0 15px 0;
             }
 
-            .news-card h2 {
-                color: #333;
-                font-size: 1.5em;
-                margin-bottom: 15px;
-                line-height: 1.3;
-            }
-
-            .news-card h3 {
+            .news-featured h3 {
                 color: #555;
-                font-size: 1.2em;
+                font-size: 1.3em;
                 margin: 20px 0 10px 0;
             }
 
-            .news-card p {
+            .news-featured p, .news-featured ul, .news-featured ol {
                 color: #666;
-                line-height: 1.6;
+                line-height: 1.8;
+                margin-bottom: 15px;
+                font-size: 1.05em;
+            }
+
+            .news-featured ul, .news-featured ol {
+                margin-left: 25px;
+            }
+
+            .news-featured a {
+                color: #0481a6;
+                text-decoration: none;
+                border-bottom: 1px solid transparent;
+                transition: border-color 0.2s;
+            }
+
+            .news-featured a:hover {
+                border-bottom-color: #0481a6;
+            }
+
+            /* Older News Section */
+            .older-news-section {
+                margin-top: 60px;
+            }
+
+            .older-news-title {
+                color: #666;
+                font-size: 1.2em;
+                margin-bottom: 25px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #e0e0e0;
+            }
+
+            /* Collapsible News Items */
+            .news-item {
+                background: white;
+                border-radius: 8px;
+                margin-bottom: 15px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+                overflow: hidden;
+                transition: box-shadow 0.2s ease;
+            }
+
+            .news-item:hover {
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            }
+
+            .news-item-header {
+                padding: 20px 25px;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                user-select: none;
+                border-left: 4px solid #0481a6;
+            }
+
+            .news-item-header:hover {
+                background: #f8f9fa;
+            }
+
+            .news-item-info {
+                flex: 1;
+            }
+
+            .news-item-date {
+                color: #0481a6;
+                font-size: 0.85em;
+                font-weight: 600;
+                margin-bottom: 5px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .news-item-title {
+                color: #333;
+                font-size: 1.2em;
+                font-weight: 600;
+                margin: 0;
+            }
+
+            .news-item-toggle {
+                font-size: 1.5em;
+                color: #0481a6;
+                transition: transform 0.3s ease;
+                flex-shrink: 0;
+                margin-left: 15px;
+            }
+
+            .news-item.expanded .news-item-toggle {
+                transform: rotate(180deg);
+            }
+
+            .news-item-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                padding: 0 25px;
+            }
+
+            .news-item.expanded .news-item-content {
+                max-height: 5000px;
+                padding: 0 25px 25px 25px;
+            }
+
+            .news-item-content h2 {
+                color: #333;
+                font-size: 1.5em;
+                margin: 20px 0 15px 0;
+            }
+
+            .news-item-content h3 {
+                color: #555;
+                font-size: 1.2em;
+                margin: 15px 0 10px 0;
+            }
+
+            .news-item-content p, .news-item-content ul, .news-item-content ol {
+                color: #666;
+                line-height: 1.7;
                 margin-bottom: 15px;
             }
 
-            .news-card ul, .news-card ol {
-                color: #666;
-                line-height: 1.6;
-                margin: 10px 0 15px 20px;
+            .news-item-content ul, .news-item-content ol {
+                margin-left: 25px;
             }
 
-            .news-card blockquote {
+            .news-item-content blockquote {
                 border-left: 4px solid #0481a6;
-                padding-left: 15px;
-                margin: 15px 0;
+                padding-left: 20px;
+                margin: 20px 0;
                 color: #555;
                 font-style: italic;
             }
 
-            .news-card code {
+            .news-item-content code {
                 background-color: #f4f4f4;
                 padding: 2px 6px;
                 border-radius: 3px;
                 font-family: 'Courier New', monospace;
+                font-size: 0.9em;
             }
 
-            .news-card pre {
+            .news-item-content pre {
                 background-color: #f4f4f4;
                 padding: 15px;
                 border-radius: 5px;
@@ -208,26 +330,33 @@
                 margin-bottom: 15px;
             }
 
-            .news-card a {
+            .news-item-content a {
                 color: #0481a6;
                 text-decoration: none;
+                border-bottom: 1px solid transparent;
+                transition: border-color 0.2s;
             }
 
-            .news-card a:hover {
-                text-decoration: underline;
+            .news-item-content a:hover {
+                border-bottom-color: #0481a6;
             }
 
-            .error {
-                background-color: #f8d7da;
-                color: #721c24;
-                padding: 20px;
-                border-radius: 8px;
-                margin: 20px 0;
-            }
-
+            /* Responsive */
             @media (max-width: 768px) {
-                .news-grid {
-                    grid-template-columns: 1fr !important;
+                .news-featured {
+                    padding: 25px;
+                }
+
+                .news-featured h1 {
+                    font-size: 1.8em;
+                }
+
+                .news-item-header {
+                    padding: 15px 20px;
+                }
+
+                .news-item-title {
+                    font-size: 1.1em;
                 }
             }
         </style>
@@ -267,6 +396,340 @@
                         <div class="fusion-column fusion-column-last col-lg-3 col-md-3 col-sm-3">
                             <section class="fusion-footer-widget-column widget widget_text">
                                 <div class="textwidget"><p>© VERTAMA GmbH 2025</p></div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+/* Featured News (neueste - vollständig sichtbar) */
+.news-featured {
+background: white;
+border-radius: 12px;
+box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+padding: 40px;
+margin-bottom: 50px;
+border-left: 6px solid #0481a6;
+}
+
+.news-featured .news-date {
+color: #0481a6;
+font-size: 0.95em;
+font-weight: 600;
+margin-bottom: 15px;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+}
+
+.news-featured h1 {
+color: #333;
+font-size: 2.2em;
+margin-bottom: 20px;
+line-height: 1.3;
+}
+
+.news-featured h2 {
+color: #333;
+font-size: 1.8em;
+margin: 25px 0 15px 0;
+}
+
+.news-featured h3 {
+color: #555;
+font-size: 1.3em;
+margin: 20px 0 10px 0;
+}
+
+.news-featured p, .news-featured ul, .news-featured ol {
+color: #666;
+line-height: 1.8;
+margin-bottom: 15px;
+font-size: 1.05em;
+}
+
+.news-featured ul, .news-featured ol {
+margin-left: 25px;
+}
+
+/* Older News Section */
+.older-news-section {
+margin-top: 60px;
+}
+
+.older-news-title {
+color: #666;
+font-size: 1.2em;
+margin-bottom: 25px;
+padding-bottom: 10px;
+border-bottom: 2px solid #e0e0e0;
+}
+
+/* Collapsible News Items */
+.news-item {
+background: white;
+border-radius: 8px;
+margin-bottom: 15px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+overflow: hidden;
+transition: box-shadow 0.2s ease;
+}
+
+.news-item:hover {
+box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.news-item-header {
+padding: 20px 25px;
+cursor: pointer;
+display: flex;
+justify-content: space-between;
+align-items: center;
+user-select: none;
+border-left: 4px solid #0481a6;
+}
+
+.news-item-header:hover {
+background: #f8f9fa;
+}
+
+.news-item-info {
+flex: 1;
+}
+
+.news-item-date {
+color: #0481a6;
+font-size: 0.85em;
+font-weight: 600;
+margin-bottom: 5px;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+}
+
+.news-item-title {
+color: #333;
+font-size: 1.2em;
+font-weight: 600;
+margin: 0;
+}
+
+.news-item-toggle {
+font-size: 1.5em;
+color: #0481a6;
+transition: transform 0.3s ease;
+flex-shrink: 0;
+margin-left: 15px;
+}
+
+.news-item.expanded .news-item-toggle {
+transform: rotate(180deg);
+}
+
+.news-item-content {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.3s ease;
+padding: 0 25px;
+}
+
+.news-item.expanded .news-item-content {
+max-height: 5000px;
+padding: 0 25px 25px 25px;
+}
+
+.news-item-content h2 {
+color: #333;
+font-size: 1.5em;
+margin: 20px 0 15px 0;
+}
+
+.news-item-content h3 {
+color: #555;
+font-size: 1.2em;
+margin: 15px 0 10px 0;
+}
+
+.news-item-content p, .news-item-content ul, .news-item-content ol {
+color: #666;
+line-height: 1.7;
+margin-bottom: 15px;
+}
+
+.news-item-content ul, .news-item-content ol {
+margin-left: 25px;
+}
+
+.news-item-content blockquote {
+border-left: 4px solid #0481a6;
+padding-left: 20px;
+margin: 20px 0;
+color: #555;
+font-style: italic;
+}
+
+.news-item-content code {
+background-color: #f4f4f4;
+padding: 2px 6px;
+border-radius: 3px;
+font-family: 'Courier New', monospace;
+font-size: 0.9em;
+}
+
+.news-item-content pre {
+background-color: #f4f4f4;
+padding: 15px;
+border-radius: 5px;
+overflow-x: auto;
+margin-bottom: 15px;
+}
+
+.news-item-content a, .news-featured a {
+color: #0481a6;
+text-decoration: none;
+border-bottom: 1px solid transparent;
+transition: border-color 0.2s;
+}
+
+.news-item-content a:hover, .news-featured a:hover {
+border-bottom-color: #0481a6;
+}
+
+/* Empty State */
+.empty-state {
+text-align: center;
+padding: 80px 20px;
+}
+
+.empty-state h2 {
+color: #666;
+margin-bottom: 15px;
+}
+
+.empty-state p {
+color: #999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+.news-featured {
+padding: 25px;
+}
+
+.news-featured h1 {
+font-size: 1.8em;
+}
+
+.news-item-header {
+padding: 15px 20px;
+}
+
+.news-item-title {
+font-size: 1.1em;
+}
+}
+</style>
+</head>
+<body class="page-template fusion-body ltr fusion-sticky-header layout-wide-mode">
+<div id="boxed-wrapper">
+    <div id="wrapper" class="fusion-wrapper">
+        <header class="fusion-header-wrapper">
+            <div class="fusion-header-v1">
+                <div class="fusion-header">
+                    <div class="fusion-row">
+                        <div class="fusion-logo">
+                            <a class="fusion-logo-link" href="../healthcareservices/index.html">
+                                <img src="../../assets/images/2022/10/VERTAMA_Logo_BlauGrau.png" alt="VERTAMA Logo" style="max-height: 255px; height: auto" />
+                            </a>
+                        </div>
+                        <nav class="fusion-main-menu">
+                            <ul class="fusion-menu">
+                                <li><a href="../healthcareservices/index.html" class="fusion-bottombar-highlight"><span>Healthcare Services</span></a></li>
+                                <li><a href="../partner-und-kunden/index.html" class="fusion-bottombar-highlight"><span>Partner und Kunden</span></a></li>
+                                <li><a href="index.html" class="fusion-bottombar-highlight"><span>Aktuelles</span></a></li>
+                                <li><a href="../kontakt/index.html" class="fusion-bottombar-highlight"><span>Kontakt</span></a></li>
+                                <li class="current-lang"><a href="../healthcareservices/index.html"><span>DE</span></a></li>
+                                <li><a href="../../en/healthcare-services/index.html"><span>EN</span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main id="main" class="clearfix width-100">
+            <div class="fusion-row" style="max-width: 1200px; margin: 0 auto; padding: 60px 20px;">
+                <section id="content" style="width: 100%;">
+                    <h1 style="color: #0481a6; font-size: 2.5em; margin-bottom: 40px;">Aktuelles</h1>
+
+                    <div id="news-container">
+                        {{NEWS_CONTENT}}
+                    </div>
+
+                    <script>
+                        // Fallback für leere News
+                        (function() {
+                            var container = document.getElementById('news-container');
+                            if (container && container.querySelectorAll('.news-featured, .news-item').length === 0) {
+                                container.innerHTML = '<div class="empty-state">' +
+                                    '<h2>Noch keine News veröffentlicht</h2>' +
+                                    '<p>Bald gibt es hier Neuigkeiten!</p>' +
+                                    '</div>';
+                            }
+                        })();
+
+                        // Toggle functionality für ältere News
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var headers = document.querySelectorAll('.news-item-header');
+                            headers.forEach(function(header) {
+                                header.addEventListener('click', function() {
+                                    var item = this.parentElement;
+                                    item.classList.toggle('expanded');
+                                });
+                            });
+                        });
+                    </script>
+                </section>
+            </div>
+        </main>
+
+        <div class="fusion-footer">
+            <footer class="fusion-footer-widget-area fusion-widget-area">
+                <div class="fusion-row">
+                    <div class="fusion-columns fusion-columns-4 fusion-widget-area">
+                        <div class="fusion-column col-lg-3 col-md-3 col-sm-3">
+                            <section class="fusion-footer-widget-column widget widget_text">
+                                <div class="textwidget">
+                                    <p>
+                                        <a href="../healthcareservices/index.html">Healthcare Services</a><br />
+                                        <a href="../partner-und-kunden/index.html">Partner und Kunden</a><br />
+                                        <a href="../kontakt/index.html">Kontakt</a>
+                                    </p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="fusion-column col-lg-3 col-md-3 col-sm-3">
+                            <section class="fusion-footer-widget-column widget widget_text">
+                                <div class="textwidget">
+                                    <p>
+                                        <a href="../impressum/index.html">Impressum</a><br />
+                                        <a href="../datenschutz.html">Datenschutz</a><br />
+                                        <a href="../cookie-hinweis-eu/index.html">Cookie Hinweis (EU)</a><br />
+                                        <a href="../agb/index.html">AGB</a>
+                                    </p>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="fusion-column col-lg-3 col-md-3 col-sm-3">
+                            <section class="fusion-footer-widget-column widget widget_text">
+                                <div class="textwidget"></div>
+                            </section>
+                        </div>
+                        <div class="fusion-column fusion-column-last col-lg-3 col-md-3 col-sm-3">
+                            <section class="fusion-footer-widget-column widget widget_text">
+                                <div class="textwidget"><p>© VERTAMA GmbH <script>document.write(/\d{4}/.exec(Date())[0])</script></p></div>
                             </section>
                         </div>
                     </div>
