@@ -7,6 +7,10 @@ on:
       - 'docs/de/news/news/releases.json'
   workflow_dispatch:
 
+concurrency:
+  group: "pages-deployment"
+  cancel-in-progress: false # Wichtig: Er soll nicht abbrechen, sondern warten
+
 jobs:
   build-static-html:
     runs-on: ubuntu-latest
