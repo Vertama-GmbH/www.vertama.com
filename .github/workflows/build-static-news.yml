@@ -1,10 +1,12 @@
 name: Build Static News Page
 
-# Läuft wenn releases.json geändert wird
 on:
   push:
-    paths:
-      - 'docs/de/news/news/releases.json'
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/de/news/index.html' # Ignoriere den Output deiner eigenen Action
+      - 'docs/de/news/news/**'    # Optional: ignoriere auch die MDs, falls nötig
   workflow_dispatch:
 
 concurrency:
