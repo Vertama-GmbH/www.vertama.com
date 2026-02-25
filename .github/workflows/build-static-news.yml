@@ -1,13 +1,7 @@
 name: Build Static News Page
 
 on:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - 'docs/de/news/index.html' # Ignoriere den Output deiner eigenen Action
-      - 'docs/de/news/news/**'    # Optional: ignoriere auch die MDs, falls nötig
-  workflow_dispatch:
+  workflow_dispatch: # Manual trigger only - superseded by deploy-pages.yml
 
 concurrency:
   group: "pages-deployment"
