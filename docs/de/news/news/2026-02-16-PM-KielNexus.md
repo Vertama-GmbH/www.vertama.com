@@ -1,4 +1,6 @@
 
+> 📰 Veröffentlicht auf [e-health-com.de](https://e-health-com.de/details-unternehmensnews/historischer-meilenstein-in-der-verwaltungsmodernisierung-erste-vollstaendig-digitale-geburtsanzeige/)
+
 ## Historischer Meilenstein in der Verwaltungsmodernisierung: Erste vollständig digitale Geburtsanzeige in Kiel realisiert
 
 **KIEL / BERLIN – Das „Kieler Modell“ setzt neue Maßstäbe für das deutsche Gesundheitswesen und die öffentliche Verwaltung. In einer wegweisenden Kooperation zwischen dem Städtischen Krankenhaus Kiel, dem KIS-Hersteller NEXUS und den Berliner Experten von Vertama ist es gelungen, medienbruchfreie, digitale Geburtsanzeigen  zu realisieren.**
