@@ -1,0 +1,32 @@
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <!-- Navigation Links Column -->
+            <div class="footer-col">
+                <ul class="footer-links">
+                    {{ range .Site.Menus.main }}
+                    <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+            
+            <!-- Legal Links Column -->
+            <div class="footer-col">
+                <ul class="footer-links">
+                    <li><a href="{{ "impressum" | relLangURL }}">Impressum</a></li>
+                    <li><a href="{{ "datenschutz" | relLangURL }}">Datenschutz</a></li>
+                    <li><a href="{{ "cookie-hinweis-eu" | relLangURL }}">Cookie Hinweis (EU)</a></li>
+                    <li><a href="{{ "agb" | relLangURL }}" target="_blank" rel="noopener">AGB</a></li>
+                </ul>
+            </div>
+            
+            <!-- Empty Column (for layout) -->
+            <div class="footer-col"></div>
+            
+            <!-- Copyright Column -->
+            <div class="footer-col footer-copyright">
+                <p>&copy; VERTAMA GmbH <span class="year"></span></p>
+            </div>
+        </div>
+    </div>
+</footer>

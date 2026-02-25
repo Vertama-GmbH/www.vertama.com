@@ -1,0 +1,65 @@
+<header class="site-header">
+    <div class="container">
+        <div class="header-content">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="{{ .Site.BaseURL | relLangURL }}">
+                    <img src="{{ "images/VERTAMA_Logo_BlauGrau.png" | relURL }}" 
+                         alt="{{ .Site.Title }}" 
+                         class="logo-image">
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="main-nav" aria-label="Hauptmenü">
+                <ul class="nav-menu">
+                    {{ range .Site.Menus.main }}
+                    <li class="nav-item{{ if $.IsMenuCurrent "main" . }} active{{ end }}">
+                        <a href="{{ .URL | relLangURL }}" class="nav-link">
+                            {{ .Name }}
+                        </a>
+                    </li>
+                    {{ end }}
+                    
+                    <!-- Language Switcher -->
+                    <li class="nav-item lang-switcher">
+                        {{ range $.Site.Home.AllTranslations }}
+                        <a href="{{ .Permalink }}" 
+                           class="lang-link{{ if eq $.Language.Lang .Language.Lang }} active{{ end }}">
+                            {{ .Language.LanguageName | upper | truncate 2 "" }}
+                        </a>
+                        {{ end }}
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" aria-label="Mobile Menü">
+        <ul class="mobile-menu">
+            {{ range .Site.Menus.main }}
+            <li class="mobile-nav-item">
+                <a href="{{ .URL | relLangURL }}" class="mobile-nav-link">
+                    {{ .Name }}
+                </a>
+            </li>
+            {{ end }}
+            
+            <!-- Language Switcher Mobile -->
+            <li class="mobile-nav-item mobile-lang-switcher">
+                {{ range $.Site.Home.AllTranslations }}
+                <a href="{{ .Permalink }}" 
+                   class="mobile-lang-link{{ if eq $.Language.Lang .Language.Lang }} active{{ end }}">
+                    {{ .Language.LanguageName }}
+                </a>
+                {{ end }}
+            </li>
+        </ul>
+    </nav>
+</header>

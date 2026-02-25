@@ -1,0 +1,18 @@
+{{/*
+Usage: {{ partial "button.html" (dict "text" "Click me" "url" "/page" "variant" "primary" "target" "_blank") }}
+Variants: primary, secondary, outline
+*/}}
+
+{{ $text := .text | default "Button" }}
+{{ $url := .url | default "#" }}
+{{ $variant := .variant | default "primary" }}
+{{ $target := .target | default "" }}
+{{ $rel := .rel | default "" }}
+{{ $class := .class | default "" }}
+
+<a href="{{ $url | relURL }}" 
+   class="btn btn-{{ $variant }} {{ $class }}"
+   {{ with $target }}target="{{ . }}"{{ end }}
+   {{ with $rel }}rel="{{ . }}"{{ end }}>
+    {{ $text }}
+</a>

@@ -1,0 +1,43 @@
+baseURL = 'https://vertama.com/'
+languageCode = 'de-de'
+title = 'VERTAMA GmbH'
+theme = 'vertama'
+
+[params]
+description = 'VERTAMA GmbH - Digitale Lösungen für Gesundheitswesen'
+
+[languages]
+[languages.de]
+languageName = 'Deutsch'
+weight = 1
+title = 'VERTAMA GmbH'
+[languages.en]
+languageName = 'English'
+weight = 2
+title = 'VERTAMA GmbH'
+
+[menu]
+[[menu.main]]
+name = 'Startseite'
+url = ''
+weight = 1
+[[menu.main]]
+name = 'Produkte'
+url = '/produkte/'
+weight = 2
+[[menu.main]]
+name = 'Kunden & Partner'
+url = '/news/'
+weight = 3
+[[menu.main]]
+name = 'Über uns'
+url = '/kontakt/'
+weight = 4
+[[menu.main]]
+name = 'Aktuelles'
+url = '/kontakt/'
+weight = 5
+[[menu.main]]
+name = 'Kontakt'
+url = '/kontakt/'
+weight = 5

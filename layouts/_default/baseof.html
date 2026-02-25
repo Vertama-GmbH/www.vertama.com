@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ .Description | default .Site.Params.description }}">
+    
+    <link rel="shortcut icon" href="{{ "images/favicon.png" | relURL }}" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    
+    {{ block "head" . }}{{ end }}
+</head>
+<body>
+    {{ partial "header.html" . }}
+
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+    
+    {{ partial "footer.html" . }}
+    
+    <!-- JavaScript -->
+    <script src="{{ "js/main.js" | relURL }}"></script>
+    {{ block "scripts" . }}{{ end }}
+</body>
+</html>

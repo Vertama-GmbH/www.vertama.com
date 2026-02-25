@@ -1,0 +1,59 @@
+{{/*
+Usage: 
+{{ partial "card.html" (dict 
+    "title" "Card Title" 
+    "description" "Card description text" 
+    "image" "/images/card.jpg"
+    "url" "/page"
+    "icon" "/images/icon.png"
+) }}
+*/}}
+
+{{ $title := .title | default "" }}
+{{ $description := .description | default "" }}
+{{ $image := .image | default "" }}
+{{ $url := .url | default "" }}
+{{ $icon := .icon | default "" }}
+{{ $class := .class | default "" }}
+
+<div class="card {{ $class }}">
+    {{ if $image }}
+    <div class="card-image">
+        {{ if $url }}
+        <a href="{{ $url | relURL }}">
+            <img src="{{ $image | relURL }}" alt="{{ $title }}" loading="lazy">
+        </a>
+        {{ else }}
+        <img src="{{ $image | relURL }}" alt="{{ $title }}" loading="lazy">
+        {{ end }}
+    </div>
+    {{ end }}
+    
+    <div class="card-content">
+        {{ if $icon }}
+        <div class="card-icon">
+            <img src="{{ $icon | relURL }}" alt="" width="80" height="80">
+        </div>
+        {{ end }}
+        
+        {{ if $title }}
+        <h3 class="card-title">
+            {{ if $url }}
+            <a href="{{ $url | relURL }}">{{ $title }}</a>
+            {{ else }}
+            {{ $title }}
+            {{ end }}
+        </h3>
+        {{ end }}
+        
+        {{ if $description }}
+        <p class="card-description">{{ $description | markdownify }}</p>
+        {{ end }}
+        
+        {{ if $url }}
+        <div class="card-footer">
+            {{ partial "link.html" (dict "text" "Mehr erfahren" "url" $url "icon" "arrow") }}
+        </div>
+        {{ end }}
+    </div>
+</div>

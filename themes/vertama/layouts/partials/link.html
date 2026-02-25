@@ -1,0 +1,15 @@
+{{/*
+Usage: {{ partial "link.html" (dict "text" "Read more" "url" "/page" "icon" "arrow-right") }}
+*/}}
+
+{{ $text := .text | default "Link" }}
+{{ $url := .url | default "#" }}
+{{ $icon := .icon | default "" }}
+{{ $class := .class | default "" }}
+
+<a href="{{ $url | relURL }}" class="text-link {{ $class }}">
+    {{ $text }}
+    {{ if $icon }}
+    <span class="link-icon" aria-hidden="true">→</span>
+    {{ end }}
+</a>
