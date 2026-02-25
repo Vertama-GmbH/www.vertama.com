@@ -43,3 +43,6 @@ Temporary Items
 
 # Local development configuration
 docs/config.local.json
+
+# Node
+node_modules/
