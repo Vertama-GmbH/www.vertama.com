@@ -1,18 +1,13 @@
-{{/*
-Usage: {{ partial "button.html" (dict "text" "Click me" "url" "/page" "variant" "primary" "target" "_blank") }}
-Variants: primary, secondary, outline
-*/}}
-
-{{ $text := .text | default "Button" }}
-{{ $url := .url | default "#" }}
+{{ $text := .text }}
+{{ $url := .url }}
 {{ $variant := .variant | default "primary" }}
-{{ $target := .target | default "" }}
-{{ $rel := .rel | default "" }}
-{{ $class := .class | default "" }}
 
-<a href="{{ $url | relURL }}" 
-   class="btn btn-{{ $variant }} {{ $class }}"
-   {{ with $target }}target="{{ . }}"{{ end }}
-   {{ with $rel }}rel="{{ . }}"{{ end }}>
-    {{ $text }}
+<a href="{{ $url | relURL }}"
+   class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm
+   {{ if eq $variant "primary" }}
+text-white bg-[#005e7b] hover:bg-[#004a61]
+{{ else }}
+text-[#005e7b] bg-white border-[#005e7b] hover:bg-slate-50
+{{ end }} transition-colors">
+{{ $text }}
 </a>

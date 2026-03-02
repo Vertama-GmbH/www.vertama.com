@@ -1,0 +1,35 @@
+<div class="relative">
+    <button class="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors hover:text-[#005e7b] focus:outline-none focus:ring-2 focus:ring-[#005e7b]/30"
+            aria-label="Change language" 
+            aria-expanded="false" 
+            aria-haspopup="true"
+            id="language-button">
+        <svg class="lucide lucide-globe text-slate-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+            <path d="M2 12h20"></path>
+        </svg>
+        <span class="text-sm font-medium text-slate-700">
+            {{ if eq .Site.Language.Lang "de" }}
+            🇩🇪 DE
+            {{ else }}
+            🇬🇧 EN
+            {{ end }}
+        </span>
+    </button>
+    
+    <!-- Dropdown (hidden by default) -->
+    <div class="absolute top-full mt-2 right-0 bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden hidden" id="language-menu">
+        {{ range .Site.Home.AllTranslations }}
+        <a href="{{ .Permalink }}" 
+           class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+           {{ if eq $.Language.Lang .Language.Lang }}aria-current="true"{{ end }}>
+            {{ if eq .Language.Lang "de" }}
+            🇩🇪 Deutsch
+            {{ else if eq .Language.Lang "en" }}
+            🇬🇧 English
+            {{ end }}
+        </a>
+        {{ end }}
+    </div>
+</div>

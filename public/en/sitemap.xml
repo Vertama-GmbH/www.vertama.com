@@ -67,8 +67,8 @@
   </url><url>
     <loc>http://localhost:1313/de/produkte/elim/</loc>
   </url><url>
-    <loc>http://localhost:1313/de/</loc>
-  </url><url>
     <loc>http://localhost:1313/de/produkte/</loc>
+  </url><url>
+    <loc>http://localhost:1313/de/</loc>
   </url>
 </urlset>

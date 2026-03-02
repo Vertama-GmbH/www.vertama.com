@@ -1,0 +1,41 @@
+<section id="features" class="container mx-auto px-4 sm:px-6 py-24" aria-labelledby="features-heading">
+    <div class="mb-12 text-center">
+        <h2 id="features-heading" class="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
+            {{ .Params.features.title | default "Warum VERTAMA?" }}
+        </h2>
+        <p class="max-w-2xl mx-auto text-lg px-4 text-slate-600">
+            {{ .Params.features.description | default "Wir bieten maßgeschneiderte Software-Architekturen für die Herausforderungen der modernen Datenverarbeitung." }}
+        </p>
+        <div class="w-20 h-1 mx-auto mt-6 rounded-full bg-[#008ab5]/20" aria-hidden="true"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" role="list">
+        {{ range .Params.features.items }}
+        <div class="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden p-6" role="listitem">
+            <div class="w-14 h-14 bg-indigo-50 text-[#008ab5] rounded-2xl flex items-center justify-center mb-6" aria-hidden="true">
+                {{ if eq .icon "shield" }}
+                <svg class="lucide lucide-shield-check" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                </svg>
+                {{ else if eq .icon "globe" }}
+                <svg class="lucide lucide-globe" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                    <path d="M2 12h20"></path>
+                </svg>
+                {{ else if eq .icon "database" }}
+                <svg class="lucide lucide-database" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+                    <path d="M3 12A9 3 0 0 0 21 12"></path>
+                </svg>
+                {{ end }}
+            </div>
+            
+            <h3 class="text-xl font-bold mb-3">{{ .title }}</h3>
+            <p class="text-slate-600">{{ .description }}</p>
+        </div>
+        {{ end }}
+    </div>
+</section>

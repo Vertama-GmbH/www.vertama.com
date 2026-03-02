@@ -1,0 +1,59 @@
+<section id="latest-news" class="container mx-auto px-4 sm:px-6 py-20 bg-gradient-to-br from-slate-50 to-white" aria-labelledby="news-heading">
+    <div class="mb-12 text-center">
+        <h2 id="news-heading" class="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
+            <span id="news-heading">News</span>
+        </h2>
+        <p class="max-w-2xl mx-auto text-lg px-4 text-slate-600">Neueste Meldung</p>
+        
+        <!-- News Card -->
+        {{ $latestNews := first 1 (where .Site.RegularPages "Section" "news") }}
+        {{ range $latestNews }}
+        <div class="w-20 h-1 mx-auto mt-6 rounded-full bg-[#008ab5]/20" style="width: 40%;" aria-hidden="true"></div>
+        
+        <div class="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden p-6 p-0" style="transform: none;">
+            <div class="relative z-10 text-white text-center p-8">
+                <div class="relative inset-0 opacity-10 bg-gradient-to-br from-[#005e7b] to-[#008ab5] flex items-center justify-center">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4" style="transform: rotate(197.892deg);" aria-hidden="true">
+                            <p class="text-sm font-semibold uppercase tracking-wider">Aktuelles</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-8 md:p-10">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="px-3 py-1 rounded-full bg-[#008ab5]/10 text-[#005e7b] text-xs font-semibold">Produktupdate</span>
+                    <div class="flex items-center gap-2 text-sm text-slate-500" aria-hidden="true">
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>
+                    </div>
+                </div>
+                
+                <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
+                    {{ .Title }}
+                </h3>
+                
+                <p class="text-slate-600 mb-6 leading-relaxed">
+                    {{ .Summary }}
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                    <a href="{{ .Permalink }}" 
+                       class="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all group">
+                        Weiterlesen
+                        <svg class="lucide lucide-arrow-right group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                    </a>
+                    
+                    <a href="/news/" 
+                       class="inline-flex items-center gap-2 px-6 py-2.5 border-2 border-s_e focus:ring-4 focus:ring-slate-300 transition-all shadow-sm hover:bg-slate-50 text-slate-600 rounded text-sm font-semibold focus:outline-none">
+                        Alle News ansehen
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</section>
