@@ -1,43 +1,121 @@
 baseURL = 'https://vertama.com/'
-languageCode = 'de-de'
-title = 'VERTAMA GmbH'
 theme = 'vertama'
+defaultContentLanguage = 'de'
+defaultContentLanguageInSubdir = true
+
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
 
 [params]
 description = 'VERTAMA GmbH - Digitale Lösungen für Gesundheitswesen'
+firmName = 'VERTAMA GmbH'
 
 [languages]
+# --- DEUTSCH ---
 [languages.de]
+languageCode = 'de-de'
 languageName = 'Deutsch'
+contentDir = 'content/de'
 weight = 1
-title = 'VERTAMA GmbH'
-[languages.en]
-languageName = 'English'
-weight = 2
 title = 'VERTAMA GmbH'
 
-[menu]
-[[menu.main]]
+[languages.de.params]
+copyrightText = 'Alle Rechte vorbehalten'
+footerSlogan = 'Digitalisierung von Meldeverfahren für moderne Unternehmen. Schnell, sicher, effizient.'
+
+[[languages.de.menu.main]]
 name = 'Startseite'
-url = ''
+url = '/'
 weight = 1
-[[menu.main]]
+[[languages.de.menu.main]]
 name = 'Produkte'
 url = '/produkte/'
 weight = 2
-[[menu.main]]
+[[languages.de.menu.main]]
 name = 'Kunden & Partner'
-url = '/news/'
+url = '/kunden-und-partner/'
 weight = 3
-[[menu.main]]
+[[languages.de.menu.main]]
 name = 'Über uns'
-url = '/kontakt/'
+url = '/ueber-uns/'
 weight = 4
-[[menu.main]]
+[[languages.de.menu.main]]
 name = 'Aktuelles'
-url = '/kontakt/'
+url = '/aktuelles/'
 weight = 5
-[[menu.main]]
+[[languages.de.menu.main]]
 name = 'Kontakt'
 url = '/kontakt/'
-weight = 5
+weight = 6
+
+# --- footer content---
+
+# nav
+[[languages.de.menu.footer]]
+name = 'Impressum'
+url = '/impressum/'
+weight = 1
+[[languages.de.menu.footer]]
+name = 'Datenschutz'
+url = '/datenschutz/'
+weight = 2
+[[languages.de.menu.footer]]
+name = 'AGB'
+url = '/agb/'
+weight = 3
+[[languages.de.menu.footer]]
+name = 'Cookies'
+url = '/cookies/'
+weight = 4
+#copiright
+[[language.de.copyright]]
+name = 'Alle Rechte vorbehalten'
+
+
+# --- ENGLISCH ---
+[languages.en]
+languageCode = 'en-us'
+languageName = 'English'
+contentDir = 'content/en'
+weight = 2
+title = 'VERTAMA GmbH (EN)'
+
+[languages.en.params]
+copyrightText = 'All rights reserved'
+footerSlogan = 'Digitizing reporting procedures for modern companies. Fast, secure, efficient.'
+
+[[languages.en.menu.main]]
+name = 'Home'
+url = '/'
+weight = 1
+[[languages.en.menu.main]]
+name = 'Products'
+url = '/products/'
+weight = 2
+[[languages.en.menu.main]]
+name = 'Customers'
+url = '/customers/'
+weight = 3
+[[languages.en.menu.main]]
+name = 'Contact'
+url = '/contact/'
+weight = 6
+
+[[languages.en.menu.footer]]
+name = 'Imprint'
+url = '/imprint/'
+weight = 1
+[[languages.en.menu.footer]]
+name = 'Privacy Policy'
+url = '/privacy/'
+weight = 2
+[[languages.en.menu.footer]]
+name = 'Terms & Conditions'
+url = '/terms/'
+weight = 3
+[[languages.en.menu.footer]]
+name = 'Cookies'
+url = '/cookies/'
+weight = 4

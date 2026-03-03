@@ -1,0 +1,79 @@
+{{ define "main" }}
+<div class="min-h-screen flex flex-col">
+    <!-- Hilfreiche Bereiche Section -->
+    <section class="bg-slate-50 py-16 px-5 border-b border-slate-200">
+        <div class="max-w-6xl mx-auto">
+            <!-- Intro Text -->
+            <div class="text-center mb-12">
+                <p class="text-xl text-slate-700 font-bold">
+                    Vielleicht hilft Ihnen einer der folgenden Bereiche weiter:
+                </p>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+
+                <!-- Healthcare Services Card -->
+                <div class="bg-white p-10 border border-slate-200 text-center flex flex-col shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="text-vertama text-2xl mb-4 font-bold">
+                        Healthcare Services
+                    </h3>
+                    <p class="flex-grow text-sm text-slate-600 leading-relaxed mb-6">
+                        Digitale Datenerfassung und automatisierte Meldeprozesse für das Gesundheitswesen.
+                    </p>
+                    <a href="{{ "/" | relLangURL }}"
+                    class="inline-block bg-vertama text-white px-6 py-3 font-bold uppercase text-xs hover:bg-vertama-light transition-colors">
+                    Zur Startseite
+                    </a>
+                </div>
+
+                <!-- Partner & Kunden Card -->
+                <div class="bg-white p-10 border border-slate-200 text-center flex flex-col shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="text-vertama text-2xl mb-4 font-bold">
+                        Partner & Kunden
+                    </h3>
+                    <p class="flex-grow text-sm text-slate-600 leading-relaxed mb-6">
+                        Erfahren Sie mehr über unsere Referenzen und die Zusammenarbeit mit Kliniken.
+                    </p>
+                    <a href="{{ "/partner/" | relLangURL }}"
+                    class="inline-block bg-vertama text-white px-6 py-3 font-bold uppercase text-xs hover:bg-vertama-light transition-colors">
+                    Mehr erfahren
+                    </a>
+                </div>
+
+                <!-- Kontakt Card -->
+                <div class="bg-white p-10 border border-slate-200 text-center flex flex-col shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="text-vertama text-2xl mb-4 font-bold">
+                        Kontakt
+                    </h3>
+                    <p class="flex-grow text-sm text-slate-600 leading-relaxed mb-6">
+                        Haben Sie Fragen? Unser Team steht Ihnen gerne persönlich zur Verfügung.
+                    </p>
+                    <a href="{{ "/kontakt/" | relLangURL }}"
+                    class="inline-block bg-vertama text-white px-6 py-3 font-bold uppercase text-xs hover:bg-vertama-light transition-colors">
+                    Kontakt aufnehmen
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 404 Message Section -->
+    <section class="bg-white py-20 px-5 text-center flex-grow flex items-center justify-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-8xl text-vertama m-0 leading-none font-bold">
+                404
+            </h1>
+            <h2 class="text-3xl text-slate-800 my-5 font-bold">
+                Seite nicht gefunden
+            </h2>
+            <div class="w-20 h-1 bg-vertama mx-auto my-5"></div>
+            <p class="text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Es tut uns leid, dass Sie nicht direkt das gefunden haben, wonach Sie gesucht haben.
+                Wir hoffen jedoch, dass Ihnen die oben stehenden Alternativen weiterhelfen.
+            </p>
+        </div>
+    </section>
+</div>
+{{ end }}

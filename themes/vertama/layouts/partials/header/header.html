@@ -4,11 +4,11 @@
 
         <a href="{{ .Site.BaseURL | relURL }}" class="flex items-center justofy-center flex-row gap-3 group">
             <div class="flex-none w-10 h-10 transition-transform duration-500 group-hover:rotate-180">
-                <img src="{{ " images/Vertama_Icon.svg" | relURL }}" alt="Icon" class="w-full h-full">
+                <img src="{{ "/images/Vertama_Icon.svg" | relURL }}" alt="Icon" class="w-full h-full">
             </div>
 
             <div class="">
-                <img src="{{ " images/Vertama_Name_Only.svg" | relURL }}" alt="Vertama" class="h-5 w-auto">
+                <img src="{{ "/images/Vertama_Name_Only.svg" | relURL }}" alt="Vertama" class="h-5 w-auto">
             </div>
         </a>
 
@@ -16,7 +16,7 @@
             <nav class="hidden lg:flex items-center gap-6">
                 {{ range .Site.Menus.main }}
                 <a href="{{ .URL | relURL }}"
-                   class="text-sm font-semibold text-slate-600 hover:text-[#005e7b] transition-colors px-2 py-1">
+                   class="text-base font-semibold text-slate-600 hover:text-[#005e7b] transition-colors px-2 py-1">
                     {{ .Name }}
                 </a>
                 {{ end }}
