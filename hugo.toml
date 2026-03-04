@@ -1,12 +1,12 @@
-baseURL = 'https://vertama.com/'
+baseURL = 'http://localhost:1313/'
 theme = 'vertama'
 defaultContentLanguage = 'de'
-defaultContentLanguageInSubdir = true
+defaultContentLanguageInSubdir = false  # ← FIX: Kein /de/ Ping-Pong!
 
 [markup]
 [markup.goldmark]
 [markup.goldmark.renderer]
-unsafe = true
+unsafe = true  # Allows HTML in markdown (needed for legacy content)
 
 [params]
 description = 'VERTAMA GmbH - Digitale Lösungen für Gesundheitswesen'
@@ -25,54 +25,57 @@ title = 'VERTAMA GmbH'
 copyrightText = 'Alle Rechte vorbehalten'
 footerSlogan = 'Digitalisierung von Meldeverfahren für moderne Unternehmen. Schnell, sicher, effizient.'
 
+# Main Navigation (OHNE /de/ prefix!)
 [[languages.de.menu.main]]
 name = 'Startseite'
-url = '/'
+url = '/'  # ← OHNE /de/ !
 weight = 1
+
 [[languages.de.menu.main]]
 name = 'Produkte'
-url = '/produkte/'
+url = '/produkte/'  # ← OHNE /de/ !
 weight = 2
+
 [[languages.de.menu.main]]
 name = 'Kunden & Partner'
 url = '/kunden-und-partner/'
 weight = 3
+
 [[languages.de.menu.main]]
 name = 'Über uns'
 url = '/ueber-uns/'
 weight = 4
+
 [[languages.de.menu.main]]
 name = 'Aktuelles'
 url = '/aktuelles/'
 weight = 5
+
 [[languages.de.menu.main]]
 name = 'Kontakt'
 url = '/kontakt/'
 weight = 6
 
-# --- footer content---
-
-# nav
+# Footer Navigation
 [[languages.de.menu.footer]]
 name = 'Impressum'
 url = '/impressum/'
 weight = 1
+
 [[languages.de.menu.footer]]
 name = 'Datenschutz'
 url = '/datenschutz/'
 weight = 2
+
 [[languages.de.menu.footer]]
 name = 'AGB'
 url = '/agb/'
 weight = 3
+
 [[languages.de.menu.footer]]
 name = 'Cookies'
 url = '/cookies/'
 weight = 4
-#copiright
-[[language.de.copyright]]
-name = 'Alle Rechte vorbehalten'
-
 
 # --- ENGLISCH ---
 [languages.en]
@@ -80,42 +83,50 @@ languageCode = 'en-us'
 languageName = 'English'
 contentDir = 'content/en'
 weight = 2
-title = 'VERTAMA GmbH (EN)'
+title = 'VERTAMA GmbH'
 
 [languages.en.params]
 copyrightText = 'All rights reserved'
 footerSlogan = 'Digitizing reporting procedures for modern companies. Fast, secure, efficient.'
 
+# Main Navigation (MIT /en/ prefix für Englisch!)
 [[languages.en.menu.main]]
 name = 'Home'
-url = '/'
+url = '/en/'  # ← MIT /en/ für Englisch!
 weight = 1
+
 [[languages.en.menu.main]]
 name = 'Products'
-url = '/products/'
+url = '/en/products/'
 weight = 2
+
 [[languages.en.menu.main]]
 name = 'Customers'
-url = '/customers/'
+url = '/en/customers/'
 weight = 3
+
 [[languages.en.menu.main]]
 name = 'Contact'
-url = '/contact/'
+url = '/en/contact/'
 weight = 6
 
+# Footer Navigation
 [[languages.en.menu.footer]]
 name = 'Imprint'
-url = '/imprint/'
+url = '/en/imprint/'
 weight = 1
+
 [[languages.en.menu.footer]]
 name = 'Privacy Policy'
-url = '/privacy/'
+url = '/en/privacy/'
 weight = 2
+
 [[languages.en.menu.footer]]
 name = 'Terms & Conditions'
-url = '/terms/'
+url = '/en/terms/'
 weight = 3
+
 [[languages.en.menu.footer]]
 name = 'Cookies'
-url = '/cookies/'
+url = '/en/cookies/'
 weight = 4

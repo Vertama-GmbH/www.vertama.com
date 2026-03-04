@@ -1,0 +1,17 @@
+{{ define "main" }}
+<main style="padding: 2rem; max-width: 800px; margin: 0 auto; font-family: sans-serif;">
+  <h1 style="border-bottom: 2px solid #eee; padding-bottom: 0.5rem;">{{ .Title }}</h1>
+  <p style="color: #666; font-style: italic;">Übersichtsseite (Listen-Ansicht)</p>
+
+  <ul style="list-style: none; padding: 0;">
+    {{ range .Pages }}
+    <li style="margin-bottom: 1rem; padding: 1rem; border: 1px solid #ddd; border-radius: 8px;">
+      <a href="{{ .Permalink }}" style="font-weight: bold; color: #0055ff; text-decoration: none;">
+        {{ .Title }}
+      </a>
+      <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;">{{ .Summary }}</p>
+    </li>
+    {{ end }}
+  </ul>
+</main>
+{{ end }}

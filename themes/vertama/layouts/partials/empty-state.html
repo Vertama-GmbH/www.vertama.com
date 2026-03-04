@@ -1,0 +1,49 @@
+<!-- Empty State Partial - wiederverwendbar für alle Sections -->
+<!-- Usage: {{ partial "empty-state.html" (dict "icon" "document" "title" "Keine Inhalte" "description" "Text..." "cta_text" "Button" "cta_url" "/") }} -->
+
+<div class="text-center py-20 px-5">
+    <!-- Icon -->
+    <div class="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
+        {{ if eq .icon "document" }}
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+        </svg>
+        {{ else if eq .icon "news" }}
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path>
+            <path d="M18 14h-8"></path>
+            <path d="M15 18h-5"></path>
+            <path d="M10 6h8v4h-8V6Z"></path>
+        </svg>
+        {{ else if eq .icon "box" }}
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+        </svg>
+        {{ else }}
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-4"></path>
+            <path d="M12 8h.01"></path>
+        </svg>
+        {{ end }}
+    </div>
+
+    <!-- Title -->
+    <h3 class="text-2xl font-bold text-slate-900 mb-3">
+        {{ .title | default "Noch keine Inhalte verfügbar" }}
+    </h3>
+
+    <!-- Description -->
+    <p class="text-slate-600 max-w-md mx-auto mb-8 leading-relaxed">
+        {{ .description | default "Derzeit sind keine Inhalte veröffentlicht. Schauen Sie bald wieder vorbei!" }}
+    </p>
+
+    <!-- Optional CTA Button -->
+    {{ if .cta_url }}
+    <a href="{{ .cta_url }}"
+       class="inline-block bg-vertama text-white px-6 py-3 rounded-lg font-semibold hover:bg-vertama-light transition-colors">
+        {{ .cta_text | default "Zur Startseite" }}
+    </a>
+    {{ end }}
+</div>

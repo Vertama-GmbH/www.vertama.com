@@ -1,0 +1,5 @@
+{{ $page := .Site.GetPage (.Get "path") }}
+{{ if $page }}
+{{ $page.Content }}
+{{ else }}
+{{ end }}
