@@ -6,7 +6,8 @@
     <title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ "/images/Vertama_Icon.svg" | relURL }}">
+    <link rel="icon" type="image/svg+xml" href="{{ "/images/Vertama_Icon.svg" | relURL }}">
+    <link rel="icon" type="image/x-icon" href="{{ "/favicon.ico" | relURL }}">
 
     <!-- Tailwind CSS CDN - KEIN Build-Prozess! -->
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
