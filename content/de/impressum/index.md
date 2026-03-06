@@ -1,5 +1,6 @@
 ---
 title: "Impressum"
+translationKey: "impressum"
 ---
 
 **Angaben gemäß § 5 TMG:**

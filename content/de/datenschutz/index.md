@@ -1,5 +1,6 @@
 ---
 title: "Datenschutzerklärung"
+translationKey: "data-protection"
 ---
 
 ## Präambel {#m716}

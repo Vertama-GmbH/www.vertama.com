@@ -1,5 +1,6 @@
 ---
 title: "Cookie-Hinweis"
+translationKey: "cooky-policy"
 ---
 
 _Diese Cookie-Richtlinie wurde zuletzt am 17. Februar 2023 aktualisiert und gilt für Bürger und Einwohner mit ständigem Wohnsitz im Europäischen Wirtschaftsraum und der Schweiz_
