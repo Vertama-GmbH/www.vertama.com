@@ -131,15 +131,18 @@ Hybrid mode: Hugo serves new pages, old Avada HTML still served via `staticDir =
 
 ### Migrated to Hugo ✓
 
-| Page | Hugo path | Notes |
-|------|-----------|-------|
-| Homepage (DE) | `/de/` | Hugo |
-| Homepage (EN) | `/en/` | Hugo |
-| Impressum | `/de/impressum/` | Clean markdown |
-| Datenschutz | `/de/datenschutz/` | Clean markdown, 130KB → 282 lines |
-| AGB | `/de/agb/` | Clean markdown |
-| General Terms (EN) | `/en/general-terms-and-conditions/` | Clean markdown |
-| Cookie-Hinweis | `/de/cookie-hinweis-eu/` | Clean markdown, WordPress cookies removed |
+| Page | Hugo path |
+|------|-----------|
+| Homepage (DE) | `/de/` |
+| Homepage (EN) | `/en/` |
+| Impressum (DE) | `/de/impressum/` |
+| Imprint (EN) | `/en/imprint/` |
+| Datenschutz (DE) | `/de/datenschutz/` |
+| Data Protection (EN) | `/en/data-protection/` |
+| AGB (DE) | `/de/agb/` |
+| General Terms (EN) | `/en/general-terms-and-conditions/` |
+| Cookie-Hinweis (DE) | `/de/cookie-hinweis-eu/` |
+| Cookie Policy (EN) | `/en/cookie-policy-eu/` |
 
 ### Still on old Avada/WordPress HTML
 
@@ -148,22 +151,19 @@ Hybrid mode: Hugo serves new pages, old Avada HTML still served via `staticDir =
 | Page | Path | Priority |
 |------|------|----------|
 | Healthcare Services | `/de/healthcareservices/` | High — main product page |
-| Kontakt | `/de/kontakt/` | High — contact form needs replacing |
+| Kontakt | `/de/kontakt/` | High — contact form (check current status) |
 | News | `/de/news/` | Medium |
 | Partner und Kunden | `/de/partner-und-kunden/` | Medium |
 
-**English** (all static, no Hugo equivalents yet)
+**English**
 
 | Page | Path | Priority |
 |------|------|----------|
 | Healthcare Services | `/en/healthcare-services/` | High |
 | Contact | `/en/contact/` | High |
-| Imprint | `/en/imprint/` | Medium |
-| Data Protection | `/en/data-protection/` | Medium |
-| Cookie Policy | `/en/cookie-policy-eu/` | Medium |
 | Partner and Customer | `/en/partner-and-customer/` | Low |
 
-**French** (all static, no Hugo equivalents yet)
+**French** (no Hugo language config yet)
 
 | Page | Path | Priority |
 |------|------|----------|
