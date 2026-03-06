@@ -1,0 +1,32 @@
+<div class="lg:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-6 hidden" 
+     id="mobile-menu" 
+     aria-label="Hauptnavigation">
+    <div class="relative">
+        <div class="space-y-0">
+            <div class="hidden lg:flex items-center gap-6"></div>
+            
+            <!-- Mobile Navigation Links -->
+            <nav aria-label="Main Menu Mobile">
+                <ul class="space-y-4 text-slate-500">
+                    {{ range .Site.Menus.main }}
+                    <li>
+                        <a href="{{ .URL | relURL }}" 
+                           class="hover:text-[#005e7b] focus:outline-none focus:underline transition-colors"
+                           {{ if $.IsMenuCurrent "main" . }}aria-current="page"{{ end }}>
+                            {{ .Name }}
+                        </a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </nav>
+            
+            <!-- Mobile Social + Language -->
+            <div class="pt-6 border-t border-slate-100 space-y-4">
+                <div class="flex gap-4">
+                    {{ partial "header/social-links.html" . }}
+                </div>
+                {{ partial "header/language-switcher.html" . }}
+            </div>
+        </div>
+    </div>
+</div>

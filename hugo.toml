@@ -1,0 +1,97 @@
+baseURL = 'https://vertama.com/'
+theme = 'vertama'
+defaultContentLanguage = 'de'
+defaultContentLanguageInSubdir = false
+
+# Serve existing static HTML pages unchanged
+staticDir = 'docs'
+
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+
+[params]
+description = 'VERTAMA GmbH - Digitale Lösungen für Gesundheitswesen'
+firmName = 'VERTAMA GmbH'
+
+[languages]
+
+# --- DEUTSCH ---
+[languages.de]
+languageCode = 'de-de'
+languageName = 'Deutsch'
+contentDir = 'content/de'
+weight = 1
+title = 'VERTAMA GmbH'
+
+[languages.de.params]
+copyrightText = 'Alle Rechte vorbehalten'
+footerSlogan = 'Digitalisierung von Meldeverfahren für moderne Unternehmen. Schnell, sicher, effizient.'
+
+[[languages.de.menu.main]]
+name = 'Startseite'
+url = '/de/healthcareservices/'
+weight = 1
+
+[[languages.de.menu.main]]
+name = 'Partner und Kunden'
+url = '/de/partner-und-kunden/'
+weight = 2
+
+[[languages.de.menu.main]]
+name = 'Aktuelles'
+url = '/de/news/'
+weight = 3
+
+[[languages.de.menu.main]]
+name = 'Kontakt'
+url = '/de/kontakt/'
+weight = 4
+
+# --- ENGLISCH ---
+[languages.en]
+languageCode = 'en-us'
+languageName = 'English'
+contentDir = 'content/en'
+weight = 2
+title = 'VERTAMA GmbH'
+
+[languages.en.params]
+copyrightText = 'All rights reserved'
+footerSlogan = 'Digitizing reporting procedures for modern companies. Fast, secure, efficient.'
+
+[[languages.en.menu.main]]
+name = 'Home'
+url = '/en/healthcare-services/'
+weight = 1
+
+[[languages.en.menu.main]]
+name = 'Contact'
+url = '/en/contact/'
+weight = 2
+
+[[languages.de.menu.footer]]
+name = 'Impressum'
+url = '/de/impressum/'
+weight = 1
+
+[[languages.de.menu.footer]]
+name = 'Datenschutz'
+url = '/de/datenschutz.html'
+weight = 2
+
+[[languages.de.menu.footer]]
+name = 'AGB'
+url = '/de/agb/'
+weight = 3
+
+[[languages.de.menu.footer]]
+name = 'Cookie-Hinweis'
+url = '/de/cookie-hinweis-eu/'
+weight = 4
+
+[[languages.de.menu.main]]
+name = 'Entwickler'
+url = 'https://docs.vertama.com'
+weight = 5

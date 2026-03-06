@@ -1,0 +1,49 @@
+<section id="hero" class="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100" aria-labelledby="hero-heading">
+    <div class="container mx-auto px-4 sm:px-6 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <!-- Hero Text -->
+            <div class="lg:w-1/2 space-y-8">
+                <div style="opacity: 1; transform: none;">
+                    <span class="px-4 py-1.5 rounded-full bg-[#008ab5]/10 text-[#005e7b] text-sm font-semibold mb-6 inline-block">
+                        {{ .Params.hero.badge | default "digital data processing" }}
+                    </span>
+                    
+                    <h1 id="hero-heading" class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 leading-tight">
+                        {{ .Params.hero.heading | default "Effizienz durch" }}
+                        <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#005e7b] to-[#008ab5]">
+                            {{ .Params.hero.highlight | default "digitale Datenverarbeitung" }}
+                        </span>
+                    </h1>
+                </div>
+                
+                <p class="text-lg sm:text-xl text-slate-600 max-w-lg mt-6">
+                    {{ .Params.hero.description | default "Digitalisierung von Meldeverfahren für moderne Unternehmen. Schnell, sicher, effizient." }}
+                </p>
+                
+                <div class="flex flex-col sm:flex-row flex-wrap gap-4 mt-10">
+                    {{ if .Params.hero.cta_primary }}
+                    <a href="{{ .Params.hero.cta_primary.url }}" 
+                       class="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:text-[#005e7b] focus:outline-none focus:ring-2 focus:ring-[#005e7b]/30 rounded px-6 py-2.5 bg-slate-900 text-white hover:bg-slate-800">
+                        {{ .Params.hero.cta_primary.text }}
+                        <svg class="lucide lucide-arrow-right group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                    </a>
+                    {{ end }}
+                    
+                    {{ if .Params.hero.cta_secondary }}
+                    <a href="{{ .Params.hero.cta_secondary.url }}" 
+                       class="inline-flex items-center gap-2 px-6 py-2.5 border-2 border-slate-300 focus:ring-4 focus:ring-[#005e7b]/30 transition-all shadow-sm hover:bg-slate-50 text-slate-600 rounded text-sm font-semibold focus:outline-none">
+                        {{ .Params.hero.cta_secondary.text }}
+                    </a>
+                    {{ end }}
+                </div>
+            </div>
+            
+            <!-- Hero Image/Graphic (optional) -->
+            <div class="lg:w-1/2 h-1 mx-auto mt-6 rounded-full bg-[#008ab5]/20" style="width: 40%;" aria-hidden="true"></div>
+        </div>
+    </div>
+</section>

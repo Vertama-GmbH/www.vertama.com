@@ -1,0 +1,13 @@
+{{ $text := .text }}
+{{ $url := .url }}
+{{ $variant := .variant | default "primary" }}
+
+<a href="{{ $url | relURL }}"
+   class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm
+   {{ if eq $variant "primary" }}
+text-white bg-[#005e7b] hover:bg-[#004a61]
+{{ else }}
+text-[#005e7b] bg-white border-[#005e7b] hover:bg-slate-50
+{{ end }} transition-colors">
+{{ $text }}
+</a>

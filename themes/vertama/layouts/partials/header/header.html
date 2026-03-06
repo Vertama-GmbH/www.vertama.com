@@ -1,0 +1,47 @@
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-6"
+        aria-label="Hauptnavigation">
+    <div class="container mx-auto px-4 sm:px-6 flex items-center justify-between">
+
+        <a href="{{ .Site.BaseURL | relURL }}" class="flex items-center justofy-center flex-row gap-3 group">
+            <div class="flex-none w-10 h-10 transition-transform duration-500 group-hover:rotate-180">
+                <img src="{{ "/images/Vertama_Icon.svg" | relURL }}" alt="Icon" class="w-full h-full">
+            </div>
+
+            <div class="">
+                <img src="{{ "/images/Vertama_Name_Only.svg" | relURL }}" alt="Vertama" class="h-5 w-auto">
+            </div>
+        </a>
+
+        <div>
+            <nav class="hidden lg:flex items-center gap-6">
+                {{ range .Site.Menus.main }}
+                <a href="{{ .URL | relURL }}"
+                   class="text-base font-semibold text-slate-600 hover:text-[#005e7b] transition-colors px-2 py-1">
+                    {{ .Name }}
+                </a>
+                {{ end }}
+                {{ partial "header/language-switcher.html" . }}
+            </nav>
+
+            <button id="nav-toggle" class="lg:hidden text-slate-900 p-2 focus:outline-none z-[70]">
+                <svg id="burger-svg" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+    </div>
+
+    <div id="mobile-menu"
+         class="fixed inset-0 bg-white z-[60] flex flex-col pt-32 px-10 gap-6 transition-transform duration-500 translate-x-full lg:hidden hidden">
+        {{ range .Site.Menus.main }}
+        <a href="{{ .URL | relURL }}" class="text-4xl font-bold text-slate-900 border-b border-slate-100 pb-4">
+            {{ .Name }}
+        </a>
+        {{ end }}
+        <div class="mt-8">
+            {{ partial "header/language-switcher.html" . }}
+        </div>
+    </div>
+</header>

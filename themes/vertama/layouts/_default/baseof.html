@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}" class="min-h-screen bg-white">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ "/images/Vertama_Icon.svg" | relURL }}">
+
+    <!-- Tailwind CSS CDN - KEIN Build-Prozess! -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+        // Tailwind Config
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'vertama': '#005e7b',
+                        'vertama-light': '#008ab5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    // Wir fügen eigene Utilities für die Inter-Features hinzu
+                    fontFeatureSettings: {
+                        'tnum': '"tnum"',           // Tabellenziffern (alle Zahlen gleich breit)
+                        'cv11': '"cv11"',           // Geschwungenes kleines 'l' (bessere Unterscheidung)
+                        'ss01': '"ss01"',           // Offenes 'a'
+                        'case': '"case"',           // Großbuchstaben-Formen optimieren
+                    }
+                }
+            },
+            plugins: [
+                // Plugin, um die oben definierten Settings als Klassen verfügbar zu machen
+                function({ addUtilities, theme }) {
+                    const settings = theme('fontFeatureSettings');
+                    const utilities = Object.entries(settings).map(([key, value]) => ({
+                        [`.font-feature-${key}`]: { fontFeatureSettings: value },
+                    }));
+                    addUtilities(utilities);
+                }
+            ]
+        }
+    </script>
+
+    <!-- Custom CSS (nur für Dinge die Tailwind nicht hat) -->
+    <link rel="stylesheet" href="{{ "css/theme.css" | relURL }}">
+
+    {{ block "head" . }}{{ end }}
+</head>
+<body class="font-sans text-slate-600 antialiased">
+<!-- Skip Link (Accessibility) -->
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-vertama focus:text-white focus:rounded">
+    Zum Hauptinhalt springen
+</a>
+
+{{ partial "header/header.html" . }}
+
+<main id="main-content" class="pt-24">
+    {{ block "main" . }}{{ end }}
+</main>
+
+{{ partial "footer/footer.html" . }}
+
+<!-- VanillaJS -->
+<script src="{{ "js/main.js" | relURL }}"></script>
+
+<!-- Optional: MotionOne (Animations) -->
+{{ if .Params.use_animations }}
+<script type="module">
+    import { animate, inView } from "https://cdn.skypack.dev/motion";
+
+    // Fade-in on scroll
+    inView('.fade-in', ({ target }) => {
+        animate(target,
+            { opacity: [0, 1], y: [20, 0] },
+            { duration: 0.6, easing: 'ease-out' }
+        );
+    });
+</script>
+{{ end }}
+
+{{ block "scripts" . }}{{ end }}
+</body>
+</html>

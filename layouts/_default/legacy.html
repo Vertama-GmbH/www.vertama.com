@@ -1,0 +1,151 @@
+{{ define "main" }}
+<!-- Legacy WordPress Content Container -->
+<div class="legacy-wordpress-container">
+    <!-- Scoped Legacy Styles -->
+    <style>
+        /* Isolate legacy styles from new design */
+        .legacy-wordpress-container {
+            /* Reset to default styles */
+            all: initial;
+            display: block;
+            font-family: Arial, sans-serif;
+        }
+
+        .legacy-wordpress-container * {
+            /* Allow inheritance within legacy container */
+            all: revert;
+        }
+
+        /* Load old WordPress/Avada CSS */
+        {{ if (fileExists "static/css/legacy/blocks.css") }}
+        {{ readFile "static/css/legacy/blocks.css" | safeCSS }}
+        {{ end }}
+
+        {{ if (fileExists "static/css/legacy/theme.css") }}
+        {{ readFile "static/css/legacy/theme.css" | safeCSS }}
+        {{ end }}
+
+        {{ if (fileExists "static/css/legacy/slider.css") }}
+        {{ readFile "static/css/legacy/slider.css" | safeCSS }}
+        {{ end }}
+
+        {{ if (fileExists "static/css/legacy/cookies.css") }}
+        {{ readFile "static/css/legacy/cookies.css" | safeCSS }}
+        {{ end }}
+
+        /* Avada/Fusion specific classes */
+        .fusion-fullwidth,
+        .fusion-builder-row,
+        .fusion-column,
+        .fusion-text,
+        .avada-responsive {
+            /* Preserve Avada styling */
+        }
+    </style>
+
+    <!-- Legacy Content -->
+    <div class="old-wp-content">
+        {{ .Content | safeHTML }}
+    </div>
+</div>
+
+<!-- Legacy JavaScript -->
+<!-- jQuery (required for old WP scripts) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.4.0.min.js"></script>
+
+<!-- Load legacy JS if exists -->
+{{ if (fileExists "static/js/legacy/jquery-migrate.min.js") }}
+<script src="{{ "/js/legacy/jquery-migrate.min.js" | relURL }}"></script>
+{{ end }}
+
+{{ if (fileExists "static/js/legacy/slider.js") }}
+<script src="{{ "/js/legacy/slider.js" | relURL }}"></script>
+{{ end }}
+
+<!-- Revolution Slider Functions (from your old site) -->
+<script>
+    // setREVStartSize function (required for old sliders)
+    function setREVStartSize(e) {
+        window.RSIW = window.RSIW === undefined ? window.innerWidth : window.RSIW;
+        window.RSIH = window.RSIH === undefined ? window.innerHeight : window.RSIH;
+        try {
+            var pw = document.getElementById(e.c).parentNode.offsetWidth, newh;
+            pw = pw === 0 || isNaN(pw) || e.l == "fullwidth" || e.layout == "fullwidth" ? window.RSIW : pw;
+            e.tabw = e.tabw === undefined ? 0 : parseInt(e.tabw);
+            e.thumbw = e.thumbw === undefined ? 0 : parseInt(e.thumbw);
+            e.tabh = e.tabh === undefined ? 0 : parseInt(e.tabh);
+            e.thumbh = e.thumbh === undefined ? 0 : parseInt(e.thumbh);
+            e.tabhide = e.tabhide === undefined ? 0 : parseInt(e.tabhide);
+            e.thumbhide = e.thumbhide === undefined ? 0 : parseInt(e.thumbhide);
+            e.mh = e.mh === undefined || e.mh == "" || e.mh === "auto" ? 0 : parseInt(e.mh, 0);
+
+            if (e.layout === "fullscreen" || e.l === "fullscreen") {
+                newh = Math.max(e.mh, window.RSIH);
+            } else {
+                e.gw = Array.isArray(e.gw) ? e.gw : [e.gw];
+                for (var i in e.rl) if (e.gw[i] === undefined || e.gw[i] === 0) e.gw[i] = e.gw[i - 1];
+                e.gh = e.el === undefined || e.el === "" || (Array.isArray(e.el) && e.el.length == 0) ? e.gh : e.el;
+                e.gh = Array.isArray(e.gh) ? e.gh : [e.gh];
+                for (var i in e.rl) if (e.gh[i] === undefined || e.gh[i] === 0) e.gh[i] = e.gh[i - 1];
+
+                var nl = new Array(e.rl.length), ix = 0, sl;
+                e.tabw = e.tabhide >= pw ? 0 : e.tabw;
+                e.thumbw = e.thumbhide >= pw ? 0 : e.thumbw;
+                e.tabh = e.tabhide >= pw ? 0 : e.tabh;
+                e.thumbh = e.thumbhide >= pw ? 0 : e.thumbh;
+
+                for (var i in e.rl) nl[i] = e.rl[i] < window.RSIW ? 0 : e.rl[i];
+                sl = nl[0];
+                for (var i in nl) if (sl > nl[i] && nl[i] > 0) { sl = nl[i]; ix = i; }
+
+                var m = pw > e.gw[ix] + e.tabw + e.thumbw ? 1 : (pw - (e.tabw + e.thumbw)) / e.gw[ix];
+                newh = e.gh[ix] * m + (e.tabh + e.thumbh);
+            }
+
+            var el = document.getElementById(e.c);
+            if (el !== null && el) el.style.height = newh + "px";
+            el = document.getElementById(e.c + "_wrapper");
+            if (el !== null && el) {
+                el.style.height = newh + "px";
+                el.style.display = "block";
+            }
+        } catch (e) {
+            console.log("Failure at Presize of Slider:" + e);
+        }
+    }
+
+    // Avada Mobile Menu
+    var fusionNavIsCollapsed = function(e) {
+        // Simplified version - add full version from old site if needed
+    };
+
+    // User agent detection
+    var doc = document.documentElement;
+    doc.setAttribute("data-useragent", navigator.userAgent);
+
+    // jQuery ready
+    jQuery(document).ready(function($) {
+        console.log("✓ Legacy WordPress scripts loaded");
+
+        // Initialize any legacy components
+        if (typeof window.RS_MODULES !== 'undefined') {
+            // Revolution Slider initialization
+        }
+    });
+</script>
+
+<!-- Custom Legacy Fixes -->
+<script>
+    // Fix any legacy-specific issues here
+    (function() {
+        // Example: Fix old image paths
+        document.querySelectorAll('.legacy-wordpress-container img').forEach(img => {
+            if (img.src && img.src.includes('/wp-content/')) {
+                // Remap old WP paths to new static paths
+                img.src = img.src.replace('/wp-content/uploads/', '/images/');
+            }
+        });
+    })();
+</script>
+{{ end }}
