@@ -1,5 +1,6 @@
 ---
 title: "Allgemeine Geschäftsbedingungen"
+translationKey: "terms-and-conditions"
 ---
 
 

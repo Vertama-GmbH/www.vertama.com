@@ -1,5 +1,6 @@
 ---
 title: "General Terms and Conditions"
+translationKey: "terms-and-conditions"
 ---
 
 
