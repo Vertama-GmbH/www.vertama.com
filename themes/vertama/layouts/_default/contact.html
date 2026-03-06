@@ -1,0 +1,90 @@
+{{ define "main" }}
+{{ $de := eq .Site.Language.Lang "de" }}
+<section class="container mx-auto px-4 sm:px-6 pt-32 pb-20">
+    <div class="max-w-5xl mx-auto">
+
+        <div class="mb-12">
+            <h1 class="text-4xl font-bold text-slate-900 mb-3">{{ .Title }}</h1>
+            <p class="text-lg text-slate-500">{{ .Content }}</p>
+        </div>
+
+        <div class="grid lg:grid-cols-5 gap-12">
+
+            <!-- Form -->
+            <div class="lg:col-span-3">
+                <form method="POST" class="vertama-contact-form" aria-label="{{ if $de }}Kontaktformular{{ else }}Contact form{{ end }}">
+                    <input type="hidden" name="language" value="{{ .Site.Language.Lang }}" />
+                    <input type="hidden" name="redirectSuccess" value="" />
+                    <input type="hidden" name="redirectError" value="" />
+                    <input type="text" name="website" value="" style="position:absolute;left:-9999px;" tabindex="-1" autocomplete="off" />
+
+                    <div class="grid sm:grid-cols-2 gap-5 mb-5">
+                        <div>
+                            <label class="block text-xs font-semibold text-[#005e7b] uppercase tracking-wider mb-1.5">{{ if $de }}Name{{ else }}Name{{ end }} <span class="text-slate-400 normal-case font-normal tracking-normal">*</span></label>
+                            <input type="text" name="name" required autocomplete="name"
+                                   class="w-full px-4 py-3 border border-slate-200 rounded-lg text-slate-800 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:border-[#005e7b] transition-colors" />
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">{{ if $de }}Firma{{ else }}Company{{ end }} <span class="normal-case font-normal tracking-normal">{{ if $de }}optional{{ else }}optional{{ end }}</span></label>
+                            <input type="text" name="company" autocomplete="organization"
+                                   class="w-full px-4 py-3 border border-slate-200 rounded-lg text-slate-800 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:border-[#005e7b] transition-colors" />
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-5 mb-5">
+                        <div>
+                            <label class="block text-xs font-semibold text-[#005e7b] uppercase tracking-wider mb-1.5">{{ if $de }}E-Mail{{ else }}Email{{ end }} <span class="text-slate-400 normal-case font-normal tracking-normal">*</span></label>
+                            <input type="email" name="email" required autocomplete="email"
+                                   class="w-full px-4 py-3 border border-slate-200 rounded-lg text-slate-800 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:border-[#005e7b] transition-colors" />
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">{{ if $de }}Telefon{{ else }}Phone{{ end }} <span class="normal-case font-normal tracking-normal">optional</span></label>
+                            <input type="tel" name="phone" autocomplete="tel"
+                                   class="w-full px-4 py-3 border border-slate-200 rounded-lg text-slate-800 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:border-[#005e7b] transition-colors" />
+                        </div>
+                    </div>
+
+                    <div class="mb-7">
+                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">{{ if $de }}Nachricht{{ else }}Message{{ end }} <span class="normal-case font-normal tracking-normal">optional</span></label>
+                        <textarea name="message" rows="6"
+                                  placeholder="{{ if $de }}z. B. Terminwunsch, Thema, weitere Kontaktdaten{{ else }}e.g. preferred date, topic, additional contact details{{ end }}"
+                                  class="w-full px-4 py-3 border border-slate-200 rounded-lg text-slate-800 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:border-[#005e7b] transition-colors resize-none"></textarea>
+                    </div>
+
+                    <button type="submit"
+                            class="w-full py-3.5 bg-[#005e7b] text-white font-semibold rounded-lg hover:bg-[#008ab5] transition-colors text-sm tracking-wide">
+                        {{ if $de }}Absenden{{ else }}Send{{ end }}
+                    </button>
+                </form>
+            </div>
+
+            <!-- Contact sidebar -->
+            <div class="lg:col-span-2">
+                <div class="bg-slate-50 rounded-2xl p-8 space-y-6">
+                    <div>
+                        <p class="text-xs font-semibold text-[#005e7b] uppercase tracking-wider mb-3">{{ if $de }}Direktkontakt{{ else }}Direct Contact{{ end }}</p>
+                        <p class="font-semibold text-slate-900">André Sturm</p>
+                        <p class="text-sm text-slate-500 mt-0.5">CEO, Vertama GmbH</p>
+                    </div>
+                    <div class="space-y-3 text-sm text-slate-600">
+                        <a href="tel:+4930609858585777" class="flex items-center gap-3 hover:text-[#005e7b] transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 flex-none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.07 3.18 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            +49 30 609 85 85 85-77
+                        </a>
+                        <a href="mailto:info@vertama.de" class="flex items-center gap-3 hover:text-[#005e7b] transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 flex-none"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            info@vertama.de
+                        </a>
+                    </div>
+                    <div class="pt-5 border-t border-slate-200">
+                        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">{{ if $de }}Adresse{{ else }}Address{{ end }}</p>
+                        <p class="text-sm text-slate-600 leading-relaxed">Am Treptower Park 75<br>12435 Berlin<br>{{ if $de }}Deutschland{{ else }}Germany{{ end }}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<script src="{{ "/assets/js/contact-form-handler.js" | relURL }}"></script>
+{{ end }}

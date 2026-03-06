@@ -1,0 +1,50 @@
+{{ define "main" }}
+{{ $success := eq (.Params.result | default "") "success" }}
+{{ $de := eq .Site.Language.Lang "de" }}
+<section class="container mx-auto px-4 sm:px-6 pt-32 pb-20">
+    <div class="max-w-md mx-auto text-center">
+
+        <!-- Icon -->
+        <div class="flex justify-center mb-8">
+            {{ if $success }}
+            <div class="w-20 h-20 rounded-full bg-[#005e7b] flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5"/>
+                </svg>
+            </div>
+            {{ else }}
+            <div class="w-20 h-20 rounded-full bg-slate-100 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#005e7b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 8v4M12 16h.01"/>
+                </svg>
+            </div>
+            {{ end }}
+        </div>
+
+        <!-- Heading & message -->
+        <h1 class="text-3xl font-bold text-slate-900 mb-4">{{ .Title }}</h1>
+        <div class="text-slate-500 text-lg leading-relaxed mb-10">{{ .Content }}</div>
+
+        <!-- CTAs -->
+        {{ if $success }}
+        <a href="{{ if $de }}/de/healthcareservices/{{ else }}/en/healthcare-services/{{ end }}"
+           class="inline-block px-8 py-3 bg-[#005e7b] text-white font-semibold rounded-lg hover:bg-[#008ab5] transition-colors text-sm tracking-wide">
+            {{ if $de }}Zurück zur Startseite{{ else }}Back to Homepage{{ end }}
+        </a>
+        {{ else }}
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="./"
+               class="inline-block px-6 py-3 bg-[#005e7b] text-white font-semibold rounded-lg hover:bg-[#008ab5] transition-colors text-sm tracking-wide">
+                {{ if $de }}Erneut versuchen{{ else }}Try again{{ end }}
+            </a>
+            <a href="mailto:info@vertama.de"
+               class="inline-block px-6 py-3 border border-slate-200 text-slate-600 font-semibold rounded-lg hover:border-[#005e7b] hover:text-[#005e7b] transition-colors text-sm tracking-wide">
+                {{ if $de }}E-Mail schreiben{{ else }}Send an email{{ end }}
+            </a>
+        </div>
+        {{ end }}
+
+    </div>
+</section>
+{{ end }}

@@ -63,10 +63,10 @@
       // For /en/contact/ -> /en/contact/success.html
       // For /fr/contact-2/ -> /fr/contact-2/success.html
       const directory = pathname.substring(0, pathname.lastIndexOf('/') + 1);
-      const successPage = origin + directory + 'success.html';
+      const successPage = origin + directory + 'success/';
 
-      // Build error redirect URL (back to current page with error param)
-      const errorPage = origin + pathname + '?error=1';
+      // Build error redirect URL - error/ in same directory as current page
+      const errorPage = origin + directory + 'error/';
 
       // Update redirect fields
       const successInput = form.querySelector('input[name="redirectSuccess"]');
