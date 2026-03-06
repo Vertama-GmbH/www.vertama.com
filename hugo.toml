@@ -78,7 +78,7 @@ weight = 1
 
 [[languages.de.menu.footer]]
 name = 'Datenschutz'
-url = '/de/datenschutz.html'
+url = '/de/datenschutz/'
 weight = 2
 
 [[languages.de.menu.footer]]
