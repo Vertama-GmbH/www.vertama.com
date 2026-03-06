@@ -143,6 +143,8 @@ Hybrid mode: Hugo serves new pages, old Avada HTML still served via `staticDir =
 | General Terms (EN) | `/en/general-terms-and-conditions/` |
 | Cookie-Hinweis (DE) | `/de/cookie-hinweis-eu/` |
 | Cookie Policy (EN) | `/en/cookie-policy-eu/` |
+| Kontakt (DE) | `/de/kontakt/` |
+| Contact (EN) | `/en/contact/` |
 
 ### Still on old Avada/WordPress HTML
 
@@ -150,8 +152,7 @@ Hybrid mode: Hugo serves new pages, old Avada HTML still served via `staticDir =
 
 | Page | Path | Priority |
 |------|------|----------|
-| Healthcare Services | `/de/healthcareservices/` | High — main product page |
-| Kontakt | `/de/kontakt/` | High — contact form (check current status) |
+| Healthcare Services | `/de/healthcareservices/` | High — actual homepage |
 | News | `/de/news/` | Medium |
 | Partner und Kunden | `/de/partner-und-kunden/` | Medium |
 
@@ -160,7 +161,6 @@ Hybrid mode: Hugo serves new pages, old Avada HTML still served via `staticDir =
 | Page | Path | Priority |
 |------|------|----------|
 | Healthcare Services | `/en/healthcare-services/` | High |
-| Contact | `/en/contact/` | High |
 | Partner and Customer | `/en/partner-and-customer/` | Low |
 
 **French** (no Hugo language config yet)
