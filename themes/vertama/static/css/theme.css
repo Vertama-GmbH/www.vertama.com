@@ -857,8 +857,8 @@ footer {
 /* Wir zielen auf HTML UND BODY, um Tailwind keine Chance zu lassen */
 html, body {
     font-family: 'Inter', sans-serif !important;
-    font-feature-settings: "cv11", "tnum", "case" !important;
-    -webkit-font-feature-settings: "cv11", "tnum", "case" !important;
+    font-feature-settings: "cv11", "ss01", "tnum", "case" !important;
+    -webkit-font-feature-settings: "cv11", "ss01", "tnum", "case" !important;
 }
 
 @font-face {
