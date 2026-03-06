@@ -127,27 +127,55 @@ Prefer multiples of 4 (Tailwind's scale). Key values in use:
 
 ## 8. WordPress Migration Tracker
 
-Pages migrated to Hugo theme: none yet (hybrid mode — old HTML served via `staticDir`).
+Hybrid mode: Hugo serves new pages, old Avada HTML still served via `staticDir = 'docs'`.
 
-### Pages still running old Avada/WordPress CSS
+### Migrated to Hugo ✓
 
-| Page | Path | Issues | Priority |
-|------|------|---------|----------|
-| Healthcare Services | `/de/healthcareservices/` | Avada heading styles, old nav, no Inter font | High |
-| Partner und Kunden | `/de/partner-und-kunden/` | Avada styles throughout | Medium |
-| News article (KielNexus) | `/de/news/` | Separate Avada CSS, blockquote overridden with !important | Medium |
-| ~~Impressum~~ | `/de/impressum/` | Migrated to Hugo | Done |
-| Datenschutz | `/de/datenschutz.html` | Static HTML, Avada styles | Low |
-| AGB | `/de/agb/` | Avada styles | Low |
-| Cookie-Hinweis | `/de/cookie-hinweis-eu/` | Avada styles | Low |
-| EN: Healthcare Services | `/en/healthcare-services/` | Avada styles | Low |
-| EN: Contact | `/en/contact/` | Avada styles | Low |
+| Page | Hugo path | Notes |
+|------|-----------|-------|
+| Homepage (DE) | `/de/` | Hugo |
+| Homepage (EN) | `/en/` | Hugo |
+| Impressum | `/de/impressum/` | Clean markdown |
+| Datenschutz | `/de/datenschutz/` | Clean markdown, 130KB → 282 lines |
+| AGB | `/de/agb/` | Clean markdown |
+| General Terms (EN) | `/en/general-terms-and-conditions/` | Clean markdown |
+| Cookie-Hinweis | `/de/cookie-hinweis-eu/` | Clean markdown, WordPress cookies removed |
+
+### Still on old Avada/WordPress HTML
+
+**German**
+
+| Page | Path | Priority |
+|------|------|----------|
+| Healthcare Services | `/de/healthcareservices/` | High — main product page |
+| Kontakt | `/de/kontakt/` | High — contact form needs replacing |
+| News | `/de/news/` | Medium |
+| Partner und Kunden | `/de/partner-und-kunden/` | Medium |
+
+**English** (all static, no Hugo equivalents yet)
+
+| Page | Path | Priority |
+|------|------|----------|
+| Healthcare Services | `/en/healthcare-services/` | High |
+| Contact | `/en/contact/` | High |
+| Imprint | `/en/imprint/` | Medium |
+| Data Protection | `/en/data-protection/` | Medium |
+| Cookie Policy | `/en/cookie-policy-eu/` | Medium |
+| Partner and Customer | `/en/partner-and-customer/` | Low |
+
+**French** (all static, no Hugo equivalents yet)
+
+| Page | Path | Priority |
+|------|------|----------|
+| Healthcare Services | `/fr/healthcare-services-2/` | Low |
+| Contact | `/fr/contact-2/` | Low |
+| Partenaires et Clients | `/fr/partenaires-et-clients/` | Low |
 
 ### Migration strategy
 1. New pages: author directly in Hugo (`content/de/`) using the vertama theme
-2. Existing pages: migrate one at a time to Hugo layouts as bandwidth allows
+2. Existing pages: migrate one at a time, delete old static file, Hugo serves at same URL
 3. Priority order: high-traffic / externally linked pages first
-4. Until migrated, old pages inherit Avada CSS — accept this as a temporary state
+4. Until migrated, old pages use Avada CSS — accepted as temporary state
 
 ### Content inconsistencies to resolve on migration
 - Heading scale (Avada uses non-standard sizes)
