@@ -46,3 +46,9 @@ docs/config.local.json
 
 # Node
 node_modules/
+
+# Hugo build output
+public/
+
+# Session notes
+SESSION_NOTES.md
