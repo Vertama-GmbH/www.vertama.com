@@ -28,6 +28,8 @@ A living document. Update it as the site evolves.
 
 **Rule:** The `vertama` color must appear actively on every page above the fold — not only on hover. Use it for the primary CTA, key headings, or section anchors.
 
+**Pending alignment:** The old Avada site used `#008ab5` (vertama-light) for large decorative headings (H1, section titles), while this styleguide assigns `#005e7b` (vertama) as primary. The correct usage needs to be confirmed against the master brand identity document before being considered settled. Until then, `#005e7b` is used consistently throughout the new theme.
+
 ---
 
 ## 3. Typography
@@ -134,7 +136,7 @@ Pages migrated to Hugo theme: none yet (hybrid mode — old HTML served via `sta
 | Healthcare Services | `/de/healthcareservices/` | Avada heading styles, old nav, no Inter font | High |
 | Partner und Kunden | `/de/partner-und-kunden/` | Avada styles throughout | Medium |
 | News article (KielNexus) | `/de/news/` | Separate Avada CSS, blockquote overridden with !important | Medium |
-| Impressum | `/de/impressum/` | Avada styles | Low |
+| ~~Impressum~~ | `/de/impressum/` | Migrated to Hugo | Done |
 | Datenschutz | `/de/datenschutz.html` | Static HTML, Avada styles | Low |
 | AGB | `/de/agb/` | Avada styles | Low |
 | Cookie-Hinweis | `/de/cookie-hinweis-eu/` | Avada styles | Low |

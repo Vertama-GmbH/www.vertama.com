@@ -1,7 +1,7 @@
 baseURL = 'https://vertama.com/'
 theme = 'vertama'
 defaultContentLanguage = 'de'
-defaultContentLanguageInSubdir = false
+defaultContentLanguageInSubdir = true
 
 # Serve existing static HTML pages unchanged
 staticDir = 'docs'

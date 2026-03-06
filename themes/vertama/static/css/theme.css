@@ -48,9 +48,15 @@ header.scrolled {
 }
 
 .prose h2 {
-    color: #005e7b;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    color: #005e7b !important;
+    margin-top: 2.5rem !important;
+    margin-bottom: 0.75rem !important;
+}
+
+.prose h3 {
+    color: #005e7b !important;
+    margin-top: 2rem !important;
+    margin-bottom: 0.5rem !important;
 }
 
 .prose a {
