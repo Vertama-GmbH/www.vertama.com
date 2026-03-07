@@ -96,3 +96,23 @@ name = 'Cookie-Hinweis'
 url = '/de/cookie-hinweis-eu/'
 weight = 4
 
+[[languages.en.menu.footer]]
+name = 'Imprint'
+url = '/en/imprint/'
+weight = 1
+
+[[languages.en.menu.footer]]
+name = 'Data Protection'
+url = '/en/data-protection/'
+weight = 2
+
+[[languages.en.menu.footer]]
+name = 'GTC'
+url = '/en/general-terms-and-conditions/'
+weight = 3
+
+[[languages.en.menu.footer]]
+name = 'Cookie Policy'
+url = '/en/cookie-policy-eu/'
+weight = 4
+
