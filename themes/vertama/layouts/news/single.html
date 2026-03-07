@@ -1,0 +1,42 @@
+{{ define "main" }}
+<div class="max-w-[1280px] mx-auto px-6 pt-32 pb-20">
+
+  {{/* Back link */}}
+  <a href="{{ .Site.Language.Lang | printf "/%s/news/" }}"
+     class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#005e7b] hover:text-[#008ab5] transition-colors mb-10">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
+    </svg>
+    {{ if eq .Site.Language.Lang "de" }}Aktuelles{{ else }}News{{ end }}
+  </a>
+
+  <div class="max-w-2xl">
+
+    {{/* Date + source */}}
+    <div class="flex flex-wrap items-center gap-3 mb-4">
+      <span class="text-xs font-bold uppercase tracking-widest text-[#005e7b]">
+        {{ .Date.Format "02. January 2006" }}
+      </span>
+      {{ with .Params.source_url }}
+      <span class="text-slate-300">|</span>
+      <a href="{{ . }}" target="_blank" rel="noopener"
+         class="text-xs text-slate-400 hover:text-[#005e7b] transition-colors">
+        {{ with $.Params.source_label }}{{ . }}{{ else }}Quelle{{ end }}
+      </a>
+      {{ end }}
+    </div>
+
+    <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 leading-snug mb-8">{{ .Title }}</h1>
+
+    <div class="prose prose-slate max-w-none
+                prose-headings:font-bold prose-headings:text-slate-800
+                prose-strong:text-slate-800
+                prose-a:text-[#005e7b] prose-a:no-underline hover:prose-a:text-[#008ab5]
+                prose-blockquote:border-[#005e7b] prose-blockquote:text-slate-500">
+      {{ .Content }}
+    </div>
+
+  </div>
+</div>
+{{ end }}

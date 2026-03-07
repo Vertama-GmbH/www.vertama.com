@@ -1,0 +1,35 @@
+{{ define "main" }}
+<div class="max-w-[1280px] mx-auto px-6 pt-32 pb-20">
+
+  <h1 class="text-3xl font-bold text-[#005e7b] mb-10">{{ .Title }}</h1>
+
+  {{ if .Pages }}
+  <div class="divide-y divide-slate-100">
+    {{ range .Pages.ByDate.Reverse }}
+    <article class="py-8 first:pt-0">
+      <div class="max-w-2xl">
+        <p class="text-xs font-bold uppercase tracking-widest text-[#005e7b] mb-2">
+          {{ .Date.Format "02. January 2006" }}
+        </p>
+        <h2 class="text-xl font-bold text-slate-900 mb-3 leading-snug">
+          <a href="{{ .RelPermalink }}" class="hover:text-[#005e7b] transition-colors">{{ .Title }}</a>
+        </h2>
+        <p class="text-slate-500 text-sm leading-relaxed mb-4">{{ .Summary }}</p>
+        <a href="{{ .RelPermalink }}"
+           class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#005e7b] hover:text-[#008ab5] transition-colors">
+          Weiterlesen
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+  {{ else }}
+  <p class="text-slate-400">Bald gibt es hier Neuigkeiten.</p>
+  {{ end }}
+
+</div>
+{{ end }}
