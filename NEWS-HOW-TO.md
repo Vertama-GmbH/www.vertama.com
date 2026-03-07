@@ -1,164 +1,82 @@
-# News-System
+# News veröffentlichen
 
-Automatisches, statisches News-System mit Markdown und GitHub Actions.
-
-## Funktionsweise
-
-1. **Markdown schreiben** → News als `.md` Datei in `de/news/news/`
-2. **Dateinamen zu `releases.json` hinzufügen** → Bestimmt was veröffentlicht wird
-3. **Git push** → GitHub Actions generiert automatisch HTML
-4. **Fertig** → Live auf der Website nach ~1 Minute
-
-**Wichtig:** `releases.json` steuert welche News veröffentlicht werden. Dateien die NICHT darin stehen = Drafts.
+News sind native Hugo-Seiten in Markdown. Kein npm, kein releases.json, kein Build-Script.
 
 ---
 
-## Setup (einmalig, durch Admin)
+## Neue News erstellen
 
-### 1. Dateien ins Repo kopieren
-```
-.github/workflows/build-static-news.yml
-.github/scripts/build-news.js
-de/news/template.html
-de/news/news/releases.json
-```
+### 1. Markdown-Datei anlegen
 
-### 2. GitHub Actions aktivieren
-```
-Settings → Actions → General
-→ "Allow all actions and reusable workflows" aktivieren
-→ "Read and write permissions" aktivieren
-→ Speichern
-```
+**Pfad:** `content/de/news/YYYY-MM-DD-slug.md`
 
-### 3. Committen
-```bash
-git add .github/ de/news/
-git commit -m "Setup: News-System"
-git push
-```
+**Beispiel:** `content/de/news/2026-03-20-produktlaunch.md`
 
-**Fertig!**
-
----
-
-## Neue News veröffentlichen
-
-### 1. Markdown-Datei erstellen
-**Dateiname:** `YYYY-MM-DD-titel.md`
-
-**Beispiel:** `de/news/news/2026-03-20-produktlaunch.md`
 ```markdown
-# Produktlaunch: Neue Features
+---
+title: "Produktlaunch: Neue Features für ELIM"
+date: 2026-03-20
+source_url: "https://example.com/pressemeldung"
+source_label: "example.com"
+---
 
 Wir freuen uns, heute neue Features vorzustellen.
 
-## Was ist neu?
+**Was ist neu?**
 
 - Feature A
 - Feature B
-- Feature C
 ```
 
-### 2. Zu releases.json hinzufügen
-**Datei:** `de/news/news/releases.json`
-```json
-{
-  "releases": [
-    "2026-03-20-produktlaunch.md"
-  ]
-}
-```
+### Front Matter Felder
 
-### 3. Committen & pushen
+| Feld | Pflicht | Beschreibung |
+|---|---|---|
+| `title` | ✅ | Überschrift der News |
+| `date` | ✅ | Datum im Format `YYYY-MM-DD` |
+| `source_url` | — | Link zur Originalquelle (z.B. Pressemeldung) |
+| `source_label` | — | Anzeigename der Quelle (z.B. `"e-health-com.de"`) |
+
+### 2. Committen & pushen
+
 ```bash
-git add de/news/news/
-git commit -m "News: Produktlaunch"
+git add content/de/news/2026-03-20-produktlaunch.md
+git commit -m "News: Produktlaunch neue Features"
 git push
 ```
 
-**Nach ~1 Minute ist die News live!**
+Nach ca. 1 Minute ist die News live unter `/de/news/`.
 
 ---
 
-## Draft erstellen (ohne zu veröffentlichen)
+## Draft (Entwurf)
 
-### 1. Markdown-Datei erstellen
-```bash
-de/news/news/2026-04-01-draft-feature.md
+Um eine News vorzubereiten ohne sie zu veröffentlichen, `draft: true` in den Front Matter:
+
+```markdown
+---
+title: "Kommender Launch"
+date: 2026-04-01
+draft: true
+---
 ```
 
-### 2. NICHT zu releases.json hinzufügen
-```json
-{
-  "releases": [
-    "2026-03-20-produktlaunch.md"
-    // Draft ist NICHT hier!
-  ]
-}
-```
-
-### 3. Committen
-```bash
-git add de/news/news/2026-04-01-draft-feature.md
-git commit -m "Draft: Neues Feature"
-git push
-```
-
-**Draft liegt im Repo, ist aber NICHT auf der Website sichtbar.**
+Draft-Seiten werden beim Hugo-Build ignoriert und erscheinen nicht auf der Website.
+Zum Veröffentlichen einfach `draft: true` entfernen und pushen.
 
 ---
 
-## Draft später veröffentlichen
+## Englische News
 
-### 1. Draft zu releases.json hinzufügen
-```json
-{
-  "releases": [
-    "2026-04-01-draft-feature.md",
-    "2026-03-20-produktlaunch.md"
-  ]
-}
-```
+Gleicher Ablauf, anderer Pfad:
 
-### 2. Committen
-```bash
-git add de/news/news/releases.json
-git commit -m "Release: Neues Feature"
-git push
-```
-
-**Draft wird veröffentlicht und erscheint ganz oben (neuestes Datum).**
+**Pfad:** `content/en/news/YYYY-MM-DD-slug.md`
 
 ---
 
-## News entfernen (unpublish)
+## Dateiname-Konvention
 
-### 1. Aus releases.json entfernen
-```json
-{
-  "releases": [
-    "2026-04-01-draft-feature.md"
-    // "2026-03-20-produktlaunch.md" ← Entfernt!
-  ]
-}
-```
-
-### 2. Committen
-```bash
-git add de/news/news/releases.json
-git commit -m "Unpublish: Produktlaunch"
-git push
-```
-
-**News verschwindet von der Website. Datei bleibt im Repo.**
-
----
-
-## Wichtige Regeln
-
-### Dateiname-Format
-**Format:** `YYYY-MM-DD-titel.md`
+**Format:** `YYYY-MM-DD-beschreibender-slug.md`
 
 ✅ Korrekt:
 - `2026-03-20-produktlaunch.md`
@@ -166,39 +84,12 @@ git push
 
 ❌ Falsch:
 - `produktlaunch.md` (kein Datum)
-- `20-03-2026-news.md` (falsches Format)
-
-### Sortierung
-News werden nach Datum sortiert (neueste zuerst).
-
-### releases.json
-- Nur Dateien in `releases` werden veröffentlicht
-- Reihenfolge in `releases.json` ist egal (wird nach Datum sortiert)
-- JSON-Syntax beachten (Komma nach jedem Eintrag außer dem letzten)
+- `20-03-2026-news.md` (falsches Datumsformat)
 
 ---
 
-## Troubleshooting
+## Deployment
 
-**News erscheint nicht:**
-1. Ist der Dateiname in `releases.json`?
-2. Wurde `releases.json` committed & gepusht?
-3. GitHub Actions gelaufen? (Actions Tab prüfen)
-4. Dateiname-Format korrekt? (`YYYY-MM-DD-titel.md`)
+Push auf `main` triggert automatisch den GitHub Actions Workflow `.github/workflows/deploy-pages.yml`, der Hugo baut und auf GitHub Pages deployed.
 
-**Workflow läuft nicht:**
-- Workflow wird nur getriggert wenn `releases.json` geändert wird
-- Nur `.md` ändern → kein Build
-- `releases.json` muss geändert werden
-
-**JSON-Syntax-Fehler:**
-```json
-{
-  "releases": [
-    "file1.md",
-    "file2.md"   ← Kein Komma beim letzten!
-  ]
-}
-```
-
-Validator: https://jsonlint.com/
+Kein separater News-Build-Schritt nötig — Hugo verarbeitet alle Markdown-Dateien in `content/`.
