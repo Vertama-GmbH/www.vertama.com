@@ -22,7 +22,7 @@ params:
     - label: "Generation of the notification form in accordance with state regulations"
       icon: "/assets/images/icons/process/step-report.svg"
     - label: "Unique assignment of the recipient authority"
-      icon: "/assets/images/icons/process/step-routing.svg"
+      icon: "/assets/images/icons/process/step-server.svg"
     - label: "Delivery to health authorities, registry offices, courts and RKI (DEMIS / DIVI)"
       icon: "/assets/images/icons/process/step-authority.svg"
 

@@ -100,7 +100,7 @@
     color: #005e7b;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin-bottom: 1.75rem;
+    margin-bottom: 2.5rem;
   }
   .hc-process-steps {
     display: flex;
@@ -116,19 +116,14 @@
     min-width: 90px;
   }
   .hc-step-icon {
-    width: 5.5rem;
-    height: 5.5rem;
     margin: 0 auto 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f8fafc;
-    border-radius: 0.75rem;
-    border: 1px solid #e2e8f0;
   }
   .hc-step-icon img {
-    width: 3.25rem;
-    height: 3.25rem;
+    width: 5rem;
+    height: 5rem;
     object-fit: contain;
   }
   .hc-step p {
@@ -140,12 +135,9 @@
   }
   .hc-step-arrow {
     flex: 0 0 auto;
-    align-self: center;
+    align-self: flex-start;
     padding: 0 0.75rem;
-    color: #94a3b8;
-    font-size: 1.5rem;
-    line-height: 1;
-    margin-top: -1.5rem;
+    margin-top: 2rem;
   }
 
   .hc-products {
@@ -377,7 +369,7 @@
     {{ with .Params.process_steps }}
     <div class="hc-process-steps">
       {{ range $i, $step := . }}
-      {{ if gt $i 0 }}<div class="hc-step-arrow">›</div>{{ end }}
+      {{ if gt $i 0 }}<div class="hc-step-arrow"><img src="/assets/images/icons/process/step-routing.svg" alt="" style="width:1.5rem;height:1.5rem;"></div>{{ end }}
       <div class="hc-step">
         <div class="hc-step-icon">
           <img src="{{ $step.icon }}" alt="{{ $step.label }}">

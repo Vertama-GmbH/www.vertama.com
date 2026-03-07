@@ -22,7 +22,7 @@ params:
     - label: "Generierung des Meldebogens gemäß Landesverordnung"
       icon: "/assets/images/icons/process/step-report.svg"
     - label: "Eindeutige Zuordnung des Adressaten"
-      icon: "/assets/images/icons/process/step-routing.svg"
+      icon: "/assets/images/icons/process/step-server.svg"
     - label: "Auslieferung an Gesundheits- und Standesämter, Gerichte und RKI (DEMIS / DIVI)"
       icon: "/assets/images/icons/process/step-authority.svg"
 
