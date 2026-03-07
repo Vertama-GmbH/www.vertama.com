@@ -1,0 +1,420 @@
+{{ define "head" }}
+<style>
+  /* ── Healthcare Services page-specific styles ── */
+
+  .hc-intro {
+    padding: 2.5rem 0;
+    background: #fff;
+  }
+  .hc-intro-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  .hc-intro-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 1rem;
+    color: #475569;
+    line-height: 1.75;
+  }
+  .hc-intro-image img {
+    width: 100%;
+    display: block;
+  }
+  .hc-cta {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    background: #005e7b;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    align-self: flex-start;
+    transition: background 0.15s;
+  }
+  .hc-cta:hover { background: #008ab5; }
+
+
+  .hc-badges {
+    background: #fff;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .hc-badges-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .hc-badges-logos {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .hc-section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .hc-maas {
+    padding: 4rem 0 2rem;
+    background: #fff;
+  }
+  .hc-maas h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+  }
+  .hc-maas-subline {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #005e7b;
+    margin-bottom: 1.75rem;
+  }
+  .hc-maas-body {
+    color: #475569;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    max-width: 44rem;
+    margin-bottom: 2.5rem;
+  }
+  .hc-maas-body p + p {
+    margin-top: 0.875rem;
+  }
+  .hc-process-label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: #005e7b;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.75rem;
+  }
+  .hc-process-steps {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+    max-width: 56rem;
+  }
+  .hc-step {
+    flex: 1 1 110px;
+    text-align: center;
+    min-width: 90px;
+  }
+  .hc-step-icon {
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 0 auto 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    border-radius: 0.75rem;
+    border: 1px solid #e2e8f0;
+  }
+  .hc-step-icon img {
+    width: 3.25rem;
+    height: 3.25rem;
+    object-fit: contain;
+  }
+  .hc-step p {
+    font-size: 0.75rem;
+    color: #64748b;
+    line-height: 1.4;
+    max-width: 7rem;
+    margin: 0 auto;
+  }
+  .hc-step-arrow {
+    flex: 0 0 auto;
+    align-self: center;
+    padding: 0 0.75rem;
+    color: #94a3b8;
+    font-size: 1.5rem;
+    line-height: 1;
+    margin-top: -1.5rem;
+  }
+
+  .hc-products {
+    padding: 2rem 0 4rem;
+    background: #fff;
+    border-top: 1px solid #f1f5f9;
+  }
+  .hc-products h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #005e7b;
+    margin-bottom: 2.5rem;
+  }
+  .hc-product-list {
+    max-width: 50rem;
+  }
+  .hc-product {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    align-items: flex-start;
+  }
+  .hc-product img {
+    width: 80px;
+    height: 80px;
+    flex: none;
+    object-fit: contain;
+  }
+  .hc-product h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 0.35rem;
+  }
+  .hc-product p {
+    font-size: 0.875rem;
+    color: #64748b;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .hc-testimonials {
+    background: #f8fafc;
+    padding: 4rem 0;
+  }
+  .hc-testimonials h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #005e7b;
+    margin-bottom: 2.5rem;
+  }
+  .hc-testimonial-wrap {
+    position: relative;
+    max-width: 50rem;
+  }
+  .t-slide blockquote {
+    background: #fff;
+    border-left: 3px solid #005e7b;
+    padding: 2rem 2.5rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    margin: 0;
+  }
+  .t-slide blockquote p {
+    font-size: 0.9375rem;
+    color: #334155;
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .t-slide footer p { margin: 0; }
+  .t-author { font-weight: 600; color: #0f172a; font-size: 0.875rem; }
+  .t-role { font-size: 0.8rem; color: #94a3b8; margin-top: 0.2rem !important; }
+  .t-org { font-size: 0.8rem; color: #005e7b; font-weight: 500; margin-top: 0.2rem !important; }
+  .hc-t-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .hc-t-btn {
+    background: none;
+    border: 1px solid #e2e8f0;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    color: #005e7b;
+    font-size: 1.1rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    transition: border-color 0.15s;
+  }
+  .hc-t-btn:hover { border-color: #005e7b; }
+  .hc-t-dots { display: flex; gap: 0.4rem; }
+  .hc-t-dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    background: #cbd5e1;
+    transition: background 0.15s;
+  }
+  .hc-t-dot.active { background: #005e7b; }
+</style>
+{{ end }}
+
+{{ define "main" }}
+{{ $de := eq .Site.Language.Lang "de" }}
+
+<!-- ============================================================
+     INTRO — text left, photo right (overhangs into teal banner)
+     ============================================================ -->
+<section class="hc-intro">
+  <div class="hc-intro-inner">
+
+    <div class="hc-intro-text">
+      <div>{{ .Content }}</div>
+      <a href="{{ if $de }}/de/kontakt/{{ else }}/en/contact/{{ end }}" class="hc-cta">
+        {{ if $de }}Kontakt aufnehmen{{ else }}Get in touch{{ end }}
+      </a>
+    </div>
+
+    {{ with .Params.hero_image }}
+    <div class="hc-intro-image">
+      <img src="{{ . }}" alt="">
+    </div>
+    {{ end }}
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PARTNER BADGES
+     ============================================================ -->
+<section class="hc-badges">
+  <div class="hc-badges-inner">
+    <div class="hc-badges-logos">
+      {{ with .Params.sap_badge }}<img src="{{ . }}" alt="SAP Silver Partner" style="height:2.5rem; object-fit:contain;">{{ end }}
+      {{ with .Params.partner_logo }}<img src="{{ . }}" alt="Oracle Cerner" style="height:2.5rem; object-fit:contain;">{{ end }}
+      {{ with .Params.healthcare_badge }}<img src="{{ . }}" alt="Healthcare" style="height:2rem; object-fit:contain;">{{ end }}
+    </div>
+    <p style="font-size:0.875rem; color:#64748b; margin:0.75rem 0 0;">
+      {{ if $de }}Unsere Produkte sind im SAP-Store erhältlich.{{ else }}Our products are available in the SAP Store.{{ end }}
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     MaaS
+     ============================================================ -->
+<section class="hc-maas">
+  <div class="hc-section">
+
+    <h2>{{ if $de }}Meldeprozesse as a Service (MaaS){{ else }}Reporting Processes as a Service (MaaS){{ end }}</h2>
+    <p class="hc-maas-subline">
+      {{ if $de }}Digitale Ende-zu-Ende Lösungen für die Kommunikation zwischen Krankenhäusern und Behörden{{ else }}Digital end-to-end solutions for communication between hospitals and authorities{{ end }}
+    </p>
+
+    <div class="hc-maas-body">
+      {{ if $de }}
+      <p>Die im Infektionsschutz- und Personenstandsgesetz geforderten Meldungen und Anzeigen können durch unsere Produkte effizient und komfortabel abgesetzt werden. Digitale Datenermittlung der Meldungsinhalte, Versand mit einem Klick und automatisierte Ablage der Sendebestätigung in der Patientenakte minimieren die händischen Aufwände.</p>
+      <p>Sicherheit hat Priorität: Unsere Lösungen bieten höchste Sicherheitsstandards für die sensiblen Patientendaten, die außerhalb Ihrer Infrastruktur nicht gespeichert werden. Vertama-Produkte können mit geringem Aufwand implementiert werden und sind so kurzfristig produktiv verfügbar. Alle nötigen Informationen werden aus Administrator- und Anwender-Sicht mitgeliefert und intuitiv verständlich vermittelt.</p>
+      {{ else }}
+      <p>The notifications required by the Infection Protection Act and the Civil Status Act can be submitted efficiently and conveniently using our products. Digital data capture, one-click submission, and automated filing of the confirmation in the patient record minimise manual effort.</p>
+      <p>Security is a priority: Our solutions offer the highest security standards for sensitive patient data, which is not stored outside your infrastructure. Vertama products can be implemented with minimal effort and are quickly available for production use.</p>
+      {{ end }}
+    </div>
+
+    <p class="hc-process-label">
+      {{ if $de }}Meldeprozess an die Behörde{{ else }}Reporting process to the authority{{ end }}
+    </p>
+
+    {{ with .Params.process_steps }}
+    <div class="hc-process-steps">
+      {{ range $i, $step := . }}
+      {{ if gt $i 0 }}<div class="hc-step-arrow">›</div>{{ end }}
+      <div class="hc-step">
+        <div class="hc-step-icon">
+          <img src="{{ $step.icon }}" alt="{{ $step.label }}">
+        </div>
+        <p>{{ $step.label }}</p>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+
+  </div>
+</section>
+
+<!-- ============================================================
+     PRODUCTS
+     ============================================================ -->
+<section class="hc-products">
+  <div class="hc-section">
+    <h2>{{ if $de }}Unsere Produkte:{{ else }}Our Products:{{ end }}</h2>
+    <div class="hc-product-list">
+      {{ range .Params.products }}
+      <div class="hc-product">
+        <img src="{{ .icon }}" alt="{{ .name }}">
+        <div>
+          <h3>{{ .name }}{{ with .subtitle }} – {{ . }}{{ end }}</h3>
+          <p>{{ .description }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+{{ with .Params.testimonials }}
+<section class="hc-testimonials">
+  <div class="hc-section">
+    <h2>{{ if $de }}Unsere Kundenstimmen:{{ else }}What our customers say:{{ end }}</h2>
+    <div class="hc-testimonial-wrap">
+
+      {{ range $i, $t := . }}
+      <div class="t-slide" style="display:{{ if eq $i 0 }}block{{ else }}none{{ end }};">
+        <blockquote>
+          <p>&bdquo;{{ $t.quote }}&ldquo;</p>
+          <footer>
+            <p class="t-author">{{ $t.author }}</p>
+            {{ with $t.role }}<p class="t-role">{{ . }}</p>{{ end }}
+            {{ with $t.org }}<p class="t-org">{{ . }}</p>{{ end }}
+          </footer>
+        </blockquote>
+      </div>
+      {{ end }}
+
+      <div class="hc-t-nav">
+        <button class="hc-t-btn" onclick="tNav(-1)">‹</button>
+        <div class="hc-t-dots">
+          {{ range $i, $t := . }}
+          <button class="hc-t-dot{{ if eq $i 0 }} active{{ end }}" onclick="tGo({{ $i }})"></button>
+          {{ end }}
+        </div>
+        <button class="hc-t-btn" onclick="tNav(1)">›</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+{{ end }}
+
+<script>
+(function(){
+  var slides = document.querySelectorAll('.t-slide');
+  var dots   = document.querySelectorAll('.hc-t-dot');
+  var cur = 0, timer;
+  function go(n){
+    slides[cur].style.display = 'none';
+    dots[cur].classList.remove('active');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].style.display = 'block';
+    dots[cur].classList.add('active');
+  }
+  function run(){ timer = setInterval(function(){ go(cur + 1); }, 6000); }
+  window.tNav = function(d){ clearInterval(timer); go(cur + d); run(); };
+  window.tGo  = function(n){ clearInterval(timer); go(n); run(); };
+  run();
+})();
+</script>
+
+{{ end }}

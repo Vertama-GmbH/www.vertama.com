@@ -30,7 +30,7 @@ copyrightText = 'Alle Rechte vorbehalten'
 footerSlogan = 'Digitalisierung von Meldeverfahren für moderne Unternehmen. Schnell, sicher, effizient.'
 
 [[languages.de.menu.main]]
-name = 'Startseite'
+name = 'Healthcare Services'
 url = '/de/healthcareservices/'
 weight = 1
 
@@ -62,14 +62,19 @@ copyrightText = 'All rights reserved'
 footerSlogan = 'Digitizing reporting procedures for modern companies. Fast, secure, efficient.'
 
 [[languages.en.menu.main]]
-name = 'Home'
+name = 'Healthcare Services'
 url = '/en/healthcare-services/'
 weight = 1
 
 [[languages.en.menu.main]]
+name = 'Partner and Customer'
+url = '/en/partner-and-customer/'
+weight = 2
+
+[[languages.en.menu.main]]
 name = 'Contact'
 url = '/en/contact/'
-weight = 2
+weight = 3
 
 [[languages.de.menu.footer]]
 name = 'Impressum'
@@ -91,7 +96,3 @@ name = 'Cookie-Hinweis'
 url = '/de/cookie-hinweis-eu/'
 weight = 4
 
-[[languages.de.menu.main]]
-name = 'Entwickler'
-url = 'https://docs.vertama.com'
-weight = 5
