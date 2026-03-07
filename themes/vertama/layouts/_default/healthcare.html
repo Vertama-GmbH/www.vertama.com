@@ -190,62 +190,106 @@
     margin: 0;
   }
 
-  .hc-testimonials {
-    background: #f8fafc;
-    padding: 4rem 0;
+  /* ── Testimonials ── */
+  .hc-t-header {
+    background: #fff;
+    padding: 2.5rem 0 0;
   }
-  .hc-testimonials h2 {
+  .hc-t-header h2 {
     font-size: 1.875rem;
     font-weight: 700;
     color: #005e7b;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
-  .hc-testimonial-wrap {
+  .hc-t-slider {
     position: relative;
-    max-width: 50rem;
+    overflow: hidden;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+  }
+  /* Crossfading background images */
+  .t-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  .t-bg.active { opacity: 1; }
+  /* Slides stacked in same grid cell */
+  .t-slides-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 3rem 4rem 5rem;
+    width: 100%;
+    box-sizing: border-box;
+    display: grid;
+  }
+  .t-slide {
+    grid-column: 1;
+    grid-row: 1;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+  .t-slide.active {
+    opacity: 1;
+    pointer-events: auto;
   }
   .t-slide blockquote {
-    background: #fff;
-    border-left: 3px solid #005e7b;
-    padding: 2rem 2.5rem;
-    border-radius: 0 0.5rem 0.5rem 0;
-    margin: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0 0 1.25rem;
   }
   .t-slide blockquote p {
-    font-size: 0.9375rem;
-    color: #334155;
+    font-size: 1rem;
+    color: #fff;
     line-height: 1.85;
-    margin-bottom: 1.5rem;
-    font-style: italic;
+    margin: 0;
+    font-style: normal;
   }
-  .t-slide footer p { margin: 0; }
-  .t-author { font-weight: 600; color: #0f172a; font-size: 0.875rem; }
-  .t-role { font-size: 0.8rem; color: #94a3b8; margin-top: 0.2rem !important; }
-  .t-org { font-size: 0.8rem; color: #005e7b; font-weight: 500; margin-top: 0.2rem !important; }
+  .t-attribution {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+    margin: 0;
+  }
+  /* Nav: arrows + dots, centered at bottom */
   .hc-t-nav {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-top: 1.5rem;
+    white-space: nowrap;
   }
   .hc-t-btn {
     background: none;
-    border: 1px solid #e2e8f0;
-    border-radius: 50%;
-    width: 2rem;
-    height: 2rem;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
     cursor: pointer;
-    color: #005e7b;
-    font-size: 1.1rem;
+    padding: 0.25rem 0.5rem;
     line-height: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: none;
-    transition: border-color 0.15s;
+    opacity: 0.8;
+    transition: opacity 0.15s;
   }
-  .hc-t-btn:hover { border-color: #005e7b; }
-  .hc-t-dots { display: flex; gap: 0.4rem; }
+  .hc-t-btn:hover { opacity: 1; }
+  .hc-t-dots {
+    display: flex;
+    gap: 0.4rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .hc-t-slider:hover .hc-t-dots { opacity: 1; }
   .hc-t-dot {
     width: 0.45rem;
     height: 0.45rem;
@@ -253,10 +297,10 @@
     border: none;
     cursor: pointer;
     padding: 0;
-    background: #cbd5e1;
+    background: rgba(255,255,255,0.4);
     transition: background 0.15s;
   }
-  .hc-t-dot.active { background: #005e7b; }
+  .hc-t-dot.active { background: #fff; }
 </style>
 {{ end }}
 
@@ -366,49 +410,58 @@
      TESTIMONIALS
      ============================================================ -->
 {{ with .Params.testimonials }}
-<section class="hc-testimonials">
+<div class="hc-t-header">
   <div class="hc-section">
     <h2>{{ if $de }}Unsere Kundenstimmen:{{ else }}What our customers say:{{ end }}</h2>
-    <div class="hc-testimonial-wrap">
-
-      {{ range $i, $t := . }}
-      <div class="t-slide" style="display:{{ if eq $i 0 }}block{{ else }}none{{ end }};">
-        <blockquote>
-          <p>&bdquo;{{ $t.quote }}&ldquo;</p>
-          <footer>
-            <p class="t-author">{{ $t.author }}</p>
-            {{ with $t.role }}<p class="t-role">{{ . }}</p>{{ end }}
-            {{ with $t.org }}<p class="t-org">{{ . }}</p>{{ end }}
-          </footer>
-        </blockquote>
-      </div>
-      {{ end }}
-
-      <div class="hc-t-nav">
-        <button class="hc-t-btn" onclick="tNav(-1)">‹</button>
-        <div class="hc-t-dots">
-          {{ range $i, $t := . }}
-          <button class="hc-t-dot{{ if eq $i 0 }} active{{ end }}" onclick="tGo({{ $i }})"></button>
-          {{ end }}
-        </div>
-        <button class="hc-t-btn" onclick="tNav(1)">›</button>
-      </div>
-
-    </div>
   </div>
-</section>
+</div>
+<div class="hc-t-slider">
+
+  {{/* Crossfading background images */}}
+  {{ range $i, $t := . }}
+  <div class="t-bg{{ if eq $i 0 }} active{{ end }}"
+       style="background-image:url('{{ $t.bg }}')"></div>
+  {{ end }}
+
+  {{/* Slides stacked via CSS grid */}}
+  <div class="t-slides-wrap">
+    {{ range $i, $t := . }}
+    <div class="t-slide{{ if eq $i 0 }} active{{ end }}">
+      <blockquote>
+        <p>&bdquo;{{ $t.quote }}&ldquo;</p>
+      </blockquote>
+      <p class="t-attribution">{{ $t.author }}{{ with $t.role }}, {{ . }}{{ end }}{{ with $t.org }}, {{ . }}{{ end }}</p>
+    </div>
+    {{ end }}
+  </div>
+
+  {{/* Nav: prev · dots · next */}}
+  <div class="hc-t-nav">
+    <button class="hc-t-btn" onclick="tNav(-1)">&#8249;</button>
+    <div class="hc-t-dots">
+      {{ range $i, $t := . }}
+      <button class="hc-t-dot{{ if eq $i 0 }} active{{ end }}" onclick="tGo({{ $i }})"></button>
+      {{ end }}
+    </div>
+    <button class="hc-t-btn" onclick="tNav(1)">&#8250;</button>
+  </div>
+
+</div>
 {{ end }}
 
 <script>
 (function(){
   var slides = document.querySelectorAll('.t-slide');
+  var bgs    = document.querySelectorAll('.t-bg');
   var dots   = document.querySelectorAll('.hc-t-dot');
   var cur = 0, timer;
   function go(n){
-    slides[cur].style.display = 'none';
+    slides[cur].classList.remove('active');
+    bgs[cur].classList.remove('active');
     dots[cur].classList.remove('active');
     cur = (n + slides.length) % slides.length;
-    slides[cur].style.display = 'block';
+    slides[cur].classList.add('active');
+    bgs[cur].classList.add('active');
     dots[cur].classList.add('active');
   }
   function run(){ timer = setInterval(function(){ go(cur + 1); }, 6000); }
