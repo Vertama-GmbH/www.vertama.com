@@ -291,16 +291,19 @@
   }
   .hc-t-slider:hover .hc-t-dots { opacity: 1; }
   .hc-t-dot {
-    width: 0.45rem;
-    height: 0.45rem;
+    width: 0.65rem;
+    height: 0.65rem;
     border-radius: 50%;
-    border: none;
+    border: 1.5px solid rgba(255,255,255,0.75);
     cursor: pointer;
     padding: 0;
-    background: rgba(255,255,255,0.4);
-    transition: background 0.15s;
+    background: transparent;
+    transition: background 0.15s, border-color 0.15s;
   }
-  .hc-t-dot.active { background: #fff; }
+  .hc-t-dot.active {
+    background: #fff;
+    border-color: #fff;
+  }
 </style>
 {{ end }}
 
@@ -393,7 +396,7 @@
      ============================================================ -->
 <section class="hc-products">
   <div class="hc-section">
-    <h2>{{ if $de }}Unsere Produkte:{{ else }}Our Products:{{ end }}</h2>
+    <h2>{{ if $de }}Unsere Produkte{{ else }}Our Products{{ end }}</h2>
     <div class="hc-product-list">
       {{ range .Params.products }}
       <div class="hc-product">
@@ -412,7 +415,7 @@
 {{ with .Params.testimonials }}
 <div class="hc-t-header">
   <div class="hc-section">
-    <h2>{{ if $de }}Unsere Kundenstimmen:{{ else }}What our customers say:{{ end }}</h2>
+    <h2>{{ if $de }}Unsere Kundenstimmen{{ else }}What our customers say{{ end }}</h2>
   </div>
 </div>
 <div class="hc-t-slider">
