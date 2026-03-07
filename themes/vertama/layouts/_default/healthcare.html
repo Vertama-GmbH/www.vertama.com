@@ -171,10 +171,11 @@
   }
   .hc-product-icon {
     float: left;
-    width: 64px;
-    height: 64px;
-    object-fit: contain;
-    margin: 0 1.25rem 0.5rem 0;
+    max-width: 64px;
+    max-height: 64px;
+    width: auto;
+    height: auto;
+    margin: 0 1rem 0.5rem 0;
   }
   .hc-product h3 {
     font-size: 1rem;
@@ -352,7 +353,7 @@
     <div class="hc-product-list">
       {{ range .Params.products }}
       <div class="hc-product">
-        <img src="{{ .icon }}" alt="{{ .name }}" class="hc-product-icon">
+        <img src="{{ .icon }}" alt="{{ .name }}" class="hc-product-icon"{{ with .icon_mr }} style="margin-right:{{ . }}"{{ end }}>
         <h3>{{ .name }}{{ with .subtitle }} – {{ . }}{{ end }}</h3>
         <p>{{ .description }}</p>
       </div>
