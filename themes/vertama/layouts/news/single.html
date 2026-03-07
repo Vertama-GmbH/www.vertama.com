@@ -1,5 +1,5 @@
 {{ define "main" }}
-<div class="max-w-[1280px] mx-auto px-6 pt-32 pb-20">
+<div class="max-w-[1280px] mx-auto px-6 pt-10 pb-20">
 
   {{/* Back link */}}
   <a href="{{ .Site.Language.Lang | printf "/%s/news/" }}"
@@ -11,31 +11,40 @@
     {{ if eq .Site.Language.Lang "de" }}Aktuelles{{ else }}News{{ end }}
   </a>
 
-  <div class="max-w-2xl">
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_14rem] gap-12">
 
-    {{/* Date + source */}}
-    <div class="flex flex-wrap items-center gap-3 mb-4">
-      <span class="text-xs font-bold uppercase tracking-widest text-[#005e7b]">
-        {{ .Date.Format "02. January 2006" }}
-      </span>
+    {{/* Main article body */}}
+    <div>
+      <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 leading-snug mb-8">{{ .Title }}</h1>
+      <div class="prose prose-slate max-w-none
+                  prose-headings:font-bold prose-headings:text-slate-800
+                  prose-strong:text-slate-800
+                  prose-a:text-[#005e7b] prose-a:no-underline hover:prose-a:text-[#008ab5]
+                  prose-blockquote:border-[#005e7b] prose-blockquote:text-slate-500">
+        {{ .Content }}
+      </div>
+    </div>
+
+    {{/* Metadata rail */}}
+    <aside class="text-sm text-slate-500 space-y-5 self-start lg:border-l lg:border-slate-100 lg:pl-8 lg:pt-1">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-[#005e7b] mb-1">
+          {{ if eq .Site.Language.Lang "de" }}Datum{{ else }}Date{{ end }}
+        </p>
+        <p>{{ .Date.Format "02. January 2006" }}</p>
+      </div>
       {{ with .Params.source_url }}
-      <span class="text-slate-300">|</span>
-      <a href="{{ . }}" target="_blank" rel="noopener"
-         class="text-xs text-slate-400 hover:text-[#005e7b] transition-colors">
-        {{ with $.Params.source_label }}{{ . }}{{ else }}Quelle{{ end }}
-      </a>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-[#005e7b] mb-1">
+          {{ if eq $.Site.Language.Lang "de" }}Quelle{{ else }}Source{{ end }}
+        </p>
+        <a href="{{ . }}" target="_blank" rel="noopener"
+           class="text-[#005e7b] hover:text-[#008ab5] transition-colors break-words">
+          {{ with $.Params.source_label }}{{ . }}{{ else }}Quelle{{ end }}
+        </a>
+      </div>
       {{ end }}
-    </div>
-
-    <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 leading-snug mb-8">{{ .Title }}</h1>
-
-    <div class="prose prose-slate max-w-none
-                prose-headings:font-bold prose-headings:text-slate-800
-                prose-strong:text-slate-800
-                prose-a:text-[#005e7b] prose-a:no-underline hover:prose-a:text-[#008ab5]
-                prose-blockquote:border-[#005e7b] prose-blockquote:text-slate-500">
-      {{ .Content }}
-    </div>
+    </aside>
 
   </div>
 </div>
