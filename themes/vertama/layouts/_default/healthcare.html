@@ -163,16 +163,18 @@
     max-width: 50rem;
   }
   .hc-product {
-    display: flex;
-    gap: 1.5rem;
     margin-bottom: 2.5rem;
-    align-items: flex-start;
+    overflow: hidden; /* clearfix */
   }
-  .hc-product img {
-    width: 80px;
-    height: 80px;
-    flex: none;
+  .hc-product:nth-child(even) {
+    margin-left: 6rem;
+  }
+  .hc-product-icon {
+    float: left;
+    width: 64px;
+    height: 64px;
     object-fit: contain;
+    margin: 0 1.25rem 0.5rem 0;
   }
   .hc-product h3 {
     font-size: 1rem;
@@ -350,11 +352,9 @@
     <div class="hc-product-list">
       {{ range .Params.products }}
       <div class="hc-product">
-        <img src="{{ .icon }}" alt="{{ .name }}">
-        <div>
-          <h3>{{ .name }}{{ with .subtitle }} – {{ . }}{{ end }}</h3>
-          <p>{{ .description }}</p>
-        </div>
+        <img src="{{ .icon }}" alt="{{ .name }}" class="hc-product-icon">
+        <h3>{{ .name }}{{ with .subtitle }} – {{ . }}{{ end }}</h3>
+        <p>{{ .description }}</p>
       </div>
       {{ end }}
     </div>
