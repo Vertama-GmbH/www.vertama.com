@@ -34,6 +34,7 @@ Wir freuen uns, heute neue Features vorzustellen.
 |---|---|---|
 | `title` | ✅ | Überschrift der News |
 | `date` | ✅ | Datum im Format `YYYY-MM-DD` |
+| `translationKey` | — | Gleicher Wert in DE + EN verknüpft die Sprachversionen für den Language Switcher. Empfehlung: `"news-YYYY-MM-DD-slug"` |
 | `source_url` | — | Link zur Originalquelle (z.B. Pressemeldung) |
 | `source_label` | — | Anzeigename der Quelle (z.B. `"e-health-com.de"`) |
 
