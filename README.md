@@ -2,19 +2,20 @@
 
 Hugo-based website deployed to GitHub Pages.
 
+For AI workers: read `CLAUDE.md` first.
+For design and brand standards: read `STYLEGUIDE.md`.
+
 ## Structure
 
 ```
 content/         Hugo content (Markdown)
   de/            German pages (default language)
   en/            English pages
-  fr/            French pages (partially static, in progress)
 themes/vertama/  Custom Hugo theme
   layouts/       Page templates
-  static/        Theme-level static assets (CSS, JS, images)
-docs/            Static files served by Hugo (legacy pages + assets)
-  assets/        Images, CSS shared across pages
-  fr/            French static pages (not yet migrated to Hugo)
+  static/        Theme-level static assets
+docs/            Hugo publishDir — static files served directly
+  assets/        Images and other shared assets
 .github/
   workflows/     deploy-pages.yml — Hugo build + GitHub Pages deploy
 ```
@@ -41,14 +42,13 @@ Workflow: `.github/workflows/deploy-pages.yml`
 
 ## Languages
 
-| Language | Default | Status |
-|---|---|---|
-| German (`/de/`) | ✅ | Fully on Hugo |
-| English (`/en/`) | — | Fully on Hugo |
-| French (`/fr/`) | — | Partially static (in progress) |
+| Language | Status |
+|---|---|
+| German (`/de/`) | Active — fully on Hugo |
+| English (`/en/`) | Active — fully on Hugo |
+| French | Removed March 2026 — content archived in `content-archive-fr.md` |
 
 ## Contact Form
 
-Forms submit to `https://elim.vertama.de/api/v1/contact`.
-
-For local testing, copy `docs/config.local.json.example` to `docs/config.local.json` and set your local endpoint.
+Forms submit to an external backend endpoint.
+See [CONTACT_FORM_BACKEND_REQUIREMENTS.md](CONTACT_FORM_BACKEND_REQUIREMENTS.md) for the full spec.

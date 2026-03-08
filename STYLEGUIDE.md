@@ -4,6 +4,31 @@ A living document. Update it as the site evolves.
 
 ---
 
+## 0. Gestaltung — The Governing Standard
+
+Every artifact produced for this project is held to a standard of *Gestaltung*: the
+integrated, holistic approach to making things well. This is the German concept — broader
+than "design" in the English sense — where form, function, structure, and intent are deeply
+unified. Nothing is applied on top; everything arises from within.
+
+**What this means in practice:**
+
+- Typography is not decoration. It carries meaning, hierarchy, and character. Choices of
+  scale, weight, tracking, and leading are never arbitrary.
+- Spacing creates rhythm and communicates relationship. Every gap is a decision.
+- Color has semantic weight. The `vertama` teal is not a brand accent — it is the primary
+  signal of trust and action. Use it where it earns its place.
+- Restraint over flourish. This site serves healthcare professionals. Clarity and quiet
+  confidence communicate trust. Visual noise does the opposite.
+- Coherence over completeness. A new element must feel like it belongs to the existing
+  system, not like it arrived from outside.
+
+When evaluating any output — layout, copy, component, image selection — the question is:
+*does this reflect a genuine understanding of its purpose, or is it merely adequate?*
+Adequate is not the standard.
+
+---
+
 ## 1. Brand Identity
 
 **Positioning:** B2B health-tech. Digitizing regulated medical reporting processes.
