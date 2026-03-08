@@ -69,6 +69,9 @@ or the language switcher will be disabled on that page.
 `layout: "partners"` in front matter → Hugo finds `themes/vertama/layouts/_default/partners.html`.
 Template blocks: `{{ define "main" }}`, `{{ define "head" }}`, `{{ define "scripts" }}`.
 
+**Two separate nav menus.**
+`menu.main` drives the top nav only. `menu.footer_nav` drives the footer Navigation column independently — it mirrors main but can carry additional links (e.g. docs.vertama.com) that are too peripheral for the header. When adding a new page to main nav, also add it to footer_nav unless there's a reason not to.
+
 **Image paths.**
 All images live under `docs/assets/images/` in a semantic directory structure.
 Do not use the old WordPress date-based paths (`2022/`, `2023/`, `2024/`) — those were

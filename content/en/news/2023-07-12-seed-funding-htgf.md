@@ -2,8 +2,9 @@
 title: "Vertama closes seven-figure seed round to digitize medical reporting in German hospitals"
 date: 2023-07-12
 translationKey: "news-2023-07-12-seed-htgf"
-source_url: "https://www.htgf.de/htgf-seed-vertama/"
-source_label: "htgf.de"
+sources:
+  - url: "https://www.htgf.de/htgf-seed-vertama/"
+    label: "htgf.de"
 ---
 
 **BERLIN – Vertama has closed a seven-figure seed funding round led by High-Tech Gründerfonds (HTGF), joined by Berlin Angel Fund and additional business angels. The capital will accelerate the expansion of Vertama's platform for automating statutory reporting processes in hospital environments.**

@@ -72,9 +72,64 @@ url = '/en/partner-and-customer/'
 weight = 2
 
 [[languages.en.menu.main]]
+name = 'News'
+url = '/en/news/'
+weight = 3
+
+[[languages.en.menu.main]]
 name = 'Contact'
 url = '/en/contact/'
+weight = 4
+
+[[languages.de.menu.footer_nav]]
+name = 'Healthcare Services'
+url = '/de/healthcareservices/'
+weight = 1
+
+[[languages.de.menu.footer_nav]]
+name = 'Partner und Kunden'
+url = '/de/partner-und-kunden/'
+weight = 2
+
+[[languages.de.menu.footer_nav]]
+name = 'Aktuelles'
+url = '/de/news/'
 weight = 3
+
+[[languages.de.menu.footer_nav]]
+name = 'Kontakt'
+url = '/de/kontakt/'
+weight = 4
+
+[[languages.de.menu.footer_nav]]
+name = 'Entwicklung'
+url = 'https://docs.vertama.com'
+weight = 5
+
+[[languages.en.menu.footer_nav]]
+name = 'Healthcare Services'
+url = '/en/healthcare-services/'
+weight = 1
+
+[[languages.en.menu.footer_nav]]
+name = 'Partner and Customer'
+url = '/en/partner-and-customer/'
+weight = 2
+
+[[languages.en.menu.footer_nav]]
+name = 'News'
+url = '/en/news/'
+weight = 3
+
+[[languages.en.menu.footer_nav]]
+name = 'Contact'
+url = '/en/contact/'
+weight = 4
+
+[[languages.en.menu.footer_nav]]
+name = 'Development'
+url = 'https://docs.vertama.com'
+weight = 5
 
 [[languages.de.menu.footer]]
 name = 'Impressum'

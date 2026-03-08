@@ -33,15 +33,17 @@
         </p>
         <p>{{ .Date.Format "02. January 2006" }}</p>
       </div>
-      {{ with .Params.source_url }}
+      {{ with .Params.sources }}
       <div>
         <p class="text-xs font-bold uppercase tracking-widest text-[#005e7b] mb-1">
-          {{ if eq $.Site.Language.Lang "de" }}Quelle{{ else }}Source{{ end }}
+          {{ if eq $.Site.Language.Lang "de" }}{{ if gt (len .) 1 }}Quellen{{ else }}Quelle{{ end }}{{ else }}{{ if gt (len .) 1 }}Sources{{ else }}Source{{ end }}{{ end }}
         </p>
-        <a href="{{ . }}" target="_blank" rel="noopener"
-           class="text-[#005e7b] hover:text-[#008ab5] transition-colors break-words">
-          {{ with $.Params.source_label }}{{ . }}{{ else }}Quelle{{ end }}
-        </a>
+        <ul class="space-y-1">
+          {{ range . }}
+          <li><a href="{{ .url }}" target="_blank" rel="noopener"
+             class="text-[#005e7b] hover:text-[#008ab5] transition-colors break-words">{{ .label }}</a></li>
+          {{ end }}
+        </ul>
       </div>
       {{ end }}
     </aside>

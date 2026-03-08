@@ -35,8 +35,23 @@ Wir freuen uns, heute neue Features vorzustellen.
 | `title` | ✅ | Überschrift der News |
 | `date` | ✅ | Datum im Format `YYYY-MM-DD` |
 | `translationKey` | — | Gleicher Wert in DE + EN verknüpft die Sprachversionen für den Language Switcher. Empfehlung: `"news-YYYY-MM-DD-slug"` |
-| `source_url` | — | Link zur Originalquelle (z.B. Pressemeldung) |
-| `source_label` | — | Anzeigename der Quelle (z.B. `"e-health-com.de"`) |
+| `sources` | — | Liste der Quellen. Jeder Eintrag hat `url` und `label`. Bei einer Quelle wird „Quelle" angezeigt, bei mehreren „Quellen". |
+
+**Beispiel mit einer Quelle:**
+```yaml
+sources:
+  - url: "https://example.com/artikel"
+    label: "example.com"
+```
+
+**Beispiel mit mehreren Quellen:**
+```yaml
+sources:
+  - url: "https://example.com/artikel"
+    label: "example.com"
+  - url: "https://other.com/beitrag"
+    label: "other.com"
+```
 
 ### 2. Committen & pushen
 
@@ -47,6 +62,20 @@ git push
 ```
 
 Nach ca. 1 Minute ist die News live unter `/de/news/`.
+
+---
+
+## Geplante Veröffentlichung (Scheduled Release)
+
+Hugo veröffentlicht keine Artikel mit einem Datum in der Zukunft. Das lässt sich als Planungsmechanismus nutzen: Artikel jetzt committen und pushen, mit einem zukünftigen `date` — er erscheint erst, wenn der Build nach diesem Datum läuft.
+
+Der GitHub Actions Workflow läuft täglich um ~04:00 Uhr Berliner Zeit und veröffentlicht automatisch alles, dessen Datum abgelaufen ist.
+
+**Beispiel:** Artikel mit `date: 2026-04-21` wird am Abend des 20. April gepusht — er erscheint am 21. April nach 04:00 Uhr automatisch.
+
+**Hinweis:** GitHub kann geplante Workflows um bis zu 30 Minuten verzögern. Für zeitkritische Veröffentlichungen besser manuell deployen (GitHub Actions → „Run workflow").
+
+**Wichtig:** GitHub deaktiviert geplante Workflows automatisch, wenn ein Repository 60 Tage lang keine Aktivität hatte. Ein gelegentlicher Commit oder manueller Trigger verhindert das.
 
 ---
 
