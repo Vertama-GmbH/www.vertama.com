@@ -47,7 +47,6 @@ docs/               Hugo publishDir — also contains static assets
       logos/        Partner, customer, network, investor logos (semantic structure)
       icons/        Product icons
       photos/       Photography
-    images/archive/ Legacy/unused assets — do not reference in new pages
 .github/
   workflows/
     deploy-pages.yml
