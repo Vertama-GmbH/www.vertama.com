@@ -125,60 +125,36 @@ Prefer multiples of 4 (Tailwind's scale). Key values in use:
 
 ---
 
-## 8. WordPress Migration Tracker
+## 8. Page Status
 
-Hybrid mode: Hugo serves new pages, old Avada HTML still served via `staticDir = 'docs'`.
+Migration from Avada/WordPress to Hugo is complete for DE and EN.
+French pages were removed; French content archived in `content-archive-fr.md`.
 
-### Migrated to Hugo ✓
+### All active pages (Hugo)
 
-| Page | Hugo path |
-|------|-----------|
-| Homepage (DE) | `/de/` |
-| Homepage (EN) | `/en/` |
-| Impressum (DE) | `/de/impressum/` |
-| Imprint (EN) | `/en/imprint/` |
-| Datenschutz (DE) | `/de/datenschutz/` |
-| Data Protection (EN) | `/en/data-protection/` |
-| AGB (DE) | `/de/agb/` |
-| General Terms (EN) | `/en/general-terms-and-conditions/` |
-| Cookie-Hinweis (DE) | `/de/cookie-hinweis-eu/` |
-| Cookie Policy (EN) | `/en/cookie-policy-eu/` |
-| Kontakt (DE) | `/de/kontakt/` |
-| Contact (EN) | `/en/contact/` |
+| Page | Hugo content path |
+|------|-------------------|
+| Healthcare Services DE | `content/de/healthcareservices/index.md` |
+| Healthcare Services EN | `content/en/healthcare-services/index.md` |
+| Partner & Kunden DE | `content/de/partner-und-kunden/index.md` |
+| Partner & Customers EN | `content/en/partner-and-customer/index.md` |
+| News DE | `content/de/news/` |
+| Kontakt DE | `content/de/kontakt/` |
+| Contact EN | `content/en/contact/` |
+| Impressum / Imprint | `content/de/impressum/`, `content/en/imprint/` |
+| Datenschutz / Data Protection | `content/de/datenschutz/`, `content/en/data-protection/` |
+| AGB / GTC | `content/de/agb/`, `content/en/general-terms-and-conditions/` |
+| Cookie-Hinweis / Cookie Policy | `content/de/cookie-hinweis-eu/`, `content/en/cookie-policy-eu/` |
 
-### Still on old Avada/WordPress HTML
+### Remaining static files in `docs/`
 
-**German**
+| File | Purpose |
+|------|---------|
+| `docs/index.html` | Root redirect to `/de/` |
+| `docs/404.html` | Error page |
+| `docs/robots.txt` | Search engine directives |
+| `docs/CNAME` | Custom domain for GitHub Pages |
 
-| Page | Path | Priority |
-|------|------|----------|
-| Healthcare Services | `/de/healthcareservices/` | High — actual homepage |
-| News | `/de/news/` | Medium |
-| Partner und Kunden | `/de/partner-und-kunden/` | Medium |
-
-**English**
-
-| Page | Path | Priority |
-|------|------|----------|
-| Healthcare Services | `/en/healthcare-services/` | High |
-| Partner and Customer | `/en/partner-and-customer/` | Low |
-
-**French** (no Hugo language config yet)
-
-| Page | Path | Priority |
-|------|------|----------|
-| Healthcare Services | `/fr/healthcare-services-2/` | Low |
-| Contact | `/fr/contact-2/` | Low |
-| Partenaires et Clients | `/fr/partenaires-et-clients/` | Low |
-
-### Migration strategy
-1. New pages: author directly in Hugo (`content/de/`) using the vertama theme
-2. Existing pages: migrate one at a time, delete old static file, Hugo serves at same URL
-3. Priority order: high-traffic / externally linked pages first
-4. Until migrated, old pages use Avada CSS — accepted as temporary state
-
-### Content inconsistencies to resolve on migration
-- Heading scale (Avada uses non-standard sizes)
-- Font (Avada uses its own font stack, not Inter)
-- Navigation (Avada nav — manually aligned with Hugo nav by editing static HTML)
-- Footer (Avada footer vs. Hugo theme footer)
+### Adding new pages
+Author directly in Hugo under `content/de/` or `content/en/`.
+No Avada HTML to worry about — Hugo owns all pages.

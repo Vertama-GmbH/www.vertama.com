@@ -22,7 +22,7 @@ POST https://your-server.com/api/contact
 | `company` | string | No | Company name (optional) |
 | `phone` | string | No | Phone number (optional) |
 | `message` | string | No | Message text (optional) |
-| `language` | string | Yes | Form language: `de`, `en`, or `fr` |
+| `language` | string | Yes | Form language: `de` or `en` |
 
 ### Example Request
 

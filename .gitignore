@@ -52,3 +52,6 @@ public/
 
 # Session notes
 SESSION_NOTES.md
+
+# Transient cleanup plan (delete when done)
+CLEANUP.md
