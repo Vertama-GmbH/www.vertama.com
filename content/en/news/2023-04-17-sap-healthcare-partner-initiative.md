@@ -2,8 +2,9 @@
 title: "SAP Healthcare Partner Initiative: Vertama as part of the digital hospital ecosystem"
 date: 2023-04-17
 translationKey: "news-2023-04-17-sap-healthcare"
-source_url: "https://news.sap.com/germany/2023/04/partnerinitiative-healthcare-krankenhaus-zukunft/"
-source_label: "news.sap.com"
+sources:
+  - url: "https://news.sap.com/germany/2023/04/partnerinitiative-healthcare-krankenhaus-zukunft/"
+    label: "news.sap.com"
 ---
 
 **SAP's news.sap.com describes how the SAP Healthcare Partner Initiative brings together European software companies to build innovative hospital solutions on SAP Business Technology Platform (BTP). Vertama is featured as a specialist for digital infection control reporting — part of a growing ecosystem of clinical software built for SAP S/4HANA environments.**

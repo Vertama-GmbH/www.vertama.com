@@ -35,8 +35,23 @@ Wir freuen uns, heute neue Features vorzustellen.
 | `title` | ✅ | Überschrift der News |
 | `date` | ✅ | Datum im Format `YYYY-MM-DD` |
 | `translationKey` | — | Gleicher Wert in DE + EN verknüpft die Sprachversionen für den Language Switcher. Empfehlung: `"news-YYYY-MM-DD-slug"` |
-| `source_url` | — | Link zur Originalquelle (z.B. Pressemeldung) |
-| `source_label` | — | Anzeigename der Quelle (z.B. `"e-health-com.de"`) |
+| `sources` | — | Liste der Quellen. Jeder Eintrag hat `url` und `label`. Bei einer Quelle wird „Quelle" angezeigt, bei mehreren „Quellen". |
+
+**Beispiel mit einer Quelle:**
+```yaml
+sources:
+  - url: "https://example.com/artikel"
+    label: "example.com"
+```
+
+**Beispiel mit mehreren Quellen:**
+```yaml
+sources:
+  - url: "https://example.com/artikel"
+    label: "example.com"
+  - url: "https://other.com/beitrag"
+    label: "other.com"
+```
 
 ### 2. Committen & pushen
 

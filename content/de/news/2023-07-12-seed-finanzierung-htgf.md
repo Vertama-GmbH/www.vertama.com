@@ -2,8 +2,9 @@
 title: "Vertama erhält siebenstellige Seed-Finanzierung für die Digitalisierung medizinischer Meldeprozesse"
 date: 2023-07-12
 translationKey: "news-2023-07-12-seed-htgf"
-source_url: "https://www.htgf.de/htgf-seed-vertama/"
-source_label: "htgf.de"
+sources:
+  - url: "https://www.htgf.de/htgf-seed-vertama/"
+    label: "htgf.de"
 ---
 
 **BERLIN – Vertama hat eine siebenstellige Seed-Finanzierungsrunde abgeschlossen. Lead-Investor ist der High-Tech Gründerfonds (HTGF), begleitet vom Berlin Angel Fund sowie weiteren Business Angels. Die Mittel fließen in den weiteren Ausbau der Plattform zur Automatisierung gesetzlich vorgeschriebener Meldeprozesse im Krankenhausumfeld.**
