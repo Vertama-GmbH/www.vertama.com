@@ -5,6 +5,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *'  # daily ~04:00 Berlin time (03:00 UTC) — publishes future-dated content
 
 permissions:
   contents: read

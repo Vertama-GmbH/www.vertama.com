@@ -5,6 +5,8 @@ translationKey: "news-2026-03-08-dmea-berlinpartner"
 sources:
   - url: "https://www.linkedin.com/posts/vertama_dmea-dmea2026-digitalhealth-activity-7425490476843171841-Qhp4/"
     label: "Vertama on LinkedIn"
+  - url: "https://www.healthcapital.de/en/events/event/dmea-2026/"
+    label: "healthcapital.de"
 ---
 
 **From April 21 to 23, 2026, we will be at DMEA in Berlin in person — at the Berlin Partner joint stand, Hall 3.2, Stand D-103.**
