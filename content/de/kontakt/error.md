@@ -1,6 +1,5 @@
 ---
 title: "Etwas ist schiefgelaufen"
-url: "/de/kontakt/error/"
 layout: "form-result"
 params:
   result: "error"

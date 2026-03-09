@@ -1,6 +1,5 @@
 ---
 title: "Vielen Dank!"
-url: "/de/kontakt/success/"
 layout: "form-result"
 params:
   result: "success"

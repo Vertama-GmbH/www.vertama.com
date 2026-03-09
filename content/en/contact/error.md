@@ -1,6 +1,5 @@
 ---
 title: "Something went wrong"
-url: "/en/contact/error/"
 layout: "form-result"
 params:
   result: "error"
