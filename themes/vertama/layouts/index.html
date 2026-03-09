@@ -1,5 +1,9 @@
 {{ define "main" }}
-    {{ partial "sections/hero.html" . }}
-    {{ partial "sections/features.html" . }}
-    {{ partial "sections/latest-news.html" . }}
+{{ if eq .Site.Language.Lang "de" }}
+<meta http-equiv="refresh" content="0; url=/de/healthcareservices/">
+<link rel="canonical" href="/de/healthcareservices/">
+{{ else }}
+<meta http-equiv="refresh" content="0; url=/en/healthcare-services/">
+<link rel="canonical" href="/en/healthcare-services/">
+{{ end }}
 {{ end }}
