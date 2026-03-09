@@ -1,4 +1,4 @@
-{{ define "main" }}
+{{ define "head" }}
 {{ if eq .Site.Language.Lang "de" }}
 <meta http-equiv="refresh" content="0; url=/de/healthcareservices/">
 <link rel="canonical" href="/de/healthcareservices/">
@@ -7,3 +7,4 @@
 <link rel="canonical" href="/en/healthcare-services/">
 {{ end }}
 {{ end }}
+{{ define "main" }}{{ end }}
