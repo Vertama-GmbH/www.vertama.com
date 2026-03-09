@@ -15,4 +15,4 @@ build:
 
 clean:
 	@echo "Cleaning build artifacts..."
-	rm -rf public node_modules
+	rm -rf public

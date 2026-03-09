@@ -1,6 +1,7 @@
 ---
 title: "Something went wrong"
 layout: "form-result"
+translationKey: "contact-error"
 params:
   result: "error"
 ---

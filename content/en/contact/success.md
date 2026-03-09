@@ -1,6 +1,7 @@
 ---
 title: "Thank you!"
 layout: "form-result"
+translationKey: "contact-success"
 params:
   result: "success"
 ---

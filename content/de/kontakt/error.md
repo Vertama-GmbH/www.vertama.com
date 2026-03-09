@@ -1,6 +1,7 @@
 ---
 title: "Etwas ist schiefgelaufen"
 layout: "form-result"
+translationKey: "contact-error"
 params:
   result: "error"
 ---
