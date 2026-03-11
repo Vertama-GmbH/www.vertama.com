@@ -16,9 +16,6 @@
           </p>
           <div class="flex items-center gap-6">
             {{ partial "button.html" (dict "url" .Params.cta_primary.url "text" .Params.cta_primary.text) }}
-            <a href="{{ .Params.cta_secondary.url }}" class="text-sm font-bold text-slate-500 hover:text-vertama underline underline-offset-4">
-              Details ansehen
-            </a>
           </div>
         </div>
         <div class="hidden lg:flex w-48 h-48 bg-white border border-slate-200 rounded-lg items-center justify-center shadow-sm">
