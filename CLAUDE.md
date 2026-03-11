@@ -138,7 +138,7 @@ conventions.
 | File | Purpose |
 |------|---------|
 | `STYLEGUIDE.md` | Brand, colors, typography, components, page inventory |
-| `NEWS-HOW-TO.md` | How to add news articles |
+| `NEWS-HOW-TO.md` | How to add news articles — includes editorial workflow, tone guidelines, product overview, and AI briefing notes |
 | `CONTACT_FORM_BACKEND_REQUIREMENTS.md` | Backend spec for contact form endpoint |
 | `content-archive-fr.md` | Archived French content (reference if FR ever rebuilt) |
 | `.github/workflows/deploy-pages.yml` | Deployment pipeline |

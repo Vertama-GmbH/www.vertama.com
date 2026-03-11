@@ -4,6 +4,35 @@ News sind native Hugo-Seiten in Markdown. Kein npm, kein releases.json, kein Bui
 
 ---
 
+## Redaktioneller Workflow (auch als KI-Briefing geeignet)
+
+Der typische Ablauf für eine neue Meldung:
+
+1. **Quelle benennen** — eine externe URL (Pressemeldung, Partnerseite, Medienartikel) oder eine interne Information wird übergeben.
+2. **Vertamas Rolle klären** — bevor der Artikel geschrieben wird: Was ist Vertamas konkreter Beitrag? Externer Dienstleister? Technologiepartner? Referenzkunde? Marktkontext?
+3. **Artikel schreiben** — aus Vertamas Perspektive, nicht als Wiedergabe der Quelle. Kurz, sachlich, ohne PR-Sprache.
+4. **Verlinkung zu Produktseiten** — wenn relevant: DiGG (`/de/produkte/digg/`), ELIM (`/de/produkte/elim/`), DIGT (`/de/produkte/digt/`) verlinken.
+5. **Englische Version** — immer beide Sprachen. EN-Artikel darf kürzer sein; wenn Quellen auf Deutsch sind, kurz hinweisen.
+6. **`translationKey`** — gleicher Wert in DE + EN, Format: `news-YYYY-MM-DD-slug`.
+7. **Committen & pushen.**
+
+### Tonalität
+
+- Faktisch, nicht selbstbeweihräuchernd.
+- Vertamas Rolle benennen, aber nicht überbetonen — die Geschichte gehört dem Ergebnis, nicht dem Marketing.
+- Kurz. Ein Intro-Absatz, ein kurzer Folgeabsatz, optional ein fetter Zwischentitel für den zweiten Aspekt.
+- Keine Füllfloskeln wie „freut sich bekannt zu geben" oder „wegweisend".
+
+### Produkte im Überblick (für Verlinkung)
+
+| Produkt | Beschreibung | Pfad |
+|---------|-------------|------|
+| DiGG | Digitale Geburtsanzeige, Kreißsaal → Standesamt (M2M, OSCI, XPersonenstand) | `/de/produkte/digg/` |
+| ELIM | Elektronische Meldungen an RKI und Gesundheitsämter, §6/7 IfSG | `/de/produkte/elim/` |
+| DIGT | Digitale Todesbescheinigung | `/de/produkte/digt/` |
+
+---
+
 ## Neue News erstellen
 
 ### 1. Markdown-Datei anlegen
@@ -16,8 +45,10 @@ News sind native Hugo-Seiten in Markdown. Kein npm, kein releases.json, kein Bui
 ---
 title: "Produktlaunch: Neue Features für ELIM"
 date: 2026-03-20
-source_url: "https://example.com/pressemeldung"
-source_label: "example.com"
+translationKey: "news-2026-03-20-produktlaunch"
+sources:
+  - url: "https://example.com/pressemeldung"
+    label: "example.com"
 ---
 
 Wir freuen uns, heute neue Features vorzustellen.
