@@ -1,0 +1,95 @@
+{{ define "main" }}
+<div class="bg-white min-h-screen font-sans text-slate-800">
+
+  <div class="bg-slate-50 border-b border-slate-200 py-16 px-5">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-10">
+        <div class="max-w-2xl">
+                    <span class="text-xs font-bold uppercase tracking-widest text-vertama mb-3 block">
+                        {{ .Params.hero.badge }}
+                    </span>
+          <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            {{ .Params.hero.headline }}
+          </h1>
+          <p class="text-lg text-slate-600 leading-relaxed mb-8">
+            {{ .Params.hero.description }}
+          </p>
+          <div class="flex items-center gap-6">
+            {{ partial "button.html" (dict "url" .Params.cta_primary.url "text" .Params.cta_primary.text) }}
+            <a href="{{ .Params.cta_secondary.url }}" class="text-sm font-bold text-slate-500 hover:text-vertama underline underline-offset-4">
+              Details ansehen
+            </a>
+          </div>
+        </div>
+        <div class="hidden lg:flex w-48 h-48 bg-white border border-slate-200 rounded-lg items-center justify-center shadow-sm">
+          <span class="text-5xl font-black text-slate-100">{{ .Title }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="features" class="py-16 px-5 border-b border-slate-100">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold mb-10 text-slate-900">{{ .Params.features.title }}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">
+        {{ range .Params.features.items }}
+        <div class="border-l-2 border-slate-100 pl-6 hover:border-vertama transition-colors">
+          <h3 class="font-bold text-slate-900 mb-2">{{ .title }}</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">{{ .description }}</p>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-5 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="bg-slate-100 rounded-xl p-8 md:p-12 text-white">
+        <h2 class="text-2xl font-bold mb-8">{{ .Params.how_it_works.title }}</h2>
+        <div class="space-y-6">
+          {{ range $index, $step := .Params.how_it_works.steps }}
+          <div class="flex gap-6 pb-6 border-b border-white/10 last:border-0 last:pb-0">
+            <span class="text-vertama font-mono font-bold">{{ printf "%02d" (add $index 1) }}</span>
+            <div>
+              <h4 class="font-bold mb-1">{{ .title }}</h4>
+              <p class="text-sm text-slate-400">{{ .description }}</p>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!--  <section class="py-16 px-5">-->
+<!--    <div class="max-w-3xl mx-auto prose prose-slate prose-sm sm:prose-base prose-headings:text-slate-900">-->
+<!--      {{ .Content }}-->
+<!--    </div>-->
+<!--  </section>-->
+
+  <section class="py-16 px-5 bg-slate-50 border-y border-slate-200">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-xl font-bold mb-8 flex items-center gap-2">
+        <span class="text-vertama">🛡️</span> {{ .Params.compliance.title }}
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {{ range .Params.compliance.items }}
+        <div class="bg-white p-5 border border-slate-200 rounded shadow-sm">
+          <h5 class="text-sm font-bold text-slate-900 mb-1">{{ .title }}</h5>
+          <p class="text-xs text-slate-500">{{ .description }}</p>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-5 text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-2xl font-bold mb-4">{{ .Params.cta_section.title }}</h2>
+      <p class="text-slate-600 mb-8">{{ .Params.cta_section.description }}</p>
+      {{ partial "button.html" (dict "url" .Params.cta_section.url "text" .Params.cta_section.button_text) }}
+    </div>
+  </section>
+
+</div>
+{{ end }}

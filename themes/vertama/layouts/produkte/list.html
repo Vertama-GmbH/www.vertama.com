@@ -1,0 +1,60 @@
+{{ define "main" }}
+<div class="min-h-screen bg-white">
+
+  <section class="bg-slate-50 py-20 border-b border-slate-100">
+    <div class="max-w-6xl mx-auto px-5 text-center">
+      <h1 class="text-4xl md:text-5xl text-slate-900 font-extrabold mb-6">
+        Unsere Lösungen für das digitale Gesundheitswesen
+      </h1>
+      <div class="w-20 h-1 bg-vertama mx-auto mb-8"></div>
+      <p class="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+        Von der automatisierten Meldung bis zur hochspezialisierten Datenerfassung –
+        entdecken Sie unser modulares Produktportfolio für Kliniken und Labore.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 px-5">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {{ range .Pages }}
+        <div class="group flex flex-col bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-500">
+
+          <div class="h-48 bg-slate-100 flex items-center justify-center group-hover:bg-vertama/5 transition-colors">
+            {{ if .Params.product_image }}
+            <img src="{{ .Params.product_image }}" alt="{{ .Title }}" class="max-h-32 object-contain">
+            {{ else }}
+            <span class="text-vertama font-bold text-4xl opacity-20">{{ .Title }}</span>
+            {{ end }}
+          </div>
+
+          <div class="p-8 flex flex-col flex-grow">
+            <div class="mb-4">
+              <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Softwarelösung</span>
+              <h3 class="text-2xl text-slate-900 font-bold">{{ .Title }}</h3>
+            </div>
+
+            <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
+              {{ .Description | truncate 150 }}
+            </p>
+
+            <div class="pt-6 border-t border-slate-50">
+              {{ partial "button.html" (dict "url" .Permalink "text" "Details ansehen") }}
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-100 py-16 px-5 text-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-6">Sie suchen eine individuelle Lösung?</h2>
+      <p class="text-slate-400 mb-10">Unsere Experten unterstützen Sie bei der Integration in Ihre bestehende Infrastruktur.</p>
+      {{ partial "button.html" (dict "url" "/kontakt/" "text" "Beratung vereinbaren") }}
+    </div>
+  </section>
+
+</div>
+{{ end }}
