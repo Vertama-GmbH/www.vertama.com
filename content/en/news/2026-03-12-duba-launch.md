@@ -2,6 +2,9 @@
 title: "Vertama launches DUBA: digital solution for court applications directly from the hospital"
 date: 2026-03-12
 translationKey: "news-2026-03-12-duba-launch"
+sources:
+  - url: "/de/news/2026-03-12-duba-launch/"
+    label: "Originalmeldung (DE)"
 summary: "A new Vertama product enables hospitals to fully digitise judicial application procedures via the secure government electronic mailbox (beBPo) — directly from the hospital information system."
 ---
 
