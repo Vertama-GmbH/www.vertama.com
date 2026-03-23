@@ -1,0 +1,129 @@
+{{ $id := .id | default "carousel-default" }}
+{{ $autoplay := .autoplay | default true }}
+{{ $interval := .interval | default 5000 }}
+
+<section class="py-24 bg-white overflow-hidden"
+         aria-roledescription="carousel"
+         aria-label="{{ .title }}"
+         id="section-{{ $id }}">
+
+  <div class="max-w-6xl mx-auto px-5">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div class="max-w-2xl">
+        {{ if .subtitle }}<p class="text-xs font-bold text-vertama uppercase tracking-[0.3em] mb-3">{{ .subtitle }}</p>{{ end }}
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">{{ .title }}</h2>
+      </div>
+
+      <div class="flex items-center gap-3" role="group" aria-label="Steuerung">
+        <button id="btn-pause-{{ $id }}"
+                onclick="window.toggleAutoplay('{{ $id }}')"
+                class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 focus:ring-2 focus:ring-vertama outline-none"
+                aria-label="Auto-Play pausieren">
+          <span id="icon-pause-{{ $id }}">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </span>
+        </button>
+
+        <div class="flex gap-2">
+          <button onclick="window.handleCarouselScroll('{{ $id }}', -1)"
+                  class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 focus:ring-2 focus:ring-vertama outline-none">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button onclick="window.handleCarouselScroll('{{ $id }}', 1)"
+                  class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 focus:ring-2 focus:ring-vertama outline-none">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="{{ $id }}"
+         class="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8 scroll-smooth"
+         tabindex="0" role="list" aria-live="polite">
+
+      {{ range $index, $item := .items }}
+      <div class="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-center md:snap-start"
+           role="listitem">
+        {{ partial "card.html" . }}
+      </div>
+      {{ end }}
+    </div>
+
+  </div>
+</section>
+
+<style>
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Damit die Karten auf Mobile mittig einrasten */
+    @media (max-width: 767px) {
+        #{{ $id }} {
+        scroll-padding: 0;
+    }
+    }
+</style>
+
+<script>
+  if (!window.handleCarouselScroll) {
+    window.handleCarouselScroll = function(id, direction) {
+      const container = document.getElementById(id);
+      if (!container) return;
+
+      // Berechnet dynamisch die Breite einer Karte für den Scroll-Schritt
+      const itemWidth = container.firstElementChild.offsetWidth + 24;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+
+      if (direction === 1 && container.scrollLeft >= maxScroll - 10) {
+        container.scrollTo({ left: 0, behavior: 'smooth' });
+      } else if (direction === -1 && container.scrollLeft <= 10) {
+        container.scrollTo({ left: maxScroll, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: direction * itemWidth, behavior: 'smooth' });
+      }
+    };
+  }
+
+  if (!window.toggleAutoplay) {
+    window.toggleAutoplay = function(id) {
+      window.dispatchEvent(new CustomEvent('toggle-autoplay-' + id));
+    };
+  }
+
+  (function() {
+    const id = '{{ $id }}';
+    const container = document.getElementById(id);
+    if (!container) return;
+
+    let isPaused = false;
+    let manualPause = false;
+    let timer;
+
+    function startTimer() {
+      if (!timer && {{ $autoplay }}) {
+        timer = setInterval(() => {
+          if (!isPaused && !manualPause) window.handleCarouselScroll(id, 1);
+        }, {{ $interval }});
+      }
+    }
+
+    window.addEventListener('toggle-autoplay-' + id, () => {
+      manualPause = !manualPause;
+      const btn = document.getElementById('btn-pause-' + id);
+      const icon = document.getElementById('icon-pause-' + id);
+      if (manualPause) {
+        icon.innerHTML = '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+      } else {
+        icon.innerHTML = '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+      }
+    });
+
+    container.addEventListener('mouseenter', () => isPaused = true);
+    container.addEventListener('mouseleave', () => isPaused = false);
+    container.addEventListener('focusin', () => isPaused = true);
+    container.addEventListener('focusout', () => isPaused = false);
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) startTimer();
+  })();
+</script>

@@ -1,0 +1,181 @@
+{{ define "main" }}
+
+<section class="relative pt-24 pb-20 px-5 bg-white overflow-hidden">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:20px_20px] opacity-30 pointer-events-none"></div>
+
+  <div class="relative max-w-5xl mx-auto text-center">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-widest mb-8">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-vertama opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-vertama"></span>
+      </span>
+      {{ i18n "hero_badge" | default "Neu: DEMIS-Integration 2.0" }}
+    </div>
+
+    <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-8 tracking-tight leading-[1.1]">
+      {{ if eq .Site.Language.Lang "de" }}
+      Meldeprozesse <span class="text-transparent bg-clip-text bg-gradient-to-r from-vertama to-blue-600">as a Service</span>
+      {{ else }}
+      Reporting <span class="text-transparent bg-clip-text bg-gradient-to-r from-vertama to-blue-600">as a Service</span>
+      {{ end }}
+    </h1>
+
+    <p class="text-xl md:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+      {{ i18n "hero_description" | default "Automatisierte Ende-zu-Ende Lösungen für die rechtssichere Kommunikation zwischen Kliniken und Behörden." }}
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
+      {{ partial "button.html" (dict "url" "/kontakt/" "text" (i18n "cta_primary") "Page" .) }}
+      {{ partial "button.html" (dict "url" "#produkte" "text" (i18n "cta_secondary") "variant" "secondary" "Page" .) }}
+    </div>
+  </div>
+</section>
+
+<section class="py-24 px-5 bg-slate-50 border-y border-slate-200 overflow-hidden">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+
+      <div class="lg:col-span-5">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+          {{ i18n "anim_heading" | default "Datenübertragung ohne Medienbruch." }}
+        </h2>
+        <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+          Vergessen Sie manuelle Erfassungen oder unsichere Fax-Übertragungen. Unsere Engine übernimmt die Daten direkt aus Ihrem KIS und übermittelt sie verschlüsselt an die Zielbehörde.
+        </p>
+        <ul class="space-y-4">
+          {{ range (slice "Vollautomatisch" "Rechtssicher" "DSGVO-konform") }}
+          <li class="flex items-center gap-3 text-slate-700 font-medium">
+            <svg class="w-5 h-5 text-vertama" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            {{ . }}
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="relative h-80 bg-white rounded-[2.5rem] shadow-xl shadow-slate-200/50 border border-slate-200 flex items-end justify-between px-12 md:px-24 pb-12 overflow-hidden">
+          <div id="animation-stage" class="absolute inset-0 pointer-events-none"></div>
+
+          <div id="hospital-node" class="relative flex flex-col items-center z-10">
+            <div class="w-20 h-20 bg-slate-50 rounded-2xl flex items-center justify-center text-5xl shadow-sm border border-slate-100 mb-3">🏥</div>
+            <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Klinik-Informationssystem</span>
+          </div>
+
+          <div id="authority-icon" class="relative flex flex-col items-center z-10 transition-all duration-300">
+            <div class="w-20 h-20 bg-slate-50 rounded-2xl flex items-center justify-center text-5xl shadow-sm border border-slate-100 mb-3">🏛️</div>
+            <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Zielbehörde / DEMIS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 px-5 bg-white border-b border-slate-100">
+  <div class="max-w-6xl mx-auto text-center">
+    <p class="text-xs font-bold text-slate-400 uppercase tracking-[0.3em] mb-10">{{ i18n "trusted_by" | default "Nahtlos integriert mit" }}</p>
+    <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all">
+      <span class="text-xl font-bold text-slate-400">SAP Silver Partner</span>
+      <span class="text-xl font-bold text-slate-400">Oracle Cerner</span>
+      <span class="text-xl font-bold text-slate-400">InterSystems</span>
+    </div>
+  </div>
+</section>
+
+{{ $produkte := (where .Site.RegularPages "Section" "produkte") }}
+{{ partial "carousel.html" (dict
+"id" "main-product-loop"
+"items" $produkte
+"title" (cond (eq .Site.Language.Lang "de") "Digitale Werkzeuge für den modernen Klinikalltag." "Digital tools for hospitals.")
+"subtitle" (cond (eq .Site.Language.Lang "de") "Unsere Lösungen" "Our Solutions")
+) }}
+
+<section class="py-24 px-5 bg-slate-50">
+  <div class="max-w-4xl mx-auto text-center mb-20">
+    <h2 class="text-4xl font-bold text-slate-900 mb-6">In drei Schritten zur digitalen Meldung</h2>
+    <p class="text-lg text-slate-600">Wir haben den Prozess so weit vereinfacht, dass er Ihren klinischen Alltag nicht belastet.</p>
+  </div>
+
+  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
+    {{ $steps := slice
+    (dict "n" "01" "t" "Anbinden" "d" "Integration in Ihr bestehendes KIS über Standardschnittstellen.")
+    (dict "n" "02" "t" "Konfigurieren" "d" "Feineinstellung der Melde-Workflows nach Ihren Vorgaben.")
+    (dict "n" "03" "t" "Profitieren" "d" "Zeitersparnis ab dem ersten Tag durch automatisierte Abläufe.")
+    }}
+    {{ range $steps }}
+    <div class="relative group">
+      <div class="text-8xl font-black text-slate-200 absolute -top-10 -left-4 group-hover:text-vertama/10 transition-colors">{{ .n }}</div>
+      <div class="relative">
+        <h3 class="text-xl font-bold text-slate-900 mb-4">{{ .t }}</h3>
+        <p class="text-slate-600 leading-relaxed">{{ .d }}</p>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<!-- Final CTA -->
+{{ partial "cta-section.html" (dict
+"Page" .
+"heading" (cond (eq .Site.Language.Lang "de") "Bereit für digitale Meldeprozesse?" "Ready for digital reporting?")
+"description" (cond (eq .Site.Language.Lang "de") "Kontaktieren Sie uns für eine unverbindliche Beratung." "Contact us for a no-obligation consultation.")
+"buttonText" (cond (eq .Site.Language.Lang "de") "Jetzt Kontakt aufnehmen" "Get in Touch")
+"showBorder" true
+) }}
+
+<style>
+    .flying-doc {
+        position: absolute;
+        font-size: 2.5rem;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 50;
+        filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+        animation: parabolicArc 2.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes parabolicArc {
+        0% { left: 18%; bottom: 35%; opacity: 0; transform: scale(0.5) rotate(-20deg); }
+        15% { opacity: 1; transform: scale(1.2) rotate(0deg); }
+        50% { left: 50%; bottom: 85%; transform: scale(1.4) rotate(5deg); }
+        85% { opacity: 1; transform: scale(1.2) rotate(0deg); }
+        100% { left: 78%; bottom: 35%; opacity: 0; transform: scale(0.5) rotate(20deg); }
+    }
+
+    .jump-animation {
+        transform: translateY(-20px) scale(1.05);
+        filter: drop-shadow(0 20px 25px rgba(0,0,0,0.1));
+    }
+</style>
+
+<script>
+  (function() {
+    if (window.vTimer) clearInterval(window.vTimer);
+
+    function run() {
+      const stage = document.getElementById('animation-stage');
+      const auth = document.getElementById('authority-icon');
+      if (!stage || !auth) return;
+
+      window.vTimer = setInterval(() => {
+        if (!document.getElementById('animation-stage')) return;
+        const doc = document.createElement('div');
+        doc.textContent = '📄';
+        doc.className = 'flying-doc';
+        stage.appendChild(doc);
+
+        setTimeout(() => {
+          if (auth) {
+            auth.classList.add('jump-animation');
+            setTimeout(() => auth.classList.remove('jump-animation'), 400);
+          }
+          setTimeout(() => doc.remove(), 500);
+        }, 2400);
+      }, 4000);
+    }
+
+    document.readyState === 'complete' ? run() : window.addEventListener('load', run);
+  })();
+</script>
+
+{{ end }}
