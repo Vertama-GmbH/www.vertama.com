@@ -1,0 +1,79 @@
+<!-- layouts/partials/cta-section.html -->
+
+{{- $ctx := . -}}
+{{- $page := . -}}
+
+{{- /* Detect current language */ -}}
+{{- $lang := "de" -}}
+{{- if reflect.IsMap $ctx -}}
+{{- if $ctx.Page -}}
+{{- $page = $ctx.Page -}}
+{{- $lang = $page.Language.Lang -}}
+{{- end -}}
+{{- else -}}
+{{- $lang = $page.Language.Lang -}}
+{{- end -}}
+
+{{- /* Language-specific defaults */ -}}
+{{- $heading := "" -}}
+{{- $description := "" -}}
+{{- $buttonText := "" -}}
+{{- $contactUrl := "" -}}
+
+{{- if eq $lang "de" -}}
+{{- $heading = "Haben Sie Fragen?" -}}
+{{- $description = "Nehmen Sie jetzt Kontakt mit uns auf. Wir beraten Sie gerne." -}}
+{{- $buttonText = "Kontakt aufnehmen" -}}
+{{- $contactUrl = "/de/kontakt/" -}}
+{{- else if eq $lang "en" -}}
+{{- $heading = "Have Questions?" -}}
+{{- $description = "Get in touch with us now. We're happy to help." -}}
+{{- $buttonText = "Contact Us" -}}
+{{- $contactUrl = "/en/contact/" -}}
+{{- end -}}
+
+{{- $buttonUrl := $contactUrl -}}
+{{- $buttonVariant := "primary" -}}
+{{- $showBorder := true -}}
+{{- $headingId := "cta-heading" -}}
+
+{{- if reflect.IsMap $ctx -}}
+{{- $heading = $ctx.heading | default $heading -}}
+{{- $description = $ctx.description | default $description -}}
+{{- $buttonText = $ctx.buttonText | default $buttonText -}}
+{{- $buttonVariant = $ctx.buttonVariant | default "primary" -}}
+{{- $showBorder = $ctx.showBorder | default true -}}
+{{- $headingId = $ctx.headingId | default "cta-heading" -}}
+
+{{- if $ctx.buttonUrl -}}
+{{- $buttonUrl = $ctx.buttonUrl -}}
+{{- else if $ctx.product -}}
+{{- $buttonUrl = printf "%s?product=%s" $contactUrl $ctx.product -}}
+{{- else -}}
+{{- $buttonUrl = $contactUrl -}}
+{{- end -}}
+{{- end -}}
+
+<section class="py-16 px-5" aria-labelledby="{{ $headingId }}">
+  <div class="max-w-4xl mx-auto text-center {{ if $showBorder }}border-t-2 border-vertama pt-6{{ end }}">
+
+    {{ partial "headline.html" (dict
+    "level" "h2"
+    "text" $heading
+    "id" $headingId
+    "description" $description
+    "textColor" "text-slate-900"
+    "maxWidth" "max-w-4xl"
+    ) }}
+
+    <div class="mt-8">
+      {{ partial "button.html" (dict
+      "text" $buttonText
+      "url" $buttonUrl
+      "variant" $buttonVariant
+      "ariaLabel" (cond (eq $lang "de") "Kontaktformular öffnen" "Open contact form")
+      ) }}
+    </div>
+
+  </div>
+</section>
