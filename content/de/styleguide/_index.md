@@ -4,4 +4,3 @@ layout: "styleguide"
 translationKey: "styleguide"
 ---
 
-Test Styleguide...
