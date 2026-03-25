@@ -39,7 +39,7 @@ Adequate is not the standard.
 
 ## 2. Color System
 
-| Token | Hex | Usage |
+<| Token | Hex | Usage |
 |-------|-----|-------|
 | `vertama` | `#005e7b` | Primary brand, CTAs, active nav, headings, links |
 | `vertama-light` | `#008ab5` | Hover states, gradient end, badges |
@@ -108,17 +108,39 @@ Prefer multiples of 4 (Tailwind's scale). Key values in use:
 
 ## 6. Components
 
-### Navigation (header)
+### Header
 - Fixed at top, `z-50`
-- Logo left, nav links center/right, language switcher
-- Mobile: hamburger menu (JS toggle)
+- Logo leftmost side (link to main site)
 - External links (e.g. Entwickler → docs.vertama.com) open in `_blank`
+    - ### Navigation
+      - Right-aligned inside the Header component
+      - Language selection switch at rightmost side (default: DE, grayed: EN)
+      - Mobile: Hamburger menu (JS toggle); Navigation links underneath each other and language selection as last item 
 
 ### Footer
-- Logo + slogan + bare social icons (GitHub, LinkedIn, Instagram)
-- Navigation column (mirrors main nav)
-- Rechtliches column (Impressum, Datenschutz, AGB, Cookie-Hinweis)
-- Copyright bar with separator
+- ("Brand column":) Logo at leftmost side, slogan underneath logo, social icons (GitHub, LinkedIn, Instagram) underneath slogan
+- Navigation column (mirrors main navigation) right aligned before Rechtliches column at rightmost side
+- Rechtliches column (Impressum, Datenschutz, AGB, Cookie-Hinweis) at rightmost side
+- Copyright bar with separator underneath everything, text on leftmost side
+- Mobile: "Brand column" on top, Navigation column and Rechtliches Column underneath but Navigation on the left and Rechtliches on the right side, Copyright bar underneath everything
+
+### Headline
+- ...
+
+### Call-to-action
+- At the end of every page
+- Seperation bar on top, h2 text and p text underneath, bottom item is a button with link referring to contact form
+
+### Button
+- White text on primary colour, rectangle form with rounded corners
+- On hover: light version of primary colour
+- On click: hover design with extra border in primary colour (with small gap, border does not lay on button directly)
+
+### Carousel
+- ...
+
+### Card
+- ...
 
 ### Social Icons
 - Bare SVG, 16×16, `text-slate-400 hover:text-[#005e7b]`
