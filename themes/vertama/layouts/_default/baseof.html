@@ -7,7 +7,6 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ "/images/Vertama_Icon.svg" | relURL }}">
-    <link rel="icon" type="image/x-icon" href="{{ "/favicon.ico" | relURL }}">
 
     <!-- Tailwind CSS CDN - KEIN Build-Prozess! -->
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
@@ -44,6 +43,13 @@
             ]
         }
     </script>
+
+<!--  Lucide-Icons  -->
+    <!-- Development version -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Production version -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Custom CSS (nur für Dinge die Tailwind nicht hat) -->
     <link rel="stylesheet" href="{{ "css/theme.css" | relURL }}">
