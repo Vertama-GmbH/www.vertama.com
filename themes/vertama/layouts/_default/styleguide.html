@@ -48,21 +48,59 @@
                     <code class="mt-1 block text-xs text-gray-400">text-sm text-vertama font-semibold</code>
                 </div>
                 <div>
-                    <h1 class="text-xs text-slate-400">Copyright und Slogan in Footer</h1>
-                    <code class="mt-1 block text-xs text-gray-400">text-xs text-slate-400</code>
-                </div>
-                <div>
                     <h1 class="text-sm text-slate-500">Navigation und Rechtliches Elemente in Footer</h1>
                     <code class="mt-1 block text-xs text-gray-400">text-sm text-slate-500</code>
+                </div>
+                <div>
+                    <h1 class="text-xs text-slate-400">Copyright und Slogan in Footer</h1>
+                    <code class="mt-1 block text-xs text-gray-400">text-xs text-slate-400</code>
                 </div>
             </div>
             <!-- /Typografie -->
 
+            <!-- Buttons -->
             <h2 class="text-3xl font-bold text-slate-900 mb-4 leading-snug">
                 Button
             </h2>
 
+            <div class="mt-8">
+                {{- $buttonText := "Beispiel" -}}
+                {{- $variantPrimaryNoArrow := "primaryNoArrow" -}}
+                {{- $variantHover := "hover" -}}
+                {{- $variantFocus := "focus" -}}
+
+                {{ partial "button.html" (dict
+                "text" $buttonText
+                "variant" $variantPrimaryNoArrow
+                ) }}
+                <h1 class="text-sm text-slate-700 mt-2">Default (Primary, no Arrow)</h1>
+                <code class="mt-1 block text-xs text-gray-400">inline-flex items-center justify-center gap-2 px-8 py-4 border border-transparent font-bold rounded-lg shadow-sm transition-colors</code>
+                <code class="mt-1 block text-xs text-gray-400 mb-4">text-white bg-vertama</code>
+
+                {{ partial "button.html" (dict
+                "text" $buttonText
+                ) }}
+                <h1 class="text-sm text-slate-700 mt-2">Primary with Arrow</h1>
+                <code class="mt-1 block text-xs text-gray-400 mb-4">text-white bg-vertama</code>
+
+                {{ partial "button.html" (dict
+                "text" $buttonText
+                "variant" $variantHover
+                ) }}
+                <h1 class="text-sm text-slate-700 mt-2">Hover</h1>
+                <code class="mt-1 block text-xs text-gray-400 mb-4">text-white bg-vertama-light</code>
+
+                {{ partial "button.html" (dict
+                "text" $buttonText
+                "variant" $variantFocus
+                ) }}
+                <h1 class="text-sm text-slate-700 mt-2">Focus</h1>
+                <code class="mt-1 block text-xs text-gray-400 mb-4">text-white bg-vertama-light ring-2 ring-vertama ring-offset-2</code>
+            </div>
+            <!-- /Buttons -->
+
         </div>
+
     </div>
 </section>
 {{ end }}
