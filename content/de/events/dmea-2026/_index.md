@@ -4,8 +4,6 @@ layout: "event"
 url: "/dmea/"
 campaign_ref: "dmea-live-booth"
 event_logo: ""
-
-title: "Willkommen DMEA 2026"
 badge_text: "Messe-Special 2026"
 intro_text: "Schön, dass Sie uns am Stand D-103 besucht haben! Hier finden Sie alle Informationen zu den vorgestellten digitalen Lösungen für Ihre Klinik."
 
