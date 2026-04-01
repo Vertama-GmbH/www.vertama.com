@@ -90,6 +90,13 @@ compliance:
       title: "OSCI-gesichert"
       description: "Behördlich anerkannter Kommunikationsweg"
 
+benefits_short:
+  items:
+    - text: "§6-Meldungen im Infektionsschutz"
+    - text: "44 neueste Meldeprofile für die FHIR-Schnittstelle von DEMIS verfügbar"
+    - text: "Meldeweg via Fax an Gesundheitsämter läuft aus"
+    - text: "keine Medienbrüche, vorausgefüllte Daten aus dem KIS verfügbar"
+
 benefits:
   title: "Ihre Vorteile auf einen Blick"
   items:

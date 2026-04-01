@@ -1,6 +1,6 @@
 ---
 title: "DIVI"
-description: "Intensivbettenmeldung – Vollautomatisch. Gesetzeskonform."
+description: "Meldung der Intensivkapazitäten"
 tagline: "Vollautomatisch. Gesetzeskonform."
 layout: "single"
 icon: "/assets/images/icons/products/product-divi.png"
@@ -78,6 +78,13 @@ compliance:
     - icon: "🏥"
       title: "§ 13 IfSG + RKI"
       description: "Gesetzeskonform"
+
+benefits_short:
+  items:
+    - text: "Kapazitäten der Intensivstationen müssen täglich gemeldet werden"
+    - text: "Intensivregister bietet eine API-Schnittstelle für automatisierte Meldungen an"
+    - text: "Nicht aus dem KIS / PDMS ermittelbare Inhalte (aus Corona-Zeit) werden aus den Meldungen wieder entfernt"
+    - text: "Meldeprozess kann vollautomatisiert betrieben werden"
 
 benefits:
   title: "Ihre Vorteile auf einen Blick"

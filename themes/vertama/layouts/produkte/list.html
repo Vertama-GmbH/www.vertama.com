@@ -12,56 +12,15 @@
   </div>
 </section>
 
+
 <!-- Products Grid - Dynamic Loop -->
-<section class="py-5 px-5 bg-white" aria-label="Produktübersicht">
+<section class="py-12 px-5 bg-white" aria-label="Produktübersicht">
   <div class="max-w-6xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {{ range .Pages }}
-      <article class="group flex">
-        <a href="{{ .Permalink }}"
-           class="flex flex-col w-full bg-white border border-slate-200 rounded-lg p-6 hover:border-vertama hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-vertama focus:ring-offset-2">
-
-          <!-- Title -->
-          <h3 class="text-2xl font-bold text-slate-900 mb-1">
-            {{ .Title }}
-          </h3>
-
-          <!-- Tagline -->
-          {{ if .Params.tagline }}
-          <p class="text-sm text-vertama font-semibold mb-4">
-            {{ .Params.tagline }}
-          </p>
-          {{ end }}
-
-          <div class="flex-grow">
-            {{ if .Params.benefits.items }}
-            {{ $items := .Params.benefits.items }}
-            <ul class="space-y-2 mb-6" aria-label="Hauptmerkmale">
-              {{ range first 3 $items }}
-              <li class="flex items-start gap-2 text-sm text-slate-700">
-                <svg class="w-4 h-4 text-vertama flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                <span>{{ .text }}</span>
-              </li>
-              {{ end }}
-            </ul>
-            {{ else }}
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              {{ .Description | truncate 120 }}
-            </p>
-            {{ end }}
-          </div>
-
-          <!-- CTA - bleibt immer unten! -->
-          <span class="inline-flex items-center text-vertama font-semibold text-sm group-hover:underline min-h-[44px] py-2 mt-auto">
-        Details ansehen
-        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-        </svg>
-      </span>
-        </a>
-      </article>
+      {{ range .Pages.ByWeight }}
+      <div class="flex h-full">
+        {{ partial "card.html" . }}
+      </div>
       {{ end }}
     </div>
   </div>

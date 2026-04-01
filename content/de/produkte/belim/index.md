@@ -1,13 +1,13 @@
 ---
 title: "BELIM"
-description: "Bettenbelegmeldung – Digital. Schnell. Automatisiert."
-tagline: "Digital. Schnell. Automatisiert."
+description: "Bettenbelegmeldung"
+tagline: "Bettenbelegungsmeldung"
 layout: "single"
 icon: "/assets/images/icons/products/product-belim.png"
 
 hero:
   badge: "Bettenbelegmeldung"
-  headline: "BELIM – Bettenbelegmeldung"
+  headline: "BELIM"
   subheadline: "Digital. Schnell. Automatisiert."
   description: "BELIM – die cloudbasierte Lösung für die tägliche, gesetzlich vorgeschriebene Bettenbelegsmeldung – direkt aus dem KIS, ohne manuelle Zwischenschritte. Der Prozess läuft vollständig automatisiert und erfüllt die Vorgaben des § 13 IfSG."
 
@@ -82,6 +82,12 @@ compliance:
     - icon: "🇩🇪"
       title: "§ 13 IfSG konform"
       description: "Gesetzeskonform"
+
+benefits_short:
+  items:
+    - text: "Tägliche Meldung muss bis 11 Uhr"
+    - text: "Datenermittlung erfolgt oft im Controlling oder der kaufmännischen Direktion"
+    - text: "Meldeprozess kann vollautomatisiert betrieben werden"
 
 benefits:
   title: "Ihre Vorteile auf einen Blick"

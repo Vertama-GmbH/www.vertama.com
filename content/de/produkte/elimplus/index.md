@@ -1,5 +1,5 @@
 ---
-title: "ELIM"
+title: "ELIM+"
 description: "Elektronische Infektionsmeldung"
 tagline: "Elektronische Infektionsmeldung"
 layout: "single"
@@ -7,13 +7,13 @@ icon: "/assets/images/icons/products/product-elim.png"
 
 hero:
   badge: "Infektionsmeldung"
-  headline: "ELIM"
+  headline: "ELIM+"
   subheadline: "Elektronische Infektionsmeldung"
-  description: "ELIM digitalisiert den Meldeprozess für meldepflichtige Infektionskrankheiten – direkt aus dem KIS, in Echtzeit und vollständig gesetzeskonform. Die cloudbasierte Lösung ist auf die Umsetzung der gesetzlichen Anforderungen gemäß § 6, 8, 9 IfSG ausgerichtet."
+  description: "ELIM+ digitalisiert den Meldeprozess für meldepflichtige Infektionskrankheiten – direkt aus dem KIS, in Echtzeit und vollständig gesetzeskonform. Die cloudbasierte Lösung ist auf die Umsetzung der gesetzlichen Anforderungen gemäß § 6, 8, 9 IfSG ausgerichtet."
 
 cta_primary:
   text: "Demo anfragen"
-  url: "/de/kontakt/?product=elim"
+  url: "/de/kontakt/?product=elimplus"
 
 cta_secondary:
   text: "Mehr erfahren"

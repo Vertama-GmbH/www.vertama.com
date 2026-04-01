@@ -1,50 +1,62 @@
-<article class="flex-shrink-0 w-full h-full" role="group" aria-roledescription="slide">
+{{ $show := false }}
+{{ if isset . "showIcon" }}
+{{ $show = .showIcon }}
+{{ end }}
+
+<article class="flex-shrink-0 w-full h-full">
   <a href="{{ .Permalink }}"
-     class="group flex flex-col h-full bg-white border border-slate-200 rounded-[2rem] p-8
+     class="group flex flex-col h-full bg-white border-2 border-slate-200 rounded-[2rem] p-8
             hover:border-vertama hover:shadow-2xl hover:shadow-vertama/5 transition-all duration-500
-            focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-vertama/30">
+            focus:outline-none focus:ring-4 focus:ring-vertama focus:ring-offset-2"
+     aria-label="{{ if eq .Site.Language.Lang "de" }}Produktdetails ansehen für {{ .Title }}{{ else }}View product details for {{ .Title }}{{ end }}">
 
-    <div class="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center mb-8 group-hover:bg-vertama transition-colors duration-300 p-3" aria-hidden="true">
-      {{ if .Params.icon }}
-      <img src="{{ .Params.icon | relURL }}" alt="" class="w-full h-full object-contain group-hover:brightness-0 group-hover:invert transition-all">
-      {{ else }}
-      <span class="text-vertama group-hover:text-white font-bold text-xl">→</span>
-      {{ end }}
-    </div>
+  {{ if $show }}
+  <div class="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center mb-8 group-hover:bg-vertama transition-colors duration-300 p-3" aria-hidden="true">
+    {{ if .Params.icon }}
+    <img src="{{ .Params.icon | relURL }}" alt="" class="w-full h-full object-contain group-hover:brightness-0 group-group-hover:invert transition-all">
+    {{ else }}
+    <span class="text-vertama group-hover:text-white font-bold text-xl">→</span>
+    {{ end }}
+  </div>
+  {{ end }}
 
-    <div class="mb-4">
-      <h3 class="text-2xl font-bold text-slate-900 group-hover:text-vertama transition-colors">
-        {{ .Title }}
-      </h3>
-      {{ if .Params.tagline }}
-      <p class="text-[10px] font-black text-vertama/80 uppercase tracking-[0.2em] mt-1">
-        {{ .Params.tagline }}
-      </p>
-      {{ end }}
-    </div>
+  <div class="mb-4">
+    <h3 class="text-2xl font-bold text-slate-900 group-hover:text-vertama transition-colors">
+      {{ .Title }}
+    </h3>
+    {{ if .Params.tagline }}
+    <p class="text-xs font-bold text-vertama uppercase tracking-wider mt-2" aria-label="Kategorie">
+      {{ .Params.tagline }}
+    </p>
+    {{ end }}
+  </div>
 
-    <div class="flex-grow text-slate-600">
-      {{ if .Params.benefits.items }}
-      <ul class="space-y-3 mb-8" aria-label="Vorteile von {{ .Title }}">
-        {{ range first 3 .Params.benefits.items }}
-        <li class="flex items-start gap-3 text-sm">
-          <svg class="w-5 h-5 text-vertama flex-shrink-0" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-          <span>{{ .text }}</span>
-        </li>
-        {{ end }}
-      </ul>
-      {{ else }}
-      <p class="text-sm leading-relaxed mb-8">{{ .Description | truncate 120 }}</p>
-      {{ end }}
-    </div>
+  <div class="flex-grow text-slate-700">
+    {{ if .Params.benefits.items }}
+    <ul class="space-y-3 mb-8" aria-label="{{ if eq .Site.Language.Lang "de" }}Vorteile von {{ .Title }}{{ else }}Benefits of {{ .Title }}{{ end }}">
+    {{ range first 3 .Params.benefits.items }}
+    <li class="flex items-start gap-3 text-sm leading-relaxed">
+      <svg class="w-5 h-5 text-vertama flex-shrink-0 mt-0.5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+      </svg>
+      <span>{{ .text }}</span>
+    </li>
+    {{ end }}
+    </ul>
+    {{ else }}
+    <p class="text-sm leading-relaxed mb-8">{{ .Description | truncate 120 }}</p>
+    {{ end }}
+  </div>
 
-    <div class="pt-6 border-t border-slate-50 flex items-center justify-between mt-auto">
-      <span class="text-sm font-bold text-slate-900" aria-hidden="true">
+  <div class=" flex items-center gap-2 mt-auto group-hover:text-vertama transition-colors transition-all transform group-hover:translate-x-1">
+      <span class="text-sm font-bold">
         {{ if eq .Site.Language.Lang "de" }}Details ansehen{{ else }}View Details{{ end }}
       </span>
-      <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center group-hover:bg-vertama transition-all transform group-hover:translate-x-1">
-        <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-      </div>
+    <div class="w-10 h-10 flex items-center justify-center" aria-hidden="true">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+      </svg>
     </div>
+  </div>
   </a>
 </article>

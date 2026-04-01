@@ -1,7 +1,7 @@
 ---
 title: "DiGG"
-description: "Digitale Geburtsmeldung – Vom Kreißsaal ins Standesamt"
-tagline: "Vom Kreißsaal ins Standesamt"
+description: "Digitale Geburtsmeldung"
+tagline: "Digitale Geburtsanzeige"
 layout: "single"
 icon: "/assets/images/icons/products/product-digg.png"
 
@@ -81,6 +81,13 @@ compliance:
     - icon: "🏛️"
       title: "OSCI-gesichert"
       description: "Behördlich anerkannter Kommunikationsweg"
+
+benefits_short:
+  items:
+    - text: "löst einen 150 Jahre alten Meldeweg (Bote/Post) ab"
+    - text: "Datentransport im XPersonenstand-Standard"
+    - text: "Über die OSCl-Infrastruktur direkt ins Fachverfahren des Standesamtes (Autista)"
+    - text: "Anzeigen werden durch Unternehmenssiegel oder Digitale Signatur authentifiziert"
 
 benefits:
   title: "Ihre Vorteile auf einen Blick"
