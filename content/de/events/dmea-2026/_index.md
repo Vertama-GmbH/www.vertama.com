@@ -1,7 +1,7 @@
 ---
 title: "Willkommen <span class='text-white'>DMEA 2026</span>"
 layout: "event"
-url: "/dmea/"
+url: "/DMEA26/"
 campaign_ref: "dmea-live-booth"
 event_logo: ""
 badge_text: "Messe-Special 2026"
