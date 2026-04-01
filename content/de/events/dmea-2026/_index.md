@@ -1,5 +1,5 @@
 ---
-title: "Willkommen <span class='text-white'>DMEA 2026</span>"
+title: "Willkommen DMEA 2026"
 layout: "event"
 url: "/DMEA26/"
 campaign_ref: "dmea-live-booth"
