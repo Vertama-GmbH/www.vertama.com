@@ -4,6 +4,7 @@ description: "Bettenbelegmeldung"
 tagline: "Bettenbelegungsmeldung"
 layout: "single"
 icon: "/assets/images/icons/products/product-belim.png"
+weight: 20
 
 hero:
   badge: "Bettenbelegmeldung"
@@ -83,12 +84,6 @@ compliance:
       title: "§ 13 IfSG konform"
       description: "Gesetzeskonform"
 
-benefits_short:
-  items:
-    - text: "Tägliche Meldung muss bis 11 Uhr"
-    - text: "Datenermittlung erfolgt oft im Controlling oder der kaufmännischen Direktion"
-    - text: "Meldeprozess kann vollautomatisiert betrieben werden"
-
 benefits:
   title: "Ihre Vorteile auf einen Blick"
   items:
@@ -106,6 +101,14 @@ benefits:
     
     - text: "Flexibles Customizing"
       detail: "Anpassbar an individuelle Stationsstrukturen"
+      
+card_content:
+  title: "BELIM"
+  tagline: "Bettenbelegungsmeldung"
+  benefits:
+    - "Tägliche Meldung muss bis 11 Uhr"
+    - "Datenermittlung erfolgt oft im Controlling oder der kaufmännischen Direktion"
+    - "Meldeprozess kann vollautomatisiert betrieben werden"
 
 cta_section:
   title: "BELIM ist die Komplettlösung für die tägliche Bettenbelegmeldung."

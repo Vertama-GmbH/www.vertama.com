@@ -4,6 +4,7 @@ description: "Digitale Sterbefallanzeige – Rechtssicher. Schnell. Automatisier
 tagline: "Rechtssicher. Schnell. Automatisiert."
 layout: "single"
 icon: "/assets/images/icons/products/product-digt.png"
+weight: 60
 
 hero:
   badge: "Sterbefallanzeige"
@@ -90,13 +91,6 @@ compliance:
       title: "OSCI-gesichert"
       description: "Behördlich anerkannter Kommunikationsweg"
 
-benefits_short:
-  items:
-    - text: "§6-Meldungen im Infektionsschutz"
-    - text: "44 neueste Meldeprofile für die FHIR-Schnittstelle von DEMIS verfügbar"
-    - text: "Meldeweg via Fax an Gesundheitsämter läuft aus"
-    - text: "keine Medienbrüche, vorausgefüllte Daten aus dem KIS verfügbar"
-
 benefits:
   title: "Ihre Vorteile auf einen Blick"
   items:
@@ -114,6 +108,14 @@ benefits:
     
     - text: "Revisionssichere Archivierung"
       detail: "Nachvollziehbar und auditfähig"
+
+card_content:
+  title: "DiGT"
+  tagline: "Digitale Todesanzeige"
+  benefits:
+    - "Automatisierte Erfassung und Übernahme der benötigten DIGT-Daten aus dem KIS - i.s.h.med"
+    - "Ergänzung und Validierung der Daten im Meldeformular"
+    - "Übermittlung der Todesanzeigen an das zuständige Standesamt"
 
 cta_section:
   title: "DiGT ist die Komplettlösung für digitale Sterbefallanzeigen."

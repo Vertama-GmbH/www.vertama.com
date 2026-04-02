@@ -56,48 +56,6 @@ name = 'Kontakt'
 url = '/de/kontakt/'
 weight = 4
 
-[[languages.de.products_sort]]
-identifier = "elim"
-name = "ELIM"
-weight = 1
-url = "/de/produkte/elim/"
-
-[[languages.de.products_sort]]
-identifier = "belim"
-name = "BELIM"
-weight = 2
-url = "/de/produkte/belim/"
-
-[[languages.de.products_sort]]
-identifier = "digg"
-name = "DiGG"
-weight = 3
-url = "/de/produkte/digg/"
-
-[[languages.de.products_sort]]
-identifier = "duba"
-name = "BuBA"
-weight = 4
-url = "/de/produkte/duba/"
-
-[[languages.de.products_sort]]
-identifier = "divi"
-name = "DIVI"
-weight = 5
-url = "/de/produkte/divi/"
-
-[[languages.de.products_sort]]
-identifier = "digt"
-name = "DiGT"
-weight = 6
-url = "/de/produkte/digt/"
-
-[[languages.de.products_sort]]
-identifier = "elim+"
-name = "ELIM+"
-weight = 7
-url = "/de/produkte/elimplus/"
-
 # --- ENGLISCH ---
 [languages.en]
 languageCode = 'en-us'
@@ -219,47 +177,3 @@ weight = 3
 name = 'Cookie Policy'
 url = '/en/cookie-policy-eu/'
 weight = 4
-
-[[languages.en.products_sort]]
-identifier = "elim"
-name = "ELIM"
-weight = 1
-url = "/en/products/elim/"
-
-[[languages.en.products_sort]]
-identifier = "belim"
-name = "BELIM"
-weight = 2
-url = "/en/products/belim/"
-
-[[languages.en.products_sort]]
-identifier = "digg"
-name = "DiGG"
-weight = 3
-url = "/en/products/digg/"
-
-[[languages.en.products_sort]]
-identifier = "duba"
-name = "BuBA"
-weight = 4
-url = "/en/products/duba/"
-
-[[languages.en.products_sort]]
-identifier = "divi"
-name = "DIVI"
-weight = 5
-url = "/en/products/divi/"
-
-[[languages.en.products_sort]]
-identifier = "digt"
-name = "DiGT"
-weight = 6
-url = "/en/products/digt/"
-
-[[languages.en.products_sort]]
-identifier = "elim+"
-name = "ELIM+"
-weight = 7
-url = "/en/products/elimplus/"
-
-

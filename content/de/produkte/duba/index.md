@@ -4,6 +4,7 @@ description: "Digitale Unterbringungsanträge"
 tagline: "Rechtskonforme Anträge. Digital. Direkt."
 layout: "single"
 icon: "/assets/images/icons/products/product-duba.png"
+weight: 40
 
 hero:
   badge: "Behördenanträge"
@@ -88,15 +89,17 @@ governikus:
   title: "Digitale Kommunikation mit Gerichten – ganz einfach"
   description: "Dank der integrierten Anbindung an die Governikus Vibiblia REST-Schnittstelle versendet DuBA Anträge direkt über das beBPo – ohne umständliche Plugins, ohne Outlook, aber mit vollständiger Kontrolle und Nachverfolgbarkeit."
 
-benefits_short:
-  items:
-    - text: "Gerichte erwarten digitale Kommunikation gemäß OZG (Online Zugangsgesetz)"
-    - text: "Betreuungs-Anträge bei Gerichten digital und rechtskonform direkt aus dem KIS einreichen"
-    - text: "Datentransport über EGVP-Infrastruktur und das besondere Behördenpostfach (BeBPo)"
-
 benefits:
   title: "DuBA – Weniger Aufwand. Mehr Rechtssicherheit."
   description: "Für ein Gesundheitssystem, das Zeit für Menschen schafft."
+
+card_content:
+  title: "DuBA"
+  tagline: "Digitale Unterbringungsanträge"
+  benefits:
+    - "Gerichte erwarten digitale Kommunikation gemäß OZG (Online Zugangsgesetz)"
+    - "Betreuungs-Anträge bei Gerichten digital und rechtskonform direkt aus dem KIS einreichen"
+    - "Datentransport über EGVP-Infrastruktur und das besondere Behördenpostfach (BeBPo)"
 
 cta_section:
   title: "DuBA – Weniger Aufwand. Mehr Rechtssicherheit."

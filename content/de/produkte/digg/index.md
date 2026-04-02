@@ -4,6 +4,7 @@ description: "Digitale Geburtsmeldung"
 tagline: "Digitale Geburtsanzeige"
 layout: "single"
 icon: "/assets/images/icons/products/product-digg.png"
+weight: 30
 
 hero:
   badge: "Geburtsmeldung"
@@ -82,13 +83,6 @@ compliance:
       title: "OSCI-gesichert"
       description: "Behördlich anerkannter Kommunikationsweg"
 
-benefits_short:
-  items:
-    - text: "löst einen 150 Jahre alten Meldeweg (Bote/Post) ab"
-    - text: "Datentransport im XPersonenstand-Standard"
-    - text: "Über die OSCl-Infrastruktur direkt ins Fachverfahren des Standesamtes (Autista)"
-    - text: "Anzeigen werden durch Unternehmenssiegel oder Digitale Signatur authentifiziert"
-
 benefits:
   title: "Ihre Vorteile auf einen Blick"
   items:
@@ -106,6 +100,15 @@ benefits:
     
     - text: "Revisionssichere Archivierung"
       detail: "Nachvollziehbar und auditfähig"
+      
+card_content:
+  title: "DiGG"
+  tagline: "Digitale Geburtsanzeige"
+  benefits:
+    - "löst einen 150 Jahre alten Meldeweg (Bote/Post) ab"
+    - "Datentransport im XPersonenstand-Standard"
+    - "Über die OSCl-Infrastruktur direkt ins Fachverfahren des Standesamtes (Autista)"
+    - "Anzeigen werden durch Unternehmenssiegel oder Digitale Signatur authentifiziert"
 
 cta_section:
   title: "DiGG ist die Komplettlösung für digitale Geburtsanzeigen."

@@ -4,6 +4,7 @@ description: "Elektronische Infektionsmeldung"
 tagline: "Elektronische Infektionsmeldung"
 layout: "single"
 icon: "/assets/images/icons/products/product-elim.png"
+weight: 70
 
 hero:
   badge: "Infektionsmeldung"
@@ -99,13 +100,6 @@ compliance:
       title: "IfSG §6, §8, §9 konform"
       description: "Erfüllt alle gesetzlichen Meldepflichten"
 
-benefits_short:
-  items:
-    - text: "§6-Meldungen im Infektionsschutz"
-    - text: "44 neueste Meldeprofile für die FHIR-Schnittstelle von DEMIS verfügbar"
-    - text: "Meldeweg via Fax an Gesundheitsämter läuft aus"
-    - text: "keine Medienbrüche, vorausgefüllte Daten aus dem KIS verfügbar"
-
 benefits:
   title: "Ihre Vorteile auf einen Blick"
   items:
@@ -123,6 +117,14 @@ benefits:
     
     - text: "Kein zusätzlicher Personalaufwand"
       detail: "wartungsarm, updatesicher, intuitiv"
+
+card_content:
+  title: "ELIM+"
+  tagline: "Meldung von Schnelltest nach §7 IfSG"
+  benefits:
+    - "Ergebnisse von Schnelltests auf Station direkt an die FHIR-Schnittstelle von DEMIS melden"
+    - "Saisonal häufig auftretende Erregertests verfügbar"
+    - "Meldungen erfolgen ohne Einbindung von Laborinformationssystemen"
 
 cta_section:
   title: "ELIM – Automatisch melden. Sicher dokumentieren."
