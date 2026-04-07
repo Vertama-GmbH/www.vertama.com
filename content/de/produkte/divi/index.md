@@ -22,7 +22,7 @@ cta_secondary:
 
 features:
   title: "Warum DIVI?"
-  description: "Die Komplettlösung für die tägliche Intensivkapazitätsmeldung. Für Krankenhäuser, die ihre Meldepflichten effizient und fehlerfrei erfüllen wollen."
+  description: "Die Komplettlösung für die tägliche Intensivkapazitätsmeldung. Für Krankenhäuser, die das medizinische Personal im Intensivbereich von ihrer aufwändigen Meldepflicht befreien wollen."
   items:
     - icon: "zap"
       title: "Automatisiert & integriert"
@@ -109,7 +109,7 @@ card_content:
 
 cta_section:
   title: "DIVI ist die Komplettlösung für die tägliche Intensivkapazitätsmeldung."
-  description: "Für Krankenhäuser, die ihre Meldepflichten effizient und fehlerfrei erfüllen wollen."
+  description: "Für Krankenhäuser, die das medizinische Personal im Intensivbereich von ihrer aufwändigen Meldepflicht befreien wollen."
   button_text: "Jetzt Demo anfragen"
   url: "/de/kontakt/?product=divi"
   secondary_text: "Mehr erfahren"
