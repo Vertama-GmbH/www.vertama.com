@@ -22,7 +22,7 @@ cta_secondary:
 
 features:
   title: "Warum BELIM?"
-  description: "Die Komplettlösung für die tägliche Bettenbelegmeldung. Für Kliniken, die ihre Meldepflichten mit minimalem Aufwand erfüllen wollen."
+  description: "Die Komplettlösung für die tägliche Bettenbelegmeldung. Für Kliniken, die ihre kaufmännische Direktion oder ihr Controlling von täglichen Meldungen entlasten wollen."
   items:
     - icon: "zap"
       title: "Automatisiert & integriert"
@@ -106,13 +106,13 @@ card_content:
   title: "BELIM"
   tagline: "Bettenbelegungsmeldung"
   benefits:
-    - "Tägliche Meldung muss bis 11 Uhr"
+    - "Tägliche Meldung muss bis 11 Uhr abgegeben werden"
     - "Datenermittlung erfolgt oft im Controlling oder der kaufmännischen Direktion"
     - "Meldeprozess kann vollautomatisiert betrieben werden"
 
 cta_section:
   title: "BELIM ist die Komplettlösung für die tägliche Bettenbelegmeldung."
-  description: "Für Kliniken, die ihre Meldepflichten mit minimalem Aufwand erfüllen wollen."
+  description: "Für Kliniken, die ihre kaufmännische Direktion oder ihr Controlling von täglichen Meldungen entlasten wollen."
   button_text: "Jetzt Demo anfragen"
   url: "/de/kontakt/?product=belim"
   secondary_text: "Mehr erfahren"
