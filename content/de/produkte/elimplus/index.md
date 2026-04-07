@@ -30,26 +30,26 @@ features:
     
     - icon: "shield"
       title: "Rechtssicher"
-      description: "Unterstützt sämtliche gesetzlichen Anforderungen – inkl. Sonderregelungen. Erfüllt § 6, 8, 9 IfSG vollständig."
+      description: "Unterstützt sämtliche gesetzlichen Anforderungen – inkl. Sonderregelungen."
     
     - icon: "send"
       title: "Alle Meldewege"
-      description: "DEMIS (FHIR) für digitale Arztmeldungen."
+      description: "DEMIS (FHIR) für digitale Erregermeldungen."
     
     - icon: "lock"
       title: "Datenschutz garantiert"
       description: "Keine Speicherung sensibler Daten. Memento-Verschlüsselung, zertifiziert durch SAP BTP. Ende-zu-Ende verschlüsselt."
     
     - icon: "settings"
-      title: "Flexibel konfigurierbar"
-      description: "Feste Faxziele oder individuelle Absprachen mit dem Gesundheitsamt sind problemlos abbildbar."
+      title: "Saisonale Ereignisse"
+      description: "Die jahreszeitlich auftretenden Erreger können ohne Einsatz des Laborinformationssystems mittels Schnelltests auf Station gemeldet werden."
     
     - icon: "clock"
       title: "Schnell einsatzbereit"
       description: "Nur 1–2 Tage Implementierung – kein notwendiger Schulungsaufwand, intuitiv für Nutzer."
 
 how_it_works:
-  title: "So funktioniert ELIM im Klinikalltag"
+  title: "So funktioniert ELIM+ im Klinikalltag"
   description: "Vier einfache Schritte von der Erfassung bis zur Archivierung"
   steps:
     - title: "Meldung starten"
