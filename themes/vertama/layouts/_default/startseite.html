@@ -52,7 +52,7 @@
 
         <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {{ range (slice "Ein-Klick-Versand" "Direkte KIS-Ablage" "DSGVO / E2E Verschlüsselung" "Intuitiv bedienbar") }}
-          <div class="flex items-center gap-3 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm transition-hover hover:shadow-md transition-all">
+          <div class="flex items-center gap-3 p-4 bg-white rounded-3xl border border-slate-200 shadow-sm transition-hover hover:shadow-md transition-all">
             <svg class="w-5 h-5 text-vertama" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="3" d="M5 13l4 4L19 7"/></svg>
             <span class="text-sm font-bold text-slate-700">{{ . }}</span>
           </div>
@@ -61,18 +61,38 @@
       </div>
 
       <div class="lg:col-span-6 sticky top-24">
-        <div class="relative h-[400px] bg-white rounded-[3rem] shadow-2xl shadow-slate-200 border border-slate-100 flex items-center justify-between px-12 md:px-24 overflow-hidden">
+        <div class="relative h-[400px] bg-white rounded-3xl shadow-2xl shadow-slate-200 border border-slate-100 flex items-center justify-between px-12 md:px-24 overflow-hidden">
+          <!-- Button direkt in die Animations-Box, oben rechts -->
+          <button
+            id="anim-toggle"
+            aria-label="Animation pausieren"
+            class="absolute top-3 right-3 z-20 text-slate-400 hover:text-slate-600 transition-colors"
+            onclick="toggleAnim()">
+            <svg id="anim-icon-pause" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
+            </svg>
+            <svg id="anim-icon-play" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="display:none">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+          </button>
+
           <div id="animation-stage" class="absolute inset-0 pointer-events-none"></div>
 
           <div class="relative z-10 flex flex-col items-center">
-            <div class="w-24 h-24 bg-slate-50 rounded-3xl flex items-center justify-center text-5xl shadow-inner border border-slate-100 mb-4">🏥</div>
+            <svg class="w-24 h-24 flex items-center justify-center text-5xl mb-4"
+                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 7v4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M14 9h-4"/><path d="M18 11h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2"/><path d="M18 21V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16"/>
+            </svg>
             <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Klinik / KIS</span>
           </div>
 
           <div class="w-px h-12 bg-slate-100 hidden md:block"></div>
 
           <div id="authority-icon" class="relative z-10 flex flex-col items-center">
-            <div class="w-24 h-24 bg-slate-50 rounded-3xl flex items-center justify-center text-5xl shadow-inner border border-slate-100 mb-4">🏛️</div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="lucide lucide-building2-icon lucide-building-2 w-24 h-24 flex items-center justify-center text-5xl mb-4" aria-hidden="true">
+              <path d="M10 12h4"/><path d="M10 8h4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/>
+            </svg>
             <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Zielbehörde</span>
           </div>
         </div>
@@ -116,13 +136,13 @@
 {{ range first 1 (where .Site.RegularPages "Section" "news") }}
 <section class="py-24 px-5 bg-white">
   <div class="max-w-6xl mx-auto">
-    <div class="relative bg-white border border-slate-100 rounded-[3rem] shadow-2xl shadow-slate-200/50 overflow-hidden group">
+    <div class="relative bg-white border border-slate-100 rounded-3xl shadow-2xl shadow-slate-200/50 overflow-hidden group">
       <div class="flex flex-col lg:flex-row items-stretch">
 
         <div class="lg:w-2/5 bg-vertama relative min-h-[300px] flex items-center justify-center overflow-hidden">
           <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]"></div>
           <div class="relative z-10 text-center">
-            <div class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/30 mx-auto mb-4 transform rotate-6 group-hover:rotate-0 transition-transform duration-500">
+            <div class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-3xl flex items-center justify-center border border-white/30 mx-auto mb-4 transform rotate-6 group-hover:rotate-0 transition-transform duration-500">
               <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2zM14 2v4h4"/></svg>
             </div>
             <span class="text-white/80 text-[10px] font-black uppercase tracking-[0.4em]">Aktuelles</span>
@@ -172,32 +192,73 @@
         100% { left: 78%; bottom: 35%; opacity: 0; transform: scale(0.5) rotate(20deg); }
     }
     .jump-animation { transform: translateY(-20px) scale(1.05); transition: all 0.4s; }
+
+    @media (prefers-reduced-motion: reduce) {
+        .flying-doc { display: none; }
+        .jump-animation { transition: none; }
+    }
 </style>
 
 <script>
-  (function() {
+  // Wir definieren die Funktionen global, damit onclick="toggleAnim()" sie findet
+  let animPaused = false;
+
+  function runAnimation() {
+    // Falls schon ein Timer läuft, erst stoppen (verhindert doppelte Timer)
     if (window.vTimer) clearInterval(window.vTimer);
-    function run() {
-      const stage = document.getElementById('animation-stage');
-      const auth = document.getElementById('authority-icon');
-      if (!stage || !auth) return;
-      window.vTimer = setInterval(() => {
-        if (!document.getElementById('animation-stage')) return;
-        const doc = document.createElement('div');
-        doc.textContent = '📄';
-        doc.className = 'flying-doc';
-        stage.appendChild(doc);
-        setTimeout(() => {
-          if (auth) {
-            auth.classList.add('jump-animation');
-            setTimeout(() => auth.classList.remove('jump-animation'), 400);
-          }
-          setTimeout(() => doc.remove(), 500);
-        }, 2400);
-      }, 4000);
+
+    const stage = document.getElementById('animation-stage');
+    const auth = document.getElementById('authority-icon');
+
+    if (!stage || !auth) return;
+
+    window.vTimer = setInterval(() => {
+      if (!document.getElementById('animation-stage') || animPaused) return;
+
+      const doc = document.createElement('div');
+      doc.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="white" stroke="#005e7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                      </svg>`;
+      doc.className = 'flying-doc';
+      stage.appendChild(doc);
+
+      setTimeout(() => {
+        if (auth && !animPaused) {
+          auth.classList.add('jump-animation');
+          setTimeout(() => auth.classList.remove('jump-animation'), 400);
+        }
+        setTimeout(() => doc.remove(), 500);
+      }, 2400);
+    }, 4000);
+  }
+
+  function toggleAnim() {
+    animPaused = !animPaused;
+    const btn = document.getElementById('anim-toggle');
+    const pauseIcon = document.getElementById('anim-icon-pause');
+    const playIcon = document.getElementById('anim-icon-play');
+
+    if (animPaused) {
+      clearInterval(window.vTimer);
+      // Alle aktuell fliegenden Docs sofort entfernen
+      document.querySelectorAll('.flying-doc').forEach(el => el.remove());
+    } else {
+      runAnimation();
     }
-    document.readyState === 'complete' ? run() : window.addEventListener('load', run);
-  })();
+
+    // UI Update
+    if (pauseIcon) pauseIcon.style.display = animPaused ? 'none' : 'block';
+    if (playIcon) playIcon.style.display = animPaused ? 'block' : 'none';
+    if (btn) btn.setAttribute('aria-label', animPaused ? 'Animation starten' : 'Animation pausieren');
+  }
+
+  // Initialer Start
+  if (document.readyState === 'complete') {
+    runAnimation();
+  } else {
+    window.addEventListener('load', runAnimation);
+  }
 </script>
 
 {{ end }}
