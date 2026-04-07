@@ -32,7 +32,7 @@ cta_secondary:
 
 features:
   title: "Warum ELIM?"
-  description: "Automatisch melden. Sicher dokumentieren. Für ein Gesundheitssystem, das Infektionsschutz einfacher macht."
+  description: "Effizient melden. Sicher dokumentieren. Für ein Gesundheitssystem, das auf sicherem Infektionsschutz aufbaut."
   items:
     - icon: "zap"
       title: "Automatisiert & integriert"
@@ -63,13 +63,13 @@ how_it_works:
   description: "Vier einfache Schritte von der Erfassung bis zur Archivierung"
   steps:
     - title: "Meldung starten"
-      description: "Über einen Button direkt aus der Patientenakte im KIS"
+      description: "Über einen Button direkt aus dem klinischen Arbeitsplatz im KIS"
     
     - title: "Datenübernahme"
       description: "Formular ist automatisch mit vorhandenen Patientendaten vorausgefüllt"
     
     - title: "Ergänzen & Absenden"
-      description: "Ein Klick genügt – ELIM erkennt den korrekten Meldeweg automatisch"
+      description: "Ein Klick genügt – ELIM nutzt automatisch den korrekten Meldeweg"
     
     - title: "Empfang & Archivierung"
       description: "Sendebestätigung wird automatisch revisionssicher in der Patientenakte abgelegt"
@@ -138,8 +138,8 @@ card_content:
     - "keine Medienbrüche, vorausgefüllte Daten aus dem KIS verfügbar"
 
 cta_section:
-  title: "ELIM – Automatisch melden. Sicher dokumentieren."
-  description: "Für ein Gesundheitssystem, das Infektionsschutz einfacher macht."
+  title: "ELIM – Effizient melden. Sicher dokumentieren."
+  description: "Für ein Gesundheitssystem, das auf sicherem Infektionsschutz aufbaut."
   button_text: "Jetzt Demo anfragen"
   url: "/de/kontakt/?product=elim"
   secondary_text: "Mehr erfahren"
