@@ -22,7 +22,7 @@ cta_secondary:
 
 features:
   title: "Warum DuBA?"
-  description: "Weniger Aufwand. Mehr Rechtssicherheit. Für ein Gesundheitssystem, das Zeit für Menschen schafft."
+  description: "Weniger Aufwand. Mehr Effizienz. Für komfortable Kommunikation zu Gerichten."
   items:
     - icon: "zap"
       title: "Nahtlos integriert"
@@ -102,8 +102,8 @@ card_content:
     - "Datentransport über EGVP-Infrastruktur und das besondere Behördenpostfach (BeBPo)"
 
 cta_section:
-  title: "DuBA – Weniger Aufwand. Mehr Rechtssicherheit."
-  description: "Für ein Gesundheitssystem, das Zeit für Menschen schafft."
+  title: "DuBA – Weniger Aufwand. Mehr Effizienz."
+  description: "Für komfortable Kommunikation zu Gerichten."
   button_text: "Jetzt Demo anfragen"
   url: "/de/kontakt/?product=duba"
   secondary_text: "Mehr erfahren"
