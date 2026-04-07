@@ -2,14 +2,17 @@
 
   <!-- Hero Section - Clean & Simple -->
   <section class="py-16 border-b-2 border-vertama-light" aria-labelledby="hero-heading">
+    {{/* Back link */}}
+    {{ $produktePage := .Site.GetPage "section" "produkte" }}
+    <a href="{{ $produktePage.RelPermalink }}"
+       class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#005e7b] hover:text-[#008ab5] transition-colors mb-10">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
+      </svg>
+      {{ i18n "back_to_products" }}
+    </a>
     <div class="max-w-6xl mx-auto px-5">
-
-<!--      {{ if .Params.hero.badge }}-->
-<!--      <span class="text-xs font-bold uppercase tracking-widest text-vertama mb-4 block">-->
-<!--        {{ .Params.hero.badge }}-->
-<!--      </span>-->
-<!--      {{ end }}-->
-
       <h1 id="hero-heading" class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
         {{ .Params.hero.headline }}
       </h1>
@@ -19,8 +22,8 @@
       </p>
 
       {{ partial "button.html" (dict
-      "url" .Params.cta_primary.url
-      "text" .Params.cta_primary.text
+      "url" .Params.cta_section.primary_url
+      "text" .Params.cta_section.primary_text
       "Page" .
       ) }}
 
