@@ -1,0 +1,156 @@
+{{/*
+product-media.html
+Zeigt nur was vorhanden ist:
+- video (optional)
+- screenshots (optional, min. 1)
+- how_it_works steps (immer vorhanden, als Fallback)
+Wenn nichts da: kein Block.
+*/}}
+
+{{ $hasVideo := .Params.media.video_main.url }}
+{{ $hasScreenshots := .Params.media.screenshots }}
+{{ $hasSteps := .Params.how_it_works.steps }}
+{{ $hasAny := or $hasVideo $hasScreenshots }}
+
+{{ if or $hasAny $hasSteps }}
+<section class="py-16 border-t border-slate-200" aria-labelledby="media-section-heading">
+  <div class="max-w-6xl mx-auto px-5">
+
+    <h2 id="media-section-heading" class="text-2xl font-bold text-slate-900 mb-8">
+      {{ .Params.media.title | default "So funktioniert es" }}
+    </h2>
+
+    {{/* TAB-NAV — nur wenn mehr als eine Kategorie vorhanden */}}
+    {{ $tabCount := 0 }}
+    {{ if $hasVideo }}{{ $tabCount = add $tabCount 1 }}{{ end }}
+    {{ if $hasScreenshots }}{{ $tabCount = add $tabCount 1 }}{{ end }}
+    {{ if $hasSteps }}{{ $tabCount = add $tabCount 1 }}{{ end }}
+
+    {{ if gt $tabCount 1 }}
+    <div role="tablist" aria-label="Produktmedien" class="flex gap-1 border-b border-slate-200 mb-8">
+      {{ if $hasVideo }}
+      <button role="tab"
+              id="tab-video"
+              aria-controls="panel-video"
+              aria-selected="true"
+              class="tab-btn px-4 py-2 text-sm font-medium text-vertama border-b-2 border-vertama -mb-px"
+              onclick="switchTab('video')">
+        Demo-Video
+      </button>
+      {{ end }}
+      {{ if $hasScreenshots }}
+      <button role="tab"
+              id="tab-screens"
+              aria-controls="panel-screens"
+              aria-selected="{{ if not $hasVideo }}true{{ else }}false{{ end }}"
+              class="tab-btn px-4 py-2 text-sm text-slate-500 border-b-2 border-transparent -mb-px"
+              onclick="switchTab('screens')">
+        Screenshots
+      </button>
+      {{ end }}
+      {{ if $hasSteps }}
+      <button role="tab"
+              id="tab-steps"
+              aria-controls="panel-steps"
+              aria-selected="{{ if and (not $hasVideo) (not $hasScreenshots) }}true{{ else }}false{{ end }}"
+              class="tab-btn px-4 py-2 text-sm text-slate-500 border-b-2 border-transparent -mb-px"
+              onclick="switchTab('steps')">
+        Schritt für Schritt
+      </button>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{/* VIDEO PANEL */}}
+    {{ if $hasVideo }}
+    <div role="tabpanel"
+         id="panel-video"
+         aria-labelledby="tab-video"
+         {{ if gt $tabCount 1 }}{{ else }}style="display:block"{{ end }}>
+      <div class="aspect-video w-full rounded-lg overflow-hidden bg-slate-100">
+        <iframe
+          src="{{ .Params.media.video_main.url }}"
+          title="{{ .Params.media.video_main.title | default "Produktvideo" }}"
+        class="w-full h-full"
+        allowfullscreen
+        loading="lazy">
+        </iframe>
+      </div>
+      {{ with .Params.media.video_main.title }}
+      <p class="mt-3 text-sm text-slate-600">{{ . }}</p>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{/* SCREENSHOTS PANEL */}}
+    {{ if $hasScreenshots }}
+    <div role="tabpanel"
+         id="panel-screens"
+         aria-labelledby="tab-screens"
+         {{ if and (gt $tabCount 1) $hasVideo }}style="display:none"{{ end }}>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-6 list-none" role="list">
+        {{ range .Params.media.screenshots }}
+        <li>
+          <figure>
+            <img
+              src="{{ .file }}"
+              alt="{{ .alt | default .caption }}"
+              class="rounded-lg border border-slate-200 w-full"
+              loading="lazy">
+            {{ with .caption }}
+            <figcaption class="mt-2 text-sm text-slate-600">{{ . }}</figcaption>
+            {{ end }}
+          </figure>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+
+    {{/* STEPS PANEL */}}
+    {{ if $hasSteps }}
+    <div role="tabpanel"
+         id="panel-steps"
+         aria-labelledby="tab-steps"
+         {{ if and (gt $tabCount 1) (or $hasVideo $hasScreenshots) }}style="display:none"{{ end }}>
+      <ol class="flex flex-col divide-y divide-slate-200" aria-label="{{ .Params.how_it_works.title }}">
+        {{ range $i, $step := .Params.how_it_works.steps }}
+        <li class="flex gap-4 py-5">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-vertama text-white text-sm font-medium flex items-center justify-center" aria-hidden="true">
+            {{ add $i 1 }}
+          </span>
+          <div>
+            <p class="font-medium text-slate-900">{{ $step.title }}</p>
+            <p class="text-sm text-slate-600 mt-1">{{ $step.description }}</p>
+          </div>
+        </li>
+        {{ end }}
+      </ol>
+    </div>
+    {{ end }}
+
+  </div>
+</section>
+
+{{ if gt $tabCount 1 }}
+<script>
+  function switchTab(name) {
+    const panels = ['video','screens','steps'];
+    const tabs = document.querySelectorAll('[role="tab"]');
+
+    panels.forEach(p => {
+      const panel = document.getElementById('panel-' + p);
+      const tab = document.getElementById('tab-' + p);
+      if (!panel || !tab) return;
+      const active = p === name;
+      panel.style.display = active ? '' : 'none';
+      tab.setAttribute('aria-selected', active);
+      tab.classList.toggle('text-vertama', active);
+      tab.classList.toggle('border-vertama', active);
+      tab.classList.toggle('text-slate-500', !active);
+      tab.classList.toggle('border-transparent', !active);
+    });
+  }
+</script>
+{{ end }}
+{{ end }}
