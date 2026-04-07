@@ -10,7 +10,7 @@ hero:
   badge: "Infektionsmeldung"
   headline: "ELIM+"
   subheadline: "Elektronische Infektionsmeldung"
-  description: "ELIM+ digitalisiert den Meldeprozess für meldepflichtige Infektionskrankheiten – direkt aus dem KIS, in Echtzeit und vollständig gesetzeskonform. Die cloudbasierte Lösung ist auf die Umsetzung der gesetzlichen Anforderungen gemäß § 6, 8, 9 IfSG ausgerichtet."
+  description: "ELIM+ ermöglicht die komfortable Meldung von Schnelltests auf Station – direkt aus dem KIS, in Echtzeit und vollständig gesetzeskonform. Die cloudbasierte Lösung ist auf die Umsetzung der gesetzlichen Meldepflicht auch von Erregertests gemäß § 7 IfSG ausgerichtet."
 
 cta_primary:
   text: "Demo anfragen"
@@ -21,12 +21,12 @@ cta_secondary:
   url: "#features"
 
 features:
-  title: "Warum ELIM?"
-  description: "Automatisch melden. Sicher dokumentieren. Für ein Gesundheitssystem, das Infektionsschutz einfacher macht."
+  title: "Warum ELIM+?"
+  description: "Von Station melden. Sicher dokumentieren. Für sichere und aktuelle Daten in einem Gesundheitssystem mit funktionalem Infektionsschutz."
   items:
     - icon: "zap"
       title: "Automatisiert & integriert"
-      description: "ELIM übernimmt den gesamten Meldeprozess – inklusive Formular, Versand, Empfangsquittung und Archivierung. Keine manuelle Eingabe mehr nötig."
+      description: "ELIM+ übernimmt den gesamten Meldeprozess – inklusive Formular, Versand, Empfangsquittung und Archivierung."
     
     - icon: "shield"
       title: "Rechtssicher"
@@ -34,7 +34,7 @@ features:
     
     - icon: "send"
       title: "Alle Meldewege"
-      description: "DEMIS (FHIR) für digitale Arztmeldungen, Fax für gesetzlich vorgeschriebene Ausnahmefälle – alles aus einer Lösung."
+      description: "DEMIS (FHIR) für digitale Arztmeldungen."
     
     - icon: "lock"
       title: "Datenschutz garantiert"
@@ -59,7 +59,7 @@ how_it_works:
       description: "Formular ist automatisch mit vorhandenen Patientendaten vorausgefüllt"
     
     - title: "Ergänzen & Absenden"
-      description: "Ein Klick genügt – ELIM erkennt den korrekten Meldeweg automatisch"
+      description: "Ein Klick genügt – ELIM+ meldet automatisch an die FHIR-Schnittstelle von DEMIS"
     
     - title: "Empfang & Archivierung"
       description: "Sendebestätigung wird automatisch revisionssicher in der Patientenakte abgelegt"
@@ -127,8 +127,8 @@ card_content:
     - "Meldungen erfolgen ohne Einbindung von Laborinformationssystemen"
 
 cta_section:
-  title: "ELIM – Automatisch melden. Sicher dokumentieren."
-  description: "Für ein Gesundheitssystem, das Infektionsschutz einfacher macht."
+  title: "ELIM+ – Von Station melden. Sicher dokumentieren."
+  description: "Für sichere und aktuelle Daten in einem Gesundheitssystem mit funktionalem Infektionsschutz.."
   button_text: "Jetzt Demo anfragen"
   url: "/de/kontakt/?product=elim"
   secondary_text: "Mehr erfahren"
