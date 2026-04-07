@@ -1,25 +1,39 @@
 // VERTAMA Theme JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
-    
+
     // ===== Mobile Menu Toggle =====
     const btn = document.getElementById('nav-toggle');
     const menu = document.getElementById('mobile-menu');
+    const burgerIcon = document.getElementById('burger-icon');
+    const closeIcon = document.getElementById('close-icon');
 
     btn.addEventListener('click', () => {
         // Falls das Menü noch 'hidden' ist (initial), entfernen wir es
         menu.classList.remove('hidden');
 
-        // Timeout damit der Browser Zeit hat, 'hidden' zu entfernen bevor die Animation startet
         setTimeout(() => {
             const isOpen = menu.classList.contains('translate-x-0');
+
             if (isOpen) {
+                // --- MENÜ SCHLIESSEN ---
                 menu.classList.remove('translate-x-0');
                 menu.classList.add('translate-x-full');
+
+                // Icons zurücktauschen: Burger zeigen, X verstecken
+                if (burgerIcon) burgerIcon.classList.remove('hidden');
+                if (closeIcon) closeIcon.classList.add('hidden');
+
                 document.body.style.overflow = '';
             } else {
+                // --- MENÜ ÖFFNEN ---
                 menu.classList.remove('translate-x-full');
                 menu.classList.add('translate-x-0');
+
+                // Icons tauschen: Burger verstecken, X zeigen
+                if (burgerIcon) burgerIcon.classList.add('hidden');
+                if (closeIcon) closeIcon.classList.remove('hidden');
+
                 document.body.style.overflow = 'hidden';
             }
         }, 10);
