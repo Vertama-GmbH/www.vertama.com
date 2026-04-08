@@ -49,7 +49,7 @@ how_it_works:
   description: "Vollautomatische Meldung ans RKI in vier Schritten"
   steps:
     - title: "Automatische Ermittlung"
-      description: "Ein Job im KIS/PDMS erfasst täglich um den definierten Zeitpunkt die Belegungsdaten aller Intensivstationen"
+      description: "Ein Job im KIS/PDMS erfasst täglich zum definierten Zeitpunkt die Belegungsdaten aller Intensivstationen"
     
     - title: "Optionale Kontrolle"
       description: "Die ermittelten Zahlen können in einer Meldemaske geprüft und freigegeben werden"
