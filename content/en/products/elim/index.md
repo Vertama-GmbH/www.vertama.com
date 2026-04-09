@@ -13,13 +13,13 @@ media:
     url: "/assets/videos/ELIM/Test.mp4"
     title: "..."
   screenshots:
-    - file: "/assets/images/products/ELIM/ELIM_Uebersichtsseite_04.2026.png"
+    - file: "/assets/images/products/elim/ELIM_Uebersichtsseite_04.2026.png"
       alt: "ELIM - Uebersichtsseite"
       caption: "Übersicht aller Formulare"
-    - file: "/assets/images/products/ELIM/ELIM_2.png"
+    - file: "/assets/images/products/elim/ELIM_2.png"
       alt: "2"
       caption: "2"
-    - file: "/assets/images/products/ELIM/ELIM_3.png"
+    - file: "/assets/images/products/elim/ELIM_3.png"
       alt: "3"
       caption: "3"
 
