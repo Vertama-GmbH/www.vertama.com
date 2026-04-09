@@ -22,8 +22,8 @@
       </p>
 
       {{ partial "button.html" (dict
-      "url" .Params.cta_section.primary_url
-      "text" .Params.cta_section.primary_text
+      "url" .Params.cta_section.url
+      "text" .Params.cta_section.button_text
       "Page" .
       ) }}
 
@@ -54,6 +54,38 @@
   </section>
 
 {{ partial "product/media.html" . }}
+
+{{/* STEPS PANEL */}}
+{{ if .Params.how_it_works }}
+<!-- How It Works Section - Clean White with Borders -->
+<section id="how-it-works" class="py-16 px-5 bg-vertama-light/5 border-y border-slate-200" aria-labelledby="how-it-works-heading">
+  <div class="max-w-6xl mx-auto">
+
+    <h2 id="how-it-works-heading" class="text-2xl font-bold text-slate-900 mb-2">
+      {{ .Params.how_it_works.title }}
+    </h2>
+
+    {{ if .Params.how_it_works.description }}
+    <p class="text-slate-600 mb-10">
+      {{ .Params.how_it_works.description }}
+    </p>
+    {{ end }}
+    <ol class="md:px-16 px-5 grid grid-cols-1 gap-6">
+      {{ range $index, $step := .Params.how_it_works.steps }}
+      <li class="flex gap-4 bg-white border border-slate-200 rounded-lg p-6 hover:border-vertama hover:shadow-md transition-all">
+        <span class="text-vertama font-mono font-bold text-xl flex-shrink-0 w-8" aria-label="{{ if eq $.Language.Lang "de" }}Schritt{{ else }}Step{{ end }} {{ add $index 1 }}">
+        {{ printf "%02d" (add $index 1) }}
+        </span>
+        <div>
+          <h3 class="font-bold text-slate-900 mb-1">{{ .title }}</h3>
+          <p class="text-sm text-slate-700">{{ .description }}</p>
+        </div>
+      </li>
+      {{ end }}
+    </ol>
+  </div>
+</section>
+{{ end }}
 
   <!-- Compliance Section -->
   <section class="py-16 px-5 bg-white" aria-labelledby="compliance-heading">

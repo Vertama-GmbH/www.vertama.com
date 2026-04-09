@@ -1,4 +1,4 @@
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-6"
+<header class="fixed top-0 left-0 right-0 z-80 transition-all duration-300 bg-transparent py-6"
         aria-label="Hauptnavigation">
     <div class="container mx-auto px-4 sm:px-6 flex items-center justify-between">
 
@@ -24,7 +24,7 @@
                 {{ partial "header/language-switcher.html" . }}
             </nav>
 
-            <button id="nav-toggle" class="lg:hidden relative z-[60] p-2 text-slate-900 focus:outline-none" aria-label="Menü">
+            <button id="nav-toggle" class="lg:hidden relative z-[90] p-2 text-slate-900 focus:outline-none" aria-label="Menü">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path id="burger-icon" class="block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -34,7 +34,7 @@
     </div>
 
     <div id="mobile-menu"
-         class="fixed inset-0 bg-white z-[50] flex flex-col pt-32 px-10 gap-6 transition-transform duration-500 translate-x-full lg:hidden hidden">
+         class="fixed inset-0 bg-white z-[80] flex flex-col pt-32 px-10 gap-6 transition-transform duration-500 translate-x-full lg:hidden hidden">
         {{ range .Site.Menus.main }}
         {{ $active := hasPrefix $.RelPermalink .URL }}
         <a href="{{ .URL | relURL }}" class="text-4xl font-bold border-b border-slate-100 pb-4 {{ if $active }}text-[#005e7b]{{ else }}text-slate-900{{ end }}">

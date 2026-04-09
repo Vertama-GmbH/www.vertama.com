@@ -1,19 +1,18 @@
-<article class="flex-shrink-0 w-full h-full">
+<article class="flex-shrink-0 w-full h-full rounded-3xl">
+  {{/* card.html */}}
   <a href="{{ .Permalink }}"
-     class="group flex flex-col h-full bg-white border-2 border-slate-200 rounded-[1rem] p-8
-            hover:border-vertama hover:shadow-2xl hover:shadow-vertama/5 transition-all duration-500
-            focus:outline-none focus:ring-4 focus:ring-vertama focus:ring-offset-2">
+     class="group flex flex-col h-full w-full bg-white border-2 border-slate-200 rounded-[22px] p-8
+          hover:border-vertama hover:shadow-2xl hover:shadow-vertama/5 transition-all duration-500
+          focus:outline-none focus:ring-4 focus:ring-vertama focus:ring-offset-2 relative z-10">
 
     <div class="mb-4">
-      <h3 class="text-2xl font-bold text-slate-900 group-hover:text-vertama transition-colors">
-        {{/* Nutzt card_content.title, sonst normalen Title */}}
+      <h3 class="text-2xl font-bold text-slate-900 group-hover:text-vertama transition-colors line-clamp-2">
         {{ .Params.card_content.title | default .Title }}
       </h3>
 
-      {{/* Nutzt card_content.tagline, sonst normalen Tagline */}}
       {{ $tagline := .Params.card_content.tagline | default .Params.tagline }}
       {{ if $tagline }}
-      <p class="text-xs font-bold text-vertama uppercase tracking-wider mt-2">
+      <p class="text-[10px] font-bold text-vertama uppercase tracking-widest mt-2">
         {{ $tagline }}
       </p>
       {{ end }}
@@ -21,23 +20,15 @@
 
     <div class="flex-grow text-slate-700">
       <ul class="space-y-3 mb-8">
-        {{/* Priorität: 1. card_content.benefits | 2. normale benefits | 3. Description Fallback */}}
         {{ if .Params.card_content.benefits }}
-        {{ range .Params.card_content.benefits }}
-        <li class="flex items-start gap-3 text-sm leading-relaxed">
-          <svg class="w-5 h-5 text-vertama flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        {{ range first 4 .Params.card_content.benefits }}
+        <li class="flex items-start gap-3 text-sm leading-relaxed line-clamp-2">
+          <svg class="w-4 h-4 text-vertama flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
           <span>{{ . }}</span>
         </li>
         {{ end }}
-        {{ else if .Params.benefits.items }}
-        {{ range first 3 .Params.benefits.items }}
-        <li class="flex items-start gap-3 text-sm leading-relaxed">
-          <svg class="w-5 h-5 text-vertama flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-          <span>{{ .text }}</span>
-        </li>
-        {{ end }}
         {{ else }}
-        <p class="text-sm leading-relaxed">{{ .Description | truncate 120 }}</p>
+        <p class="text-sm leading-relaxed text-slate-500">{{ .Description | truncate 100 }}</p>
         {{ end }}
       </ul>
     </div>
