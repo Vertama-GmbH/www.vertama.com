@@ -18,7 +18,7 @@ firmName = 'VERTAMA GmbH'
 
 [params.umami]
 enabled = true
-url = "https://umami.v1.vertamob.com"
+url = "https://umami.v1.vertamob.com/script.js"
 site_id = "1cce27aa-a18d-4ed2-9ba3-11101fac6e94"
 
 [params.social]

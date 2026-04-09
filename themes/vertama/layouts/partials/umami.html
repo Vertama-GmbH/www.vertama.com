@@ -1,9 +1,9 @@
-{{ if .Site.Params.umami_enabled }}
+{{ if .Site.Params.umami.enabled }}
 {{ $umami_url := .Site.Params.umami.url }}
 {{ $umami_site_id := .Site.Params.umami.site_id }}
 
 {{ if and $umami_url $umami_site_id }}
 <!-- Umami Analytics -->
-<script async src="{{ $umami_url }}/script.js" data-website-id="{{ $umami_site_id }}"></script>
+<script defer src="{{ $umami_url }}" data-website-id="{{ $umami_site_id }}"></script>
 {{ end }}
 {{ end }}
