@@ -16,6 +16,11 @@ unsafe = true
 description = 'VERTAMA GmbH - Digitale Lösungen für Gesundheitswesen'
 firmName = 'VERTAMA GmbH'
 
+[params.umami]
+enabled = true
+url = "https://umami.v1.vertamob.com"
+site_id = "bfc7264d-4d6e-40cb-97ff-4fae3976f388"
+
 [params.social]
 linkedin = "https://linkedin.com/company/vertama"
 twitter = "https://twitter.com/vertama"

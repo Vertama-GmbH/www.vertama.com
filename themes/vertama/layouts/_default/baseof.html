@@ -44,7 +44,7 @@
         }
     </script>
 
-<!--  Lucide-Icons  -->
+    <!--  Lucide-Icons  -->
     <!-- Development version -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
@@ -53,6 +53,8 @@
 
     <!-- Custom CSS (nur für Dinge die Tailwind nicht hat) -->
     <link rel="stylesheet" href="{{ "css/theme.css" | relURL }}">
+
+    {{ partial "umami.html" . }}
 
     {{ block "head" . }}{{ end }}
 </head>
