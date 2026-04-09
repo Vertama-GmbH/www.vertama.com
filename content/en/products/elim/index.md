@@ -10,7 +10,7 @@ weight: 10
 
 media:
   video_main:
-    url: "/assets/videos/ELIM/Test.mp4"
+    url: "/assets/videos/products/elim/Test.mp4"
     title: "..."
   screenshots:
     - file: "/assets/images/products/elim/ELIM_Uebersichtsseite_04.2026.png"
