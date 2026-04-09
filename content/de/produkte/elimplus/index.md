@@ -6,6 +6,17 @@ layout: "single"
 icon: "/assets/images/icons/products/product-elim.png"
 weight: 70
 
+
+media:
+#  video_main:
+#    url: "..."
+#    title: "..."
+  screenshots:
+    - file: "/assets/images/products/elimplus/ELIM+_Screenshot.jpeg"
+      alt: "ELIM+ - Uebersichtsseite"
+      caption: "Übersicht der verfügbaren Formulare"
+
+
 hero:
   badge: "Infektionsmeldung"
   headline: "ELIM+"
