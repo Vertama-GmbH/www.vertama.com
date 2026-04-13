@@ -8,6 +8,7 @@ icon: "/assets/images/icons/products/product-elim.png"
 weight: 10
 
 media:
+title: "Prozessablauf Start im klinischen Arbeitsplatz"
   video_main:
     url: "/assets/videos/products/elim/Test.mp4"
     title: "..."
