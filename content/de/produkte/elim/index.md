@@ -8,20 +8,23 @@ icon: "/assets/images/icons/products/product-elim.png"
 weight: 10
 
 media:
-  title: "Prozessablauf Start im klinischen Arbeitsplatz"
+  title: "Prozessablauf ELIM - Start im klinischen Arbeitsplatz"
   video_main:
     url: "/assets/videos/products/elim/Test.mp4"
     title: "..."
   screenshots:
-    - file: "/assets/images/products/elim/ELIM_Uebersichtsseite_04.2026.png"
+    - file: "/assets/images/products/elim/ELIM_1.jpg"
       alt: "ELIM - Uebersichtsseite"
       caption: "Übersicht aller Formulare"
-    - file: "/assets/images/products/elim/ELIM_2.png"
-      alt: "2"
-      caption: "2"
-    - file: "/assets/images/products/elim/ELIM_3.png"
-      alt: "3"
-      caption: "3"
+    - file: "/assets/images/products/elim/ELIM_2.jpg"
+      alt: "ELIM - Formular Masern"
+      caption: "Formular zu Masern"
+    - file: "/assets/images/products/elim/ELIM_3.jpg"
+      alt: "Erfolgsmeldung zur Sendung"
+      caption: "Erfolgsmeldung zur Sendung"
+    - file: "/assets/images/products/elim/ELIM_4.jpg"
+      alt: "Sendebestätigung DEMIS"
+      caption: "Sendebestätigung DEMIS"
 
 hero:
   badge: "Infektionsmeldung"
