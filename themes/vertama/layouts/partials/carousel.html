@@ -17,11 +17,6 @@
       <div class="relative aspect-video flex items-center justify-center bg-slate-50 cursor-zoom-in group/img"
            onclick="openLightbox('{{ .file }}', '{{ .caption | default .alt }}')">
         <img src="{{ .file }}" alt="{{ .alt | default "Screenshot" }}" class="max-w-full max-h-full object-contain" loading="lazy">
-        {{ with .caption }}
-        <div class="absolute bottom-4 left-4 right-4 p-3 bg-vertama-light/5 backdrop-blur-md border border-white/20 rounded-2xl text-slate-900 text-center shadow-sm">
-          <p class="text-xs font-medium m-0">{{ . }}</p>
-        </div>
-        {{ end }}
       </div>
       {{ else }}
       <div class="w-full h-full">{{ partial "card.html" . }}</div>
@@ -32,15 +27,15 @@
 
   {{ else }}
   <div class="relative px-0 md:px-4">
-    <div id="{{ $id }}-track-container" class="relative w-full mx-auto aspect-[4/3] md:aspect-video min-h-[350px] md:min-h-[500px]">
+    <div id="{{ $id }}-track-container" class="relative w-full mx-auto h-[550px] md:h-auto md:aspect-video min-h-[500px]">
 
-      <button id="{{ $id }}-prev" class="absolute left-0 top-0 bottom-0 z-50 w-12 md:w-20 group flex items-center justify-center transition-all bg-transparent border-none outline-none focus:ring-inset focus:ring-2 focus:ring-vertama" aria-label="Vorheriges">
+      <button id="{{ $id }}-prev" class="absolute left-0 top-0 bottom-0 z-50 w-12 md:w-20 group flex items-center justify-center transition-all bg-transparent border-none outline-none" aria-label="Vorheriges">
         <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 border border-slate-200 shadow-lg group-hover:text-vertama flex items-center justify-center transition-transform group-active:scale-90">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 18l-6-6 6-6"/></svg>
         </div>
       </button>
 
-      <button id="{{ $id }}-next" class="absolute right-0 top-0 bottom-0 z-50 w-12 md:w-20 group flex items-center justify-center transition-all bg-transparent border-none outline-none focus:ring-inset focus:ring-2 focus:ring-vertama" aria-label="Nächstes">
+      <button id="{{ $id }}-next" class="absolute right-0 top-0 bottom-0 z-50 w-12 md:w-20 group flex items-center justify-center transition-all bg-transparent border-none outline-none" aria-label="Nächstes">
         <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 border border-slate-200 shadow-lg group-hover:text-vertama flex items-center justify-center transition-transform group-active:scale-90">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg>
         </div>
@@ -48,20 +43,19 @@
 
       <div id="{{ $id }}-track" class="relative w-full h-full">
         {{ range $i, $item := $items }}
-        <article class="c-item absolute top-0 left-1/2 -translate-x-1/2 w-[88%] md:w-[75%] h-[90%] md:h-full transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-3xl overflow-hidden" style="will-change: transform, opacity;">
+        {{ $desktopWidth := "md:w-[75%]" }}
+        {{ if eq $mode "cards" }}
+        {{ $desktopWidth = "md:w-[50%]" }}
+        {{ end }}
+        <article class="c-item absolute top-0 left-1/2 -translate-x-1/2 w-[88%] {{ $desktopWidth }} h-full transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-3xl overflow-hidden" data-mode="{{ $mode }}" style="will-change: transform, opacity;">
           <div class="w-full h-full overflow-hidden rounded-3xl border border-slate-200 shadow-xl bg-white">
             {{ if and (eq $mode "screenshots") (isset . "file") }}
             <div class="w-full h-full flex items-center justify-center bg-slate-50 group/img relative cursor-zoom-in"
                  onclick="openLightbox('{{ .file }}', '{{ .caption | default .alt }}')">
               <img src="{{ .file }}" alt="{{ .alt | default "Screenshot" }}" class="max-w-full max-h-full object-contain block" loading="lazy">
-              {{ with .caption }}
-              <div class="absolute bottom-4 left-4 right-4 p-3 bg-vertama-light/5 backdrop-blur-md border border-white/20 rounded-2xl text-slate-900 text-center shadow-sm pointer-events-none">
-                <p class="text-xs font-medium m-0">{{ . }}</p>
-              </div>
-              {{ end }}
             </div>
             {{ else }}
-            {{ partial "card.html" . }}
+            <div class="w-full h-full flex flex-col">{{ partial "card.html" . }}</div>
             {{ end }}
           </div>
         </article>
@@ -77,20 +71,6 @@
   </div>
   {{ end }}
 </section>
-
-<div id="lightbox"
-     class="fixed inset-0 z-[100] hidden bg-white/95 backdrop-blur-xl flex-col items-center justify-center p-4 md:p-12 transition-all duration-300"
-     onclick="if(event.target === this) closeLightbox()">
-
-  <button onclick="closeLightbox()" class="absolute top-6 right-6 text-slate-900 hover:text-vertama transition-colors p-2 bg-slate-100 rounded-full shadow-sm">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
-  </button>
-
-  <div class="relative max-w-full max-h-[80vh] flex flex-col items-center bg-transparent">
-    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full object-contain shadow-2xl rounded-2xl border border-slate-100 bg-white">
-    <p id="lightbox-caption" class="text-slate-900 text-center mt-6 font-bold text-lg px-6 py-2 bg-vertama-light/5 backdrop-blur-sm rounded-full border border-slate-200/50 shadow-sm"></p>
-  </div>
-</div>
 
 <script>
   (function() {
@@ -124,6 +104,8 @@
 
       function update() {
         const isMobile = window.innerWidth < 768;
+        const mode = items[0].getAttribute('data-mode');
+
         items.forEach((item, i) => {
           let diff = i - current;
           if (diff > TOTAL / 2) diff -= TOTAL;
@@ -136,7 +118,10 @@
             tx = 0; scale = 1; opacity = 1;
           } else if (absDiff === 1) {
             const direction = diff > 0 ? 1 : -1;
-            const offset = isMobile ? 10 : 22;
+            let offset = isMobile ? 12 : 22;
+            if (mode === "cards" && !isMobile) {
+              offset = 16;
+            }
             tx = direction * offset; scale = 0.88; opacity = 1;
           }
 
@@ -159,7 +144,6 @@
       window.addEventListener('resize', update);
       update();
     }
-
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
   })();
 </script>
