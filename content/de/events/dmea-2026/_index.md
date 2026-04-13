@@ -3,28 +3,53 @@ title: "Willkommen DMEA 2026"
 layout: "event"
 url: "/DMEA26/"
 campaign_ref: "dmea-live-booth"
-event_logo: ""
-badge_text: "Messe-Special 2026"
-intro_text: "Schön, dass Sie uns am Stand D-103 besucht haben! Hier finden Sie alle Informationen zu den vorgestellten digitalen Lösungen für Ihre Klinik."
+event_slogan: "DMEA 2026"
+event_year: "2026"
+badge_text: "DMEA · Stand D-103"
+intro_text: "Schön, dass Sie uns am Stand besucht haben. Hier finden Sie alle vorgestellten Lösungen — zum Lesen, Herunterladen und Weiterdenken."
 
-# Interaktive Produkte mit PDF Links
-featured_products:
-  - name: "ELIM"
-    description: "Automatisierte Infektionsmeldung direkt aus dem KIS. FHIR-ready & RKI-konform."
-    url: "/de/produkte/elim/"
-    pdf_url: "/downloads/elim-handout.pdf" # Optionaler PDF Link
-  - name: "BELIM"
-    description: "Echtzeit-Bettenbelegung. Optimieren Sie Ihre Kapazitäten per Knopfdruck."
-    url: "/de/produkte/belim/"
-    pdf_url: "/downloads/belim-handout.pdf"
-  - name: "DIVI"
-    description: "Schnittstellen-Lösung für die Intensivregister-Meldung. Nahtlose Integration."
-    url: "/de/produkte/divi/"
+event_meta:
+  - "Berlin, 21.–23. April 2026"
+  - "Halle 3.2"
+  - "Stand D-103"
 
-# DEINE CTA SECTION (Verwendung im Partial am Ende)
+stats:
+  - value: "44"
+    label: "DEMIS Meldeprofile verfügbar"
+  - value: "3"
+    label: "Lösungen vorgestellt"
+  - value: "100%"
+    label: "KIS-integriert"
+  - value: "FHIR"
+    label: "Ready — RKI-konform"
+
+#featured_products:
+#  - name: "ELIM"
+#    tagline: "Elektronische Infektionsmeldung"
+#    description: "Automatisierte §6-Meldungen direkt aus dem KIS. FHIR-ready, RKI-konform, 44 aktuelle Meldeprofile."
+#    url: "/de/produkte/elim/"
+#    pdf_url: "/downloads/elim-handout.pdf"
+#  - name: "BELIM"
+#    tagline: "Bettenbelegung in Echtzeit"
+#    description: "Kapazitäten auf Knopfdruck optimieren. Live-Daten, keine manuellen Meldungen."
+#    url: "/de/produkte/belim/"
+#    pdf_url: "/downloads/belim-handout.pdf"
+#  - name: "DIVI"
+#    tagline: "Intensivregister-Meldung"
+#    description: "Schnittstellen-Lösung für vollautomatisierte Intensivkapazitätsmeldungen."
+#    url: "/de/produkte/divi/"
+
+downloads:
+  - name: "VERTAMA Gesamtbroschüre 2026"
+    url: "/downloads/broschuere.pdf"
+    size: "3.5 MB"
+  - name: "ELIM Produktblatt"
+    url: "/downloads/elim-handout.pdf"
+    size: "1.2 MB"
+
 cta_section:
   title: "Vortrag verpasst?"
-  description: "Kein Problem. Sichern Sie sich die Aufzeichnung und alle Folien direkt per E-Mail."
+  description: "Sichern Sie sich die Aufzeichnung und alle Folien direkt per E-Mail."
   button_text: "Unterlagen anfordern"
   url: "/de/kontakt/?product=dmea-presentation"
 ---
