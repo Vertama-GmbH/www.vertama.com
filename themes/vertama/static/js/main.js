@@ -11,17 +11,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const languageMenu = document.getElementById('language-menu');
 
     // ===== Hilfsfunktion: Header-Hintergrund Update =====
-    // Diese Funktion prüft, ob gescrollt wurde ODER das Menü offen ist
     function updateHeaderBackground() {
         const isScrolled = window.scrollY > 50;
         const isMenuOpen = menu && !menu.classList.contains('translate-x-full');
 
-        if (isScrolled || isMenuOpen) {
+        if (isMenuOpen) {
+            // MENÜ OFFEN: Transition deaktivieren = SOFORT WEISS
+            header.style.transition = 'none';
+            header.style.background = '#ffffff';
+            header.style.backdropFilter = 'none';
+            header.style.boxShadow = 'none';
+            header.classList.remove('scrolled');
+        } else if (isScrolled) {
+            // NORMAL GESCROLLT: Transition aktivieren = weicher Verlauf
+            header.style.transition = 'all 0.3s ease';
             header.style.background = 'rgba(255, 255, 255, 0.98)';
             header.style.backdropFilter = 'blur(10px)';
             header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
             header.classList.add('scrolled');
         } else {
+            // GANZ OBEN: Transition aktivieren = weicher Verlauf
+            header.style.transition = 'all 0.3s ease';
             header.style.background = 'transparent';
             header.style.backdropFilter = 'none';
             header.style.boxShadow = 'none';
@@ -32,30 +42,38 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== Mobile Menu Toggle =====
     if (navBtn && menu) {
         navBtn.addEventListener('click', () => {
-            menu.classList.remove('hidden');
+            const isOpening = menu.classList.contains('translate-x-full');
 
-            // Timeout für die CSS-Transition
-            setTimeout(() => {
-                const isOpen = !menu.classList.contains('translate-x-full');
+            if (isOpening) {
+                // 1. ZUERST den Header sofort auf Weiß zwingen (ohne Verzögerung)
+                header.style.transition = 'none';
+                header.style.background = '#ffffff';
+                header.style.backdropFilter = 'none';
+                header.style.boxShadow = 'none';
 
-                if (isOpen) {
-                    // SCHLIESSEN
-                    menu.classList.add('translate-x-full');
-                    menu.classList.remove('translate-x-0');
-                    if (burgerIcon) burgerIcon.classList.remove('hidden');
-                    if (closeIcon) closeIcon.classList.add('hidden');
-                    document.body.style.overflow = '';
-                } else {
-                    // ÖFFNEN
+                // 2. Menü in den DOM laden
+                menu.classList.remove('hidden');
+
+                // 3. Animation starten
+                setTimeout(() => {
                     menu.classList.remove('translate-x-full');
-                    menu.classList.add('translate-x-0');
                     if (burgerIcon) burgerIcon.classList.add('hidden');
                     if (closeIcon) closeIcon.classList.remove('hidden');
                     document.body.style.overflow = 'hidden';
-                }
-                // Hintergrund sofort anpassen, wenn sich der Menüstatus ändert
-                updateHeaderBackground();
-            }, 10);
+                }, 10);
+            } else {
+                // SCHLIESSEN (Slide-Out Animation)
+                menu.classList.add('translate-x-full');
+                if (burgerIcon) burgerIcon.classList.remove('hidden');
+                if (closeIcon) closeIcon.classList.add('hidden');
+                document.body.style.overflow = '';
+
+                // 500ms warten, bis das Menü fertig rausgeslidet ist, dann Header updaten
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                    updateHeaderBackground();
+                }, 500);
+            }
         });
     }
 
