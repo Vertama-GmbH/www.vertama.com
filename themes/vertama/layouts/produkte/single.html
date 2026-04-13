@@ -36,8 +36,8 @@
   </section>
 
   <!-- Features Section -->
-  <section id="features" class="py-16 px-5 bg-white" aria-labelledby="features-heading">
-    <div class="max-w-6xl mx-auto">
+  <section id="features" aria-labelledby="features-heading">
+    <div class="max-w-6xl mx-auto px-5">
 
       {{ partial "headline.html" (dict
       "level" "h2"
@@ -62,7 +62,6 @@
 
 {{/* STEPS PANEL */}}
 {{ if .Params.how_it_works }}
-<!-- How It Works Section - Clean White with Borders -->
 <section id="how-it-works" class="py-16 px-5 bg-vertama-light/5 border-y border-slate-200" aria-labelledby="how-it-works-heading">
   <div class="max-w-6xl mx-auto">
 
