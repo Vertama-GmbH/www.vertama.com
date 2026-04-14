@@ -1,16 +1,15 @@
-{{ $id       := .id | default "carousel" }}
-{{ $title    := .title }}
-{{ $items    := .items }}
-{{ $mode     := .mode | default "cards" }}
-{{ $count    := len $items }}
-{{ $isScreenshots := eq $mode "screenshots" }}
-{{ $isCards       := eq $mode "cards" }}
-{{ $desktopWidth  := cond $isCards "md:w-[50%]" "md:w-[75%]" }}
-{{ $mobileWidth   := cond $isCards "w-[80%]" "w-[85%]" }}
+{{- $id := .id | default "carousel" -}}
+{{- $mode := .mode | default "cards" -}}
+{{- $items := .items -}}
+{{- $count := len $items -}}
+{{- $isScreenshots := eq $mode "screenshots" -}}
+{{- $isCards := eq $mode "cards" -}}
+{{- $desktopWidth := cond $isCards "md:w-[50%]" "md:w-[75%]" -}}
+{{- $mobileWidth := cond $isCards "w-[80%]" "w-[85%]" -}}
 
 <section id="{{ $id }}-section" class="max-w-6xl mx-auto py-12 md:py-20 overflow-hidden">
   <div class="px-4 md:px-5 mb-6 md:mb-8 text-center md:text-left">
-    {{ with $title }}<h2 class="text-2xl md:text-4xl font-bold text-slate-900">{{ . }}</h2>{{ end }}
+    {{ with .title }}<h2 class="text-2xl md:text-4xl font-bold text-slate-900">{{ . }}</h2>{{ end }}
   </div>
 
   {{ if lt $count 3 }}
@@ -36,12 +35,7 @@
 
   {{ else }}
   <div class="relative px-0 md:px-4">
-    <div id="{{ $id }}-track-container" class="relative w-full mx-auto
-      {{ if $isScreenshots }}
-        h-[380px] sm:h-[480px] md:h-auto md:aspect-video md:min-h-[500px]
-      {{ else }}
-        h-[600px] sm:h-[520px] md:h-auto md:aspect-video md:min-h-[500px]
-      {{ end }}">
+    <div id="{{ $id }}-track-container" class="relative w-full mx-auto {{ if $isScreenshots }}h-[380px] sm:h-[480px] md:h-auto md:aspect-video md:min-h-[500px]{{ else }}h-[600px] sm:h-[520px] md:h-auto md:aspect-video md:min-h-[500px]{{ end }}">
 
       <button id="{{ $id }}-prev" class="absolute left-0 top-0 bottom-0 z-50 w-12 md:w-20 group flex items-center justify-center bg-transparent border-none outline-none" aria-label="Vorheriges">
         <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 border border-slate-200 shadow-lg group-hover:text-vertama flex items-center justify-center transition-transform group-active:scale-90">
@@ -57,14 +51,11 @@
 
       <div id="{{ $id }}-track" class="relative w-full h-full">
         {{ range $i, $item := $items }}
-        <article id="{{ $id }}-item-{{ $i }}"
-                 class="c-item absolute top-0 left-1/2 {{ $mobileWidth }} {{ $desktopWidth }} h-full transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-3xl"
-                 style="will-change: transform, opacity;">
+        <article id="{{ $id }}-item-{{ $i }}" class="c-item absolute top-0 left-1/2 {{ $mobileWidth }} {{ $desktopWidth }} h-full transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-3xl" style="will-change: transform, opacity;">
           <div class="w-full h-full {{ if $isScreenshots }}overflow-hidden{{ end }} rounded-3xl border border-slate-200 shadow-xl bg-white isolate transform-gpu">
             {{ if $isScreenshots }}
-            <div class="w-full h-full flex items-center justify-center bg-white cursor-zoom-in relative"
-                 onclick="openLightbox('{{ $item.file }}', '{{ $item.caption | default $item.alt }}')">
-              <img src="{{ $item.file }}" alt="{{ $item.alt | default "Screenshot" }}" class="w-full h-full object-contain p-4 pointer-events-none" loading="lazy">
+            <div class="w-full h-full flex items-center justify-center bg-white cursor-zoom-in relative" onclick="openLightbox('{{ $item.file }}', '{{ $item.caption | default $item.alt }}')">
+              <img src="{{ $item.file }}" alt="{{ $item.alt | default "Screenshot" }}" class="w-full h-full object-cover p-0 pointer-events-none" loading="lazy">
               {{ with $item.caption }}
               <div class="absolute bottom-4 left-4 right-4 p-2 bg-vertama-light/5 backdrop-blur-md border border-slate-100 rounded-xl text-slate-900 text-center shadow-sm pointer-events-none">
                 <p class="text-xs font-medium m-0">{{ . }}</p>
@@ -72,9 +63,7 @@
               {{ end }}
             </div>
             {{ else }}
-            <div class="w-full h-full rounded-[inherit]">
-              {{ partial "card.html" $item }}
-            </div>
+            <div class="w-full h-full rounded-[inherit]">{{ partial "card.html" $item }}</div>
             {{ end }}
           </div>
         </article>
@@ -91,82 +80,97 @@
   {{ end }}
 </section>
 
-<div id="lightbox" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-xl flex-col items-center justify-center p-4 md:p-12" onclick="if(event.target === this) closeLightbox()">
-  <button onclick="closeLightbox()" class="absolute top-6 right-6 text-slate-900 hover:text-vertama p-2 bg-slate-100 rounded-full shadow-sm">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
-  </button>
-  <div class="relative max-w-full max-h-[80vh] flex flex-col items-center">
-    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full object-contain shadow-2xl rounded-2xl border border-slate-100 bg-white">
-    <p id="lightbox-caption" class="text-white text-center mt-4 text-sm px-4"></p>
+<div id="lightbox" class="fixed inset-0 z-[100] hidden bg-vertama-light/10 backdrop-blur-xl flex-col" onclick="if(event.target === this) closeLightbox()">
+  <div class="flex justify-between items-center p-4 md:p-6 w-full shrink-0">
+    <p id="lightbox-caption" class="text-slate-900 font-medium text-sm md:text-base px-4"></p>
+    <button onclick="closeLightbox()" class="text-slate-900 hover:text-vertama p-2 bg-white rounded-full shadow-lg transition-transform active:scale-90">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="flex-1 overflow-auto w-full">
+    <div class="flex justify-center items-start p-8 md:p-12 min-h-full">
+      <img id="lightbox-img" src="" alt="" class="h-auto w-auto max-w-full max-h-[80vh] shadow-2xl rounded-2xl border border-slate-200 bg-white transition-all duration-300 cursor-zoom-in" onclick="toggleZoom(this)">
+    </div>
   </div>
 </div>
 
+<style>
+    .img-full-size { max-height: none !important; max-width: none !important; cursor: zoom-out !important; }
+</style>
+
 <script>
   (function() {
-    const section   = document.getElementById('{{ $id }}-section');
-    const track     = document.getElementById('{{ $id }}-track');
-    const mode      = "{{ $mode }}";
+    const section = document.getElementById('{{ $id }}-section');
+    const track = document.getElementById('{{ $id }}-track');
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbCap = document.getElementById('lightbox-caption');
 
+    // --- Lightbox Functions ---
     window.openLightbox = function(src, caption) {
-      const lb  = document.getElementById('lightbox');
-      const img = document.getElementById('lightbox-img');
-      const cap = document.getElementById('lightbox-caption');
       if (!lb) return;
-      img.src = src;
-      cap.textContent = caption || '';
-      lb.classList.remove('hidden');
-      lb.classList.add('flex');
+      lbImg.src = src;
+      lbCap.textContent = caption || '';
+      lb.classList.replace('hidden', 'flex');
       document.body.style.overflow = 'hidden';
     };
 
     window.closeLightbox = function() {
-      const lb = document.getElementById('lightbox');
       if (!lb) return;
-      lb.classList.add('hidden');
-      lb.classList.remove('flex');
+      lb.classList.replace('flex', 'hidden');
+      lbImg.classList.remove('img-full-size');
       document.body.style.overflow = '';
+    };
+
+    window.toggleZoom = function(img) {
+      img.classList.toggle('img-full-size');
     };
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
+    // --- Carousel Logic ---
     if (!track) return;
 
-    const items   = Array.from(track.querySelectorAll('.c-item'));
-    const dots    = Array.from(section.querySelectorAll('.c-dot'));
-    const TOTAL   = items.length;
-    let current   = 0;
+    const items = Array.from(track.querySelectorAll('.c-item'));
+    const dots = Array.from(section.querySelectorAll('.c-dot'));
+    const mode = "{{ $mode }}";
+    const TOTAL = items.length;
+    let current = 0;
 
     function update() {
       const isMobile = window.innerWidth < 768;
-
       items.forEach((item, i) => {
         let diff = i - current;
-        if (diff >  TOTAL / 2) diff -= TOTAL;
+        if (diff > TOTAL / 2) diff -= TOTAL;
         if (diff < -TOTAL / 2) diff += TOTAL;
-        const abs      = Math.abs(diff);
+        const abs = Math.abs(diff);
         const isCenter = abs === 0;
-
         let tx = 0, scale = 1, opacity = 0;
 
         if (isCenter) {
           tx = 0; scale = 1; opacity = 1;
         } else if (abs === 1) {
-          const dir    = diff > 0 ? 1 : -1;
-          const offset = isMobile ? 10 : (mode === 'cards' ? 16 : 22);
-          tx = dir * offset; scale = 0.9; opacity = 1;
+          const dir = diff > 0 ? 1 : -1;
+          tx = dir * (isMobile ? 10 : (mode === 'cards' ? 16 : 22));
+          scale = 0.9; opacity = 1;
         }
 
-        item.style.transform     = `translateX(calc(-50% + ${tx}%)) scale(${scale})`;
-        item.style.zIndex        = String(20 - abs);
-        item.style.opacity       = String(opacity);
-        item.style.visibility    = opacity === 0 ? 'hidden' : 'visible';
-        item.style.pointerEvents = isCenter ? 'auto' : 'none';
-        item.style.filter        = isCenter ? 'none' : 'saturate(0.4) brightness(0.88)';
+        Object.assign(item.style, {
+          transform: `translateX(calc(-50% + ${tx}%)) scale(${scale})`,
+          zIndex: 20 - abs,
+          opacity: opacity,
+          visibility: opacity === 0 ? 'hidden' : 'visible',
+          pointerEvents: isCenter ? 'auto' : 'none',
+          filter: isCenter ? 'none' : 'saturate(0.4) brightness(0.88)'
+        });
       });
 
       dots.forEach((dot, i) => {
-        dot.style.width      = i === current ? '24px' : '6px';
-        dot.style.background = i === current ? '#008ab5' : '#cbd5e1';
+        Object.assign(dot.style, {
+          width: i === current ? '24px' : '6px',
+          background: i === current ? '#008ab5' : '#cbd5e1'
+        });
       });
     }
 
@@ -175,10 +179,12 @@
 
     let startX = 0;
     section.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive: true});
-    section.addEventListener('touchend',   e => {
+    section.addEventListener('touchend', e => {
       const dx = startX - e.changedTouches[0].clientX;
-      if (Math.abs(dx) > 40) dx > 0 ? (() => { current = (current + 1) % TOTAL; update(); })()
-        : (() => { current = (current - 1 + TOTAL) % TOTAL; update(); })();
+      if (Math.abs(dx) > 40) {
+        current = dx > 0 ? (current + 1) % TOTAL : (current - 1 + TOTAL) % TOTAL;
+        update();
+      }
     }, {passive: true});
 
     window.addEventListener('resize', update);
