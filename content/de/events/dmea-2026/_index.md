@@ -5,8 +5,9 @@ url: "/DMEA26/"
 campaign_ref: "dmea-live-booth"
 event_slogan: "DMEA 2026"
 event_year: "2026"
-badge_text: "DMEA · Stand D-103"
+badge_text: "DMEA · Halle 3.2 · Stand D-103"
 intro_text: "Schön, dass Sie uns am Stand besucht haben. Hier finden Sie alle vorgestellten Lösungen — zum Lesen, Herunterladen und Weiterdenken."
+hero_img: "/assets/images/events/DMEA26/Ruderer.png"
 
 event_meta:
   - "Berlin, 21.–23. April 2026"
@@ -22,6 +23,12 @@ stats:
     label: "KIS-integriert"
   - value: "FHIR"
     label: "Ready — RKI-konform"
+    
+
+editorial:
+  title: "DMEA 2026 Editorial"
+  pdf_url: "/assets/downloads/DMEA26/vt_editorial_low.pdf" # WICHTIG: Pfad prüfen!
+  cover_image: "/assets/images/events/DMEA26/Ruderer.png"
 
 #featured_products:
 #  - name: "ELIM"

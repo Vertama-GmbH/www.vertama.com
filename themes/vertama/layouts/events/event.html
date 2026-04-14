@@ -2,51 +2,65 @@
 {{ $ref := .Params.campaign_ref | default "event" }}
 
 {{/* ── HERO: asymmetrisch, typografisch stark ─────────────────── */}}
-<section class="relative overflow-hidden border-b-2 border-vertama-light bg-vertama" aria-labelledby="event-hero-heading">
-    {{/* Hintergrund Layer (unverändert) */}}
-    <div class="absolute inset-0 z-0">
-      <div class="absolute inset-0 md:left-1/3 overflow-hidden">
-        <img src="/assets/images/events/DMEA26/Ruderer A4 upscale.png" alt=""
-             class="w-full h-full object-cover object-center opacity-30 md:opacity-50 grayscale hover:grayscale-0 transition-all duration-1000">
-        <div class="absolute inset-0 bg-gradient-to-r from-vertama from-5% via-vertama/90 via-35% to-transparent to-90%"></div>
-      </div>
+<section class="relative overflow-hidden border-b-2 border-vertama-light bg-vertama"
+         aria-labelledby="event-hero-heading">
+  {{/* Hintergrund Layer (unverändert) */}}
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 md:left-1/3 overflow-hidden">
+      <img src="{{ .Params.hero_img }}" alt=""
+           class="w-full h-full object-cover object-top opacity-70 md:opacity-85 transition-all duration-1000">
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-vertama from-10% via-vertama/70 via-45% to-vertama/10 to-100%"></div>
     </div>
+  </div>
 
-    <div class="max-w-6xl mx-auto px-5 py-20 md:py-32 relative z-10">
-      <div class="max-w-2xl">
+  <div class="max-w-6xl mx-auto px-5 py-20 md:py-32 relative z-10">
+    <div class="max-w-2xl">
 
-        {{ if .Params.badge_text }}
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-8 bg-white rounded-full shadow-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-vertama animate-pulse"></span>
-          <span class="text-xs font-extrabold tracking-widest uppercase text-vertama">
+      {{ if .Params.badge_text }}
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-8 bg-white rounded-full shadow-sm">
+        <span class="w-1.5 h-1.5 rounded-full bg-vertama animate-pulse"></span>
+        <span class="text-xs font-extrabold tracking-widest uppercase text-vertama">
           {{ .Params.badge_text }}
         </span>
-        </div>
-        {{ end }}
-
-        <h1 id="event-hero-heading" class="text-5xl md:text-7xl font-extrabold text-white leading-[1.0] tracking-tight mb-6">
-          {{ replace .Title " " "<br>" | safeHTML }}
-        </h1>
-
-        <p class="text-lg text-blue-50/90 leading-relaxed mb-10 max-w-xl">
-          {{ .Params.intro_text }}
-        </p>
-
-        <div class="flex flex-wrap gap-4">
-          {{/* Primärer Action-Button: Weiß (deine Secondary Variante) */}}
-          {{ partial "button.html" (dict "text" "Lösungen ansehen" "url" "#produkte" "variant" "secondary") }}
-
-          {{/* Ghost Button: Nur Rahmen und Text weiß */}}
-          {{ if .Params.downloads }}
-          <a href="#downloads" class="inline-flex items-center justify-center px-8 py-4 font-bold rounded-lg text-white border-2 border-white/40 hover:border-white hover:bg-white/5 transition-all min-h-[48px]">
-            Handouts
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          {{ end }}
-        </div>
-
       </div>
+      {{ end }}
+
+      <h1 id="event-hero-heading" class="mb-4">
+        <span class="font-serif text-7xl md:text-8xl font-bold text-white italic">Willkommen </span>
+        <span class="inline-flex items-center gap-3 mt-2">
+          <span class="text-2xl md:text-3xl font-extrabold text-white/60 tracking-widest uppercase">
+            DMEA
+          </span>
+          <span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>
+          <span class="text-2xl md:text-3xl font-extrabold text-white/60 tracking-widest uppercase">
+            2026
+          </span>
+        </span>
+      </h1>
+
+      <p class="text-lg text-blue-50/90 leading-relaxed mb-10 max-w-xl">
+        {{ .Params.intro_text }}
+      </p>
+
+      <div class="flex flex-wrap gap-4">
+        {{/* Primärer Action-Button: Weiß (deine Secondary Variante) */}}
+        {{ partial "button.html" (dict "text" "Lösungen ansehen" "url" "#produkte" "variant" "secondary") }}
+
+        {{/* Ghost Button: Nur Rahmen und Text weiß */}}
+        {{ if .Params.downloads }}
+        <a href="#downloads"
+           class="inline-flex items-center justify-center px-8 py-4 font-bold rounded-lg text-white border-2 border-white/40 hover:border-white hover:bg-white/5 transition-all min-h-[48px]">
+          Handouts
+          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        {{ end }}
+      </div>
+
     </div>
+  </div>
 
   {{/* Event-Metadaten Strip */}}
   {{ if .Params.event_meta }}
@@ -63,6 +77,10 @@
   {{ end }}
 
 </section>
+
+{{ if .Params.editorial }}
+{{ partial "pdf-viewer.html" .Params.editorial }}
+{{ end }}
 
 <!--{{/* ── STATS STRIP ────────────────────────────────────────────── */}}-->
 <!--{{ if .Params.stats }}-->
@@ -177,17 +195,20 @@
          download
          onclick="if(window.umami) umami.track('pdf-download', { file: '{{ .name }}', ref: '{{ $ref }}' })"
          class="group flex items-center gap-4 p-5 bg-white rounded-2xl border border-slate-200 hover:border-vertama hover:shadow-md transition-all">
-        <div class="w-10 h-10 rounded-xl bg-vertama/10 flex items-center justify-center flex-shrink-0 group-hover:bg-vertama/20 transition-colors">
+        <div
+          class="w-10 h-10 rounded-xl bg-vertama/10 flex items-center justify-center flex-shrink-0 group-hover:bg-vertama/20 transition-colors">
           <svg class="w-5 h-5 text-vertama" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
           </svg>
         </div>
         <div class="flex-grow min-w-0">
           <p class="font-semibold text-slate-800 text-sm truncate">{{ .name }}</p>
           {{ with .size }}<p class="text-xs text-slate-400 mt-0.5">PDF · {{ . }}</p>{{ end }}
         </div>
-        <svg class="w-4 h-4 text-slate-300 group-hover:text-vertama transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+        <svg class="w-4 h-4 text-slate-300 group-hover:text-vertama transition-colors flex-shrink-0" fill="none"
+             stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </a>
       {{ end }}
