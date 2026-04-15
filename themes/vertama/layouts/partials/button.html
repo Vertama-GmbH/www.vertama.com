@@ -3,21 +3,22 @@
 {{ $variant := .variant | default "primary" }}
 {{ $ariaLabel := .ariaLabel }}
 
-<a href="{{ $url | relURL }}"
+<a href="{{ $url | safeURL }}"
    {{ if $ariaLabel }}aria-label="{{ $ariaLabel }}"{{ end }}
    class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-transparent font-bold rounded-lg shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-vertama focus:ring-offset-2 min-h-[48px]
    {{ if eq $variant "primary" }}
-text-white bg-vertama hover:bg-vertama-light
-{{ else if eq $variant "primaryNoArrow" }}
-text-white bg-vertama hover:bg-vertama-light
-{{ else if eq $variant "secondary" }}
-text-vertama bg-white border-2 border-vertama hover:bg-slate-50
-{{ else if eq $variant "hover" }}
-text-white bg-vertama-light
-{{ else if eq $variant "focus" }}
-text-white bg-vertama-light ring-2 ring-vertama ring-offset-2
-{{ end }}">
-{{ $text }}
+    text-white bg-vertama hover:bg-vertama-light
+   {{ else if eq $variant "primaryNoArrow" }}
+    text-white bg-vertama hover:bg-vertama-light
+   {{ else if eq $variant "secondary" }}
+    text-vertama bg-white border-2 border-vertama hover:bg-vertama-light hover:text-white hover:border-white
+   {{ else if eq $variant "hover" }}
+    text-white bg-vertama-light
+   {{ else if eq $variant "focus" }}
+    text-white bg-vertama-light ring-2 ring-vertama ring-offset-2
+   {{ end }}"
+>
+    {{ $text }}
 
 <!-- Optional: Arrow Icon für Primary -->
 {{ if eq $variant "primary" }}

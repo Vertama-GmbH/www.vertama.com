@@ -48,15 +48,12 @@
       </p>
 
       <div class="flex items-center gap-6">
-        {{ partial "button.html" (dict "text" "Lösungen ansehen" "url" "DMEA26/#produkte" "variant" "secondary") }}
+        {{ partial "button.html" (dict "text" "Lösungen ansehen" "url" "#produkte" "variant" "secondary") }}
 
         {{ if .Params.downloads }}
-        {{/* Focus-Ring explizit weil border-b kein sichtbarer Focus-Indikator ist */}}
-        <a href="#downloads"
-           class="text-sm font-bold text-white border-b border-white/60 hover:border-white transition-all pb-1
-                  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white
-                  focus-visible:border-transparent rounded-sm">
+        <a href="#downloads" class="inline-flex items-center justify-center px-8 py-4 font-bold rounded-lg text-white border-2 border-white/40 hover:border-white hover:bg-white/5 transition-all min-h-[48px]">
           Handouts
+          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         {{ end }}
       </div>
