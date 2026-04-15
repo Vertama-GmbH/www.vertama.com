@@ -48,7 +48,7 @@
       </p>
 
       <div class="flex items-center gap-6">
-        {{ partial "button.html" (dict "text" "Lösungen ansehen" "url" "#produkte" "variant" "secondary") }}
+        {{ partial "button.html" (dict "text" "Lösungen ansehen" "url" "DMEA26/#produkte" "variant" "secondary") }}
 
         {{ if .Params.downloads }}
         {{/* Focus-Ring explizit weil border-b kein sichtbarer Focus-Indikator ist */}}
@@ -86,13 +86,15 @@
 {{ partial "pdf-viewer.html" .Params.editorial }}
 {{ end }}
 
-{{ $produkte := (where .Site.RegularPages "Section" "produkte") }}
-{{ partial "carousel.html" (dict
-"id" "main-product-loop"
-"items" $produkte
-"title" "Unsere Produkte"
-"subtitle" "Portfolio"
-) }}
+<section id="produkte" class="scroll-mt-20">
+  {{ $produkte := (where .Site.RegularPages "Section" "produkte") }}
+  {{ partial "carousel.html" (dict
+  "id" "main-product-loop"
+  "items" $produkte
+  "title" "Unsere Produkte"
+  "subtitle" "Portfolio"
+  ) }}
+</section>
 
 {{/* ── DOWNLOADS ── */}}
 {{ if .Params.downloads }}
