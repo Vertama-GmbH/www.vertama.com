@@ -1,40 +1,45 @@
 {{ define "main" }}
 {{ $ref := .Params.campaign_ref | default "event" }}
 
-{{/* ── HERO: asymmetrisch, typografisch stark ─────────────────── */}}
-<section class="relative overflow-hidden border-b-2 border-vertama-light bg-[#002d3a]" aria-labelledby="event-hero-heading">
+{{/* ── HERO ── */}}
+<section class="relative overflow-hidden border-b-2 border-vertama-light bg-[#002d3a]"
+         aria-labelledby="event-hero-heading">
 
-  {{/* Hintergrundbild mit intelligenter Maske */}}
   <div class="absolute inset-0 z-0">
-    <img src="{{ .Params.hero_img }}" alt=""
-         class="w-full h-full object-cover object-[center_25%] md:object-right-center opacity-100">
-
-    {{/* Mobil: Verlauf von UNTEN (Schwarz/Blau) nach OBEN (Transparent)
-    Desktop: Verlauf von LINKS (Dunkelblau) nach RECHTS (Transparent)
-    */}}
+    <img src="{{ .Params.hero_img }}"
+         alt=""
+         role="presentation"
+         class="w-full h-full object-cover object-[center_25%] md:object-right-center">
     <div class="absolute inset-0 bg-gradient-to-t from-vertama via-vertama/90 to-transparent
-                md:bg-gradient-to-r md:from-vertama md:via-vertama/80 md:to-transparent"></div>
+                md:bg-gradient-to-r md:from-vertama md:via-vertama/80 md:to-transparent"
+         aria-hidden="true"></div>
   </div>
 
   <div class="max-w-6xl mx-auto px-5 py-12 md:py-24 relative z-10">
-    <div class="max-w-2xl mt-40 md:mt-0"> {{/* Schiebt den Text mobil nach unten in den dunklen Bereich */}}
+
+    {{/* mt-40 → min-h damit Bild auf Mobile sichtbar ist ohne semantischen Hack */}}
+    <div class="max-w-2xl" style="padding-top: max(10rem, 35vw); padding-top: clamp(8rem, 35vw, 12rem);">
 
       {{ if .Params.badge_text }}
-      <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 bg-white/10 backdrop-blur-md border border-white/20 rounded">
-        <span class="text-[10px] font-bold tracking-widest uppercase text-white">
+      {{/* p statt div — Badge ist Fließtext, kein Container */}}
+      <p class="inline-flex items-center gap-2 px-3 py-1 mb-6 bg-white/10 backdrop-blur-md border border-white/20 rounded"
+         aria-label="Veranstaltung: {{ .Params.badge_text }}">
+        <span class="text-[10px] font-bold tracking-widest uppercase text-white" aria-hidden="true">
           {{ .Params.badge_text }}
         </span>
-      </div>
+      </p>
       {{ end }}
 
       <h1 id="event-hero-heading" class="mb-6 drop-shadow-lg">
-        <span class="font-serif italic text-6xl md:text-8xl text-white block leading-[0.9]" style="font-family: Georgia, serif;">
+        <span class="font-serif italic text-6xl md:text-8xl text-white block leading-[0.9]"
+              style="font-family: Georgia, serif;">
           Willkommen
         </span>
-        <div class="flex items-center gap-3 mt-4">
-          <span class="text-xl md:text-2xl font-black text-white/90 tracking-widest uppercase">DMEA</span>
-          <span class="w-8 h-0.5 bg-white"></span>
-          <span class="text-xl md:text-2xl font-black text-white/90 tracking-widest uppercase">2026</span>
+        {{/* Punkt zwischen DMEA und 2026 ist dekorativ → aria-hidden */}}
+        <div class="flex items-center gap-3 mt-4" aria-label="DMEA 2026">
+          <span class="text-xl md:text-2xl font-black text-white tracking-widest uppercase" aria-hidden="true">DMEA</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-white/80" aria-hidden="true"></span>
+          <span class="text-xl md:text-2xl font-black text-white tracking-widest uppercase" aria-hidden="true">2026</span>
         </div>
       </h1>
 
@@ -46,116 +51,41 @@
         {{ partial "button.html" (dict "text" "Lösungen ansehen" "url" "#produkte" "variant" "secondary") }}
 
         {{ if .Params.downloads }}
-        <a href="#downloads" class="text-sm font-bold text-white border-b border-white/40 hover:border-white transition-all pb-1">
+        {{/* Focus-Ring explizit weil border-b kein sichtbarer Focus-Indikator ist */}}
+        <a href="#downloads"
+           class="text-sm font-bold text-white border-b border-white/60 hover:border-white transition-all pb-1
+                  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white
+                  focus-visible:border-transparent rounded-sm">
           Handouts
         </a>
         {{ end }}
       </div>
+
     </div>
   </div>
 
-  {{/* Kompakter Info-Strip am Boden */}}
-  <div class="absolute bottom-0 left-0 w-full bg-vertama/20 backdrop-blur-sm border-t border-white/10 z-20">
-    <div class="max-w-6xl mx-auto px-5 py-2 flex flex-wrap items-center gap-x-6 gap-y-1">
+  {{/* Meta-Strip: semantisch als Liste */}}
+  {{ if .Params.event_meta }}
+  <div class="absolute bottom-0 left-0 w-full bg-vertama/20 backdrop-blur-sm border-t border-white/10 z-20"
+       aria-label="Veranstaltungsdetails">
+    <ul class="max-w-6xl mx-auto px-5 py-2 flex flex-wrap items-center gap-x-6 gap-y-1 list-none"
+        role="list">
       {{ range .Params.event_meta }}
-      <span class="flex items-center gap-1.5 text-sm font-bold text-white/60 uppercase tracking-tighter">
-        <span class="w-1 h-1 rounded-full bg-vertama-light"></span>
+      <li class="flex items-center gap-1.5 text-sm font-bold text-white uppercase tracking-tighter">
+        <span class="w-1 h-1 rounded-full bg-vertama-light flex-shrink-0" aria-hidden="true"></span>
         {{ . }}
-      </span>
+      </li>
       {{ end }}
-    </div>
+    </ul>
   </div>
+  {{ end }}
+
 </section>
 
 {{ if .Params.editorial }}
 {{ partial "pdf-viewer.html" .Params.editorial }}
 {{ end }}
 
-<!--{{/* ── STATS STRIP ────────────────────────────────────────────── */}}-->
-<!--{{ if .Params.stats }}-->
-<!--<section class="border-b border-slate-100 bg-white" aria-label="Kennzahlen">-->
-<!--  <div class="max-w-6xl mx-auto px-5">-->
-<!--    <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-100">-->
-<!--      {{ range .Params.stats }}-->
-<!--      <div class="px-6 py-8">-->
-<!--        <div class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-1">-->
-<!--          {{ .value }}-->
-<!--        </div>-->
-<!--        <div class="text-xs text-slate-500 font-medium leading-snug">{{ .label }}</div>-->
-<!--      </div>-->
-<!--      {{ end }}-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</section>-->
-<!--{{ end }}-->
-
-{{/* ── PRODUKTE: editorial numbered list ──────────────────────── */}}
-<!--{{ if .Params.featured_products }}-->
-<!--<section id="produkte" class="py-20 bg-white" aria-labelledby="featured-heading">-->
-<!--  <div class="max-w-6xl mx-auto px-5">-->
-
-<!--    <div class="flex items-end justify-between mb-12 border-b border-slate-200 pb-6">-->
-<!--      <h2 id="featured-heading" class="text-2xl md:text-3xl font-extrabold text-slate-900">-->
-<!--        Am Stand vorgestellt-->
-<!--      </h2>-->
-<!--      <span class="text-sm text-slate-400 font-medium hidden md:block">-->
-<!--        {{ len .Params.featured_products }} Lösungen-->
-<!--      </span>-->
-<!--    </div>-->
-
-<!--    <div class="space-y-0 divide-y divide-slate-100">-->
-<!--      {{ range $i, $p := .Params.featured_products }}-->
-<!--      <article class="group grid grid-cols-12 gap-4 py-8 hover:bg-slate-50/70 transition-colors -mx-5 px-5 rounded-xl"-->
-<!--               onclick="if(window.umami) umami.track('product-view', { product: '{{ $p.name }}', ref: '{{ $ref }}' })">-->
-
-<!--        {{/* Nummer */}}-->
-<!--        <div class="col-span-2 md:col-span-1 flex items-start pt-1">-->
-<!--          <span class="text-xs font-bold text-slate-300 font-mono tabular-nums group-hover:text-vertama transition-colors">-->
-<!--            {{ printf "%02d" (add $i 1) }}-->
-<!--          </span>-->
-<!--        </div>-->
-
-<!--        {{/* Inhalt */}}-->
-<!--        <div class="col-span-10 md:col-span-8 flex flex-col gap-1">-->
-<!--          <h3 class="text-xl md:text-2xl font-bold text-slate-900 group-hover:text-vertama transition-colors leading-snug">-->
-<!--            {{ $p.name }}-->
-<!--          </h3>-->
-<!--          {{ if $p.tagline }}-->
-<!--          <p class="text-xs font-bold text-vertama uppercase tracking-widest">{{ $p.tagline }}</p>-->
-<!--          {{ end }}-->
-<!--          <p class="text-sm text-slate-500 leading-relaxed mt-1 max-w-lg">{{ $p.description }}</p>-->
-<!--        </div>-->
-
-<!--        {{/* Actions */}}-->
-<!--        <div class="col-span-12 md:col-span-3 flex md:flex-col items-start md:items-end justify-start md:justify-start gap-2 md:pt-1">-->
-<!--          <a href="{{ $p.url }}"-->
-<!--             onclick="if(window.umami) umami.track('product-click', { product: '{{ $p.name }}', ref: '{{ $ref }}' })"-->
-<!--             class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-white bg-vertama hover:bg-vertama-light rounded-lg transition-colors">-->
-<!--            Details-->
-<!--            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">-->
-<!--              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 18l6-6-6-6"/>-->
-<!--            </svg>-->
-<!--          </a>-->
-<!--          {{ if $p.pdf_url }}-->
-<!--          <a href="{{ $p.pdf_url }}"-->
-<!--             download-->
-<!--             onclick="event.stopPropagation(); if(window.umami) umami.track('pdf-download', { product: '{{ $p.name }}', ref: '{{ $ref }}' })"-->
-<!--             class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors">-->
-<!--            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">-->
-<!--              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>-->
-<!--            </svg>-->
-<!--            PDF-->
-<!--          </a>-->
-<!--          {{ end }}-->
-<!--        </div>-->
-
-<!--      </article>-->
-<!--      {{ end }}-->
-<!--    </div>-->
-
-<!--  </div>-->
-<!--</section>-->
-<!--{{ end }}-->
 {{ $produkte := (where .Site.RegularPages "Section" "produkte") }}
 {{ partial "carousel.html" (dict
 "id" "main-product-loop"
@@ -164,9 +94,10 @@
 "subtitle" "Portfolio"
 ) }}
 
-{{/* ── DOWNLOADS ──────────────────────────────────────────────── */}}
+{{/* ── DOWNLOADS ── */}}
 {{ if .Params.downloads }}
-<section id="downloads" class="py-20 bg-slate-50 border-t border-slate-200" aria-labelledby="downloads-heading">
+<section id="downloads" class="py-20 bg-slate-50 border-t border-slate-200"
+         aria-labelledby="downloads-heading">
   <div class="max-w-6xl mx-auto px-5">
 
     <div class="flex items-end justify-between mb-10 border-b border-slate-200 pb-6">
@@ -178,30 +109,43 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl">
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl list-none" role="list">
       {{ range .Params.downloads }}
-      <a href="{{ .url }}"
-         download
-         onclick="if(window.umami) umami.track('pdf-download', { file: '{{ .name }}', ref: '{{ $ref }}' })"
-         class="group flex items-center gap-4 p-5 bg-white rounded-2xl border border-slate-200 hover:border-vertama hover:shadow-md transition-all">
-        <div
-          class="w-10 h-10 rounded-xl bg-vertama/10 flex items-center justify-center flex-shrink-0 group-hover:bg-vertama/20 transition-colors">
-          <svg class="w-5 h-5 text-vertama" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <li>
+        <a href="{{ .url }}"
+           download="{{ .name }}"
+           onclick="if(window.umami) umami.track('pdf-download', { file: '{{ .name }}', ref: '{{ $ref }}' })"
+           {{/* aria-label: Name + Typ + Größe für Screenreader zusammenfassen */}}
+        aria-label="{{ .name }}{{ with .size }}, PDF, {{ . }}{{ end }} herunterladen"
+        class="group flex items-center gap-4 p-5 bg-white rounded-2xl border border-slate-200
+        hover:border-vertama hover:shadow-md transition-all
+        focus-visible:outline focus-visible:outline-2 focus-visible:outline-vertama focus-visible:outline-offset-2">
+
+        <div class="w-10 h-10 rounded-xl bg-vertama/10 flex items-center justify-center flex-shrink-0
+                      group-hover:bg-vertama/20 transition-colors" aria-hidden="true">
+          <svg class="w-5 h-5 text-vertama" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
           </svg>
         </div>
+
         <div class="flex-grow min-w-0">
-          <p class="font-semibold text-slate-800 text-sm truncate">{{ .name }}</p>
-          {{ with .size }}<p class="text-xs text-slate-400 mt-0.5">PDF · {{ . }}</p>{{ end }}
+          {{/* aria-hidden weil aria-label auf <a> alles abdeckt */}}
+          <p class="font-semibold text-slate-800 text-sm truncate" aria-hidden="true">{{ .name }}</p>
+          {{ with .size }}
+          <p class="text-xs text-slate-400 mt-0.5" aria-hidden="true">PDF · {{ . }}</p>
+          {{ end }}
         </div>
-        <svg class="w-4 h-4 text-slate-300 group-hover:text-vertama transition-colors flex-shrink-0" fill="none"
-             stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+
+        <svg class="w-4 h-4 text-slate-300 group-hover:text-vertama transition-colors flex-shrink-0"
+             fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
         </svg>
-      </a>
+
+        </a>
+      </li>
       {{ end }}
-    </div>
+    </ul>
 
   </div>
 </section>
