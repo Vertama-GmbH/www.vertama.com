@@ -2,80 +2,69 @@
 {{ $ref := .Params.campaign_ref | default "event" }}
 
 {{/* ── HERO: asymmetrisch, typografisch stark ─────────────────── */}}
-<section class="relative overflow-hidden border-b-2 border-vertama-light bg-vertama"
-         aria-labelledby="event-hero-heading">
-  {{/* Hintergrund Layer (unverändert) */}}
+<section class="relative overflow-hidden border-b-2 border-vertama-light bg-[#002d3a]" aria-labelledby="event-hero-heading">
+
+  {{/* Hintergrundbild mit intelligenter Maske */}}
   <div class="absolute inset-0 z-0">
-    <div class="absolute inset-0 md:left-1/3 overflow-hidden">
-      <img src="{{ .Params.hero_img }}" alt=""
-           class="w-full h-full object-cover object-top opacity-70 md:opacity-85 transition-all duration-1000">
-      <div
-        class="absolute inset-0 bg-gradient-to-r from-vertama from-10% via-vertama/70 via-45% to-vertama/10 to-100%"></div>
-    </div>
+    <img src="{{ .Params.hero_img }}" alt=""
+         class="w-full h-full object-cover object-[center_25%] md:object-right-center opacity-100">
+
+    {{/* Mobil: Verlauf von UNTEN (Schwarz/Blau) nach OBEN (Transparent)
+    Desktop: Verlauf von LINKS (Dunkelblau) nach RECHTS (Transparent)
+    */}}
+    <div class="absolute inset-0 bg-gradient-to-t from-vertama via-vertama/90 to-transparent
+                md:bg-gradient-to-r md:from-vertama md:via-vertama/80 md:to-transparent"></div>
   </div>
 
-  <div class="max-w-6xl mx-auto px-5 py-20 md:py-32 relative z-10">
-    <div class="max-w-2xl">
+  <div class="max-w-6xl mx-auto px-5 py-12 md:py-24 relative z-10">
+    <div class="max-w-2xl mt-40 md:mt-0"> {{/* Schiebt den Text mobil nach unten in den dunklen Bereich */}}
 
       {{ if .Params.badge_text }}
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-8 bg-white rounded-full shadow-sm">
-        <span class="w-1.5 h-1.5 rounded-full bg-vertama animate-pulse"></span>
-        <span class="text-xs font-extrabold tracking-widest uppercase text-vertama">
+      <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 bg-white/10 backdrop-blur-md border border-white/20 rounded">
+        <span class="text-[10px] font-bold tracking-widest uppercase text-white">
           {{ .Params.badge_text }}
         </span>
       </div>
       {{ end }}
 
-      <h1 id="event-hero-heading" class="mb-4">
-        <span class="font-serif text-7xl md:text-8xl font-bold text-white italic">Willkommen </span>
-        <span class="inline-flex items-center gap-3 mt-2">
-          <span class="text-2xl md:text-3xl font-extrabold text-white/60 tracking-widest uppercase">
-            DMEA
-          </span>
-          <span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>
-          <span class="text-2xl md:text-3xl font-extrabold text-white/60 tracking-widest uppercase">
-            2026
-          </span>
+      <h1 id="event-hero-heading" class="mb-6 drop-shadow-lg">
+        <span class="font-serif italic text-6xl md:text-8xl text-white block leading-[0.9]" style="font-family: Georgia, serif;">
+          Willkommen
         </span>
+        <div class="flex items-center gap-3 mt-4">
+          <span class="text-xl md:text-2xl font-black text-white/90 tracking-widest uppercase">DMEA</span>
+          <span class="w-8 h-0.5 bg-white"></span>
+          <span class="text-xl md:text-2xl font-black text-white/90 tracking-widest uppercase">2026</span>
+        </div>
       </h1>
 
-      <p class="text-lg text-blue-50/90 leading-relaxed mb-10 max-w-xl">
+      <p class="text-lg text-white leading-snug mb-8 max-w-sm drop-shadow-md">
         {{ .Params.intro_text }}
       </p>
 
-      <div class="flex flex-wrap gap-4">
-        {{/* Primärer Action-Button: Weiß (deine Secondary Variante) */}}
+      <div class="flex items-center gap-6">
         {{ partial "button.html" (dict "text" "Lösungen ansehen" "url" "#produkte" "variant" "secondary") }}
 
-        {{/* Ghost Button: Nur Rahmen und Text weiß */}}
         {{ if .Params.downloads }}
-        <a href="#downloads"
-           class="inline-flex items-center justify-center px-8 py-4 font-bold rounded-lg text-white border-2 border-white/40 hover:border-white hover:bg-white/5 transition-all min-h-[48px]">
+        <a href="#downloads" class="text-sm font-bold text-white border-b border-white/40 hover:border-white transition-all pb-1">
           Handouts
-          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
         </a>
         {{ end }}
       </div>
-
     </div>
   </div>
 
-  {{/* Event-Metadaten Strip */}}
-  {{ if .Params.event_meta }}
-  <div class="border-t border-white/20 relative z-20 bg-black/5">
-    <div class="max-w-6xl mx-auto px-5 py-4 flex flex-wrap items-center gap-x-6 gap-y-1">
+  {{/* Kompakter Info-Strip am Boden */}}
+  <div class="absolute bottom-0 left-0 w-full bg-vertama/20 backdrop-blur-sm border-t border-white/10 z-20">
+    <div class="max-w-6xl mx-auto px-5 py-2 flex flex-wrap items-center gap-x-6 gap-y-1">
       {{ range .Params.event_meta }}
-      <span class="flex items-center gap-1.5 text-xs font-medium text-slate-300">
-        <span class="w-1 h-1 rounded-full bg-white flex-shrink-0"></span>
+      <span class="flex items-center gap-1.5 text-sm font-bold text-white/60 uppercase tracking-tighter">
+        <span class="w-1 h-1 rounded-full bg-vertama-light"></span>
         {{ . }}
       </span>
       {{ end }}
     </div>
   </div>
-  {{ end }}
-
 </section>
 
 {{ if .Params.editorial }}

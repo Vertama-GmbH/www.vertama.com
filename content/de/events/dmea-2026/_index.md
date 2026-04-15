@@ -55,8 +55,8 @@ downloads:
     size: "1.2 MB"
 
 cta_section:
-  title: "Vortrag verpasst?"
-  description: "Sichern Sie sich die Aufzeichnung und alle Folien direkt per E-Mail."
-  button_text: "Unterlagen anfordern"
+  title: "Interesse geweckt?"
+  description: "Vereinbaren Sie gerne einen Termin zur individuellen Beratung."
+  button_text: "Kontakt aufnehmen"
   url: "/de/kontakt/?product=dmea-presentation"
 ---
