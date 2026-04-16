@@ -18,7 +18,7 @@
       <a href="{{ $e.pdf_url | relURL }}" download
          class="inline-flex items-center gap-2 px-6 py-3 bg-vertama text-white rounded-lg font-bold hover:bg-vertama-light transition-all shadow-md">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
         Vollständige PDF (Download)
       </a>
@@ -33,11 +33,26 @@
 
         {{ range $i, $src := $e.pages }}
         <div class="flex-shrink-0 snap-center">
-          <div class="relative shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-slate-200 rounded-sm bg-white overflow-hidden">
+          <div
+            class="relative shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-slate-200 rounded-sm bg-white overflow-hidden">
+
+            {{ $img := resources.Get $src }}
+            {{ if $img }}
+            {{/* Wir machen sie max. 1200px hoch (reicht für 85vh), konvertieren zu WebP und reduzieren die Qualität
+            */}}
+            {{ $optimized := $img.Resize "x1200 webp q80" }}
+            <img src="{{ $optimized.RelPermalink }}"
+                 alt="Seite {{ add $i 1 }}"
+                 class="h-[65vh] md:h-[85vh] w-auto object-contain select-none pointer-events-none"
+                 loading="lazy">
+            {{ else }}
+            {{/* Fallback, falls das Bild nicht in /assets/ gefunden wird */}}
             <img src="{{ $src | relURL }}"
                  alt="Seite {{ add $i 1 }}"
                  class="h-[65vh] md:h-[85vh] w-auto object-contain select-none pointer-events-none"
                  loading="lazy">
+            {{ end }}
+
           </div>
           <p class="text-center mt-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest">
             Seite {{ add $i 1 }} <span class="mx-1 text-slate-200">/</span> {{ len $e.pages }}
@@ -48,8 +63,11 @@
       </div>
 
       {{/* Optischer Hinweis für Desktop-User */}}
-      <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 text-[10px] text-slate-400 font-medium">
-        <svg class="w-3 h-3 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div
+        class="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 text-[10px] text-slate-400 font-medium">
+        <svg class="w-3 h-3 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
         Wischen oder Ziehen zum Blättern
       </div>
     </div>
@@ -59,31 +77,54 @@
 
 <style>
     @keyframes bounce-x {
-        0%, 100% { transform: translateX(0); }
-        50% { transform: translateX(3px); }
+        0%, 100% {
+            transform: translateX(0);
+        }
+        50% {
+            transform: translateX(3px);
+        }
     }
-    .animate-bounce-x { animation: bounce-x 1.5s infinite; }
+
+    .animate-bounce-x {
+        animation: bounce-x 1.5s infinite;
+    }
 
     /* Custom Scrollbar für Chrome/Safari */
-    #editorial-viewport::-webkit-scrollbar { height: 6px; }
-    #editorial-viewport::-webkit-scrollbar-track { background: #f1f5f9; }
-    #editorial-viewport::-webkit-scrollbar-thumb { background: #005e7b; border-radius: 10px; }
+    #editorial-viewport::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    #editorial-viewport::-webkit-scrollbar-track {
+        background: #f1f5f9;
+    }
+
+    #editorial-viewport::-webkit-scrollbar-thumb {
+        background: #005e7b;
+        border-radius: 10px;
+    }
 </style>
 
 <script>
   // Einfaches Drag-to-Scroll für Desktop
-  const slider = document.getElementById('editorial-viewport');
-  let isDown = false; let startX; let scrollLeft;
+  const slider = document.getElementById("editorial-viewport");
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
-  slider.addEventListener('mousedown', (e) => {
-    isDown = true; slider.classList.add('active');
+  slider.addEventListener("mousedown", (e) => {
+    isDown = true;
+    slider.classList.add("active");
     startX = e.pageX - slider.offsetLeft;
     scrollLeft = slider.scrollLeft;
   });
-  slider.addEventListener('mouseleave', () => { isDown = false; });
-  slider.addEventListener('mouseup', () => { isDown = false; });
-  slider.addEventListener('mousemove', (e) => {
-    if(!isDown) return;
+  slider.addEventListener("mouseleave", () => {
+    isDown = false;
+  });
+  slider.addEventListener("mouseup", () => {
+    isDown = false;
+  });
+  slider.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
     const walk = (x - startX) * 2;
