@@ -6,6 +6,15 @@ layout: "single"
 icon: "/assets/images/icons/products/product-digg.png"
 weight: 30
 
+media:
+  #  video_main:
+  #    url: "..."
+  #    title: "..."
+  screenshots:
+    - file: "/assets/images/products/digg/DIGG_Screenshot_Geburtsbescheinigung.png"
+      alt: "DIGG - Formular"
+      caption: "Übersicht des Formulars"
+
 hero:
   badge: "Geburtsmeldung"
   headline: "DiGG – Digitale Geburtsmeldung"
