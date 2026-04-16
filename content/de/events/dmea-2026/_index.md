@@ -23,12 +23,6 @@ stats:
     label: "KIS-integriert"
   - value: "FHIR"
     label: "Ready — RKI-konform"
-    
-
-editorial:
-  title: "DMEA 2026 Editorial"
-  pdf_url: "/assets/downloads/DMEA26/vt_editorial_low.pdf" # WICHTIG: Pfad prüfen!
-  cover_image: "/assets/images/events/DMEA26/Ruderer.png"
 
 editorial:
   title: "DMEA 2026 Editorial"
