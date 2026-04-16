@@ -8,9 +8,6 @@ on:
   schedule:
     - cron: '0 3 * * *'  # daily ~04:00 Berlin time (03:00 UTC) — publishes future-dated content
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 permissions:
   contents: read
   pages: write
@@ -31,6 +28,7 @@ jobs:
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: 'latest'
+          extended: true
 
       - name: Build Hugo Site
         run: hugo --minify
