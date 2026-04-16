@@ -6,6 +6,19 @@ layout: "single"
 icon: "/assets/images/icons/products/product-duba.png"
 weight: 40
 
+media:
+  #  video_main:
+  #    url: "..."
+  #    title: "..."
+  screenshots:
+    - file: "/assets/images/products/duba/DUBA_Screenshot_Formulare_Auswahlseite.png"
+      alt: "DUBA - Uebersichtsseite"
+      caption: "Übersicht der verfügbaren Formulare"
+    - file: "/assets/images/products/duba/DUBA_Screenshot_Meldeformular.png"
+      alt: "DUBA - Formular"
+      caption: "Übersicht des Formulars"
+
+
 hero:
   badge: "Behördenanträge"
   headline: "DuBA – Digitale Behörden-Anträge"

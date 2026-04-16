@@ -8,18 +8,18 @@ icon: "/assets/images/icons/products/product-elim.png"
 weight: 10
 
 media:
-  title: "Prozessablauf ELIM - Start im klinischen Arbeitsplatz"
-  video_main:
-    url: "/assets/videos/products/elim/Test.mp4"
-    title: "..."
+#  title: "Prozessablauf ELIM - Start im klinischen Arbeitsplatz"
+#  video_main:
+#    url: "/assets/videos/products/elim/Test.mp4"
+#    title: "..."
   screenshots:
-    - file: "/assets/images/products/elim/ELIM_1.jpeg"
+    - file: "/assets/images/products/elim/ELIM_Screenshot_Auswahlseite.png"
       alt: "ELIM - Uebersichtsseite"
       caption: "Übersicht aller Formulare"
-    - file: "/assets/images/products/elim/ELIM_2.jpeg"
-      alt: "ELIM - Formular Masern"
-      caption: "Formular zu Masern"
-    - file: "/assets/images/products/elim/ELIM_3.jpeg"
+    - file: "/assets/images/products/elim/ELIM_Screenshot_Meldeformular.png"
+      alt: "ELIM - Formular Hepatitis"
+      caption: "Formular zu Hepatitis"
+    - file: "/assets/images/products/elim/ELIM_Screenshot_Meldeformular_Success.png"
       alt: "Erfolgsmeldung zur Sendung"
       caption: "Erfolgsmeldung zur Sendung"
     - file: "/assets/images/products/elim/ELIM_4.jpeg"

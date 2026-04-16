@@ -12,9 +12,12 @@ media:
 #    url: "..."
 #    title: "..."
   screenshots:
-    - file: "/assets/images/products/elimplus/ELIM+_Screenshot.jpeg"
+    - file: "/assets/images/products/elimplus/ELIM+_Screenshot_Labormeldungen_Auswahlseite.png"
       alt: "ELIM+ - Uebersichtsseite"
       caption: "Übersicht der verfügbaren Formulare"
+    - file: "/assets/images/products/elimplus/ELIM+_Screenshot_Erregernmeldung.png"
+      alt: "ELIM+ - Formular"
+      caption: "Übersicht des Influenza-Formulars"
 
 
 hero:

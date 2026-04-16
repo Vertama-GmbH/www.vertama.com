@@ -6,6 +6,21 @@ layout: "single"
 icon: "/assets/images/icons/products/product-digt.png"
 weight: 60
 
+media:
+  #  video_main:
+  #    url: "..."
+  #    title: "..."
+  screenshots:
+    - file: "/assets/images/products/digt/DIGT_Screenshot_Auswahlseite.png"
+      alt: "DIGT - Uebersichtsseite"
+      caption: "Übersicht der verfügbaren Formulare"
+    - file: "/assets/images/products/digt/DIGT_Screenshot_Meldeformular.png"
+      alt: "DIGT - Formular"
+      caption: "Übersicht des Formulars"
+    - file: "/assets/images/products/digt/DIGT_Screenshot_Success.png"
+      alt: "DIGT - Erfolgsmeldung zur Sendung"
+      caption: "Erfolgsmeldung zur Sendung"
+
 hero:
   badge: "Sterbefallanzeige"
   headline: "DiGT – Digitale Sterbefallanzeige"
