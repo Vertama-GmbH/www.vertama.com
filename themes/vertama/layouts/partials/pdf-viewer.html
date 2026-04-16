@@ -1,21 +1,93 @@
-<section id="editorial-viewer" class="py-6 md:py-10 bg-white">
-  <div class="max-w-[1200px] mx-auto px-4">
+{{/* Der Punkt . ist hier bereits .Params.editorial durch deinen Aufruf */}}
+{{ $e := . }}
 
-    <h2 class="text-xl md:text-2xl font-bold mb-4">{{ .title }}</h2>
+{{ if $e.pages }}
+<section class="py-16 bg-white border-t border-slate-100 overflow-hidden" aria-labelledby="editorial-heading">
+  <div class="max-w-6xl mx-auto px-5">
 
-    <div class="relative w-full h-[60vh] md:h-[75vh] shadow-2xl border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
-
-      <object
-      data="{{ .pdf_url }}#page=1&zoom=FitV&view=FitV"
-      type="application/pdf"
-      class="w-full h-full"
-      >
-      <div class="flex flex-col items-center justify-center h-full p-8 text-center">
-        <p class="text-slate-500 mb-4">Vorschau auf diesem Gerät nicht verfügbar.</p>
-        <a href="{{ .pdf_url }}" class="bg-vertama text-white px-6 py-2 rounded-md font-bold">PDF öffnen</a>
+    {{/* Header */}}
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+      <div>
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-vertama-light mb-1">Digitales Magazin</p>
+        <h2 id="editorial-heading" class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+          {{ $e.title | default "Editorial" }}
+        </h2>
       </div>
-      </object>
 
+      {{ if $e.pdf_url }}
+      <a href="{{ $e.pdf_url | relURL }}" download
+         class="inline-flex items-center gap-2 px-6 py-3 bg-vertama text-white rounded-lg font-bold hover:bg-vertama-light transition-all shadow-md">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Vollständige PDF (Download)
+      </a>
+      {{ end }}
     </div>
+
+    {{/* Der Reader: Scrollbar & Zoombar via Browser */}}
+    <div class="relative">
+      <div id="editorial-viewport"
+           class="flex gap-4 md:gap-8 overflow-x-auto snap-x snap-mandatory pb-10 cursor-grab active:cursor-grabbing"
+           style="scrollbar-width: thin; scrollbar-color: #005e7b #f1f5f9;">
+
+        {{ range $i, $src := $e.pages }}
+        <div class="flex-shrink-0 snap-center">
+          <div class="relative shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-slate-200 rounded-sm bg-white overflow-hidden">
+            <img src="{{ $src | relURL }}"
+                 alt="Seite {{ add $i 1 }}"
+                 class="h-[65vh] md:h-[85vh] w-auto object-contain select-none pointer-events-none"
+                 loading="lazy">
+          </div>
+          <p class="text-center mt-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest">
+            Seite {{ add $i 1 }} <span class="mx-1 text-slate-200">/</span> {{ len $e.pages }}
+          </p>
+        </div>
+        {{ end }}
+
+      </div>
+
+      {{/* Optischer Hinweis für Desktop-User */}}
+      <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 text-[10px] text-slate-400 font-medium">
+        <svg class="w-3 h-3 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Wischen oder Ziehen zum Blättern
+      </div>
+    </div>
+
   </div>
 </section>
+
+<style>
+    @keyframes bounce-x {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(3px); }
+    }
+    .animate-bounce-x { animation: bounce-x 1.5s infinite; }
+
+    /* Custom Scrollbar für Chrome/Safari */
+    #editorial-viewport::-webkit-scrollbar { height: 6px; }
+    #editorial-viewport::-webkit-scrollbar-track { background: #f1f5f9; }
+    #editorial-viewport::-webkit-scrollbar-thumb { background: #005e7b; border-radius: 10px; }
+</style>
+
+<script>
+  // Einfaches Drag-to-Scroll für Desktop
+  const slider = document.getElementById('editorial-viewport');
+  let isDown = false; let startX; let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true; slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+  slider.addEventListener('mouseleave', () => { isDown = false; });
+  slider.addEventListener('mouseup', () => { isDown = false; });
+  slider.addEventListener('mousemove', (e) => {
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+</script>
+{{ end }}

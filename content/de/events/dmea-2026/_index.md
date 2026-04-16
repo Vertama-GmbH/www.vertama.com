@@ -30,21 +30,19 @@ editorial:
   pdf_url: "/assets/downloads/DMEA26/vt_editorial_low.pdf" # WICHTIG: Pfad prüfen!
   cover_image: "/assets/images/events/DMEA26/Ruderer.png"
 
-#featured_products:
-#  - name: "ELIM"
-#    tagline: "Elektronische Infektionsmeldung"
-#    description: "Automatisierte §6-Meldungen direkt aus dem KIS. FHIR-ready, RKI-konform, 44 aktuelle Meldeprofile."
-#    url: "/de/produkte/elim/"
-#    pdf_url: "/downloads/elim-handout.pdf"
-#  - name: "BELIM"
-#    tagline: "Bettenbelegung in Echtzeit"
-#    description: "Kapazitäten auf Knopfdruck optimieren. Live-Daten, keine manuellen Meldungen."
-#    url: "/de/produkte/belim/"
-#    pdf_url: "/downloads/belim-handout.pdf"
-#  - name: "DIVI"
-#    tagline: "Intensivregister-Meldung"
-#    description: "Schnittstellen-Lösung für vollautomatisierte Intensivkapazitätsmeldungen."
-#    url: "/de/produkte/divi/"
+editorial:
+  title: "DMEA 2026 Editorial"
+  pdf_url: "/assets/downloads/DMEA26/vt_editorial_low.pdf"
+  pages:
+    - "/assets/images/events/DMEA26/editorial/vt_editorial_low_1.png"
+    - "/assets/images/events/DMEA26/editorial/vt_editorial_low_2.png"
+    - "/assets/images/events/DMEA26/editorial/vt_editorial_low_3.png"
+    - "/assets/images/events/DMEA26/editorial/vt_editorial_low_4.png"
+    - "/assets/images/events/DMEA26/editorial/vt_editorial_low_5.png"
+    - "/assets/images/events/DMEA26/editorial/vt_editorial_low_6.png"
+    - "/assets/images/events/DMEA26/editorial/vt_editorial_low_7.png"
+    - "/assets/images/events/DMEA26/editorial/vt_editorial_low_8.png"
+    - "/assets/images/events/DMEA26/editorial/vt_editorial_low_9.png"
 
 downloads:
   - name: "VERTAMA Gesamtbroschüre 2026"
