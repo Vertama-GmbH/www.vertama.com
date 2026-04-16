@@ -8,6 +8,10 @@ on:
   schedule:
     - cron: '0 3 * * *'  # daily ~04:00 Berlin time (03:00 UTC) — publishes future-dated content
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+
 permissions:
   contents: read
   pages: write
