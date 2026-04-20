@@ -147,8 +147,14 @@
     window.closeLightbox = function() {
       if (!lb) return;
       lb.classList.replace('flex', 'hidden');
-      lbImg.classList.remove('img-full-size');
       document.body.style.overflow = '';
+
+      // Zoom resetten beim Schließen
+      const img = document.getElementById('lightbox-img');
+      if (img) {
+        img.classList.remove('img-zoomed');
+        img.style.transform = "scale(1)";
+      }
     };
 
     window.toggleZoom = function(img) {
@@ -157,22 +163,11 @@
         img.style.transform = "scale(1)";
       } else {
         img.classList.add('img-zoomed');
-        img.style.transform = "scale(1.8)"; // Stärkerer Zoom für Mobile
+        img.style.transform = "scale(1.8)";
       }
     };
 
-    // Ergänzung für closeLightbox, um Zoom immer zu resetten
-    const originalClose = window.closeLightbox;
-    window.closeLightbox = function() {
-      const img = document.getElementById('lightbox-img');
-      if (img) {
-        img.classList.remove('img-zoomed');
-        img.classList.add('img-initial');
-      }
-      if (typeof originalClose === 'function') originalClose();
-    };
-
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeLightbox(); });
 
     // --- Carousel Logic ---
     if (!track) return;
@@ -220,35 +215,52 @@
     }
 
     function fitHeight() {
+      const container = track.parentElement;
+      const isMobile = window.innerWidth < 768;
+
       if (mode !== 'cards') {
-        // Für Screenshots: Feste Höhe/Verhältnis beibehalten
-        const container = track.parentElement;
-        if (window.innerWidth < 768) {
+        // Screenshots behalten feste Höhen
+        if (isMobile) {
           container.style.height = "380px";
           track.style.height = "380px";
+        } else {
+          container.style.height = "";
+          track.style.height = "";
         }
         return;
       }
 
-      const container = track.parentElement;
-      const isMobile = window.innerWidth < 768;
+      // 1. Reset für saubere Messung
+      container.style.height = 'auto';
+      track.style.height = 'auto';
 
-      let max = 0;
+      // Alte Styles speichern
+      const savedStyles = items.map(item => item.getAttribute('style') || '');
+
+      // 2. Karten temporär im Flow positionieren, damit sie ihre natürliche Höhe annehmen
       items.forEach(item => {
-        // Wir messen nur, wenn es Karten sind
-        const content = item.querySelector('a');
-        if (content) {
-          // Temporär messen
-          const clone = content.cloneNode(true);
-          clone.style.cssText = `position:absolute; width:${isMobile ? '88%' : '50%'}; visibility:hidden; display:block;`;
-          document.body.appendChild(clone);
-          max = Math.max(max, clone.scrollHeight);
-          document.body.removeChild(clone);
-        }
+        item.style.cssText = `position: relative; width: ${isMobile ? '88%' : '50%'}; height: auto !important; visibility: hidden; display: block;`;
+        // Erlaubt dem inneren Content zu wachsen
+        const inner = item.querySelector('.h-full');
+        if (inner) inner.style.height = 'max-content';
       });
 
+      // 3. Maximale Höhe auslesen
+      let max = 0;
+      items.forEach(item => {
+        max = Math.max(max, item.offsetHeight);
+      });
+
+      // 4. Original-Styles wiederherstellen
+      items.forEach((item, i) => {
+        item.setAttribute('style', savedStyles[i]);
+        const inner = item.querySelector('.h-full');
+        if (inner) inner.style.height = '';
+      });
+
+      // 5. Die gefundene maximale Höhe (inkl. Puffer für Schatten) anwenden
       if (max > 0) {
-        const finalHeight = max + 20; // Kleiner Puffer
+        const finalHeight = max + 24;
         container.style.height = finalHeight + 'px';
         track.style.height = finalHeight + 'px';
       }
@@ -267,7 +279,13 @@
       }
     }, {passive: true});
 
-    window.addEventListener('resize', update);
+    // WICHTIG: Erst fitHeight (Messen), DANN update (Positionieren)
+    window.addEventListener('resize', () => {
+      fitHeight();
+      update();
+    });
+
+    // Initialer Aufruf
     fitHeight();
     update();
   })();
