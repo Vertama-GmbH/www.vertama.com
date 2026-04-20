@@ -9,7 +9,7 @@
     </h2>
 
     {{ if $hasVideo }}
-    <div class="w-full rounded-lg overflow-hidden shadow-lg mb-16" style="aspect-ratio: 16/9;">
+    <div class="w-full rounded-lg overflow-hidden shadow-lg" style="aspect-ratio: 16/9;">
       <video controls preload="metadata" class="w-full h-full object-contain bg-slate-900">
         <source src="{{ .Params.media.video_main.url }}" type="video/mp4">
         Dein Browser unterstützt Video nicht.
