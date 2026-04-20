@@ -9,7 +9,7 @@
     <img src="{{ .Params.hero_img }}"
          alt=""
          role="presentation"
-         class="w-full h-full object-cover object-[center_25%] md:object-right-center">
+         class="w-full h-full object-cover object-[center_35%] md:object-right-center">
     <div class="absolute inset-0 bg-gradient-to-t from-vertama via-vertama/90 to-transparent
                 md:bg-gradient-to-r md:from-vertama md:via-vertama/80 md:to-transparent"
          aria-hidden="true"></div>
@@ -18,11 +18,10 @@
   <div class="max-w-6xl mx-auto px-5 py-12 md:py-24 relative z-10">
 
     {{/* mt-40 → min-h damit Bild auf Mobile sichtbar ist ohne semantischen Hack */}}
-    <div class="max-w-2xl" style="padding-top: max(10rem, 35vw); padding-top: clamp(8rem, 35vw, 12rem);">
-
+    <div class="max-w-2xl" style="padding-top: max(10rem, 35vw); padding-top: clamp(0rem, 35vw, 0rem);">
       {{ if .Params.badge_text }}
       {{/* p statt div — Badge ist Fließtext, kein Container */}}
-      <p class="inline-flex items-center gap-2 px-3 py-1 mb-6 bg-white/10 backdrop-blur-md border border-white/20 rounded"
+      <p class="inline-flex items-center gap-2 px-3 py-1 mb-6 bg-vertama-light/30 backdrop-blur-md border border-white/20 rounded"
          aria-label="Veranstaltung: {{ .Params.badge_text }}">
         <span class="text-[10px] font-bold tracking-widest uppercase text-white" aria-hidden="true">
           {{ .Params.badge_text }}
