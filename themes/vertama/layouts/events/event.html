@@ -76,12 +76,14 @@
   {{ end }}
 
 </section>
+<div class="mt-8 md:mt-12">
+  {{ if .Params.editorial }}
+  {{ partial "pdf-viewer.html" .Params.editorial }}
+  {{ end }}
+</div>
 
-{{ if .Params.editorial }}
-{{ partial "pdf-viewer.html" .Params.editorial }}
-{{ end }}
 
-<section id="produkte" class="scroll-mt-20">
+<section id="produkte" class="scroll-mt-20 py-8 md:py-12">
   {{ $produkte := (where .Site.RegularPages "Section" "produkte") }}
   {{ partial "carousel.html" (dict
   "id" "main-product-loop"
