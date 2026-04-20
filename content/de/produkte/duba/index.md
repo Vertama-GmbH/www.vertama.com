@@ -7,16 +7,17 @@ icon: "/assets/images/icons/products/product-duba.png"
 weight: 40
 
 media:
-  #  video_main:
-  #    url: "/assets/videos/products/duba/DUBA_digitale_gerichtliche_Anträge.mp4"
-  #    title: "Digitale, gerichtliche Anträge"
-  screenshots:
-    - file: "/assets/images/products/duba/DUBA_Screenshot_Formulare_Auswahlseite.png"
-      alt: "DUBA - Uebersichtsseite"
-      caption: "Übersicht der verfügbaren Formulare"
-    - file: "/assets/images/products/duba/DUBA_Screenshot_Meldeformular.png"
-      alt: "DUBA - Formular"
-      caption: "Übersicht des Formulars"
+    video_main:
+      url: "/assets/videos/products/duba/DUBA_Aus_dem_KIS_zum_Gericht_Krhs_Version.mp4"
+      title: "Digitale, gerichtliche Anträge"
+    screenshots:
+      - file: "/assets/images/products/duba/DUBA_Screenshot_Formulare_Auswahlseite.png"
+        alt: "DUBA - Uebersichtsseite"
+        caption: "Übersicht der verfügbaren Formulare"
+      - file: "/assets/images/products/duba/DUBA_Screenshot_Meldeformular.png"
+        alt: "DUBA - Formular"
+        caption: "Übersicht des Formulars"
+
 
 
 hero:
