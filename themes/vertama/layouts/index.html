@@ -1,10 +1,13 @@
 {{ define "head" }}
-{{ if .Site.Params.event_redirect.enabled }}
-<meta http-equiv="refresh" content="0; url={{ .Site.Params.event_redirect.url }}">
-<link rel="canonical" href="{{ .Site.Params.event_redirect.url }}">
-{{ else if eq .Site.Language.Lang "de" }}
-<meta http-equiv="refresh" content="0; url=/de/healthcareservices/">
-<link rel="canonical" href="/de/healthcareservices/">
+
+{{ if eq .Site.Language.Lang "de" }}
+  {{ if .Site.Params.event_redirect.enabled }}
+    <meta http-equiv="refresh" content="0; url={{ .Site.Params.event_redirect.url }}">
+    <link rel="canonical" href="{{ .Site.Params.event_redirect.url }}">
+  {{ else }}
+    <meta http-equiv="refresh" content="0; url=/de/healthcareservices/">
+    <link rel="canonical" href="/de/healthcareservices/">
+  {{ end}}
 {{ else }}
 <meta http-equiv="refresh" content="0; url=/en/healthcare-services/">
 <link rel="canonical" href="/en/healthcare-services/">
