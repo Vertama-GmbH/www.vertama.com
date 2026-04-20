@@ -16,6 +16,12 @@ unsafe = true
 description = 'VERTAMA GmbH - Digitale Lösungen für Gesundheitswesen'
 firmName = 'VERTAMA GmbH'
 
+[params.event_redirect]
+enabled = true
+url     = "/DMEA26/"
+start   = "2026-04-20T00:00:00"
+end     = "2026-04-23T23:59:59"
+
 [params.umami]
 enabled = true
 url = "https://umami.v1.vertamob.com/script.js"
