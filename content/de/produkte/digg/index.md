@@ -7,13 +7,13 @@ icon: "/assets/images/icons/products/product-digg.png"
 weight: 30
 
 media:
-  #  video_main:
-  #    url: "/assets/videos/products/digg/DIGG_KIS_Standesamt.mp4"
-  #    title: "Aus dem KIS ins Standesamt mit DIGG"
-  screenshots:
-    - file: "/assets/images/products/digg/DIGG_Screenshot_Geburtsbescheinigung.png"
-      alt: "DIGG - Formular"
-      caption: "Übersicht des Formulars"
+    video_main:
+      url: "/assets/videos/products/digg/DIGG_Aus_dem_KIS_ins_Standesamt_Krhs_Version.mp4"
+      title: "Aus dem KIS ins Standesamt mit DIGG"
+    screenshots:
+      - file: "/assets/images/products/digg/DIGG_Screenshot_Geburtsbescheinigung.png"
+        alt: "DIGG - Formular"
+        caption: "Übersicht des Formulars"
 
 hero:
   badge: "Geburtsmeldung"
