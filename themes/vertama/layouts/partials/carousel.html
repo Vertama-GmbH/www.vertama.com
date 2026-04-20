@@ -35,7 +35,7 @@
 
   {{ else }}
   <div class="relative px-0 md:px-4">
-    <div id="{{ $id }}-track-container" class="relative w-full mx-auto {{ if $isScreenshots }}h-[380px] sm:h-[480px] md:h-auto md:aspect-video md:min-h-[500px]{{ else }}h-[600px] sm:h-[520px] md:h-auto md:aspect-video md:min-h-[500px]{{ end }}">
+    <div id="{{ $id }}-track-container" class="relative w-full {{ if $isScreenshots }}h-[380px] sm:h-[480px] md:h-auto md:aspect-video md:min-h-[500px]{{ else }}min-h-[200px]{{ end }}" >
 
       <button id="{{ $id }}-prev" class="absolute left-0 top-0 bottom-0 z-50 w-12 md:w-20 group flex items-center justify-center bg-transparent border-none outline-none" aria-label="Vorheriges">
         <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 border border-slate-200 shadow-lg group-hover:text-vertama flex items-center justify-center transition-transform group-active:scale-90">
@@ -213,6 +213,36 @@
       });
     }
 
+    function fitHeight() {
+      if (mode !== 'cards') return;
+      const container = track.parentElement;
+
+      container.style.height = 'auto';
+      track.style.height = 'auto';
+      track.style.position = 'relative';
+
+      const savedStyles = items.map(item => item.getAttribute('style') || '');
+
+      items.forEach(item => {
+        item.style.cssText = 'position:relative;width:50%;height:auto;visibility:hidden;';
+        item.querySelectorAll('.h-full').forEach(el => el.style.height = 'auto');
+      });
+
+      let max = 0;
+      items.forEach(item => max = Math.max(max, item.offsetHeight));
+
+      items.forEach((item, idx) => {
+        item.setAttribute('style', savedStyles[idx]);
+        item.querySelectorAll('.h-full').forEach(el => el.style.height = '');
+      });
+
+      if (max > 0) {
+        container.style.height = max + 'px';
+        track.style.height = max + 'px';
+        track.style.position = 'relative';
+      }
+    }
+
     document.getElementById('{{ $id }}-next').onclick = () => { current = (current + 1) % TOTAL; update(); };
     document.getElementById('{{ $id }}-prev').onclick = () => { current = (current - 1 + TOTAL) % TOTAL; update(); };
 
@@ -227,6 +257,7 @@
     }, {passive: true});
 
     window.addEventListener('resize', update);
+    fitHeight();
     update();
   })();
 </script>
