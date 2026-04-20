@@ -2,8 +2,8 @@
 
 {{ if eq .Site.Language.Lang "de" }}
   {{ if .Site.Params.event_redirect.enabled }}
-    <meta http-equiv="refresh" content="0; url={{ .Site.Params.event_redirect.url }}">
-    <link rel="canonical" href="{{ .Site.Params.event_redirect.url }}">
+    <meta http-equiv="refresh" content="0; url={{ .Site.Params.event_redirect.url | safeURL }}">
+    <link rel="canonical" href="{{ .Site.Params.event_redirect.url | safeURL }}">
   {{ else }}
     <meta http-equiv="refresh" content="0; url=/de/healthcareservices/">
     <link rel="canonical" href="/de/healthcareservices/">

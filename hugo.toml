@@ -18,7 +18,7 @@ firmName = 'VERTAMA GmbH'
 
 [params.event_redirect]
 enabled = true
-url     = "/DMEA26/"
+url = "/DMEA26/"
 default = "/de/healthcareservices/"
 
 [params.umami]
