@@ -5,25 +5,30 @@
 
 <a href="{{ $url | safeURL }}"
    {{ if $ariaLabel }}aria-label="{{ $ariaLabel }}"{{ end }}
-   class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-transparent font-bold rounded-lg shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-vertama focus:ring-offset-2 min-h-[48px]
+   class="text-sm md:text-lg inline-flex items-center justify-center gap-2 px-4 md:px-8 py-2 md:py-4 border border-transparent font-bold rounded-lg shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-vertama focus:ring-offset-2 min-h-[48px]
    {{ if eq $variant "primary" }}
-    text-white bg-vertama hover:bg-vertama-light
-   {{ else if eq $variant "primaryNoArrow" }}
-    text-white bg-vertama hover:bg-vertama-light
-   {{ else if eq $variant "secondary" }}
-    text-vertama bg-white border-2 border-vertama hover:bg-vertama-light hover:text-white hover:border-white
-   {{ else if eq $variant "hover" }}
-    text-white bg-vertama-light
-   {{ else if eq $variant "focus" }}
-    text-white bg-vertama-light ring-2 ring-vertama ring-offset-2
-   {{ end }}"
+text-white bg-vertama hover:bg-vertama-light
+{{ else if eq $variant "primaryNoArrow" }}
+text-white bg-vertama hover:bg-vertama-light
+{{ else if eq $variant "secondary" }}
+text-vertama bg-white border-2 border-vertama hover:bg-vertama-light hover:text-white hover:border-white
+{{ else if eq $variant "ghost" }}
+text-white bg-transparent border-2 border-white/40 hover:border-white hover:bg-white/5
+{{ else if eq $variant "hover" }}
+text-white bg-vertama-light
+{{ else if eq $variant "focus" }}
+text-white bg-vertama-light ring-2 ring-vertama ring-offset-2
+{{ end }}"
 >
-    {{ $text }}
-
-<!-- Optional: Arrow Icon für Primary -->
+{{ $text }}
 {{ if eq $variant "primary" }}
 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+</svg>
+{{ end }}
+{{ if eq $variant "ghost" }}
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+  <path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 {{ end }}
 </a>

@@ -7,21 +7,26 @@
 
   <div class="absolute inset-0 z-0">
     <img src="{{ .Params.hero_img }}"
-         alt=""
-         role="presentation"
-         class="w-full h-full object-cover object-[center_35%] md:object-right-center">
-    <div class="absolute inset-0 bg-gradient-to-t from-vertama via-vertama/90 to-transparent
+         alt="" role="presentation"
+         class="w-full h-full object-cover object-[center_5%] md:object-[center_35%]">
+
+    {{/* Ein Gradient für beide Breakpoints */}}
+    <div class="absolute inset-0
+                bg-gradient-to-t from-vertama via-vertama/90 to-transparent
                 md:bg-gradient-to-r md:from-vertama md:via-vertama/80 md:to-transparent"
          aria-hidden="true"></div>
   </div>
 
-  <div class="max-w-6xl mx-auto px-5 py-12 md:py-24 relative z-10">
+  {{/* Mobile: justify-end → Content unten, Bild oben sichtbar, kein Whitespace */}}
+  <div class="relative z-10 min-h-max
+              flex flex-col justify-end md:justify-center
+              max-w-6xl mx-auto px-5 py-14 md:py-20">
 
-    {{/* mt-40 → min-h damit Bild auf Mobile sichtbar ist ohne semantischen Hack */}}
-    <div class="max-w-2xl" style="padding-top: max(10rem, 35vw); padding-top: clamp(0rem, 35vw, 0rem);">
+    <div class="max-w-xl md:max-w-2xl">
+
       {{ if .Params.badge_text }}
-      {{/* p statt div — Badge ist Fließtext, kein Container */}}
-      <p class="inline-flex items-center gap-2 px-3 py-1 mb-6 bg-vertama-light/30 backdrop-blur-md border border-white/20 rounded"
+      <p class="inline-flex items-center gap-2 px-3 py-1 mb-5
+                bg-vertama-light/20 backdrop-blur-md border border-white/20 rounded"
          aria-label="Veranstaltung: {{ .Params.badge_text }}">
         <span class="text-[10px] font-bold tracking-widest uppercase text-white" aria-hidden="true">
           {{ .Params.badge_text }}
@@ -29,45 +34,39 @@
       </p>
       {{ end }}
 
-      <h1 id="event-hero-heading" class="mb-6 drop-shadow-lg">
-        <span class="font-serif italic text-6xl md:text-8xl text-white block leading-[0.9]"
+      <h1 id="event-hero-heading" class="mb-3 drop-shadow-lg">
+        <span class="font-serif italic text-[11vw] sm:text-6xl md:text-8xl text-white block leading-[0.9]"
               style="font-family: Georgia, serif;">
           Willkommen
         </span>
-        {{/* Punkt zwischen DMEA und 2026 ist dekorativ → aria-hidden */}}
-        <div class="flex items-center gap-3 mt-4" aria-label="DMEA 2026">
-          <span class="text-xl md:text-2xl font-black text-white tracking-widest uppercase" aria-hidden="true">DMEA</span>
+        <div class="flex items-center gap-3 mt-3" aria-label="DMEA 2026">
+          <span class="text-base md:text-2xl font-black text-white tracking-widest uppercase" aria-hidden="true">DMEA</span>
           <span class="w-1.5 h-1.5 rounded-full bg-white/80" aria-hidden="true"></span>
-          <span class="text-xl md:text-2xl font-black text-white tracking-widest uppercase" aria-hidden="true">2026</span>
+          <span class="text-base md:text-2xl font-black text-white tracking-widest uppercase" aria-hidden="true">2026</span>
         </div>
       </h1>
 
-      <p class="text-lg text-white leading-snug mb-8 max-w-sm drop-shadow-md">
+      <p class="text-sm md:text-lg text-white/90 leading-snug mb-5 max-w-sm drop-shadow-md">
         {{ .Params.intro_text }}
       </p>
 
-      <div class="flex items-center gap-6">
+      <div class="flex flex-wrap items-center gap-3">
         {{ partial "button.html" (dict "text" "Lösungen ansehen" "url" "#produkte" "variant" "secondary") }}
-
         {{ if .Params.downloads }}
-        <a href="#downloads" class="inline-flex items-center justify-center px-8 py-4 font-bold rounded-lg text-white border-2 border-white/40 hover:border-white hover:bg-white/5 transition-all min-h-[48px]">
-          Handouts
-          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        {{ partial "button.html" (dict "text" "Handouts" "url" "#downloads" "variant" "ghost") }}
         {{ end }}
       </div>
 
     </div>
   </div>
 
-  {{/* Meta-Strip: semantisch als Liste */}}
   {{ if .Params.event_meta }}
   <div class="absolute bottom-0 left-0 w-full bg-vertama/20 backdrop-blur-sm border-t border-white/10 z-20"
        aria-label="Veranstaltungsdetails">
     <ul class="max-w-6xl mx-auto px-5 py-2 flex flex-wrap items-center gap-x-6 gap-y-1 list-none"
         role="list">
       {{ range .Params.event_meta }}
-      <li class="flex items-center gap-1.5 text-sm font-bold text-white uppercase tracking-tighter">
+      <li class="flex items-center gap-1.5 text-xs md:text-sm font-bold text-white uppercase tracking-tighter">
         <span class="w-1 h-1 rounded-full bg-vertama-light flex-shrink-0" aria-hidden="true"></span>
         {{ . }}
       </li>
