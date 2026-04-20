@@ -35,8 +35,7 @@
 
   {{ else }}
   <div class="relative px-0 md:px-4">
-    <div id="{{ $id }}-track-container" class="relative w-full {{ if $isScreenshots }}h-[380px] sm:h-[480px] md:h-auto md:aspect-video md:min-h-[500px]{{ else }}min-h-[200px]{{ end }}" >
-
+    <div id="{{ $id }}-track-container" class="relative w-full {{ if $isScreenshots }}h-[380px] sm:h-[480px] md:h-auto md:aspect-video md:min-h-[500px]{{ else }}min-h-[100px]{{ end }}">
       <button id="{{ $id }}-prev" class="absolute left-0 top-0 bottom-0 z-50 w-12 md:w-20 group flex items-center justify-center bg-transparent border-none outline-none" aria-label="Vorheriges">
         <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 border border-slate-200 shadow-lg group-hover:text-vertama flex items-center justify-center transition-transform group-active:scale-90">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 18l-6-6 6-6"/></svg>
@@ -216,6 +215,8 @@
     function fitHeight() {
       if (mode !== 'cards') return;
       const container = track.parentElement;
+      const isMobile = window.innerWidth < 768;
+      const measuredWidth = isMobile ? '80%' : '50%';
 
       container.style.height = 'auto';
       track.style.height = 'auto';
@@ -224,7 +225,7 @@
       const savedStyles = items.map(item => item.getAttribute('style') || '');
 
       items.forEach(item => {
-        item.style.cssText = 'position:relative;width:50%;height:auto;visibility:hidden;';
+        item.style.cssText = `position:relative;width:${measuredWidth};height:auto;visibility:hidden;`;
         item.querySelectorAll('.h-full').forEach(el => el.style.height = 'auto');
       });
 
