@@ -8,8 +8,8 @@ weight: 30
 
 media:
   #  video_main:
-  #    url: "..."
-  #    title: "..."
+  #    url: "/assets/videos/products/digg/DIGG_KIS_Standesamt.mp4"
+  #    title: "Aus dem KIS ins Standesamt mit DIGG"
   screenshots:
     - file: "/assets/images/products/digg/DIGG_Screenshot_Geburtsbescheinigung.png"
       alt: "DIGG - Formular"

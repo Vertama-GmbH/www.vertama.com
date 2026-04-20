@@ -8,8 +8,8 @@ weight: 40
 
 media:
   #  video_main:
-  #    url: "..."
-  #    title: "..."
+  #    url: "/assets/videos/products/duba/DUBA_digitale_gerichtliche_Anträge.mp4"
+  #    title: "Digitale, gerichtliche Anträge"
   screenshots:
     - file: "/assets/images/products/duba/DUBA_Screenshot_Formulare_Auswahlseite.png"
       alt: "DUBA - Uebersichtsseite"
