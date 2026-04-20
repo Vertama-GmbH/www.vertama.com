@@ -1,5 +1,8 @@
 {{ define "head" }}
-{{ if eq .Site.Language.Lang "de" }}
+{{ if .Site.Params.event_redirect.enabled }}
+<meta http-equiv="refresh" content="0; url={{ .Site.Params.event_redirect.url }}">
+<link rel="canonical" href="{{ .Site.Params.event_redirect.url }}">
+{{ else if eq .Site.Language.Lang "de" }}
 <meta http-equiv="refresh" content="0; url=/de/healthcareservices/">
 <link rel="canonical" href="/de/healthcareservices/">
 {{ else }}

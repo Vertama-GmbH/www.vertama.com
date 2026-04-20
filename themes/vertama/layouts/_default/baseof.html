@@ -58,16 +58,7 @@
     <link rel="stylesheet" href="{{ "css/theme.css" | relURL }}">
 
     {{ partial "umami.html" . }}
-    {{ if and .IsHome .Site.Params.event_redirect.enabled }}
-    <script>
-        (function(){
-            var now = new Date();
-            if (now >= new Date("{{ .Site.Params.event_redirect.start }}") && now <= new Date("{{ .Site.Params.event_redirect.end }}")) {
-                window.location.replace("{{ .Site.Params.event_redirect.url }}");
-            }
-        })();
-    </script>
-    {{ end }}
+
     {{ block "head" . }}{{ end }}
 </head>
 <body class="font-sans text-slate-700 antialiased min-h-screen flex flex-col bg-white">
