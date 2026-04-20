@@ -5,7 +5,7 @@
 {{- $isScreenshots := eq $mode "screenshots" -}}
 {{- $isCards := eq $mode "cards" -}}
 {{- $desktopWidth := cond $isCards "md:w-[50%]" "md:w-[75%]" -}}
-{{- $mobileWidth := cond $isCards "w-[80%]" "w-[85%]" -}}
+{{- $mobileWidth := cond $isCards "w-[88%]" "w-[90%]" -}}
 
 <section id="{{ $id }}-section" class="max-w-6xl mx-auto overflow-hidden">
   <div class="px-4 md:px-5 mb-6 md:mb-8 text-center md:text-left">
@@ -55,7 +55,7 @@
       <div id="{{ $id }}-track" class="relative w-full h-full">
         {{ range $i, $item := $items }}
         <article id="{{ $id }}-item-{{ $i }}" class="c-item absolute top-0 left-1/2 {{ $mobileWidth }} {{ $desktopWidth }} h-full transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-3xl" style="will-change: transform, opacity;">
-          <div class="w-full h-full {{ if $isScreenshots }}overflow-hidden{{ end }} rounded-3xl border border-slate-200 shadow-xl bg-white isolate transform-gpu">
+          <div class="w-full h-full overflow-visible rounded-3xl border border-slate-200 shadow-xl bg-white isolate transform-gpu">
             {{ if $isScreenshots }}
             <div class="w-full h-full flex items-center justify-center bg-white cursor-zoom-in relative" onclick="openLightbox('{{ $item.file }}', '{{ $item.caption | default $item.alt }}')">
               <img src="{{ $item.file }}" alt="{{ $item.alt | default "Screenshot" }}" class="w-full h-full object-cover p-0 pointer-events-none" loading="lazy">
@@ -109,11 +109,20 @@
         object-fit: contain;
     }
 
-    /* Zustand 2: Originalgröße (Rein-Zoom, scrollbar) */
+    /* Verhindert, dass Ecken bei Karten rausschauen */
+    .c-item {
+        overflow: hidden; /* Rundungen erzwingen */
+        border-radius: 1.5rem; /* rounded-3xl */
+    }
+
+    /* Fix für den Lightbox-Bild Container */
+    #lightbox-img {
+        transition: transform 0.3s ease-in-out;
+        touch-action: pinch-zoom; /* Erlaubt natives Zoomen auf Handys */
+    }
+
     .img-zoomed {
-        max-height: none !important;
-        width: 150% !important; /* Erzwingt eine Vergrößerung über die Originalmaße hinaus */
-        max-width: none !important;
+        transform: scale(1.5); /* Stabilerer Zoom als über Breite */
         cursor: zoom-out !important;
     }
 </style>
@@ -143,18 +152,12 @@
     };
 
     window.toggleZoom = function(img) {
-      const isZoomed = img.classList.contains('img-zoomed');
-
-      if (isZoomed) {
-        // Rauszoomen zur Übersicht
+      if (img.classList.contains('img-zoomed')) {
         img.classList.remove('img-zoomed');
-        img.classList.add('img-initial');
-        // Sanft nach oben scrollen beim Rauszoomen
-        img.closest('.overflow-auto').scrollTo({ top: 0, behavior: 'smooth' });
+        img.style.transform = "scale(1)";
       } else {
-        // Reinzoomen auf Originalgröße
-        img.classList.remove('img-initial');
         img.classList.add('img-zoomed');
+        img.style.transform = "scale(1.8)"; // Stärkerer Zoom für Mobile
       }
     };
 
@@ -217,34 +220,37 @@
     }
 
     function fitHeight() {
-      if (mode !== 'cards') return;
+      if (mode !== 'cards') {
+        // Für Screenshots: Feste Höhe/Verhältnis beibehalten
+        const container = track.parentElement;
+        if (window.innerWidth < 768) {
+          container.style.height = "380px";
+          track.style.height = "380px";
+        }
+        return;
+      }
+
       const container = track.parentElement;
       const isMobile = window.innerWidth < 768;
-      const measuredWidth = isMobile ? '80%' : '50%';
-
-      container.style.height = 'auto';
-      track.style.height = 'auto';
-      track.style.position = 'relative';
-
-      const savedStyles = items.map(item => item.getAttribute('style') || '');
-
-      items.forEach(item => {
-        item.style.cssText = `position:relative;width:${measuredWidth};height:auto;visibility:hidden;`;
-        item.querySelectorAll('.h-full').forEach(el => el.style.height = 'auto');
-      });
 
       let max = 0;
-      items.forEach(item => max = Math.max(max, item.offsetHeight));
-
-      items.forEach((item, idx) => {
-        item.setAttribute('style', savedStyles[idx]);
-        item.querySelectorAll('.h-full').forEach(el => el.style.height = '');
+      items.forEach(item => {
+        // Wir messen nur, wenn es Karten sind
+        const content = item.querySelector('a');
+        if (content) {
+          // Temporär messen
+          const clone = content.cloneNode(true);
+          clone.style.cssText = `position:absolute; width:${isMobile ? '88%' : '50%'}; visibility:hidden; display:block;`;
+          document.body.appendChild(clone);
+          max = Math.max(max, clone.scrollHeight);
+          document.body.removeChild(clone);
+        }
       });
 
       if (max > 0) {
-        container.style.height = max + 'px';
-        track.style.height = max + 'px';
-        track.style.position = 'relative';
+        const finalHeight = max + 20; // Kleiner Puffer
+        container.style.height = finalHeight + 'px';
+        track.style.height = finalHeight + 'px';
       }
     }
 

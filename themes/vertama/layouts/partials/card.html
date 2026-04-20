@@ -1,9 +1,8 @@
-<article class="flex-shrink-0 w-full h-full bg-white rounded-3xl">
+<article class="flex-shrink-0 w-full bg-white rounded-3xl h-full">
   <a href="{{ .Permalink }}"
-     class="group flex flex-col h-full w-full border-2 border-slate-200 rounded-3xl p-8
+     class="group flex flex-col h-full w-full border-2 border-slate-200 rounded-3xl p-6 md:p-8
           hover:border-vertama hover:shadow-2xl hover:shadow-vertama/5 transition-all duration-500
-          focus:outline-none focus:ring-4 focus:ring-vertama focus:ring-offset-2 relative z-10">
-
+          focus:outline-none focus:ring-4 focus:ring-vertama focus:ring-offset-2 relative z-10 overflow-hidden">
     <div class="mb-4">
       <h3 class="text-2xl font-bold text-slate-900 group-hover:text-vertama transition-colors line-clamp-2">
         {{ .Params.card_content.title | default .Title }}
@@ -18,14 +17,16 @@
     </div>
 
     <div class="flex-grow text-slate-700">
-      <ul class="space-y-3 mb-8">
+      <ul class="space-y-3 mb-4 md:mb-8">
         {{ if .Params.card_content.benefits }}
-        {{ range first 4 .Params.card_content.benefits }}
-        <li class="flex items-start gap-3 text-sm leading-relaxed line-clamp-2">
-          <svg class="w-4 h-4 text-vertama flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-          <span>{{ . }}</span>
-        </li>
-        {{ end }}
+          {{ range first 4 .Params.card_content.benefits }}
+          <li class="flex items-start gap-3 text-sm leading-relaxed">
+            <svg class="w-4 h-4 text-vertama flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>{{ . }}</span>
+          </li>
+          {{ end }}
         {{ else }}
         <p class="text-sm leading-relaxed text-slate-500">{{ .Description | truncate 100 }}</p>
         {{ end }}
