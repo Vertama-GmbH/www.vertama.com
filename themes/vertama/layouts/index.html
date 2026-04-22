@@ -1,18 +1,20 @@
 {{ define "head" }}
-{{ $now := now }}
-{{ $start := time .Site.Params.event_redirect.start }}
-{{ $end := time .Site.Params.event_redirect.end }}
+  {{ $now := now }}
+  {{ $start := time .Site.Params.event_redirect.start }}
+  {{ $end := time .Site.Params.event_redirect.end }}
 
-{{ if eq .Site.Language.Lang "de" }}
-{{ if and .Site.Params.event_redirect.enabled (ge $now $start) (lt $now $end) }}
-<meta http-equiv="refresh" content="0; url={{ .Site.Params.event_redirect.url | safeURL }}">
-<link rel="canonical" href="{{ .Site.Params.event_redirect.url | safeURL }}">
-{{ else }}
-<meta http-equiv="refresh" content="0; url={{ .Site.Params.event_redirect.default_url }}">
-<link rel="canonical" href="{{ .Site.Params.event_redirect.default_url }}">
-{{ else }}
-<meta http-equiv="refresh" content="0; url=/en/healthcare-services/">
-<link rel="canonical" href="/en/healthcare-services/">
+  {{ if eq .Site.Language.Lang "de" }}
+    {{ if and .Site.Params.event_redirect.enabled (ge $now $start) (lt $now $end) }}
+    <meta http-equiv="refresh" content="0; url={{ .Site.Params.event_redirect.url | safeURL }}">
+    <link rel="canonical" href="{{ .Site.Params.event_redirect.url | safeURL }}">
+    {{ else }}
+    <meta http-equiv="refresh" content="0; url={{ .Site.Params.event_redirect.default_url }}">
+    <link rel="canonical" href="{{ .Site.Params.event_redirect.default_url }}">
+    {{ end }}
+  {{ else }}
+    <meta http-equiv="refresh" content="0; url=/en/healthcare-services/">
+    <link rel="canonical" href="/en/healthcare-services/">
+  {{ end }}
 {{ end }}
+{{ define "main" }}
 {{ end }}
-{{ define "main" }}{{ end }}
