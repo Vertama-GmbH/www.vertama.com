@@ -1,7 +1,7 @@
 {{ $hasVideo := .Params.media.video_main.url }}
 {{ $hasScreenshots := .Params.media.screenshots }}
 
-{{ if $hasVideo || $hasScreenshot }}
+{{ if or $hasVideo $hasScreenshots }}
   <section class="py-16 border-t border-slate-200">
     <div class="max-w-6xl mx-auto px-5">
 
