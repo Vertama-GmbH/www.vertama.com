@@ -1,9 +1,9 @@
 {{ define "main" }}
 
-<section class="relative pt-12 pb-12 px-5 bg-white overflow-hidden">
+<section class="relative pt-8 pb-6 px-5 bg-white overflow-hidden">
   <div class="relative max-w-6xl mx-auto text-center">
     {{ range first 1 (where .Site.RegularPages "Section" "news") }}
-    <a href="{{ .Permalink }}" class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-600 text-sm mb-10 hover:border-vertama/30 transition-all group">
+    <a href="{{ .Permalink }}" class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-600 text-sm mb-6 hover:border-vertama/30 transition-all group">
       <span class="relative flex h-2 w-2">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-vertama opacity-75"></span>
         <span class="relative inline-flex rounded-full h-2 w-2 bg-vertama"></span>
@@ -14,24 +14,24 @@
     </a>
     {{ end }}
 
-    <h1 class="text-5xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[0.95]">
-      Meldeprozesse <span class="text-transparent bg-clip-text bg-gradient-to-br from-vertama to-blue-600">as a Service.</span>
+    <h1 class="text-5xl md:text-8xl font-black text-slate-900 mb-5 tracking-tighter leading-[0.95]">
+      Meldeprozesse <span class="text-transparent bg-clip-text bg-gradient-to-br from-vertama to-vertama-light">as a Service.</span>
     </h1>
 
-    <p class="text-xl md:text-2xl text-slate-500 mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
+    <p class="text-xl md:text-2xl text-slate-500 mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
       Digitale Ende-zu-Ende Lösungen für die rechtssichere Kommunikation zwischen Krankenhäusern und Behörden – effizient, komfortabel und KHZG-konform.
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-      {{ partial "button.html" (dict "url" "/kontakt/" "text" "Kontakt aufnehmen" "Page" .) }}
+      {{ partial "button.html" (dict "url" "/de/kontakt/" "text" "Kontakt aufnehmen" "Page" .) }}
       <a href="#loesungen" class="text-slate-600 font-bold py-3 px-8 hover:text-vertama transition-colors">Unsere Lösungen entdecken →</a>
     </div>
   </div>
 </section>
 
-<section class="py-10 px-5 bg-white border-y border-slate-100">
+<section class="py-6 px-5 bg-white border-y border-slate-100">
   <div class="max-w-6xl mx-auto flex flex-col items-center">
-    <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-700 mb-6">
+    <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-700 mb-3">
       <img src="/assets/images/logos/sap-silver.jpg" alt="SAP Silver Partner" class="h-10 md:h-12">
       <img src="/assets/images/logos/oracle-cerner.jpg" alt="Oracle Cerner" class="h-10 md:h-12">
       <img src="/assets/images/logos/healthcare-partners.jpg" alt="InterSystems" class="h-8 md:h-10">
@@ -40,19 +40,19 @@
   </div>
 </section>
 
-<section id="loesungen" class="py-32 px-5 bg-slate-50">
+<section id="loesungen" class="py-16 px-5 bg-slate-50">
   <div class="max-w-6xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
       <div class="lg:col-span-6">
-        <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-8 tracking-tight">Rechtssicherheit trifft auf maximale Effizienz.</h2>
-        <div class="prose prose-slate prose-lg text-slate-600 space-y-6">
+        <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-5 tracking-tight">Rechtssicherheit trifft auf maximale Effizienz.</h2>
+        <div class="prose prose-slate prose-lg text-slate-600 space-y-4">
           <p>Meldungen nach dem <strong>Infektionsschutzgesetz (IfSG)</strong> und <strong>Personenstandsgesetz (PStG)</strong> lassen sich mit Vertama-Lösungen komfortabel absetzen. Die digitale Datenermittlung und der Versand mit nur einem Klick minimieren händische Aufwände spürbar.</p>
           <p>Besonderer Fokus liegt auf der <strong>Sicherheit</strong>: Sensible Patientendaten werden außerhalb Ihrer Infrastruktur nicht gespeichert. Die automatisierte Ablage der Sendebestätigung direkt in der Patientenakte sorgt für eine lückenlose Dokumentation.</p>
         </div>
 
-        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {{ range (slice "Ein-Klick-Versand" "Direkte KIS-Ablage" "DSGVO / E2E Verschlüsselung" "Intuitiv bedienbar") }}
-          <div class="flex items-center gap-3 p-4 bg-white rounded-3xl border border-slate-200 shadow-sm transition-hover hover:shadow-md transition-all">
+          <div class="flex items-center gap-3 p-4 bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
             <svg class="w-5 h-5 text-vertama" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="3" d="M5 13l4 4L19 7"/></svg>
             <span class="text-sm font-bold text-slate-700">{{ . }}</span>
           </div>
@@ -60,9 +60,8 @@
         </div>
       </div>
 
-      <div class="lg:col-span-6 sticky top-24">
+      <div class="lg:col-span-6 top-24">
         <div class="relative h-[400px] bg-white rounded-3xl shadow-2xl shadow-slate-200 border border-slate-100 flex items-center justify-between px-12 md:px-24 overflow-hidden">
-          <!-- Button direkt in die Animations-Box, oben rechts -->
           <button
             id="anim-toggle"
             aria-label="Animation pausieren"
@@ -90,7 +89,7 @@
 
           <div id="authority-icon" class="relative z-10 flex flex-col items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                 class="lucide lucide-building2-icon lucide-building-2 w-24 h-24 flex items-center justify-center text-5xl mb-4" aria-hidden="true">
+                 class="w-24 h-24 flex items-center justify-center text-5xl mb-4" aria-hidden="true">
               <path d="M10 12h4"/><path d="M10 8h4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/>
             </svg>
             <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Zielbehörde</span>
@@ -101,13 +100,13 @@
   </div>
 </section>
 
-<section class="py-24 px-5 bg-slate-50">
-  <div class="max-w-4xl mx-auto text-center mb-20">
-    <h2 class="text-4xl font-bold text-slate-900 mb-6">In drei Schritten zur digitalen Meldung</h2>
+<section class="py-14 px-5 bg-slate-50">
+  <div class="max-w-4xl mx-auto text-center mb-10">
+    <h2 class="text-4xl font-bold text-slate-900 mb-4">In drei Schritten zur digitalen Meldung</h2>
     <p class="text-lg text-slate-600">Wir haben den Prozess so weit vereinfacht, dass er Ihren klinischen Alltag nicht belastet.</p>
   </div>
 
-  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
     {{ $steps := slice
     (dict "n" "01" "t" "Anbinden" "d" "Integration in Ihr bestehendes KIS über Standardschnittstellen.")
     (dict "n" "02" "t" "Konfigurieren" "d" "Feineinstellung der Melde-Workflows nach Ihren Vorgaben.")
@@ -117,7 +116,7 @@
     <div class="relative group">
       <div class="text-8xl font-black text-slate-200 absolute -top-10 -left-4 group-hover:text-vertama/10 transition-colors">{{ .n }}</div>
       <div class="relative">
-        <h3 class="text-xl font-bold text-slate-900 mb-4">{{ .t }}</h3>
+        <h3 class="text-xl font-bold text-slate-900 mb-3">{{ .t }}</h3>
         <p class="text-slate-600 leading-relaxed">{{ .d }}</p>
       </div>
     </div>
@@ -134,12 +133,12 @@
 ) }}
 
 {{ range first 1 (where .Site.RegularPages "Section" "news") }}
-<section class="py-24 px-5 bg-white">
+<section class="py-12 px-5 bg-white">
   <div class="max-w-6xl mx-auto">
     <div class="relative bg-white border border-slate-100 rounded-3xl shadow-2xl shadow-slate-200/50 overflow-hidden group">
       <div class="flex flex-col lg:flex-row items-stretch">
 
-        <div class="lg:w-2/5 bg-vertama relative min-h-[300px] flex items-center justify-center overflow-hidden">
+        <div class="lg:w-2/5 bg-vertama relative min-h-[200px] flex items-center justify-center overflow-hidden">
           <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]"></div>
           <div class="relative z-10 text-center">
             <div class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-3xl flex items-center justify-center border border-white/30 mx-auto mb-4 transform rotate-6 group-hover:rotate-0 transition-transform duration-500">
@@ -149,16 +148,16 @@
           </div>
         </div>
 
-        <div class="lg:w-3/5 p-10 md:p-16 flex flex-col justify-center">
-          <div class="flex items-center gap-4 mb-6">
+        <div class="lg:w-3/5 p-8 md:p-10 flex flex-col justify-center">
+          <div class="flex items-center gap-4 mb-4">
             <span class="px-3 py-1 bg-vertama/10 text-vertama text-[10px] font-black uppercase tracking-widest rounded-full">Update</span>
             <span class="text-slate-400 text-sm font-medium">{{ .Date.Format "02.01.2006" }}</span>
           </div>
-          <h3 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight group-hover:text-vertama transition-colors">{{ .Title }}</h3>
-          <p class="text-slate-500 text-lg mb-8 leading-relaxed">{{ .Description | default .Summary }}</p>
+          <h3 class="text-3xl md:text-4xl font-bold text-slate-900 mb-3 leading-tight group-hover:text-vertama transition-colors">{{ .Title }}</h3>
+          <p class="text-slate-500 text-lg mb-5 leading-relaxed">{{ .Description | default .Summary }}</p>
           <div class="flex flex-wrap items-center gap-6">
             <a href="{{ .Permalink }}" class="text-vertama font-bold flex items-center gap-2 hover:gap-4 transition-all">Weiterlesen →</a>
-            <a href="/news/" class="text-slate-400 text-sm font-bold hover:text-slate-600 transition-colors">Alle News ansehen</a>
+            <a href="/de/news/" class="text-slate-400 text-sm font-bold hover:text-slate-600 transition-colors">Alle News ansehen</a>
           </div>
         </div>
       </div>
@@ -185,14 +184,13 @@
         animation: parabolicArc 2.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
     @keyframes parabolicArc {
-        0% { left: 18%; bottom: 35%; opacity: 0; transform: scale(0.5) rotate(-20deg); }
-        15% { opacity: 1; transform: scale(1.2) rotate(0deg); }
-        50% { left: 50%; bottom: 85%; transform: scale(1.4) rotate(5deg); }
-        85% { opacity: 1; transform: scale(1.2) rotate(0deg); }
+        0%   { left: 18%; bottom: 35%; opacity: 0; transform: scale(0.5) rotate(-20deg); }
+        15%  { opacity: 1; transform: scale(1.2) rotate(0deg); }
+        50%  { left: 50%; bottom: 85%; transform: scale(1.4) rotate(5deg); }
+        85%  { opacity: 1; transform: scale(1.2) rotate(0deg); }
         100% { left: 78%; bottom: 35%; opacity: 0; transform: scale(0.5) rotate(20deg); }
     }
     .jump-animation { transform: translateY(-20px) scale(1.05); transition: all 0.4s; }
-
     @media (prefers-reduced-motion: reduce) {
         .flying-doc { display: none; }
         .jump-animation { transition: none; }
@@ -200,21 +198,16 @@
 </style>
 
 <script>
-  // Wir definieren die Funktionen global, damit onclick="toggleAnim()" sie findet
   let animPaused = false;
 
   function runAnimation() {
-    // Falls schon ein Timer läuft, erst stoppen (verhindert doppelte Timer)
     if (window.vTimer) clearInterval(window.vTimer);
-
     const stage = document.getElementById('animation-stage');
     const auth = document.getElementById('authority-icon');
-
     if (!stage || !auth) return;
 
     window.vTimer = setInterval(() => {
       if (!document.getElementById('animation-stage') || animPaused) return;
-
       const doc = document.createElement('div');
       doc.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="white" stroke="#005e7b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -222,7 +215,6 @@
                       </svg>`;
       doc.className = 'flying-doc';
       stage.appendChild(doc);
-
       setTimeout(() => {
         if (auth && !animPaused) {
           auth.classList.add('jump-animation');
@@ -235,25 +227,20 @@
 
   function toggleAnim() {
     animPaused = !animPaused;
-    const btn = document.getElementById('anim-toggle');
     const pauseIcon = document.getElementById('anim-icon-pause');
     const playIcon = document.getElementById('anim-icon-play');
-
+    const btn = document.getElementById('anim-toggle');
     if (animPaused) {
       clearInterval(window.vTimer);
-      // Alle aktuell fliegenden Docs sofort entfernen
       document.querySelectorAll('.flying-doc').forEach(el => el.remove());
     } else {
       runAnimation();
     }
-
-    // UI Update
     if (pauseIcon) pauseIcon.style.display = animPaused ? 'none' : 'block';
     if (playIcon) playIcon.style.display = animPaused ? 'block' : 'none';
     if (btn) btn.setAttribute('aria-label', animPaused ? 'Animation starten' : 'Animation pausieren');
   }
 
-  // Initialer Start
   if (document.readyState === 'complete') {
     runAnimation();
   } else {
