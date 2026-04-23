@@ -1,139 +1,191 @@
 ---
 title: "ELIM+"
-description: "Elektronische Infektionsmeldung"
-tagline: "Elektronische Infektionsmeldung"
+description: "Electronic Infection Reporting"
+tagline: "Electronic Infection Reporting"
 layout: "single"
-type: "produkte"
 icon: "/assets/images/icons/products/product-elim.png"
 weight: 70
 
+
+media:
+#  video_main:
+#    url: "..."
+#    title: "..."
+  screenshots:
+    - file: "/assets/images/products/elimplus/ELIM+_Screenshot_Labormeldungen_Auswahlseite.png"
+      alt: "ELIM+ - Overview Page"
+      caption: "Overview of available forms"
+    - file: "/assets/images/products/elimplus/ELIM+_Screenshot_Erregernmeldung.png"
+      alt: "ELIM+ - Form"
+      caption: "Overview of the Influenza form"
+
+
 hero:
-  badge: "Infektionsmeldung"
+  badge: "Infection Reporting"
   headline: "ELIM+"
-  subheadline: "Elektronische Infektionsmeldung"
-  description: "ELIM+ ermöglicht die komfortable Meldung von Schnelltests auf Station – direkt aus dem KIS, in Echtzeit und vollständig gesetzeskonform. Die cloudbasierte Lösung ist auf die Umsetzung der gesetzlichen Meldepflicht auch von Erregertests gemäß § 7 IfSG ausgerichtet."
+  subheadline: "Electronic Infection Reporting"
+  description: "ELIM+ enables the convenient reporting of rapid tests on the ward – directly from the HIS, in real-time, and fully legally compliant. The cloud-based solution is designed to implement legal reporting obligations for pathogen tests according to § 7 IfSG."
+
+cta_primary:
+  text: "Request a Demo"
+  url: "/en/contact/?product=elimplus"
+
+cta_secondary:
+  text: "Learn More"
+  url: "#features"
 
 features:
-  title: "Warum ELIM+?"
-  description: "Von Station melden. Sicher dokumentieren. Für sichere und aktuelle Daten in einem Gesundheitssystem mit funktionalem Infektionsschutz."
+  title: "Why ELIM+?"
+  description: "Report from the ward. Document securely. For reliable and up-to-date data in a healthcare system with functional infection protection."
   items:
     - icon: "zap"
-      title: "Automatisiert & integriert"
-      description: "ELIM+ übernimmt den gesamten Meldeprozess – inklusive Formular, Versand, Empfangsquittung und Archivierung."
+      title: "Automated & Integrated"
+      description: "ELIM+ handles the entire reporting process – including forms, transmission, receipt confirmation, and archiving."
     
     - icon: "shield"
-      title: "Rechtssicher"
-      description: "Unterstützt sämtliche gesetzlichen Anforderungen – inkl. Sonderregelungen."
+      title: "Legally Secure"
+      description: "Supports all legal requirements – including special regulations."
     
     - icon: "send"
-      title: "Alle Meldewege"
-      description: "DEMIS (FHIR) für digitale Erregermeldungen."
+      title: "All Reporting Channels"
+      description: "DEMIS (FHIR) for digital pathogen reporting."
     
     - icon: "lock"
-      title: "Datenschutz garantiert"
-      description: "Keine Speicherung sensibler Daten. Memento-Verschlüsselung, zertifiziert durch SAP BTP. Ende-zu-Ende verschlüsselt."
+      title: "Privacy Guaranteed"
+      description: "No storage of sensitive data. Memento encryption, certified by SAP BTP. End-to-end encrypted."
     
     - icon: "settings"
-      title: "Saisonale Ereignisse"
-      description: "Die jahreszeitlich auftretenden Erreger können ohne Einsatz des Laborinformationssystems mittels Schnelltests auf Station gemeldet werden."
+      title: "Seasonal Events"
+      description: "Seasonally occurring pathogens can be reported via rapid tests on the ward without using the Laboratory Information System (LIS)."
     
     - icon: "clock"
-      title: "Schnell einsatzbereit"
-      description: "Nur 1–2 Tage Implementierung – kein notwendiger Schulungsaufwand, intuitiv für Nutzer."
+      title: "Quick Implementation"
+      description: "Only 1–2 days for implementation – no training required, intuitive for users."
 
 how_it_works:
-  title: "So funktioniert ELIM+ im Klinikalltag"
-  description: "Vier einfache Schritte von der Erfassung bis zur Archivierung"
+  title: "How ELIM+ Works in Everyday Clinical Practice"
+  description: "Four simple steps from data entry to archiving"
   steps:
-    - title: "Meldung starten"
-      description: "Über einen Button direkt aus der Patientenakte im KIS"
+    - title: "Start Report"
+      description: "Via a button directly from the patient record in the HIS"
     
-    - title: "Datenübernahme"
-      description: "Formular ist automatisch mit vorhandenen Patientendaten vorausgefüllt"
+    - title: "Data Transfer"
+      description: "Form is automatically pre-filled with existing patient data"
     
-    - title: "Ergänzen & Absenden"
-      description: "Ein Klick genügt – ELIM+ meldet automatisch an die FHIR-Schnittstelle von DEMIS"
+    - title: "Complete & Send"
+      description: "One click is enough – ELIM+ automatically reports to the DEMIS FHIR interface"
     
-    - title: "Empfang & Archivierung"
-      description: "Sendebestätigung wird automatisch revisionssicher in der Patientenakte abgelegt"
+    - title: "Receipt & Archiving"
+      description: "Transmission confirmation is automatically stored in the patient record in an audit-proof manner"
 
 supported_infections:
-  title: "Unterstützte Meldungen"
-  description: "44 vordefinierte Meldeformulare direkt im KIS wählbar"
+  title: "Supported Reports"
+  description: "44 predefined reporting forms selectable directly in the HIS"
   list:
     - "COVID-19"
     - "Influenza"
     - "MRSA"
     - "Clostridium"
     - "MRGN"
-    - "Echinokokkose"
+    - "Echinococcosis"
     - "Malaria"
     - "Syphilis"
     - "HIV"
     - "HUS EHEC"
-    - "Hospitalisierung (§ 6, 8 und 9 des IfSG)"
-    - "...und viele weitere"
+    - "Hospitalization (§ 6, 8, and 9 IfSG)"
+    - "...and many more"
 
 compliance:
-  title: "Datenschutz? Kein Thema – ELIM speichert nichts."
+  title: "Data Protection? Not an Issue – ELIM Stores Nothing."
   items:
     - icon: "🔒"
-      title: "Keine zentrale Datenspeicherung"
-      description: "Alle Daten werden nach erfolgreicher Übermittlung automatisch gelöscht"
+      title: "No Central Data Storage"
+      description: "All data is automatically deleted after successful transmission"
     
     - icon: "✓"
-      title: "Ende-zu-Ende verschlüsselt"
-      description: "Sicherer Transport und Zugriffskontrolle"
+      title: "End-to-End Encrypted"
+      description: "Secure transport and access control"
     
     - icon: "📋"
-      title: "Revisionssicher & DSGVO-konform"
-      description: "Vollständige Protokollierung aller Vorgänge"
+      title: "Audit-Proof & GDPR Compliant"
+      description: "Full logging of all processes"
     
     - icon: "🇩🇪"
-      title: "IfSG §6, §8, §9 konform"
-      description: "Erfüllt alle gesetzlichen Meldepflichten"
+      title: "IfSG §6, §8, §9 Compliant"
+      description: "Fulfills all legal reporting obligations"
 
 benefits:
-  title: "Ihre Vorteile auf einen Blick"
+  title: "Your Benefits at a Glance"
   items:
-    - text: "44 vordefinierte Meldeformulare"
-      detail: "direkt im KIS wählbar"
+    - text: "44 Predefined Reporting Forms"
+      detail: "Selectable directly within the HIS"
     
-    - text: "DEMIS-Anbindung per FHIR"
-      detail: "direkter, gesetzeskonformer Versand"
+    - text: "DEMIS Connection via FHIR"
+      detail: "Direct, legally compliant transmission"
     
-    - text: "Fax-Funktion integriert"
-      detail: "für Meldungen außerhalb der DEMIS Kompatibilität"
+    - text: "Integrated Fax Function"
+      detail: "For reports outside of DEMIS compatibility"
     
-    - text: "Revisionssichere Ablage"
-      detail: "in Patientenakte & Archivsystem"
+    - text: "Audit-Proof Archiving"
+      detail: "In patient records & archive systems"
     
-    - text: "Kein zusätzlicher Personalaufwand"
-      detail: "wartungsarm, updatesicher, intuitiv"
+    - text: "No Additional Personnel Effort"
+      detail: "Low maintenance, update-safe, intuitive"
 
 card_content:
   title: "ELIM+"
-  tagline: "Reporting of rapid tests in accordance with Section 7 of the IfSG"
+  tagline: "Reporting of rapid tests according to §7 IfSG"
   benefits:
-    - "Report rapid test results directly from the ward to the DEMIS FHIR interface"
-    - "Tests for seasonally prevalent pathogens available"
-    - "Reports are submitted without integrating laboratory information systems"
+    - "Report rapid test results from the ward directly to the DEMIS FHIR interface"
+    - "Seasonally common pathogen tests available"
+    - "Reporting occurs without the involvement of laboratory information systems"
 
 cta_section:
-  title: "ELIM+ – Report from the ward. Document securely."
-  description: "For secure and up-to-date data in a healthcare system with functional infection control..."
-  button_text: "Request a demo now"
+  title: "ELIM+ – Report from the Ward. Document Securely."
+  description: "For reliable and up-to-date data in a healthcare system with functional infection protection."
+  button_text: "Request a Demo Now"
   url: "/en/contact/?product=elim"
-  primary_text: "Request a demo now"
-  primary_url: "/en/products/?product=elim"
-  secondary_text: "Learn more"
+  secondary_text: "Learn More"
   secondary_url: "mailto:andre.sturm@vertama.com"
-
-cta_primary:
-  text: ""
-  url: ""
-
-cta_secondary:
-  text: "Mehr erfahren"
-  url: "#features"
 ---
+
+## ELIM – The Smart Solution for Infection Reporting
+
+ELIM digitizes and automates the entire reporting process for notifiable infectious diseases. Directly from your HIS, without media breaks, and fully legally compliant.
+
+### Automated from Start to Finish
+
+With ELIM, manual filling of reporting forms is a thing of the past. The system handles:
+- Automatic data transfer from the HIS
+- Intelligent form selection
+- Transmission via the correct channel (DEMIS/Fax)
+- Receipt confirmation and audit-proof archiving
+
+### All Reporting Channels. One Solution.
+
+ELIM supports both modern digital reporting channels (DEMIS via FHIR) and fax reports where still legally required. You don't have to worry about a thing – ELIM automatically selects the right path.
+
+### Data Protection by Design
+
+Unlike other solutions, ELIM does not store sensitive patient data centrally. All data is:
+- Used only for transmission
+- Automatically deleted after successful dispatch
+- Transmitted with end-to-end encryption
+- Processed in full compliance with GDPR
+
+Communication is encrypted via the SAP Business Technology Platform (SOC 2, BSI C5).
+
+### Rapid Deployment
+
+The implementation of ELIM takes only 1-2 days. No extensive training is required – the intuitive interface allows for immediate productive use.
+
+### Technical Integration
+
+ELIM integrates seamlessly into your existing HIS landscape:
+- SAP IS-H / i.s.h.med
+- Oracle Health (Cerner)
+- ORBIS
+- NEXUS
+- Others upon request
+
+Connection is established via standardized interfaces (HL7, FHIR) or individual integrations.
