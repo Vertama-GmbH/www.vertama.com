@@ -1,192 +1,192 @@
 ---
 title: "DIVI"
-description: "Meldung der Intensivkapazitäten"
-tagline: "Vollautomatisch. Gesetzeskonform."
+description: "Reporting of Intensive Care Capacities"
+tagline: "Fully automated. Legally compliant."
 layout: "single"
 type: "produkte"
 icon: "/assets/images/icons/products/product-divi.png"
 weight: 50
 
 hero:
-  badge: "Intensivbettenmeldung"
-  headline: "DIVI – Meldung der Intensivkapazitäten"
-  subheadline: "Vollautomatisch. Gesetzeskonform."
-  description: "DIVI ist die cloudbasierte Lösung für Krankenhäuser, um die tägliche, gesetzlich vorgeschriebene Meldung der Intensivkapazitäten direkt aus dem KIS oder PDMS zu versenden – ohne manuelle Zwischenschritte. Der Prozess erfüllt die Vorgaben des § 13 IfSG und die Meldepflichten an das Intensivregister des RKI."
+  badge: "Intensive Care Bed Reporting"
+  headline: "DIVI – Reporting of Intensive Care Capacities"
+  subheadline: "Fully automated. Legally compliant."
+  description: "DIVI is the cloud-based solution for hospitals to send the daily, legally required report of intensive care capacities directly from the HIS or PDMS – without manual intermediate steps. The process fulfills the requirements of § 13 IfSG and the reporting obligations to the RKI Intensive Care Register."
 
 cta_primary:
-  text: "Demo anfragen"
-  url: "/de/kontakt/?product=divi"
+  text: "Request a Demo"
+  url: "/en/contact/?product=divi"
 
 cta_secondary:
-  text: "Mehr erfahren"
+  text: "Learn More"
   url: "#features"
 
 features:
-  title: "Warum DIVI?"
-  description: "Die Komplettlösung für die tägliche Intensivkapazitätsmeldung. Für Krankenhäuser, die das medizinische Personal im Intensivbereich von ihrer aufwändigen Meldepflicht befreien wollen."
+  title: "Why DIVI?"
+  description: "The complete solution for daily intensive care capacity reporting. For hospitals that want to relieve medical staff in the intensive care unit from their time-consuming reporting obligations."
   items:
     - icon: "zap"
-      title: "Automatisiert & integriert"
-      description: "Ermittelt und versendet die Intensivkapazitäten vollautomatisch aus dem KIS/PDMS."
+      title: "Automated & Integrated"
+      description: "Determines and sends intensive care capacities fully automatically from the HIS/PDMS."
     
     - icon: "shield"
-      title: "Rechtssicher"
-      description: "Erfüllt alle gesetzlichen Anforderungen gemäß § 13 IfSG und RKI-Vorgaben."
+      title: "Legally Secure"
+      description: "Fulfills all legal requirements according to § 13 IfSG and RKI guidelines."
     
     - icon: "settings"
-      title: "Flexibel"
-      description: "Wahlweise mit manueller Kontrolle der Meldemaske oder vollautomatischem Betrieb."
+      title: "Flexible"
+      description: "Available with optional manual control via a reporting mask or fully automated operation."
     
     - icon: "clock"
-      title: "Effizient"
-      description: "Spart Zeit für ärztliches und administratives Personal – kein manuelles Erfassen oder Einloggen ins Webportal."
+      title: "Efficient"
+      description: "Saves time for medical and administrative staff – no manual data entry or logging into the web portal."
     
     - icon: "file-text"
       title: "Transparent"
-      description: "Versandbestätigung wird automatisch protokolliert und revisionssicher archiviert."
+      description: "Transmission confirmation is automatically logged and archived in an audit-proof manner."
 
 how_it_works:
-  title: "So funktioniert DIVI im Klinikalltag"
-  description: "Vollautomatische Meldung ans RKI in vier Schritten"
+  title: "How DIVI Works in Everyday Clinical Practice"
+  description: "Fully automated reporting to the RKI in four steps"
   steps:
-    - title: "Automatische Ermittlung"
-      description: "Ein Job im KIS/PDMS erfasst täglich um den definierten Zeitpunkt die Belegungsdaten aller Intensivstationen"
+    - title: "Automatic Determination"
+      description: "A job in the HIS/PDMS records the occupancy data of all intensive care units daily at a defined time"
     
-    - title: "Optionale Kontrolle"
-      description: "Die ermittelten Zahlen können in einer Meldemaske geprüft und freigegeben werden"
+    - title: "Optional Control"
+      description: "The determined figures can be checked and approved in a reporting mask"
     
-    - title: "Versand an das RKI"
-      description: "Automatisierter Versand an die API-Schnittstelle des Intensivregisters"
+    - title: "Transmission to the RKI"
+      description: "Automated transmission to the API interface of the Intensive Care Register"
     
-    - title: "Quittung & Archivierung"
-      description: "Empfangsbestätigung wird automatisch revisionssicher im Archivsystem abgelegt"
+    - title: "Receipt & Archiving"
+      description: "Receipt confirmation is automatically stored in the archive system in an audit-proof manner"
 
 compliance:
-  title: "Datensicherheit? Bei uns Standard."
-  description: "Auch wenn bei der Meldung keine sensiblen Patientendaten übertragen werden, setzt DIVI auf sichere Übertragungswege."
+  title: "Data Security? Standard for Us."
+  description: "Even though no sensitive patient data is transmitted during reporting, DIVI relies on secure transmission routes."
   items:
     - icon: "🔒"
       title: "HTTPS/TLS 1.3"
-      description: "Verschlüsselte Kommunikation"
+      description: "Encrypted Communication"
     
     - icon: "✓"
       title: "SAP BTP (SOC 2, BSI C5)"
-      description: "Zertifizierte Plattform"
+      description: "Certified Platform"
     
     - icon: "📋"
-      title: "Revisionssicher"
-      description: "Vollständig protokolliert"
+      title: "Audit-Proof"
+      description: "Fully Logged"
     
     - icon: "🏥"
       title: "§ 13 IfSG + RKI"
-      description: "Gesetzeskonform"
+      description: "Legally Compliant"
 
 benefits:
-  title: "Ihre Vorteile auf einen Blick"
+  title: "Your Benefits at a Glance"
   items:
-    - text: "Automatisierte Datenermittlung"
-      detail: "Spart Zeit, reduziert Fehler"
+    - text: "Automated Data Determination"
+      detail: "Saves time, reduces errors"
     
-    - text: "Direkt ans Intensivregister"
-      detail: "Gesetzmäßiger Versand ohne manuelles Webportal"
+    - text: "Direct to the Intensive Care Register"
+      detail: "Lawful transmission without a manual web portal"
     
-    - text: "Optionale manuelle Kontrolle"
-      detail: "Sicherheit durch Freigabeprozess"
+    - text: "Optional Manual Control"
+      detail: "Security through approval process"
     
-    - text: "Vollautomatischer Betrieb"
-      detail: "Kein Personalaufwand nach Einführung"
+    - text: "Fully Automated Operation"
+      detail: "No personnel effort after implementation"
     
-    - text: "Revisionssichere Archivierung"
-      detail: "Nachvollziehbar und auditfähig"
+    - text: "Audit-Proof Archiving"
+      detail: "Traceable and auditable"
 
 card_content:
   title: "DIVI"
-  tagline: "Meldung der Intensivkapazitäten"
+  tagline: "Reporting of Intensive Care Capacities"
   benefits:
-    - "Kapazitäten der Intensivstationen müssen täglich gemeldet werden"
-    - "Intensivregister bietet eine API-Schnittstelle für automatisierte Meldungen an"
-    - "Nicht aus dem KIS / PDMS ermittelbare Inhalte (aus Corona-Zeit) werden aus den Meldungen wieder entfernt"
-    - "Meldeprozess kann vollautomatisiert betrieben werden"
+    - "Intensive care unit capacities must be reported daily"
+    - "Intensive Care Register offers an API interface for automated reporting"
+    - "Content that cannot be determined from the HIS / PDMS (from the Corona era) is being removed from the reports"
+    - "Reporting process can be operated fully automatically"
 
 cta_section:
-  title: "DIVI ist die Komplettlösung für die tägliche Intensivkapazitätsmeldung."
-  description: "Für Krankenhäuser, die das medizinische Personal im Intensivbereich von ihrer aufwändigen Meldepflicht befreien wollen."
-  button_text: "Jetzt Demo anfragen"
-  url: "/de/kontakt/?product=divi"
-  secondary_text: "Mehr erfahren"
+  title: "DIVI is the complete solution for daily intensive care capacity reporting."
+  description: "For hospitals that want to relieve medical staff in the intensive care unit from their time-consuming reporting obligations."
+  button_text: "Request a Demo Now"
+  url: "/en/contact/?product=divi"
+  secondary_text: "Learn More"
   secondary_url: "mailto:andre.sturm@vertama.com"
 ---
 
-## DIVI – Intensivkapazitäten automatisch melden
+## DIVI – Automatically Report Intensive Care Capacities
 
-Die tägliche Meldung der Intensivkapazitäten an das RKI ist gesetzliche Pflicht. DIVI automatisiert diesen Prozess vollständig – vom KIS/PDMS bis zum Intensivregister.
+The daily reporting of intensive care capacities to the RKI is a legal requirement. DIVI fully automates this process – from the HIS/PDMS to the Intensive Care Register.
 
-### Keine manuelle Webportal-Eingabe mehr
+### No More Manual Web Portal Entry
 
-Schluss mit täglichem Einloggen ins RKI-Portal und manueller Dateneingabe. DIVI übernimmt:
-- Automatische Erfassung der Kapazitäten und Auslastung
-- Datenvalidierung
-- Versand über REST-Schnittstelle
-- Empfangsbestätigung und Archivierung
+No more daily logging into the RKI portal and manual data entry. DIVI takes over:
+- Automatic recording of capacities and utilization
+- Data validation
+- Transmission via REST interface
+- Receipt confirmation and archiving
 
-### Direkt aus KIS/PDMS
+### Directly from HIS/PDMS
 
-DIVI integriert sich nahtlos in Ihre bestehende IT-Infrastruktur und liest die Belegungsdaten automatisch aus:
-- Anzahl verfügbarer Intensivbetten
-- Aktuelle Belegung
-- Beatmete Patienten
-- COVID-19 Fälle
-- Weitere RKI-relevante Kennzahlen
+DIVI integrates seamlessly into your existing IT infrastructure and automatically reads the occupancy data:
+- Number of available intensive care beds
+- Current occupancy
+- Ventilated patients
+- COVID-19 cases
+- Other RKI-relevant metrics
 
-### Flexibler Workflow
+### Flexible Workflow
 
-Sie entscheiden, wie automatisiert der Prozess ablaufen soll:
+You decide how automated the process should be:
 
-**Option 1: Mit Kontrolle**
-- System erfasst Daten automatisch
-- Verantwortliche Person prüft vor Versand
-- Manuelle Freigabe
+**Option 1: With Control**
+- System records data automatically
+- Responsible person checks before transmission
+- Manual approval
 
-**Option 2: Vollautomatisch**
-- System erfasst und meldet eigenständig
-- Kein manueller Eingriff nötig
-- Automatische Protokollierung
+**Option 2: Fully Automated**
+- System records and reports independently
+- No manual intervention required
+- Automatic logging
 
 ### REST-API Integration
 
-DIVI kommuniziert direkt mit der offiziellen RKI-API:
-- Moderne REST-Schnittstelle
-- Automatische Authentifizierung
-- Zuverlässiger Versand
-- Empfangsbestätigung
+DIVI communicates directly with the official RKI API:
+- Modern REST interface
+- Automatic authentication
+- Reliable transmission
+- Receipt confirmation
 
-### Zeitersparnis für Ihr Personal
+### Time Savings for Your Staff
 
-**Vorher:**
-- Täglich manuell ins RKI-Portal einloggen
-- Daten aus verschiedenen Systemen zusammentragen
-- Manuelle Eingabe (fehleranfällig)
-- Zeit: 15-30 Minuten täglich
+**Before:**
+- Daily manual login to the RKI portal
+- Gathering data from various systems
+- Manual entry (error-prone)
+- Time: 15-30 minutes daily
 
-**Mit DIVI:**
-- Vollautomatische Meldung
-- Optionale Freigabe in 1 Minute
-- Zeit: 0-1 Minute täglich
-- **Ersparnis: bis zu 2,5 Stunden pro Woche**
+**With DIVI:**
+- Fully automated reporting
+- Optional approval in 1 minute
+- Time: 0-1 minute daily
+- **Savings: up to 2.5 hours per week**
 
-### Technische Integration
+### Technical Integration
 
-DIVI integriert sich in Ihre Intensiv-IT:
+DIVI integrates into your intensive care IT:
 - SAP IS-H / i.s.h.med
 - Oracle Health (Cerner)
 - Dräger PDMS
 - iMDsoft MetaVision
-- Weitere PDMS auf Anfrage
+- Others upon request
 
-### Datenschutz & Compliance
+### Data Protection & Compliance
 
-Die Intensivkapazitätsmeldung enthält keine Patientendaten. DIVI setzt dennoch auf höchste Standards:
-- Verschlüsselte Übertragung (HTTPS/TLS 1.3)
+The intensive care capacity report does not contain any patient data. Nevertheless, DIVI relies on the highest standards:
+- Encrypted transmission (HTTPS/TLS 1.3)
 - SAP Business Technology Platform (SOC 2, BSI C5)
-- Vollständige Protokollierung
-- Revisionssichere Archivierung
+- Full logging
+- Audit-proof archiving

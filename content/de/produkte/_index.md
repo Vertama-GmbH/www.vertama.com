@@ -1,5 +1,5 @@
 ---
-title: "Unsere Produktfamilie"
-layout: "list" # Wichtig, damit Hugo das list.html Template nutzt
-description: "Die Meldepflichten, zu denen Krankenhäuser im Rahmen des Infektionsschutz und im Personenstand gesetzlich verpflichtet sind, werden häufig mit viel Aufwand durch analoge Workflows erfüllt. Vertama digitalisiert und automatisiert diese Prozesse durch konsequente Nutzung vorhandener Daten, Vermeidung von Medienbrüchen und End-to-End-Kommunikation mit den Zielsystemen."
+title: "Our Product Family"
+layout: "list" # Important so that Hugo uses the list.html template
+description: "Reporting obligations that hospitals are legally required to fulfill regarding infection protection and civil status are often managed with significant effort through analog workflows. Vertama digitizes and automates these processes by consistently leveraging existing data, avoiding media breaks, and providing end-to-end communication with target systems."
 ---

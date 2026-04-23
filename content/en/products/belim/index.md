@@ -1,175 +1,175 @@
 ---
 title: "BELIM"
-description: "Bettenbelegmeldung"
-tagline: "Bettenbelegungsmeldung"
+description: "Bed Occupancy Reporting"
+tagline: "Bed Occupancy Reporting"
 layout: "single"
-type: "produkte"
+type: "products"
 icon: "/assets/images/icons/products/product-belim.png"
 weight: 20
 
 hero:
-  badge: "Bettenbelegmeldung"
+  badge: "Bed Occupancy Reporting"
   headline: "BELIM"
-  subheadline: "Digital. Schnell. Automatisiert."
-  description: "BELIM – die cloudbasierte Lösung für die tägliche, gesetzlich vorgeschriebene Bettenbelegsmeldung – direkt aus dem KIS, ohne manuelle Zwischenschritte. Der Prozess läuft vollständig automatisiert und erfüllt die Vorgaben des § 13 IfSG."
+  subheadline: "Digital. Fast. Automated."
+  description: "BELIM – the cloud-based solution for the daily, legally required bed occupancy report – directly from the HIS, without manual steps. The process runs fully automated and meets the requirements of § 13 IfSG."
 
 cta_primary:
-  text: "Demo anfragen"
-  url: "/de/kontakt/?product=belim"
+  text: "Request a demo"
+  url: "/en/contact/?product=belim"
 
 cta_secondary:
-  text: "Mehr erfahren"
+  text: "Learn more"
   url: "#features"
 
 features:
-  title: "Warum BELIM?"
-  description: "Die Komplettlösung für die tägliche Bettenbelegmeldung. Für Kliniken, die ihre kaufmännische Direktion oder ihr Controlling von täglichen Meldungen entlasten wollen."
+  title: "Why BELIM?"
+  description: "The complete solution for daily bed occupancy reporting. For hospitals that want to relieve their commercial management or controlling department of daily reports."
   items:
     - icon: "zap"
-      title: "Automatisiert & integriert"
-      description: "Ermittelt und meldet die Bettenbelegung vollautomatisch aus dem KIS – inklusive revisionssicherer Ablage der Bestätigung."
-    
+      title: "Automated & integrated"
+      description: "Automatically retrieves and reports bed occupancy from the HIS – including audit-proof storage of the confirmation."
+
     - icon: "shield"
-      title: "Rechtssicher"
-      description: "Meldung gemäß gesetzlicher Vorgaben an die DEMIS-FHIR-Schnittstelle. Erfüllt § 13 IfSG vollständig."
-    
+      title: "Legally compliant"
+      description: "Reporting via the DEMIS FHIR interface in accordance with statutory requirements. Fully compliant with § 13 IfSG."
+
     - icon: "clock"
-      title: "Reduzierter Aufwand"
-      description: "Kein manuelles Ermitteln, keine Wochenendarbeit – nach Implementierung komplett automatisierbar."
-    
+      title: "Reduced effort"
+      description: "No manual data retrieval, no weekend work – fully automatable after implementation."
+
     - icon: "settings"
-      title: "Flexibel"
-      description: "Möglichkeit zur Vorabprüfung der Zahlen im Controlling, bevor auf Vollautomatik umgestellt wird."
-    
+      title: "Flexible"
+      description: "Option for prior review of figures in controlling before switching to full automation."
+
     - icon: "sliders"
-      title: "Hohe Anpassbarkeit"
-      description: "Individuelle Berücksichtigung von Stationen (z. B. Ausschluss von Intensiv- oder Psychiatriebereichen) im Customizing."
-    
+      title: "Highly customizable"
+      description: "Individual consideration of wards (e.g. exclusion of intensive care or psychiatry units) in customizing."
+
     - icon: "users"
-      title: "Unabhängig"
-      description: "Auch manuelle Web-Eingabe möglich, falls keine KIS-Anbindung besteht."
+      title: "Independent"
+      description: "Manual web input also possible if no HIS connection is available."
 
 how_it_works:
-  title: "So funktioniert BELIM im Klinikalltag"
-  description: "Vollautomatische Meldung in vier Schritten"
+  title: "How BELIM works in clinical practice"
+  description: "Fully automated reporting in four steps"
   steps:
-    - title: "Automatische Ermittlung"
-      description: "Täglich werden die Belegungszahlen aus dem KIS erfasst"
-    
-    - title: "Optionale Kontrolle"
-      description: "Anzeige der Daten im Meldeformular zur Validierung o. Korrektur"
-    
-    - title: "Versand an DEMIS"
-      description: "Automatischer Versand zum vorgegebenen Zeitpunkt an die FHIR-Schnittstelle"
-    
-    - title: "Quittung & Archivierung"
-      description: "Automatische Speicherung der Empfangsbestätigung – revisionssicher und jederzeit abrufbar"
+    - title: "Automatic retrieval"
+      description: "Occupancy figures are captured from the HIS daily"
+
+    - title: "Optional review"
+      description: "Data is displayed in the reporting form for validation or correction"
+
+    - title: "Submission to DEMIS"
+      description: "Automatic submission at the scheduled time to the FHIR interface"
+
+    - title: "Receipt & archiving"
+      description: "Automatic storage of the delivery confirmation – audit-proof and retrievable at any time"
 
 compliance:
-  title: "Datensicherheit? Bei uns Standard."
-  description: "BELIM nutzt moderne Sicherheits- und Übertragungsmechanismen, um Meldedaten zuverlässig zu schützen – auch ohne sensible Patientendaten."
+  title: "Data security? Standard with us."
+  description: "BELIM uses modern security and transmission mechanisms to reliably protect reporting data – even without sensitive patient data."
   items:
     - icon: "🔒"
       title: "HTTPS/TLS 1.3"
-      description: "Verschlüsselte Kommunikation"
-    
+      description: "Encrypted communication"
+
     - icon: "✓"
       title: "SAP BTP (SOC 2, BSI C5)"
-      description: "Zertifizierte Plattform"
-    
+      description: "Certified platform"
+
     - icon: "📋"
-      title: "Revisionssicher"
-      description: "Alle Transaktionen protokolliert"
-    
+      title: "Audit-proof"
+      description: "All transactions logged"
+
     - icon: "🇩🇪"
-      title: "§ 13 IfSG konform"
-      description: "Gesetzeskonform"
+      title: "§ 13 IfSG compliant"
+      description: "Legally compliant"
 
 benefits:
-  title: "Ihre Vorteile auf einen Blick"
+  title: "Your benefits at a glance"
   items:
-    - text: "Automatisierte Datenermittlung"
-      detail: "Spart Zeit, reduziert Fehlerquellen"
-    
-    - text: "DEMIS-Anbindung per FHIR"
-      detail: "Gesetzeskonformer, schneller Versand"
-    
-    - text: "Optionale manuelle Kontrolle"
-      detail: "Sicherheit durch Controlling-Validierung"
-    
-    - text: "Vollautomatischer Betrieb"
-      detail: "Kein Personalaufwand nach Einführung"
-    
-    - text: "Flexibles Customizing"
-      detail: "Anpassbar an individuelle Stationsstrukturen"
-      
+    - text: "Automated data retrieval"
+      detail: "Saves time, reduces error sources"
+
+    - text: "DEMIS connection via FHIR"
+      detail: "Legally compliant, fast submission"
+
+    - text: "Optional manual review"
+      detail: "Security through controlling validation"
+
+    - text: "Fully automated operation"
+      detail: "No staffing effort after rollout"
+
+    - text: "Flexible customizing"
+      detail: "Adaptable to individual ward structures"
+
 card_content:
   title: "BELIM"
-  tagline: "Bettenbelegungsmeldung"
+  tagline: "Bed Occupancy Reporting"
   benefits:
-    - "Tägliche Meldung muss bis 11 Uhr abgegeben werden"
-    - "Datenermittlung erfolgt oft im Controlling oder der kaufmännischen Direktion"
-    - "Meldeprozess kann vollautomatisiert betrieben werden"
+    - "Daily report must be submitted by 11 a.m."
+    - "Data retrieval often handled by controlling or commercial management"
+    - "Reporting process can be operated fully automatically"
 
 cta_section:
-  title: "BELIM ist die Komplettlösung für die tägliche Bettenbelegmeldung."
-  description: "Für Kliniken, die ihre kaufmännische Direktion oder ihr Controlling von täglichen Meldungen entlasten wollen."
-  button_text: "Jetzt Demo anfragen"
-  url: "/de/kontakt/?product=belim"
-  secondary_text: "Mehr erfahren"
+  title: "BELIM is the complete solution for daily bed occupancy reporting."
+  description: "For hospitals that want to relieve their commercial management or controlling department of daily reports."
+  button_text: "Request a demo"
+  url: "/en/contact/?product=belim"
+  secondary_text: "Learn more"
   secondary_url: "mailto:andre.sturm@vertama.com"
 ---
 
-## BELIM – Bettenbelegmeldung automatisiert
+## BELIM – Bed occupancy reporting automated
 
-Die tägliche Bettenbelegmeldung gehört zu den gesetzlichen Pflichten jeder Klinik. BELIM macht daraus einen vollautomatischen Prozess – ohne manuellen Aufwand, ohne Fehlerquellen.
+Daily bed occupancy reporting is a statutory obligation for every hospital. BELIM turns it into a fully automated process – without manual effort, without errors.
 
-### Automatisch. Täglich. Zuverlässig.
+### Automatic. Daily. Reliable.
 
-BELIM ruft täglich zur Mittagszeit automatisch die aktuellen Belegungszahlen aus Ihrem KIS ab. Die Geschäftsleitung kann die Daten über eine vorausgefüllte Meldemaske einsehen und bei Bedarf korrigieren.
+BELIM automatically retrieves the current occupancy figures from your HIS each day at midday. Management can view the data via a pre-filled reporting screen and correct it if necessary.
 
-Nach vollständiger Implementierung läuft der Prozess vollautomatisch – ohne jeglichen manuellen Aufwand.
+After full implementation, the process runs completely automatically – with no manual effort whatsoever.
 
-### DEMIS-Integration
+### DEMIS integration
 
-BELIM übermittelt die Meldung gesetzeskonform über die DEMIS-FHIR-Schnittstelle. Die Bestätigung des Meldeeingangs wird automatisch übermittelt und revisionssicher abgelegt.
+BELIM submits the report in compliance with the law via the DEMIS FHIR interface. The submission confirmation is automatically transmitted and stored in an audit-proof manner.
 
-### Flexibel & Anpassbar
+### Flexible & customizable
 
-Jede Klinik ist anders. BELIM berücksichtigt Ihre individuellen Anforderungen:
-- Ausschluss bestimmter Stationen (z.B. Intensiv, Psychiatrie)
-- Individuelle Meldezeitpunkte
-- Optionale Freigabeprozesse vor automatischem Versand
+Every hospital is different. BELIM accommodates your individual requirements:
+- Exclusion of specific wards (e.g. intensive care, psychiatry)
+- Individual reporting times
+- Optional approval processes before automatic submission
 
-### Von manuell zu automatisch
+### From manual to automatic
 
-Die Implementierung erfolgt schrittweise:
+Implementation is carried out in phases:
 
-**Phase 1:** Manuelle Kontrolle
-- System erfasst Daten automatisch
-- Controlling prüft und gibt frei
-- Manuelle Korrektur möglich
+**Phase 1:** Manual review
+- System captures data automatically
+- Controlling reviews and approves
+- Manual correction possible
 
-**Phase 2:** Vollautomatik
-- System meldet eigenständig
-- Kein manueller Aufwand mehr
-- Automatische Archivierung
+**Phase 2:** Full automation
+- System reports independently
+- No more manual effort
+- Automatic archiving
 
-### Technische Integration
+### Technical integration
 
-BELIM integriert sich nahtlos in Ihre KIS-Landschaft:
+BELIM integrates seamlessly into your HIS landscape:
 - SAP IS-H / i.s.h.med
 - Oracle Health (Cerner)
 - ORBIS
 - NEXUS
-- Weitere auf Anfrage
+- Others on request
 
-Alternativ: Web-basierte manuelle Eingabe möglich (falls keine KIS-Anbindung vorhanden).
+Alternative: web-based manual input available (if no HIS connection exists).
 
-### Datenschutz & Sicherheit
+### Data protection & security
 
-Die Bettenbelegmeldung enthält keine Patientendaten. Dennoch setzt BELIM auf höchste Sicherheitsstandards:
-- Verschlüsselte Übertragung (HTTPS/TLS 1.3)
+The bed occupancy report contains no patient data. Nevertheless, BELIM applies the highest security standards:
+- Encrypted transmission (HTTPS/TLS 1.3)
 - SAP Business Technology Platform (SOC 2, BSI C5)
-- Revisionssichere Protokollierung
-- Automatische Archivierung
+- Audit-proof logging
+- Automatic archiving

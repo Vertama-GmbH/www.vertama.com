@@ -1,220 +1,220 @@
 ---
 title: "DiGT"
-description: "Digitale Sterbefallanzeige – Rechtssicher. Schnell. Automatisiert."
-tagline: "Rechtssicher. Schnell. Automatisiert."
+description: "Digital Death Notification – Legally compliant. Fast. Automated."
+tagline: "Legally compliant. Fast. Automated."
 layout: "single"
-type: "produkte"
+type: "products"
 icon: "/assets/images/icons/products/product-digt.png"
 weight: 60
 
 hero:
-  badge: "Sterbefallanzeige"
-  headline: "DiGT – Digitale Sterbefallanzeige"
-  subheadline: "Rechtssicher. Schnell. Automatisiert."
-  description: "DiGT ist die cloudbasierte Lösung für Krankenhäuser, um Sterbefallanzeigen vollständig digital und rechtskonform an das zuständige Standesamt zu übermitteln – direkt aus dem KIS, ohne Medienbrüche. Der Prozess erfüllt die Vorgaben des § 28 Abs. 1 PStG und nutzt den XPersonenstand-Datenstandard über die OSCI-Kommunikationsinfrastruktur."
+  badge: "Death Notification"
+  headline: "DiGT – Digital Death Notification"
+  subheadline: "Legally compliant. Fast. Automated."
+  description: "DiGT is the cloud-based solution for hospitals to submit death notifications fully digitally and legally compliantly to the responsible registry office – directly from the HIS, without media breaks. The process meets the requirements of § 28 Para. 1 PStG and uses the XPersonenstand data standard via the OSCI communication infrastructure."
 
 cta_primary:
-  text: "Demo anfragen"
-  url: "/de/kontakt/?product=digt"
+  text: "Request a demo"
+  url: "/en/contact/?product=digt"
 
 cta_secondary:
-  text: "Mehr erfahren"
+  text: "Learn more"
   url: "#features"
 
 features:
-  title: "Warum DiGT?"
-  description: "Die Komplettlösung für digitale Sterbefallanzeigen. Für Krankenhäuser, die diesen Prozess einfach und zuverlässig gestalten wollen."
+  title: "Why DiGT?"
+  description: "The complete solution for digital death notifications. For hospitals that want to manage this process simply and reliably."
   items:
     - icon: "zap"
-      title: "Automatisiert & integriert"
-      description: "Nahtlose Einbindung ins KIS – Daten werden automatisch übernommen."
-    
+      title: "Automated & integrated"
+      description: "Seamless integration into the HIS – data is transferred automatically."
+
     - icon: "shield"
-      title: "Rechtssicher"
-      description: "Erfüllt alle verfahrensrechtlichen Vorgaben des Personenstandsgesetzes."
-    
+      title: "Legally compliant"
+      description: "Meets all procedural requirements of the Civil Status Act."
+
     - icon: "send"
-      title: "Sichere Behördenkommunikation"
-      description: "Übermittlung über OSCI an das Standesamt."
-    
+      title: "Secure authority communication"
+      description: "Transmission to the registry office via OSCI."
+
     - icon: "clock"
-      title: "Effizient"
-      description: "Spart Zeit und reduziert Fehlerquellen durch vorbefüllte Formulare."
-    
+      title: "Efficient"
+      description: "Saves time and reduces errors through pre-filled forms."
+
     - icon: "file-text"
       title: "Transparent"
-      description: "Versand wird eindeutig protokolliert und revisionssicher archiviert."
+      description: "Submission is clearly logged and stored in an audit-proof manner."
 
 how_it_works:
-  title: "So funktioniert DiGT im Klinikalltag"
-  description: "Fünf einfache Schritte vom Todesfall bis zur Standesamtsmeldung"
+  title: "How DiGT works in clinical practice"
+  description: "Five simple steps from death to registry office notification"
   steps:
-    - title: "Anzeige starten"
-      description: "Im KIS das Formular 'Sterbefallanzeige' aufrufen"
-    
-    - title: "Datenübernahme"
-      description: "Patientendaten und Klinikangaben werden automatisch aus dem KIS übernommen"
-    
-    - title: "Prüfen & Ergänzen"
-      description: "Fehlende Angaben werden ergänzt, anschließend erfolgt die ärztliche Freigabe"
-    
-    - title: "Versand über OSCI"
-      description: "Die Anzeige und ggf. ärztliche Todesbescheinigung werden an das zuständige Standesamt gesendet"
-    
-    - title: "Quittung & Archivierung"
-      description: "Versandbestätigung wird revisionssicher in der Patientenakte abgelegt"
+    - title: "Start notification"
+      description: "Open the 'Death notification' form in the HIS"
+
+    - title: "Data transfer"
+      description: "Patient data and hospital details are automatically transferred from the HIS"
+
+    - title: "Review & complete"
+      description: "Missing information is added, followed by physician approval"
+
+    - title: "Submission via OSCI"
+      description: "The notification and, if applicable, the medical death certificate are sent to the responsible registry office"
+
+    - title: "Receipt & archiving"
+      description: "Submission confirmation is stored audit-proof in the patient record"
 
 supported_documents:
-  title: "Unterstützte Dokumente"
+  title: "Supported documents"
   items:
-    - "Vorläufige Feststellung des Todes"
-    - "Todesbescheinigung"
-    - "Obduktionsschein"
-    - "Leichenpass"
+    - "Preliminary determination of death"
+    - "Death certificate"
+    - "Autopsy report"
+    - "Mortuary pass"
 
 compliance:
-  title: "Datensicherheit? Bei uns Standard."
-  description: "DiGT nutzt modernste Verschlüsselungs- und Sicherheitsmechanismen."
+  title: "Data security? Standard with us."
+  description: "DiGT uses state-of-the-art encryption and security mechanisms."
   items:
     - icon: "🔒"
-      title: "Ende-zu-Ende Verschlüsselung"
-      description: "Zugriffskontrolle und auditierte Prozesse"
-    
+      title: "End-to-end encryption"
+      description: "Access control and audited processes"
+
     - icon: "✓"
       title: "SAP BTP (SOC 2, BSI C5)"
-      description: "Zertifizierte Plattform"
-    
+      description: "Certified platform"
+
     - icon: "📋"
-      title: "XPersonenstand-Standard"
-      description: "Gesetzeskonform und zukunftssicher"
-    
+      title: "XPersonenstand standard"
+      description: "Legally compliant and future-proof"
+
     - icon: "🏛️"
-      title: "OSCI-gesichert"
-      description: "Behördlich anerkannter Kommunikationsweg"
+      title: "OSCI-secured"
+      description: "Officially recognized communication channel"
 
 benefits:
-  title: "Ihre Vorteile auf einen Blick"
+  title: "Your benefits at a glance"
   items:
-    - text: "KIS-integrierte Webformulare"
-      detail: "Start direkt aus der Patientenakte"
-    
-    - text: "Automatische Datenübernahme"
-      detail: "Spart Zeit und reduziert Fehler"
-    
-    - text: "XPersonenstand-Standard"
-      detail: "Gesetzeskonform und zukunftssicher"
-    
-    - text: "OSCI-gesicherte Übermittlung"
-      detail: "Behördlich anerkannter Kommunikationsweg"
-    
-    - text: "Revisionssichere Archivierung"
-      detail: "Nachvollziehbar und auditfähig"
+    - text: "HIS-integrated web forms"
+      detail: "Start directly from the patient record"
+
+    - text: "Automatic data transfer"
+      detail: "Saves time and reduces errors"
+
+    - text: "XPersonenstand standard"
+      detail: "Legally compliant and future-proof"
+
+    - text: "OSCI-secured transmission"
+      detail: "Officially recognized communication channel"
+
+    - text: "Audit-proof archiving"
+      detail: "Traceable and auditable"
 
 card_content:
   title: "DiGT"
-  tagline: "Digitale Todesanzeige"
+  tagline: "Digital Death Notification"
   benefits:
-    - "Automatisierte Erfassung und Übernahme der benötigten DIGT-Daten aus dem KIS - i.s.h.med"
-    - "Ergänzung und Validierung der Daten im Meldeformular"
-    - "Übermittlung der Todesanzeigen an das zuständige Standesamt"
+    - "Automated capture and transfer of required DiGT data from the HIS - i.s.h.med"
+    - "Completion and validation of data in the reporting form"
+    - "Transmission of death notifications to the responsible registry office"
 
 cta_section:
-  title: "DiGT ist die Komplettlösung für digitale Sterbefallanzeigen."
-  description: "Für Krankenhäuser, die diesen Prozess einfach und zuverlässig gestalten wollen."
-  button_text: "Jetzt Demo anfragen"
-  url: "/de/kontakt/?product=digt"
-  secondary_text: "Mehr erfahren"
+  title: "DiGT is the complete solution for digital death notifications."
+  description: "For hospitals that want to manage this process simply and reliably."
+  button_text: "Request a demo"
+  url: "/en/contact/?product=digt"
+  secondary_text: "Learn more"
   secondary_url: "mailto:andre.sturm@vertama.com"
 ---
 
-## DiGT – Sterbefälle digital melden
+## DiGT – Digital death registration
 
-Die Sterbefallanzeige ans Standesamt ist rechtlich vorgeschrieben. DiGT digitalisiert diesen sensiblen Prozess vollständig – rechtssicher und mit minimalem Aufwand.
+Death notification to the registry office is legally required. DiGT fully digitalizes this sensitive process – legally compliant and with minimal effort.
 
-### Digitaler Workflow für einen sensiblen Prozess
+### Digital workflow for a sensitive process
 
-DiGT entlastet Ärzte und Verwaltungspersonal bei den Meldeprozessen:
-- Vorläufige Feststellung des Todes
-- Todesbescheinigung
-- Obduktionsschein
-- Leichenpass
+DiGT relieves doctors and administrative staff of reporting tasks for:
+- Preliminary determination of death
+- Death certificate
+- Autopsy report
+- Mortuary pass
 
-Alle Dokumente können digital erfasst und übermittelt werden.
+All documents can be captured and transmitted digitally.
 
-### Direkt aus der Patientenakte
+### Directly from the patient record
 
-DiGT integriert sich nahtlos in Ihren Workflow:
-- Button "Sterbefallanzeige" in Patientenakte
-- Formular ist bereits vorausgefüllt
-- Nur fehlende Angaben ergänzen
-- Ärztliche Freigabe digital
-- Ein Klick zum Versenden
+DiGT integrates seamlessly into your workflow:
+- "Death notification" button in the patient record
+- Form is already pre-filled
+- Only add missing information
+- Digital physician approval
+- One click to submit
 
-### XPersonenstand-Standard
+### XPersonenstand standard
 
-DiGT nutzt den offiziellen XPersonenstand-Datenstandard:
-- Von Bund und Ländern entwickelt
-- Bundesweit einheitlich
-- Zukunftssicher
-- Vollständig gesetzeskonform (§ 28 Abs. 1 PStG)
+DiGT uses the official XPersonenstand data standard:
+- Developed by federal and state authorities
+- Uniform nationwide
+- Future-proof
+- Fully legally compliant (§ 28 Para. 1 PStG)
 
-### OSCI-Infrastruktur
+### OSCI infrastructure
 
-Die Übermittlung erfolgt über die OSCI-Kommunikationsinfrastruktur:
-- Behördlich anerkannter Standard
-- Ende-zu-Ende verschlüsselt
-- Rechtssichere Empfangsbestätigung
-- Revisionssichere Protokollierung
+Transmission is via the OSCI communication infrastructure:
+- Officially recognized standard
+- End-to-end encrypted
+- Legally secure delivery receipt
+- Audit-proof logging
 
-### Zeitersparnis für Ärzte und Verwaltung
+### Time savings for doctors and administration
 
-**Vorher:**
-- Handschriftliches Ausfüllen mehrerer Formulare
-- Fax oder Post an Standesamt
-- Rückfragen bei fehlenden Angaben
-- Papierarchivierung
-- Zeit: 30-45 Minuten pro Fall
+**Before:**
+- Handwritten completion of multiple forms
+- Fax or post to registry office
+- Follow-up calls for missing information
+- Paper archiving
+- Time: 30–45 minutes per case
 
-**Mit DiGT:**
-- Daten bereits vorausgefüllt
-- Nur Ergänzung fehlender Angaben
-- Digitale ärztliche Freigabe
-- Automatische Übermittlung mit Bestätigung
-- Digitale Archivierung
-- Zeit: 5-10 Minuten pro Fall
-- **Ersparnis: bis zu 35 Minuten pro Fall**
+**With DiGT:**
+- Data already pre-filled
+- Only add missing information
+- Digital physician approval
+- Automatic transmission with confirmation
+- Digital archiving
+- Time: 5–10 minutes per case
+- **Saving: up to 35 minutes per case**
 
-### Ärztliche Freigabe digital
+### Digital physician approval
 
-Der Prozess berücksichtigt die notwendige ärztliche Freigabe:
-1. Verwaltung füllt administrative Daten aus
-2. Arzt ergänzt medizinische Angaben
-3. Ärztliche Freigabe per Klick
-4. Automatischer Versand
+The process accommodates the required physician approval:
+1. Administration completes administrative data
+2. Physician adds medical information
+3. Physician approves with a click
+4. Automatic submission
 
-### Keine Medienbrüche
+### No media breaks
 
-Alle Schritte erfolgen digital:
-- Keine handschriftlichen Formulare
-- Kein Fax oder Post
-- Keine Papierarchive
-- Vollständig nachvollziehbar
+All steps are digital:
+- No handwritten forms
+- No fax or post
+- No paper archives
+- Fully traceable
 
-### Technische Integration
+### Technical integration
 
-DiGT integriert sich in Ihre Krankenhaus-IT:
+DiGT integrates into your hospital IT:
 - SAP IS-H / i.s.h.med
 - Oracle Health (Cerner)
 - ORBIS
 - NEXUS
-- Weitere KIS auf Anfrage
+- Further HIS on request
 
-### Datenschutz & Sicherheit
+### Data protection & security
 
-Sterbefallanzeigen enthalten sensible Personendaten. DiGT schützt diese durch:
-- Ende-zu-Ende Verschlüsselung
-- Keine dauerhafte zentrale Speicherung
-- Zugriffskontrolle und Audit-Logs
+Death notifications contain sensitive personal data. DiGT protects this through:
+- End-to-end encryption
+- No permanent central storage
+- Access control and audit logs
 - SAP Business Technology Platform (SOC 2, BSI C5)
-- OSCI-Infrastruktur des Bundes
-- Vollständig DSGVO-konform
+- Federal OSCI infrastructure
+- Fully GDPR-compliant

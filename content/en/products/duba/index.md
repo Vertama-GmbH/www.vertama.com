@@ -1,220 +1,231 @@
 ---
 title: "DuBA"
-description: "Digitale Unterbringungsanträge"
-tagline: "Rechtskonforme Anträge. Digital. Direkt."
+description: "Digital Placement Applications"
+tagline: "Legally compliant applications. Digital. Direct."
 layout: "single"
-type: "produkte"
 icon: "/assets/images/icons/products/product-duba.png"
 weight: 40
 
+media:
+    video_main:
+      url: "/assets/videos/products/duba/DUBA_Aus_dem_KIS_zum_Gericht_Krhs_Version.mp4"
+      title: "Digital, Judicial Applications"
+    screenshots:
+      - file: "/assets/images/products/duba/DUBA_Screenshot_Formulare_Auswahlseite.png"
+        alt: "DuBA - Overview Page"
+        caption: "Overview of available forms"
+      - file: "/assets/images/products/duba/DUBA_Screenshot_Meldeformular.png"
+        alt: "DuBA - Form"
+        caption: "Overview of the form"
+
 hero:
-  badge: "Behördenanträge"
-  headline: "DuBA – Digitale Behörden-Anträge"
-  subheadline: "Rechtskonforme Anträge. Digital. Direkt."
-  description: "DuBA ist die innovative Lösung für psychiatrische Einrichtungen, die rechtliche Antragsverfahren nicht länger als zeitraubende Bürokratie erleben wollen. Der cloudbasierte Dienst digitalisiert und automatisiert den gesamten Prozess der Unterbringungsanträge – schnell, sicher und nahtlos aus dem KIS heraus."
+  badge: "Authority Applications"
+  headline: "DuBA – Digital Authority Applications"
+  subheadline: "Legally compliant applications. Digital. Direct."
+  description: "DuBA is the innovative solution for psychiatric facilities that no longer want to experience legal application processes as time-consuming bureaucracy. The cloud-based service digitizes and automates the entire placement application process – quickly, securely, and seamlessly from within the HIS."
 
 cta_primary:
-  text: "Demo anfragen"
-  url: "/de/kontakt/?product=duba"
+  text: "Request a Demo"
+  url: "/en/contact/?product=duba"
 
 cta_secondary:
-  text: "Mehr erfahren"
+  text: "Learn More"
   url: "#features"
 
 features:
-  title: "Warum DuBA?"
-  description: "Weniger Aufwand. Mehr Effizienz. Für komfortable Kommunikation zu Gerichten."
+  title: "Why DuBA?"
+  description: "Less effort. More efficiency. For convenient communication with courts."
   items:
     - icon: "zap"
-      title: "Nahtlos integriert"
-      description: "DuBA ist vollständig in das KIS eingebettet und fügt sich optimal in bestehende Abläufe ein."
+      title: "Seamlessly Integrated"
+      description: "DuBA is fully embedded into the HIS and fits optimally into existing workflows."
     
     - icon: "shield"
-      title: "Rechtskonform und zertifiziert"
-      description: "DuBA erfüllt alle verfahrensrechtlichen Vorgaben gemäß FamFG, BGB und PsychKG sowie den aktuellen Standards für den elektronischen Rechtsverkehr."
+      title: "Legally Compliant and Certified"
+      description: "DuBA fulfills all procedural requirements according to FamFG, BGB, and PsychKG, as well as current standards for electronic legal communication."
     
     - icon: "clock"
-      title: "Schneller zur Entscheidung"
-      description: "Der Beschluss des Gerichts wird direkt in der Patientenakte abgelegt – sicher, dokumentiert, nachvollziehbar."
+      title: "Faster Decisions"
+      description: "The court's decision is stored directly in the patient record – securely, documented, and traceable."
     
     - icon: "file-check"
-      title: "Minimaler Aufwand, maximale Sicherheit"
-      description: "Keine doppelte Dateneingabe. Kein händisches Versenden. Kein Risiko durch falsche Formate oder veraltete Formulare."
+      title: "Minimal Effort, Maximum Security"
+      description: "No double data entry. No manual mailing. No risk from incorrect formats or outdated forms."
 
 how_it_works:
-  title: "So funktioniert DuBA im Klinikalltag"
-  description: "Vier einfache Schritte vom Antrag bis zum Gerichtsbeschluss"
+  title: "How DuBA Works in Everyday Clinical Practice"
+  description: "Four simple steps from application to court order"
   steps:
-    - title: "Formular aufrufen"
-      description: "Direkt aus der Patientenakte im KIS"
+    - title: "Open Form"
+      description: "Directly from the patient record in the HIS"
     
-    - title: "Automatisch vorausgefüllt"
-      description: "Patienten- und Einrichtungsdaten werden übernommen"
+    - title: "Automatically Pre-filled"
+      description: "Patient and facility data are automatically transferred"
     
-    - title: "Ergänzen & Absenden"
-      description: "Ein Klick genügt, um den Antrag an das Amtsgericht zu senden"
+    - title: "Complete & Submit"
+      description: "One click is enough to send the application to the district court"
     
-    - title: "Empfang & Ablage"
-      description: "Beschlüsse des Gerichts werden automatisch verarbeitet und in der Akte abgelegt"
+    - title: "Receipt & Filing"
+      description: "Court orders are automatically processed and filed in the patient record"
 
 efficiency:
-  title: "Effizienz für Ärzt:innen – Rechtssicherheit für Kliniken"
-  description: "Mit DuBA reichen Ärzt:innen Anträge an Betreuungsgerichte direkt aus der Patientenakte ein – mit wenigen Klicks, rechtssicher und voll digital."
+  title: "Efficiency for Physicians – Legal Certainty for Clinics"
+  description: "With DuBA, physicians submit applications to guardianship courts directly from the patient record – with just a few clicks, legally secure, and fully digital."
   benefits:
-    - "Das intelligente Formularsystem übernimmt alle vorhandenen Patientendaten aus dem Krankenhausinformationssystem (KIS)"
-    - "Strukturiert sie im rechtskonformen XJustiz-Format"
-    - "Versendet die Anträge verschlüsselt über das Besondere Behördenpostfach (beBPo)"
-    - "Ohne Medienbruch, ohne Papierkram"
+    - "The intelligent form system adopts all existing patient data from the Hospital Information System (HIS)"
+    - "Structures it in the legally compliant XJustiz format"
+    - "Sends the applications encrypted via the special electronic mailbox for authorities (beBPo)"
+    - "Without media breaks, without paperwork"
 
 compliance:
-  title: "Datensicherheit? Bei uns Standard."
-  description: "DuBA nutzt modernste Verschlüsselungs- und Sicherheitsmechanismen. Alle Patientendaten bleiben geschützt."
+  title: "Data Security? Standard for Us."
+  description: "DuBA uses state-of-the-art encryption and security mechanisms. All patient data remains protected."
   items:
     - icon: "🔒"
-      title: "Ende-zu-Ende Verschlüsselung"
-      description: "Zugriffskontrolle und vollständig auditierte Prozesse"
+      title: "End-to-End Encryption"
+      description: "Access control and fully audited processes"
     
     - icon: "✓"
       title: "SAP BTP (SOC 2, BSI C5)"
-      description: "Zertifizierte Plattform"
+      description: "Certified Platform"
     
     - icon: "🏛️"
-      title: "beBPo-Infrastruktur"
-      description: "Besonderes elektronisches Behördenpostfach"
+      title: "beBPo Infrastructure"
+      description: "Special electronic mailbox for authorities"
     
     - icon: "⚖️"
-      title: "XJustiz-Format"
-      description: "Rechtskonformer Standard"
+      title: "XJustiz Format"
+      description: "Legally compliant standard"
 
 governikus:
-  title: "Digitale Kommunikation mit Gerichten – ganz einfach"
-  description: "Dank der integrierten Anbindung an die Governikus Vibiblia REST-Schnittstelle versendet DuBA Anträge direkt über das beBPo – ohne umständliche Plugins, ohne Outlook, aber mit vollständiger Kontrolle und Nachverfolgbarkeit."
+  title: "Digital Communication with Courts – Made Easy"
+  description: "Thanks to the integrated connection to the Governikus Vibiblia REST interface, DuBA sends applications directly via the beBPo – without cumbersome plugins, without Outlook, but with full control and traceability."
 
 benefits:
-  title: "DuBA – Weniger Aufwand. Mehr Rechtssicherheit."
-  description: "Für ein Gesundheitssystem, das Zeit für Menschen schafft."
+  title: "DuBA – Less Effort. More Legal Certainty."
+  description: "For a healthcare system that creates time for people."
 
 card_content:
   title: "DuBA"
-  tagline: "Digitale Unterbringungsanträge"
+  tagline: "Digital Placement Applications"
   benefits:
-    - "Gerichte erwarten digitale Kommunikation gemäß OZG (Online Zugangsgesetz)"
-    - "Betreuungs-Anträge bei Gerichten digital und rechtskonform direkt aus dem KIS einreichen"
-    - "Datentransport über EGVP-Infrastruktur und das besondere Behördenpostfach (BeBPo)"
+    - "Courts expect digital communication in accordance with the OZG (Online Access Act)"
+    - "Submit guardianship applications to courts digitally and legally compliant directly from the HIS"
+    - "Data transport via EGVP infrastructure and the special authorities' mailbox (beBPo)"
 
 cta_section:
-  title: "DuBA – Weniger Aufwand. Mehr Effizienz."
-  description: "Für komfortable Kommunikation zu Gerichten."
-  button_text: "Jetzt Demo anfragen"
-  url: "/de/kontakt/?product=duba"
-  secondary_text: "Mehr erfahren"
+  title: "DuBA – Less Effort. More Efficiency."
+  description: "For convenient communication with courts."
+  button_text: "Request a Demo Now"
+  url: "/en/contact/?product=duba"
+  secondary_text: "Learn More"
   secondary_url: "mailto:andre.sturm@vertama.com"
 ---
 
-## DuBA – Behördenanträge digital und rechtssicher
+## DuBA – Authority Applications Digital and Legally Secure
 
-Die Kommunikation zwischen psychiatrischen Einrichtungen und Betreuungsgerichten unterliegt strengen rechtlichen und sicherheitstechnischen Anforderungen. DuBA digitalisiert diesen Prozess vollständig.
+Communication between psychiatric facilities and guardianship courts is subject to strict legal and security requirements. DuBA fully digitizes this process.
 
-### Schluss mit Papierkram und Faxgeräten
+### No More Paperwork and Fax Machines
 
-Keine handschriftlichen Formulare mehr. Keine Faxe. Kein Papierkram. DuBA übernimmt:
-- Automatische Datenübernahme aus dem KIS
-- Strukturierung im XJustiz-Format
-- Verschlüsselte Übermittlung über beBPo
-- Empfang und Ablage von Gerichtsbeschlüssen
+No more handwritten forms. No more faxes. No more paperwork. DuBA takes over:
+- Automatic data transfer from the HIS
+- Structuring in the XJustiz format
+- Encrypted transmission via beBPo
+- Receipt and filing of court orders
 
-### Direkt aus der Patientenakte
+### Directly from the Patient Record
 
-DuBA integriert sich nahtlos in Ihren psychiatrischen Workflow:
-- Button "Antrag stellen" in Patientenakte
-- Formular ist bereits vorausgefüllt
-- Nur medizinische Begründung ergänzen
-- Ein Klick zum Versenden
+DuBA integrates seamlessly into your psychiatric workflow:
+- "Submit Application" button in the patient record
+- Form is already pre-filled
+- Only add the medical justification
+- One click to send
 
-### Rechtskonform und zertifiziert
+### Legally Compliant and Certified
 
-DuBA erfüllt alle verfahrensrechtlichen Anforderungen:
-- **FamFG** (Familiengerichtsverfahren)
-- **BGB** (Bürgerliches Gesetzbuch)
-- **PsychKG** (Psychisch-Kranken-Gesetz)
-- **XJustiz-Standard** für elektronischen Rechtsverkehr
+DuBA meets all procedural requirements:
+- **FamFG** (Act on Proceedings in Family Matters)
+- **BGB** (German Civil Code)
+- **PsychKG** (Mental Health Acts)
+- **XJustiz Standard** for electronic legal communication
 
-### beBPo-Integration
+### beBPo Integration
 
-Die Übermittlung erfolgt über das besondere elektronische Behördenpostfach (beBPo):
-- Behördlich anerkannter Standard
-- Ende-zu-Ende verschlüsselt
-- Rechtssichere Zustellung
-- Automatische Empfangsbestätigung
+Transmission takes place via the special electronic mailbox for authorities (beBPo):
+- Officially recognized standard
+- End-to-end encrypted
+- Legally secure delivery
+- Automatic receipt confirmation
 
-### Governikus Vibiblia REST-Schnittstelle
+### Governikus Vibiblia REST Interface
 
-DuBA nutzt die moderne Governikus-Infrastruktur:
-- Keine umständlichen Plugins
-- Kein Outlook erforderlich
-- Direkte REST-API Integration
-- Vollständige Kontrolle und Nachverfolgbarkeit
+DuBA uses the modern Governikus infrastructure:
+- No cumbersome plugins
+- No Outlook required
+- Direct REST API integration
+- Full control and traceability
 
-### Zeitersparnis für Ärzt:innen
+### Time Savings for Physicians
 
-**Vorher:**
-- Handschriftliches oder getipptes Ausfüllen
-- Ausdrucken, Unterschreiben
-- Fax oder Post ans Gericht
-- Warten auf Beschluss
-- Manuelle Ablage in Akte
-- Zeit: 30-60 Minuten pro Antrag
+**Before:**
+- Handwritten or typed filling out
+- Printing, signing
+- Fax or mail to the court
+- Waiting for the order
+- Manual filing in the record
+- Time: 30-60 minutes per application
 
-**Mit DuBA:**
-- Daten bereits vorausgefüllt
-- Nur medizinische Begründung ergänzen
-- Digitale Übermittlung mit Bestätigung
-- Beschluss kommt automatisch zurück
-- Automatische Ablage in Akte
-- Zeit: 5-10 Minuten pro Antrag
-- **Ersparnis: bis zu 50 Minuten pro Antrag**
+**With DuBA:**
+- Data already pre-filled
+- Only add medical justification
+- Digital transmission with confirmation
+- Court order is returned automatically
+- Automatic filing in the record
+- Time: 5-10 minutes per application
+- **Savings: up to 50 minutes per application**
 
-### Gerichtsbeschlüsse automatisch
+### Automated Court Orders
 
-Wenn das Gericht entschieden hat:
-1. Beschluss wird verschlüsselt zurückgesendet
-2. DuBA empfängt und entschlüsselt automatisch
-3. Dokument wird in Patientenakte abgelegt
-4. Benachrichtigung an zuständigen Arzt
+Once the court has decided:
+1. The order is sent back encrypted
+2. DuBA automatically receives and decrypts it
+3. Document is filed in the patient record
+4. Notification sent to the responsible physician
 
-Keine manuelle Bearbeitung mehr nötig.
+No manual processing required anymore.
 
-### Unterstützte Antragsarten
+### Supported Application Types
 
-DuBA unterstützt alle gängigen Unterbringungsanträge:
-- Unterbringung nach BGB
-- Unterbringung nach PsychKG
-- Verlängerungsanträge
-- Aufhebungsanträge
-- Weitere auf Anfrage
+DuBA supports all common placement applications:
+- Placement under the BGB
+- Placement under the PsychKG
+- Extension requests
+- Revocation applications
+- Others upon request
 
-### Technische Integration
+### Technical Integration
 
-DuBA integriert sich in Ihre Psychiatrie-IT:
-- SAP IS-H / i.s.h.med (Psychiatrie-Module)
+DuBA integrates into your psychiatric IT:
+- SAP IS-H / i.s.h.med (Psychiatry Modules)
 - Oracle Health (Cerner)
-- ORBIS (Psychiatrie)
-- Weitere psychiatrische KIS auf Anfrage
+- ORBIS (Psychiatry)
+- Other psychiatric HIS upon request
 
-### Datenschutz & Sicherheit
+### Data Protection & Security
 
-Unterbringungsanträge enthalten höchst sensible Daten. DuBA schützt diese durch:
-- Ende-zu-Ende Verschlüsselung
-- Keine dauerhafte zentrale Speicherung
-- Zugriffskontrolle und Audit-Logs
+Placement applications contain highly sensitive data. DuBA protects this through:
+- End-to-end encryption
+- No permanent centralized storage
+- Access control and audit logs
 - SAP Business Technology Platform (SOC 2, BSI C5)
-- beBPo-Infrastruktur des Bundes
-- Vollständig DSGVO-konform
+- Federal beBPo infrastructure
+- Fully GDPR compliant
 
-### Für psychiatrische Einrichtungen entwickelt
+### Developed for Psychiatric Facilities
 
-DuBA wurde speziell für die Anforderungen psychiatrischer Kliniken entwickelt:
-- Berücksichtigt alle rechtlichen Besonderheiten
-- Unterstützt komplexe Antragsszenarien
-- Flexible Workflow-Anpassungen möglich
-- Erfahrung aus zahlreichen Implementierungen
+DuBA was specifically developed for the needs of psychiatric clinics:
+- Considers all legal specifics
+- Supports complex application scenarios
+- Flexible workflow adjustments possible
+- Experience from numerous implementations
