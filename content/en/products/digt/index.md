@@ -7,6 +7,21 @@ type: "produkte"
 icon: "/assets/images/icons/products/product-digt.png"
 weight: 60
 
+media:
+  #  video_main:
+  #    url: "..."
+  #    title: "..."
+  screenshots:
+    - file: "/assets/images/products/digt/DIGT_Screenshot_Auswahlseite.png"
+      alt: "DIGT - Overview Page"
+      caption: "Overview of available forms"
+    - file: "/assets/images/products/digt/DIGT_Screenshot_Meldeformular.png"
+      alt: "DIGT - Form"
+      caption: "Overview of Form"
+    - file: "/assets/images/products/digt/DIGT_Screenshot_Success.png"
+      alt: "DIGT - Success message"
+      caption: "Success message"
+
 hero:
   badge: "Death Notification"
   headline: "DiGT – Digital Death Notification"

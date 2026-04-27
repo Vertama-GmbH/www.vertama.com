@@ -15,17 +15,21 @@
   {{ if lt $count 3 }}
   <div class="mx-auto px-4 md:px-5
   {{ if eq $count 1 }}max-w-3xl flex justify-center
-{{ else if $isScreenshots }}max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6
+  {{ else if $isScreenshots }}max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6
   {{ else }}max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6
   {{ end }}">
     {{ range $items }}
     <div class="rounded-3xl shadow-lg overflow-hidden border-2 border-slate-200 bg-white">
       {{ if $isScreenshots }}
       <div class="relative aspect-video md:aspect-auto md:h-[500px] flex items-center justify-center bg-slate-50 cursor-zoom-in"
-           onclick="openLightbox('{{ .file }}', '{{ .caption | default .alt }}')">
-        <img src="{{ .file }}" alt="{{ .alt | default "Screenshot" }}" class="max-w-full max-h-full object-contain" loading="lazy">
+           role="button"
+           tabindex="0"
+           aria-label="{{ .caption | default .alt }}"
+           onclick="openLightbox('{{ .file }}', '{{ .caption | default .alt }}')"
+           onkeydown="if(event.key==='Enter'||event.key===' ') openLightbox('{{ .file }}', '{{ .caption | default .alt }}')">
+        <img src="{{ .file }}" alt="{{ .alt | default "" }}" class="max-w-full max-h-full object-contain" loading="lazy">
         {{ with .caption }}
-        <div class="absolute bottom-4 left-4 right-4 p-3 bg-vertama-light/5 backdrop-blur-md border border-slate-200 rounded-2xl text-slate-900 text-center shadow-sm">
+        <div class="absolute bottom-4 left-4 right-4 p-3 bg-vertama-light/5 backdrop-blur-md border border-slate-200 rounded-2xl text-slate-900 text-center shadow-sm" aria-hidden="true">
           <p class="text-xs font-medium m-0">{{ . }}</p>
         </div>
         {{ end }}
@@ -40,27 +44,40 @@
   {{ else }}
   <div class="relative px-0 md:px-4">
     <div id="{{ $id }}-track-container" class="relative w-full {{ if $isScreenshots }}h-[380px] sm:h-[480px] md:h-auto md:aspect-video md:min-h-[500px]{{ else }}min-h-[100px]{{ end }}">
-      <button id="{{ $id }}-prev" class="absolute left-0 top-0 bottom-0 z-50 w-12 md:w-20 group flex items-center justify-center bg-transparent border-none outline-none" aria-label="Vorheriges">
-        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 border border-slate-200 shadow-lg group-hover:text-vertama flex items-center justify-center transition-transform group-active:scale-90">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 18l-6-6 6-6"/></svg>
-        </div>
+
+      <button id="{{ $id }}-prev"
+              class="absolute left-0 top-0 bottom-0 z-50 w-12 md:w-20 group flex items-center justify-center bg-transparent border-none outline-none focus:ring-2 focus:ring-vertama focus:ring-offset-2 rounded"
+              aria-label="{{ i18n "carousel_prev" }}">
+      <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 border border-slate-200 shadow-lg group-hover:text-vertama flex items-center justify-center transition-transform group-active:scale-90" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M15 18l-6-6 6-6"/></svg>
+      </div>
       </button>
 
-      <button id="{{ $id }}-next" class="absolute right-0 top-0 bottom-0 z-50 w-12 md:w-20 group flex items-center justify-center bg-transparent border-none outline-none" aria-label="Nächstes">
-        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 border border-slate-200 shadow-lg group-hover:text-vertama flex items-center justify-center transition-transform group-active:scale-90">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg>
-        </div>
+      <button id="{{ $id }}-next"
+              class="absolute right-0 top-0 bottom-0 z-50 w-12 md:w-20 group flex items-center justify-center bg-transparent border-none outline-none focus:ring-2 focus:ring-vertama focus:ring-offset-2 rounded"
+              aria-label="{{ i18n "carousel_next" }}">
+      <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 border border-slate-200 shadow-lg group-hover:text-vertama flex items-center justify-center transition-transform group-active:scale-90" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg>
+      </div>
       </button>
 
-      <div id="{{ $id }}-track" class="relative w-full h-full">
+      <div id="{{ $id }}-track" class="relative w-full h-full" role="region" aria-roledescription="carousel">
         {{ range $i, $item := $items }}
-        <article id="{{ $id }}-item-{{ $i }}" class="c-item border-2 border-slate-200 absolute top-0 left-1/2 {{ $mobileWidth }} {{ $desktopWidth }} h-full transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-3xl" style="will-change: transform, opacity;">
+        <article id="{{ $id }}-item-{{ $i }}"
+                 class="c-item border-2 border-slate-200 absolute top-0 left-1/2 {{ $mobileWidth }} {{ $desktopWidth }} h-full transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] rounded-3xl"
+                 aria-hidden="{{ if eq $i 0 }}false{{ else }}true{{ end }}"
+                 style="will-change: transform, opacity;">
           <div class="w-full h-full overflow-visible rounded-3xl shadow-xl bg-white isolate transform-gpu">
             {{ if $isScreenshots }}
-            <div class="w-full h-full flex items-center justify-center bg-white cursor-zoom-in relative" onclick="openLightbox('{{ $item.file }}', '{{ $item.caption | default $item.alt }}')">
-              <img src="{{ $item.file }}" alt="{{ $item.alt | default "Screenshot" }}" class="w-full h-full object-cover p-0 pointer-events-none" loading="lazy">
+            <div class="w-full h-full flex items-center justify-center bg-white cursor-zoom-in relative"
+                 role="button"
+                 tabindex="0"
+                 aria-label="{{ $item.caption | default $item.alt }}"
+                 onclick="openLightbox('{{ $item.file }}', '{{ $item.caption | default $item.alt }}')"
+                 onkeydown="if(event.key==='Enter'||event.key===' ') openLightbox('{{ $item.file }}', '{{ $item.caption | default $item.alt }}')">
+              <img src="{{ $item.file }}" alt="{{ $item.alt | default "" }}" class="w-full h-full object-cover p-0 pointer-events-none" loading="lazy">
               {{ with $item.caption }}
-              <div class="absolute bottom-4 left-4 right-4 p-2 bg-vertama-light/5 backdrop-blur-md border border-slate-200 rounded-xl text-slate-900 text-center shadow-sm pointer-events-none">
+              <div class="absolute bottom-4 left-4 right-4 p-2 bg-vertama-light/5 backdrop-blur-md border border-slate-200 rounded-xl text-slate-900 text-center shadow-sm pointer-events-none" aria-hidden="true">
                 <p class="text-xs font-medium m-0">{{ . }}</p>
               </div>
               {{ end }}
@@ -75,106 +92,136 @@
     </div>
   </div>
 
-  <div class="flex justify-center gap-2 mt-6">
-    {{ range $i, $e := $items }}
-    <button class="c-dot h-1.5 rounded-full transition-all duration-400" style="width: 6px; background: #cbd5e1; border: none;"></button>
-    {{ end }}
+  <p class="text-center text-xs text-slate-400 mt-3 md:hidden">{{ i18n "swipe_hint" }}</p>
+
+  <div class="flex justify-center gap-2 mt-4" role="tablist" aria-label="{{ i18n "carousel_next" }}">
+  {{ range $i, $e := $items }}
+  <button class="c-dot h-1.5 rounded-full transition-all duration-400"
+          role="tab"
+          aria-label="{{ printf "%d" (add $i 1) }}"
+  aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"
+  style="width: 6px; background: #cbd5e1; border: none;"></button>
+  {{ end }}
   </div>
   {{ end }}
 </section>
 
-<div id="lightbox" class="fixed inset-0 z-[100] hidden bg-vertama-light/10 backdrop-blur-xl flex-col" onclick="if(event.target === this) closeLightbox()">
+{{/* Lightbox — nur einmal pro Seite rendern */}}
+{{ if $isScreenshots }}
+<div id="lightbox"
+     class="fixed inset-0 z-[100] hidden bg-vertama-light/10 backdrop-blur-xl flex-col"
+     role="dialog"
+     aria-modal="true"
+     aria-label="{{ i18n "lightbox_close" }}"
+onclick="if(event.target === this) closeLightbox()">
 
-  <div class="flex justify-between items-center p-4 md:p-6 w-full shrink-0">
-    <p id="lightbox-caption" class="text-slate-900 font-medium text-sm md:text-base px-4"></p>
-    <button onclick="closeLightbox()" class="text-slate-900 hover:text-vertama p-2 bg-white rounded-full shadow-lg transition-transform active:scale-90">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg>
-    </button>
-  </div>
-
-  <div class="flex-1 overflow-auto w-full scroll-smooth">
-    <div class="flex justify-center items-start p-4 md:p-12 min-h-full">
-      <img id="lightbox-img" src="" alt=""
-           class="img-initial shadow-2xl rounded-2xl border border-slate-200 bg-white transition-all duration-300 cursor-zoom-in"
-           onclick="toggleZoom(this)">
-    </div>
-  </div>
+<div class="flex justify-between items-center p-4 md:p-6 w-full shrink-0">
+  <p id="lightbox-caption" class="text-slate-900 font-medium text-sm md:text-base px-4"></p>
+  <button onclick="closeLightbox()"
+          id="lightbox-close-btn"
+          aria-label="{{ i18n "lightbox_close" }}"
+  class="text-slate-900 hover:text-vertama p-2 bg-white rounded-full shadow-lg transition-transform active:scale-90 focus:outline-none focus:ring-2 focus:ring-vertama">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
 </div>
 
+<div class="flex-1 overflow-auto w-full scroll-smooth">
+  <div class="flex justify-center items-start p-4 md:p-12 min-h-full">
+    <img id="lightbox-img" src="" alt=""
+         class="img-initial shadow-2xl rounded-2xl border border-slate-200 bg-white transition-all duration-300 cursor-zoom-in"
+         onclick="toggleZoom(this)">
+  </div>
+</div>
+</div>
+{{ end }}
+
 <style>
-    /* Zustand 1: Maximal rausgezoomt (Ganzes Bild passt in den Screen) */
     .img-initial {
-        max-height: calc(100vh - 140px); /* Platz für Header & Padding */
+        max-height: calc(100vh - 140px);
         width: auto;
         object-fit: contain;
     }
-
-    /* Verhindert, dass Ecken bei Karten rausschauen */
     .c-item {
-        overflow: hidden; /* Rundungen erzwingen */
-        border-radius: 1.5rem; /* rounded-3xl */
+        overflow: hidden;
+        border-radius: 1.5rem;
     }
-
-    /* Fix für den Lightbox-Bild Container */
     #lightbox-img {
         transition: transform 0.3s ease-in-out;
-        touch-action: pinch-zoom; /* Erlaubt natives Zoomen auf Handys */
+        touch-action: pinch-zoom;
     }
-
     .img-zoomed {
-        transform: scale(1.5); /* Stabilerer Zoom als über Breite */
+        transform: scale(1.5);
         cursor: zoom-out !important;
     }
 </style>
 
 <script>
   (function() {
-    const section = document.getElementById('{{ $id }}-section');
-    const track = document.getElementById('{{ $id }}-track');
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightbox-img');
-    const lbCap = document.getElementById('lightbox-caption');
+    const section  = document.getElementById('{{ $id }}-section');
+    const track    = document.getElementById('{{ $id }}-track');
+    const lb       = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lightbox-img');
+    const lbCap    = document.getElementById('lightbox-caption');
+    const lbClose  = document.getElementById('lightbox-close-btn');
 
-    // --- Lightbox Functions ---
+    // Speichert das Element, das die Lightbox geöffnet hat
+    let lightboxTrigger = null;
+
+    // --- Lightbox ---
     window.openLightbox = function(src, caption) {
       if (!lb) return;
+      lightboxTrigger = document.activeElement;
       lbImg.src = src;
+      lbImg.alt = caption || '';
       lbCap.textContent = caption || '';
       lb.classList.replace('hidden', 'flex');
       document.body.style.overflow = 'hidden';
+      // Fokus auf Schließen-Button setzen
+      lbClose?.focus();
     };
 
     window.closeLightbox = function() {
       if (!lb) return;
       lb.classList.replace('flex', 'hidden');
       document.body.style.overflow = '';
-
-      // Zoom resetten beim Schließen
-      const img = document.getElementById('lightbox-img');
-      if (img) {
-        img.classList.remove('img-zoomed');
-        img.style.transform = "scale(1)";
-      }
+      lbImg.classList.remove('img-zoomed');
+      lbImg.style.transform = 'scale(1)';
+      // Fokus zurück zum Auslöser
+      lightboxTrigger?.focus();
     };
 
     window.toggleZoom = function(img) {
-      if (img.classList.contains('img-zoomed')) {
-        img.classList.remove('img-zoomed');
-        img.style.transform = "scale(1)";
-      } else {
-        img.classList.add('img-zoomed');
-        img.style.transform = "scale(1.8)";
-      }
+      const zoomed = img.classList.toggle('img-zoomed');
+      img.style.transform = zoomed ? 'scale(1.8)' : 'scale(1)';
+      img.setAttribute('aria-label', zoomed
+        ? '{{ i18n "lightbox_zoom_out" }}'
+        : '{{ i18n "lightbox_zoom_in" }}'
+      );
     };
 
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeLightbox(); });
+    // Escape + Fokus-Falle in der Lightbox
+    document.addEventListener('keydown', e => {
+      if (!lb || lb.classList.contains('hidden')) return;
+      if (e.key === 'Escape') { window.closeLightbox(); return; }
+      if (e.key === 'Tab') {
+        // Fokus bleibt im Dialog
+        const focusable = lb.querySelectorAll('button, [tabindex="0"]');
+        const first = focusable[0];
+        const last  = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault(); first.focus();
+        }
+      }
+    });
 
-    // --- Carousel Logic ---
+    // --- Carousel ---
     if (!track) return;
 
     const items = Array.from(track.querySelectorAll('.c-item'));
-    const dots = Array.from(section.querySelectorAll('.c-dot'));
-    const mode = "{{ $mode }}";
+    const dots  = Array.from(section.querySelectorAll('.c-dot'));
+    const mode  = "{{ $mode }}";
     const TOTAL = items.length;
     let current = 0;
 
@@ -184,7 +231,7 @@
         let diff = i - current;
         if (diff > TOTAL / 2) diff -= TOTAL;
         if (diff < -TOTAL / 2) diff += TOTAL;
-        const abs = Math.abs(diff);
+        const abs     = Math.abs(diff);
         const isCenter = abs === 0;
         let tx = 0, scale = 1, opacity = 0;
 
@@ -197,95 +244,82 @@
         }
 
         Object.assign(item.style, {
-          transform: `translateX(calc(-50% + ${tx}%)) scale(${scale})`,
-          zIndex: 20 - abs,
-          opacity: opacity,
-          visibility: opacity === 0 ? 'hidden' : 'visible',
-          pointerEvents: isCenter ? 'auto' : 'none',
-          filter: isCenter ? 'none' : 'saturate(0.4) brightness(0.88)'
+          transform:     `translateX(calc(-50% + ${tx}%)) scale(${scale})`,
+          zIndex:         20 - abs,
+          opacity:        opacity,
+          visibility:     opacity === 0 ? 'hidden' : 'visible',
+          pointerEvents:  isCenter ? 'auto' : 'none',
+          filter:         isCenter ? 'none' : 'saturate(0.4) brightness(0.88)'
         });
+
+        // ARIA: nur aktives Item sichtbar für Screen Reader
+        item.setAttribute('aria-hidden', isCenter ? 'false' : 'true');
       });
 
       dots.forEach((dot, i) => {
+        const active = i === current;
         Object.assign(dot.style, {
-          width: i === current ? '24px' : '6px',
-          background: i === current ? '#008ab5' : '#cbd5e1'
+          width:      active ? '24px' : '6px',
+          background: active ? '#008ab5' : '#cbd5e1'
         });
+        dot.setAttribute('aria-selected', active ? 'true' : 'false');
       });
     }
 
     function fitHeight() {
       const container = track.parentElement;
-      const isMobile = window.innerWidth < 768;
+      const isMobile  = window.innerWidth < 768;
 
       if (mode !== 'cards') {
-        // Screenshots behalten feste Höhen
-        if (isMobile) {
-          container.style.height = "380px";
-          track.style.height = "380px";
-        } else {
-          container.style.height = "";
-          track.style.height = "";
-        }
+        container.style.height = isMobile ? '380px' : '';
+        track.style.height     = isMobile ? '380px' : '';
         return;
       }
 
-      // 1. Reset für saubere Messung
       container.style.height = 'auto';
-      track.style.height = 'auto';
-
-      // Alte Styles speichern
+      track.style.height     = 'auto';
       const savedStyles = items.map(item => item.getAttribute('style') || '');
 
-      // 2. Karten temporär im Flow positionieren, damit sie ihre natürliche Höhe annehmen
       items.forEach(item => {
         item.style.cssText = `position: relative; width: ${isMobile ? '88%' : '50%'}; height: auto !important; visibility: hidden; display: block;`;
-        // Erlaubt dem inneren Content zu wachsen
         const inner = item.querySelector('.h-full');
         if (inner) inner.style.height = 'max-content';
       });
 
-      // 3. Maximale Höhe auslesen
       let max = 0;
-      items.forEach(item => {
-        max = Math.max(max, item.offsetHeight);
-      });
+      items.forEach(item => { max = Math.max(max, item.offsetHeight); });
 
-      // 4. Original-Styles wiederherstellen
       items.forEach((item, i) => {
         item.setAttribute('style', savedStyles[i]);
         const inner = item.querySelector('.h-full');
         if (inner) inner.style.height = '';
       });
 
-      // 5. Die gefundene maximale Höhe (inkl. Puffer für Schatten) anwenden
       if (max > 0) {
-        const finalHeight = max + 24;
-        container.style.height = finalHeight + 'px';
-        track.style.height = finalHeight + 'px';
+        const h = max + 24;
+        container.style.height = h + 'px';
+        track.style.height     = h + 'px';
       }
     }
 
     document.getElementById('{{ $id }}-next').onclick = () => { current = (current + 1) % TOTAL; update(); };
     document.getElementById('{{ $id }}-prev').onclick = () => { current = (current - 1 + TOTAL) % TOTAL; update(); };
 
+    // Dot-Klick
+    dots.forEach((dot, i) => { dot.onclick = () => { current = i; update(); }; });
+
+    // Swipe
     let startX = 0;
-    section.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive: true});
-    section.addEventListener('touchend', e => {
+    section.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    section.addEventListener('touchend',   e => {
       const dx = startX - e.changedTouches[0].clientX;
       if (Math.abs(dx) > 40) {
         current = dx > 0 ? (current + 1) % TOTAL : (current - 1 + TOTAL) % TOTAL;
         update();
       }
-    }, {passive: true});
+    }, { passive: true });
 
-    // WICHTIG: Erst fitHeight (Messen), DANN update (Positionieren)
-    window.addEventListener('resize', () => {
-      fitHeight();
-      update();
-    });
-
-    // Initialer Aufruf
+    window.addEventListener('resize', () => { fitHeight(); update(); });
     fitHeight();
     update();
   })();

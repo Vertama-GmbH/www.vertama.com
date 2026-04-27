@@ -9,19 +9,23 @@ icon: "/assets/images/icons/products/product-elim.png"
 weight: 10
 
 media:
-  video_main:
-    url: "/assets/videos/products/elim/Test.mp4"
-    title: "..."
+  #  title: "Prozessablauf ELIM - Start im klinischen Arbeitsplatz"
+  #  video_main:
+  #    url: "/assets/videos/products/elim/Test.mp4"
+  #    title: "..."
   screenshots:
-    - file: "/assets/images/products/elim/ELIM_Uebersichtsseite_04.2026.png"
-      alt: "ELIM - Overview"
+    - file: "/assets/images/products/elim/ELIM_Screenshot_Auswahlseite.png"
+      alt: "ELIM - Overview Page"
       caption: "Overview of all forms"
-    - file: "/assets/images/products/elim/ELIM_2.png"
-      alt: "2"
-      caption: "2"
-    - file: "/assets/images/products/elim/ELIM_3.png"
-      alt: "3"
-      caption: "3"
+    - file: "/assets/images/products/elim/ELIM_Screenshot_Meldeformular.png"
+      alt: "ELIM - form for Hepatitis"
+      caption: "Form for Hepatitis"
+    - file: "/assets/images/products/elim/ELIM_Screenshot_Meldeformular_Success.png"
+      alt: "Success message"
+      caption: "Success Message"
+    - file: "/assets/images/products/elim/ELIM_4.jpeg"
+      alt: "Transmission confirmation DEMIS"
+      caption: "Transmission confirmation DEMIS"
 
 hero:
   badge: "Infection Reporting"

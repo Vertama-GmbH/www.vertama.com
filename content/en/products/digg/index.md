@@ -7,6 +7,15 @@ type: "produkte"
 icon: "/assets/images/icons/products/product-digg.png"
 weight: 30
 
+media:
+  video_main:
+    url: "/assets/videos/products/digg/DIGG_Aus_dem_KIS_ins_Standesamt_Krhs_Version.mp4"
+    title: "From the KIS to the Registry Office with DIGG"
+  screenshots:
+    - file: "/assets/images/products/digg/DIGG_Screenshot_Geburtsbescheinigung.png"
+      alt: "DIGG - Form"
+      caption: "Overview of Form"
+
 hero:
   badge: "Birth Registration"
   headline: "DiGG – Digital Birth Registration"
