@@ -5,45 +5,40 @@
 <section class="relative overflow-hidden border-b-2 border-vertama-light bg-[#002d3a]"
          aria-labelledby="event-hero-heading">
 
-  <div class="absolute inset-0 z-0">
+  <div class="absolute inset-0 z-0" aria-hidden="true">
     <img src="{{ .Params.hero_img }}"
-         alt="" role="presentation"
+         alt=""
          class="w-full h-full object-cover object-[center_5%] md:object-[center_35%]">
-
-    {{/* Ein Gradient für beide Breakpoints */}}
     <div class="absolute inset-0
                 bg-gradient-to-t from-vertama via-vertama/90 to-transparent
-                md:bg-gradient-to-r md:from-vertama md:via-vertama/80 md:to-transparent"
-         aria-hidden="true"></div>
+                md:bg-gradient-to-r md:from-vertama md:via-vertama/80 md:to-transparent"></div>
   </div>
 
-  {{/* Mobile: justify-end → Content unten, Bild oben sichtbar, kein Whitespace */}}
   <div class="relative z-10 min-h-max
               flex flex-col justify-end md:justify-center
               max-w-6xl mx-auto px-5 py-14 md:py-20">
-
     <div class="max-w-xl md:max-w-2xl">
 
       {{ if .Params.badge_text }}
       <p class="inline-flex items-center gap-2 px-3 py-1 mb-5
-                bg-vertama-light/20 backdrop-blur-md border border-white/20 rounded"
-         aria-label="Veranstaltung: {{ .Params.badge_text }}">
-        <span class="text-[10px] font-bold tracking-widest uppercase text-white" aria-hidden="true">
+                bg-vertama-light/20 backdrop-blur-md border border-white/20 rounded">
+        <span class="text-[10px] font-bold tracking-widest uppercase text-white">
           {{ .Params.badge_text }}
         </span>
       </p>
       {{ end }}
 
+      {{/* Titel + Slogan aus Front Matter — kein hardcodiertes "Willkommen" */}}
       <h1 id="event-hero-heading" class="mb-3 drop-shadow-lg">
         <span class="font-serif italic text-[11vw] sm:text-6xl md:text-8xl text-white block leading-[0.9]"
               style="font-family: Georgia, serif;">
-          Willkommen
+          {{ .Title }}
         </span>
-        <div class="flex items-center gap-3 mt-3" aria-label="DMEA 2026">
-          <span class="text-base md:text-2xl font-black text-white tracking-widest uppercase" aria-hidden="true">DMEA</span>
-          <span class="w-1.5 h-1.5 rounded-full bg-white/80" aria-hidden="true"></span>
-          <span class="text-base md:text-2xl font-black text-white tracking-widest uppercase" aria-hidden="true">2026</span>
-        </div>
+        {{ if .Params.event_slogan }}
+        <span class="block text-base md:text-2xl font-black text-white tracking-widest uppercase mt-3">
+          {{ .Params.event_slogan }}
+        </span>
+        {{ end }}
       </h1>
 
       <p class="text-sm md:text-lg text-white/90 leading-snug mb-5 max-w-sm drop-shadow-md">
@@ -51,9 +46,9 @@
       </p>
 
       <div class="flex flex-wrap items-center gap-3">
-        {{ partial "button.html" (dict "text" "Lösungen ansehen" "url" "#produkte" "variant" "secondary") }}
+        {{ partial "button.html" (dict "text" (i18n "details_ansehen") "url" "#produkte" "variant" "secondary") }}
         {{ if .Params.downloads }}
-        {{ partial "button.html" (dict "text" "Handouts" "url" "#downloads" "variant" "ghost") }}
+        {{ partial "button.html" (dict "text" (i18n "digitale_handouts") "url" "#downloads" "variant" "ghost") }}
         {{ end }}
       </div>
 
@@ -61,8 +56,7 @@
   </div>
 
   {{ if .Params.event_meta }}
-  <div class="absolute bottom-0 left-0 w-full bg-vertama/20 backdrop-blur-sm border-t border-white/10 z-20"
-       aria-label="Veranstaltungsdetails">
+  <div class="absolute bottom-0 left-0 w-full bg-vertama/20 backdrop-blur-sm border-t border-white/10 z-20">
     <ul class="max-w-6xl mx-auto px-5 py-2 flex flex-wrap items-center gap-x-6 gap-y-1 list-none"
         role="list">
       {{ range .Params.event_meta }}
@@ -76,34 +70,37 @@
   {{ end }}
 
 </section>
+
+{{/* ── EDITORIAL ── */}}
+{{ if .Params.editorial }}
 <div class="mt-8 md:mt-12">
-  {{ if .Params.editorial }}
   {{ partial "pdf-viewer.html" .Params.editorial }}
-  {{ end }}
 </div>
+{{ end }}
 
-
-<section id="produkte" class="scroll-mt-20 py-8 md:py-12">
-  {{ $produkte := (where .Site.RegularPages "Section" "produkte") }}
+{{/* ── PRODUKTE ── */}}
+<section id="produkte" class="scroll-mt-20 py-8 md:py-12" aria-labelledby="produkte-heading">
+  {{ $section := cond (eq .Site.Language.Lang "de") "produkte" "products" }}
+  {{ $produkte := where .Site.RegularPages "Section" $section }}
   {{ partial "carousel.html" (dict
-  "id" "main-product-loop"
-  "items" $produkte
-  "title" "Unsere Produkte"
+  "id"       "main-product-loop"
+  "items"    $produkte
+  "title"    (i18n "products_title")
   "subtitle" "Portfolio"
   ) }}
 </section>
 
 {{/* ── DOWNLOADS ── */}}
 {{ if .Params.downloads }}
-<section id="downloads" class="py-5 bg-slate-50 border-t border-slate-200"
+<section id="downloads" class="scroll-mt-20 py-8 bg-slate-50 border-t border-slate-200"
          aria-labelledby="downloads-heading">
   <div class="max-w-6xl mx-auto px-4">
 
     <div class="flex flex-col border-b border-slate-200 gap-2 mb-4">
-        <h2 id="downloads-heading" class="text-2xl md:text-3xl font-extrabold text-slate-900">
-          Digitale Handouts
-        </h2>
-        <p class="text-sm text-slate-400 mb-4">Kein Papier. Direkt zum Mitnehmen.</p>
+      <h2 id="downloads-heading" class="text-2xl md:text-3xl font-extrabold text-slate-900">
+        {{ i18n "digitale_handouts" }}
+      </h2>
+      <p class="text-sm text-slate-400 mb-4">{{ i18n "kein_papier" }}</p>
     </div>
 
     <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 list-none" role="list">
@@ -112,33 +109,30 @@
         <a href="{{ .url }}"
            download="{{ .name }}"
            onclick="if(window.umami) umami.track('pdf-download', { file: '{{ .name }}', ref: '{{ $ref }}' })"
-           {{/* aria-label: Name + Typ + Größe für Screenreader zusammenfassen */}}
-        aria-label="{{ .name }}{{ with .size }}, PDF, {{ . }}{{ end }} herunterladen"
-        class="group flex items-center gap-4 p-5 bg-white rounded-2xl border border-slate-200
-        hover:border-vertama hover:shadow-md transition-all
-        focus-visible:outline focus-visible:outline-2 focus-visible:outline-vertama focus-visible:outline-offset-2">
+           aria-label="{{ .name }}{{ with .size }}, PDF, {{ . }}{{ end }} herunterladen"
+           class="group flex items-center gap-4 p-5 bg-white rounded-2xl border border-slate-200
+                  hover:border-vertama hover:shadow-md transition-all
+                  focus-visible:outline focus-visible:outline-2 focus-visible:outline-vertama focus-visible:outline-offset-2">
 
-        <div class="w-10 h-10 rounded-xl bg-vertama/10 flex items-center justify-center flex-shrink-0
+          <div class="w-10 h-10 rounded-xl bg-vertama/10 flex items-center justify-center flex-shrink-0
                       group-hover:bg-vertama/20 transition-colors" aria-hidden="true">
-          <svg class="w-5 h-5 text-vertama" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+            <svg class="w-5 h-5 text-vertama" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+            </svg>
+          </div>
+
+          <div class="flex-grow min-w-0">
+            <p class="font-semibold text-slate-800 text-sm truncate" aria-hidden="true">{{ .name }}</p>
+            {{ with .size }}
+            <p class="text-xs text-slate-400 mt-0.5" aria-hidden="true">PDF · {{ . }}</p>
+            {{ end }}
+          </div>
+
+          <svg class="w-4 h-4 text-slate-300 group-hover:text-vertama transition-colors flex-shrink-0"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
           </svg>
-        </div>
-
-        <div class="flex-grow min-w-0">
-          {{/* aria-hidden weil aria-label auf <a> alles abdeckt */}}
-          <p class="font-semibold text-slate-800 text-sm truncate" aria-hidden="true">{{ .name }}</p>
-          {{ with .size }}
-          <p class="text-xs text-slate-400 mt-0.5" aria-hidden="true">PDF · {{ . }}</p>
-          {{ end }}
-        </div>
-
-        <svg class="w-4 h-4 text-slate-300 group-hover:text-vertama transition-colors flex-shrink-0"
-             fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-        </svg>
-
         </a>
       </li>
       {{ end }}
@@ -148,7 +142,7 @@
 </section>
 {{ end }}
 
-{{/* ── CTA ───────────────────────────────────────────────────── */}}
+{{/* ── CTA ── */}}
 {{ partial "cta-section.html" (dict
 "Page"        .
 "heading"     .Params.cta_section.title

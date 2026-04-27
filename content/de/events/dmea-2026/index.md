@@ -1,18 +1,18 @@
 ---
-title: "Willkommen DMEA 2026"
+title: "Es war uns eine Freude."
 layout: "event"
 url: "/DMEA26/"
 campaign_ref: "dmea-live-booth"
-event_slogan: "DMEA 2026"
+event_slogan: "DMEA 2026 — Danke für Ihren Besuch"
 event_year: "2026"
-badge_text: "DMEA · Halle 3.2 · Stand D-103"
-intro_text: "Schön, dass Sie uns am Stand besucht haben. Hier finden Sie alle vorgestellten Lösungen — zum Lesen, Herunterladen und Weiterdenken."
+badge_text: "DMEA 2026 · Nachbericht & Downloads"
+intro_text: "Drei Tage, viele Gespräche, ein Fazit: Digitale Meldeprozesse bewegen das Gesundheitswesen. Hier finden Sie unsere Lösungen und Unterlagen zum Mitnehmen."
 hero_img: "/assets/images/events/DMEA26/Ruderer.png"
 
 event_meta:
   - "Berlin, 21.–23. April 2026"
-  - "Halle 3.2"
-  - "Stand D-103"
+  - "Bis zur nächsten DMEA"
+  - "Halle 3.2 · Stand D-103"
 
 stats:
   - value: "44"
@@ -59,8 +59,8 @@ downloads:
     size: "5.2 MB"
 
 cta_section:
-  title: "Interesse geweckt?"
-  description: "Vereinbaren Sie gerne einen Termin zur individuellen Beratung."
-  button_text: "Kontakt aufnehmen"
-  url: "/de/kontakt/?product=dmea-presentation"
+  title: "Gespräch fortführen"
+  description: "Eine Lösung hat Sie interessiert? Wir freuen uns auf das Folgegespräch."
+  button_text: "Beratungstermin vereinbaren"
+  url: "/de/kontakt/?product=dmea-followup"
 ---
