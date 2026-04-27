@@ -4,7 +4,8 @@
      class="group flex flex-col h-full w-full border-2 border-slate-200 rounded-3xl p-6 md:p-8
           hover:border-vertama hover:shadow-2xl hover:shadow-vertama/5 transition-all duration-500
           focus:outline-none focus:ring-4 focus:ring-vertama focus:ring-offset-2 relative z-10 overflow-hidden">
-    <div class="mb-4">
+
+    <div class="mb-4 shrink-0">
       <h3 class="text-2xl font-bold text-slate-900 group-hover:text-vertama transition-colors line-clamp-2">
         {{ .Params.card_content.title | default .Title }}
       </h3>
@@ -17,8 +18,8 @@
       {{ end }}
     </div>
 
-    <div class="flex-grow text-slate-700">
-      <ul class="space-y-3 mb-4 md:mb-8" aria-label="{{ .Params.card_content.title | default .Title }}">
+    <div class="text-slate-700 mb-6">
+      <ul class="space-y-3" aria-label="{{ .Params.card_content.title | default .Title }}">
         {{ if .Params.card_content.benefits }}
         {{ range first 4 .Params.card_content.benefits }}
         <li class="flex items-start gap-3 text-sm leading-relaxed">
@@ -34,8 +35,10 @@
       </ul>
     </div>
 
-    <div class="flex items-center gap-2 mt-auto group-hover:text-vertama transition-all transform group-hover:translate-x-1" aria-hidden="true">
-      <span class="text-sm font-bold">{{ i18n "details_ansehen" }}</span>
+    <div class="flex items-center gap-2 mt-auto pt-4 group-hover:text-vertama transition-all transform group-hover:translate-x-1" aria-hidden="true">
+      <span class="text-sm font-bold">
+        {{ if eq .Site.Language.Lang "de" }}Details ansehen{{ else }}View details{{ end }}
+      </span>
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
       </svg>
