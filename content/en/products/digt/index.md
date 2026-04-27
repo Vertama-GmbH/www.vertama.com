@@ -3,7 +3,7 @@ title: "DiGT"
 description: "Digital Death Notification – Legally compliant. Fast. Automated."
 tagline: "Legally compliant. Fast. Automated."
 layout: "single"
-type: "products"
+type: "produkte"
 icon: "/assets/images/icons/products/product-digt.png"
 weight: 60
 

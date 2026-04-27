@@ -4,7 +4,7 @@ product_id: "elim"
 description: "Electronic Infection Reporting"
 tagline: "Electronic Infection Reporting"
 layout: "single"
-type: "products"
+type: "produkte"
 icon: "/assets/images/icons/products/product-elim.png"
 weight: 10
 

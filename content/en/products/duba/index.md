@@ -3,6 +3,7 @@ title: "DuBA"
 description: "Digital Placement Applications"
 tagline: "Legally compliant applications. Digital. Direct."
 layout: "single"
+type: "produkte"
 icon: "/assets/images/icons/products/product-duba.png"
 weight: 40
 

@@ -3,7 +3,7 @@ title: "DiGG"
 description: "Digital Birth Registration"
 tagline: "Digital Birth Notification"
 layout: "single"
-type: "products"
+type: "produkte"
 icon: "/assets/images/icons/products/product-digg.png"
 weight: 30
 

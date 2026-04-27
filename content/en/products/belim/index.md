@@ -3,7 +3,7 @@ title: "BELIM"
 description: "Bed Occupancy Reporting"
 tagline: "Bed Occupancy Reporting"
 layout: "single"
-type: "products"
+type: "produkte"
 icon: "/assets/images/icons/products/product-belim.png"
 weight: 20
 

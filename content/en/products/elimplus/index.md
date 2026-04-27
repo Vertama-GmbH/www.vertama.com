@@ -3,6 +3,7 @@ title: "ELIM+"
 description: "Electronic Infection Reporting"
 tagline: "Electronic Infection Reporting"
 layout: "single"
+type: "produkte"
 icon: "/assets/images/icons/products/product-elim.png"
 weight: 70
 
