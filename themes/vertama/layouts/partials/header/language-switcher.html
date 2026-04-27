@@ -1,22 +1,28 @@
-<nav class="flex items-center gap-1 text-sm font-semibold"
-     aria-label="{{ i18n "language_switcher_label" }}">
-{{- $currentLang := .Site.Language.Lang -}}
-{{- $first := true -}}
-{{- range .AllTranslations -}}
-{{- if not $first -}}
-<span class="text-slate-300 font-light select-none leading-none" aria-hidden="true">|</span>
-{{- end -}}
-{{- $first = false -}}
-{{- if eq .Language.Lang $currentLang -}}
-<span class="text-[#005e7b] uppercase" aria-current="page">
-            {{- .Language.Lang -}}
-        </span>
-{{- else -}}
-<a href="{{- .Permalink -}}"
-   class="text-slate-400 uppercase hover:text-[#005e7b] transition-colors"
-   hreflang="{{- .Language.Lang -}}">
-    {{- .Language.Lang -}}
-</a>
-{{- end -}}
-{{- end -}}
+{{ if .IsTranslated }}
+<nav class="flex items-center gap-1 text-sm font-semibold" aria-label="Language Switcher">
+  {{ $currentLang := .Site.Language.Lang }}
+  {{ $translations := .AllTranslations }}
+  {{ $len := len $translations }}
+
+  {{ range $index, $page := $translations }}
+  {{ if eq .Language.Lang $currentLang }}
+  {{/* Aktive Sprache */}}
+  <span class="text-[#005e7b] uppercase" aria-current="page">
+                {{ .Language.Lang }}
+            </span>
+  {{ else }}
+  {{/* Link zur anderen Sprache */}}
+  <a href="{{ .Permalink }}"
+     class="text-slate-400 uppercase hover:text-[#005e7b] transition-colors"
+     hreflang="{{ .Language.Lang }}">
+    {{ .Language.Lang }}
+  </a>
+  {{ end }}
+
+  {{/* Trennstrich nur einfügen, wenn wir noch nicht beim letzten Element sind */}}
+  {{ if lt (add $index 1) $len }}
+  <span class="text-slate-300 font-light select-none leading-none" aria-hidden="true">|</span>
+  {{ end }}
+  {{ end }}
 </nav>
+{{ end }}

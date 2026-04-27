@@ -104,6 +104,24 @@ document.addEventListener('DOMContentLoaded', function () {
     // ===== Scroll Event =====
     window.addEventListener('scroll', updateHeaderBackground, { passive: true });
 
+
+    // ===== Language Switcher =====
+    if (languageButton && languageMenu) {
+        languageButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            languageMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!languageButton.contains(event.target) && !languageMenu.contains(event.target)) {
+                languageButton.setAttribute('aria-expanded', 'false');
+                languageMenu.classList.add('hidden');
+            }
+        });
+    }
+
     // ===== Smooth Scroll für Anker-Links =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
