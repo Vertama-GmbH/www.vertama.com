@@ -1,9 +1,22 @@
-<nav style="display:flex;align-items:center;gap:4px;font-size:0.875rem;font-weight:600;" aria-label="Language">
-    {{- $currentLang := .Site.Language.Lang -}}
-    {{- $first := true -}}
-    {{- range .AllTranslations -}}
-        {{- if not $first -}}<span style="color:#cbd5e1;font-weight:300;user-select:none;line-height:1;">|</span>{{- end -}}
-        {{- $first = false -}}
-        {{- if eq .Language.Lang $currentLang -}}<span style="color:#005e7b;text-transform:uppercase;" aria-current="page">{{- .Language.Lang -}}</span>{{- else -}}<a href="{{- .Permalink -}}" style="color:#94a3b8;text-transform:uppercase;text-decoration:none;" onmouseover="this.style.color='#005e7b'" onmouseout="this.style.color='#94a3b8'">{{- .Language.Lang -}}</a>{{- end -}}
-    {{- end -}}
+<nav class="flex items-center gap-1 text-sm font-semibold"
+     aria-label="{{ i18n "language_switcher_label" }}">
+{{- $currentLang := .Site.Language.Lang -}}
+{{- $first := true -}}
+{{- range .AllTranslations -}}
+{{- if not $first -}}
+<span class="text-slate-300 font-light select-none leading-none" aria-hidden="true">|</span>
+{{- end -}}
+{{- $first = false -}}
+{{- if eq .Language.Lang $currentLang -}}
+<span class="text-[#005e7b] uppercase" aria-current="page">
+            {{- .Language.Lang -}}
+        </span>
+{{- else -}}
+<a href="{{- .Permalink -}}"
+   class="text-slate-400 uppercase hover:text-[#005e7b] transition-colors"
+   hreflang="{{- .Language.Lang -}}">
+    {{- .Language.Lang -}}
+</a>
+{{- end -}}
+{{- end -}}
 </nav>

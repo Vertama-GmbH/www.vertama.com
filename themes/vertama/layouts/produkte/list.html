@@ -4,30 +4,30 @@
   <div class="max-w-6xl mx-auto px-5">
     {{ partial "headline.html" (dict
     "level" "h1"
-    "text" (.Title | default "Our Solutions")
+    "text" (.Title | default (i18n "products_title"))
     "underline" true
-    "description" (.Params.description | default "Digital reporting processes for modern hospitals")
+    "description" (.Params.description | default (i18n "products_description"))
     ) }}
   </div>
 </section>
 
-<section class="py-12 px-5 bg-white" aria-label="Product overview">
-  <div class="max-w-6xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {{ range .Data.Pages.ByWeight }}
-      <div class="flex h-full">
-        {{ partial "card.html" . }}
-      </div>
-      {{ end }}
+<section class="py-12 px-5 bg-white" aria-label="{{ i18n "products_title" }}">
+<div class="max-w-6xl mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {{ range .Data.Pages.ByWeight }}
+    <div class="flex h-full">
+      {{ partial "card.html" . }}
     </div>
+    {{ end }}
   </div>
+</div>
 </section>
 
 {{ partial "cta-section.html" (dict
 "Page" .
-"heading" (.Params.cta_title | default "Interested in our solutions?")
-"description" (.Params.cta_description | default "Book a free consultation.")
-"buttonText" (.Params.cta_button | default "Get in touch")
+"heading" (.Params.cta_title | default (i18n "products_cta_title"))
+"description" (.Params.cta_description | default (i18n "products_cta_description"))
+"buttonText" (.Params.cta_button | default (i18n "products_cta_button"))
 ) }}
 
 {{ end }}

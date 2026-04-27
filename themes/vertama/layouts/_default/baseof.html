@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
 
+    <!-- Description (SEO + Screen Reader context) -->
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#005e7b">
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ "/images/Vertama_Icon.svg" | relURL }}">
 
@@ -47,14 +53,9 @@
         }
     </script>
 
-    <!--  Lucide-Icons  -->
-    <!-- Development version -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
-    <!-- Production version -->
-    <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Custom CSS (nur für Dinge die Tailwind nicht hat) -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ "css/theme.css" | relURL }}">
 
     {{ partial "umami.html" . }}
@@ -69,27 +70,28 @@
 
 {{ partial "header/header.html" . }}
 
-<main id="main-content" class="pt-24 flex-1">
+<main id="main-content" class="pt-24 flex-1" tabindex="-1">
     {{ block "main" . }}{{ end }}
 </main>
 
 {{ partial "footer/footer.html" . }}
 
-<!-- VanillaJS -->
 <script src="{{ "js/main.js" | relURL }}"></script>
 
-<!-- Optional: MotionOne (Animations) -->
 {{ if .Params.use_animations }}
 <script type="module">
     import { animate, inView } from "https://cdn.skypack.dev/motion";
 
-    // Fade-in on scroll
-    inView('.fade-in', ({ target }) => {
-        animate(target,
-            { opacity: [0, 1], y: [20, 0] },
-            { duration: 0.6, easing: 'ease-out' }
-        );
-    });
+    // Animationen nur wenn der Nutzer keine Reduzierung bevorzugt
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduced) {
+        inView('.fade-in', ({ target }) => {
+            animate(target,
+              { opacity: [0, 1], y: [20, 0] },
+              { duration: 0.6, easing: 'ease-out' }
+            );
+        });
+    }
 </script>
 {{ end }}
 

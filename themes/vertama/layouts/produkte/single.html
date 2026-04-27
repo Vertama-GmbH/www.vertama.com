@@ -13,7 +13,7 @@
            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
       </svg>
-      <span>{{ i18n "back_to_products" | default "Back" }}</span>
+      <span>{{ i18n "back_to_products" }}</span>
     </a>
 
     <h1 id="hero-heading" class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
@@ -66,7 +66,7 @@
       {{ range $index, $step := .Params.how_it_works.steps }}
       <li class="flex gap-4 bg-white border border-slate-200 rounded-lg p-6 hover:border-vertama hover:shadow-md transition-all">
         <span class="text-vertama font-mono font-bold text-xl flex-shrink-0 w-8"
-              aria-label="{{ i18n "step" | default "Step" }} {{ add $index 1 }}">
+              aria-label="{{ i18n "step" }} {{ add $index 1 }}">
         {{ printf "%02d" (add $index 1) }}
         </span>
         <div>

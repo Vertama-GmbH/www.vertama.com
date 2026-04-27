@@ -3,6 +3,7 @@ theme = 'vertama'
 defaultContentLanguage = 'de'
 defaultContentLanguageInSubdir = true
 disableAliases = true
+enableRobotsTXT = true
 
 # Serve existing static HTML pages unchanged
 staticDir = 'docs'
