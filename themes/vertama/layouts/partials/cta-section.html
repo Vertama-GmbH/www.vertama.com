@@ -1,56 +1,34 @@
-<!-- layouts/partials/cta-section.html -->
-
-{{- $ctx := . -}}
+{{- $ctx  := . -}}
 {{- $page := . -}}
 
-{{- /* Detect current language */ -}}
-{{- $lang := "de" -}}
 {{- if reflect.IsMap $ctx -}}
-{{- if $ctx.Page -}}
-{{- $page = $ctx.Page -}}
-{{- $lang = $page.Language.Lang -}}
-{{- end -}}
-{{- else -}}
-{{- $lang = $page.Language.Lang -}}
+{{- if $ctx.Page -}}{{- $page = $ctx.Page -}}{{- end -}}
 {{- end -}}
 
-{{- /* Language-specific defaults */ -}}
-{{- $heading := "" -}}
-{{- $description := "" -}}
-{{- $buttonText := "" -}}
-{{- $contactUrl := "" -}}
+{{- $lang       := $page.Language.Lang | default "de" -}}
+{{- $contactUrl := cond (eq $lang "de") "/de/kontakt/" "/en/contact/" -}}
 
-{{- if eq $lang "de" -}}
-{{- $heading = "Haben Sie Fragen?" -}}
-{{- $description = "Nehmen Sie jetzt Kontakt mit uns auf. Wir beraten Sie gerne." -}}
-{{- $buttonText = "Kontakt aufnehmen" -}}
-{{- $contactUrl = "/de/kontakt/" -}}
-{{- else if eq $lang "en" -}}
-{{- $heading = "Have Questions?" -}}
-{{- $description = "Get in touch with us now. We're happy to help." -}}
-{{- $buttonText = "Contact Us" -}}
-{{- $contactUrl = "/en/contact/" -}}
-{{- end -}}
-
-{{- $buttonUrl := $contactUrl -}}
+{{- /* Defaults aus i18n, überschreibbar per Parameter */ -}}
+{{- $heading     := i18n "cta_heading" -}}
+{{- $description := i18n "cta_description" -}}
+{{- $buttonText  := i18n "cta_button" -}}
+{{- $buttonUrl   := $contactUrl -}}
 {{- $buttonVariant := "primary" -}}
-{{- $showBorder := true -}}
-{{- $headingId := "cta-heading" -}}
+{{- $showBorder  := true -}}
+{{- $headingId   := "cta-heading" -}}
 
 {{- if reflect.IsMap $ctx -}}
-{{- $heading = $ctx.heading | default $heading -}}
-{{- $description = $ctx.description | default $description -}}
-{{- $buttonText = $ctx.buttonText | default $buttonText -}}
+{{- $heading       = $ctx.heading       | default $heading -}}
+{{- $description   = $ctx.description   | default $description -}}
+{{- $buttonText    = $ctx.buttonText    | default $buttonText -}}
 {{- $buttonVariant = $ctx.buttonVariant | default "primary" -}}
-{{- $showBorder = $ctx.showBorder | default true -}}
-{{- $headingId = $ctx.headingId | default "cta-heading" -}}
+{{- $showBorder    = $ctx.showBorder    | default true -}}
+{{- $headingId     = $ctx.headingId     | default "cta-heading" -}}
 
 {{- if $ctx.buttonUrl -}}
 {{- $buttonUrl = $ctx.buttonUrl -}}
 {{- else if $ctx.product -}}
 {{- $buttonUrl = printf "%s?product=%s" $contactUrl $ctx.product -}}
-{{- else -}}
-{{- $buttonUrl = $contactUrl -}}
 {{- end -}}
 {{- end -}}
 
@@ -58,20 +36,20 @@
   <div class="max-w-4xl mx-auto text-center {{ if $showBorder }}border-t-2 border-vertama pt-6{{ end }}">
 
     {{ partial "headline.html" (dict
-    "level" "h2"
-    "text" $heading
-    "id" $headingId
+    "level"       "h2"
+    "text"        $heading
+    "id"          $headingId
     "description" $description
-    "textColor" "text-slate-900"
-    "maxWidth" "max-w-4xl"
+    "textColor"   "text-slate-900"
+    "maxWidth"    "max-w-4xl"
     ) }}
 
     <div class="mt-8">
       {{ partial "button.html" (dict
-      "text" $buttonText
-      "url" $buttonUrl
-      "variant" $buttonVariant
-      "ariaLabel" (cond (eq $lang "de") "Kontaktformular öffnen" "Open contact form")
+      "text"      $buttonText
+      "url"       $buttonUrl
+      "variant"   $buttonVariant
+      "ariaLabel" (i18n "cta_aria")
       ) }}
     </div>
 
