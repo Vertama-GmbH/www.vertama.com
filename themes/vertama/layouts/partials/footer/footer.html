@@ -1,38 +1,32 @@
 <footer class="bg-slate-50 border-t border-slate-200 pt-6 pb-6" role="contentinfo" aria-labelledby="footer-heading">
     <div class="container mx-auto px-4 sm:px-6">
 
-        <!-- Hidden heading for screen readers -->
         <h2 id="footer-heading" class="sr-only">
-            {{ if eq .Site.Language.Lang "de" }}Fußzeile{{ else }}Footer{{ end }}
+            {{ i18n "footer_heading" }}
         </h2>
 
         <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-6">
 
             <!-- Brand Section -->
             <div class="flex flex-col items-start space-y-3 max-w-xs">
-                <!-- Logo -->
-                <img src="{{ "/images/Logo_Vertama_CMYK.svg" | relURL }}"
-                alt="{{ if eq .Site.Language.Lang "de" }}Vertama Logo{{ else }}Vertama Logo{{ end }}"
+                <img src="{{ (.Site.Params.brand.logoFull | default "/images/Logo_Vertama_CMYK.svg") | relURL }}"
+                alt="{{ .Site.Title }}"
                 class="h-5 w-auto">
 
-                <!-- Slogan - WCAG AAA: text-slate-700 = 7.1:1 ✅ -->
                 <p class="text-xs text-slate-700 leading-relaxed">
                     {{ .Site.Params.footerSlogan }}
                 </p>
 
-                <!-- Social Links -->
                 {{ partial "header/social-links.html" . }}
             </div>
 
             <!-- Navigation Sections -->
             <div class="flex gap-12 shrink-0">
 
-                <!-- Main Navigation -->
                 <nav aria-labelledby="footer-nav-heading">
                     <h3 id="footer-nav-heading" class="font-bold text-slate-900 mb-3 uppercase text-xs tracking-widest">
-                        Navigation
+                        {{ i18n "footer_nav_label" }}
                     </h3>
-                    <!-- MINIMAL spacing: space-y-1 -->
                     <ul class="space-y-1" role="list">
                         {{ range .Site.Menus.footer_nav }}
                         <li>
@@ -45,10 +39,9 @@
                     </ul>
                 </nav>
 
-                <!-- Legal Navigation -->
                 <nav aria-labelledby="footer-legal-heading">
                     <h3 id="footer-legal-heading" class="font-bold text-slate-900 mb-3 uppercase text-xs tracking-widest">
-                        {{ if eq .Site.Language.Lang "de" }}Rechtliches{{ else }}Legal{{ end }}
+                        {{ i18n "footer_legal" }}
                     </h3>
                     <ul class="space-y-1" role="list">
                         {{ range .Site.Menus.footer }}
@@ -65,7 +58,7 @@
             </div>
         </div>
 
-        <!-- Copyright Section -->
+        <!-- Copyright -->
         <div class="pt-3 border-t border-slate-200">
             <p class="text-xs text-slate-700">
                 © <time datetime="{{ now.Year }}">{{ now.Year }}</time> {{ .Site.Params.firmName }}. {{ .Site.Params.copyrightText }}.

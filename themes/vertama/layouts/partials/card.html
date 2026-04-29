@@ -2,18 +2,17 @@
   <a href="{{ .Permalink }}"
      aria-label="{{ .Params.card_content.title | default .Title }}"
      class="group flex flex-col h-full w-full border-2 border-slate-200 rounded-3xl p-6 md:p-8
-          hover:border-vertama hover:shadow-2xl hover:shadow-vertama/5 transition-all duration-500
-          focus:outline-none focus:ring-4 focus:ring-vertama focus:ring-offset-2 relative z-10 overflow-hidden">
+            hover:border-vertama hover:shadow-2xl hover:shadow-vertama/5 transition-all duration-500
+            focus:outline-none focus:ring-4 focus:ring-vertama focus:ring-offset-2 relative z-10 overflow-hidden">
 
     <div class="mb-4 shrink-0">
       <h3 class="text-2xl font-bold text-slate-900 group-hover:text-vertama transition-colors line-clamp-2">
         {{ .Params.card_content.title | default .Title }}
       </h3>
 
-      {{ $tagline := .Params.card_content.tagline | default .Params.tagline }}
-      {{ if $tagline }}
+      {{ with (.Params.card_content.tagline | default .Params.tagline) }}
       <p class="text-[10px] font-bold text-vertama uppercase tracking-widest mt-2">
-        {{ $tagline }}
+        {{ . }}
       </p>
       {{ end }}
     </div>
@@ -30,15 +29,14 @@
         </li>
         {{ end }}
         {{ else }}
-        <p class="text-sm leading-relaxed text-slate-500">{{ .Description | truncate 100 }}</p>
+        <li class="text-sm leading-relaxed text-slate-500">{{ .Description | truncate 100 }}</li>
         {{ end }}
       </ul>
     </div>
 
-    <div class="flex items-center gap-2 mt-auto pt-4 group-hover:text-vertama transition-all transform group-hover:translate-x-1" aria-hidden="true">
-      <span class="text-sm font-bold">
-        {{ if eq .Site.Language.Lang "de" }}Details ansehen{{ else }}View details{{ end }}
-      </span>
+    <div class="flex items-center gap-2 mt-auto pt-4 group-hover:text-vertama transition-all group-hover:translate-x-1"
+         aria-hidden="true">
+      <span class="text-sm font-bold">{{ i18n "details_ansehen" }}</span>
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
       </svg>

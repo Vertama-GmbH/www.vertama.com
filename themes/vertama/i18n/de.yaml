@@ -1,7 +1,63 @@
+# i18n Deutsch — themes/vertama/i18n/de.yaml
+
+# Navigation
+skip_to_main: "Zum Hauptinhalt springen"
+main_nav_label: "Hauptnavigation"
+mobile_menu_label: "Mobile Navigation"
+menu_open: "Menü öffnen"
+menu_close: "Menü schließen"
+language_switcher_label: "Sprache wechseln"
+
+# Footer
+footer_heading: "Fußzeile"
+footer_legal: "Rechtliches"
+footer_nav_label: "Navigation"
+
+# Social Links
+social_label: "Social Media Links"
+social_linkedin: "Besuchen Sie uns auf LinkedIn (öffnet in neuem Fenster)"
+social_twitter: "Folgen Sie uns auf Twitter (öffnet in neuem Fenster)"
+social_github: "Besuchen Sie uns auf GitHub (öffnet in neuem Fenster)"
+social_email: "Senden Sie uns eine E-Mail"
+
+# Produkte
 back_to_products: "Zurück zu den Produkten"
 details_ansehen: "Details ansehen"
-step: "Schritt"
+products_title: "Unsere Lösungen"
+products_description: "Digitale Meldeverfahren für moderne Unternehmen"
+products_cta_title: "Interesse an unseren Lösungen?"
+products_cta_description: "Buchen Sie eine kostenlose Beratung."
+products_cta_button: "Kontakt aufnehmen"
+
+# News
+latest_news_label: "Aktuelles"
+latest_news_subtitle: "Neueste Meldung"
+read_more: "Weiterlesen"
+all_news: "Alle News ansehen"
+
+# CTA Section
+cta_heading: "Haben Sie Fragen?"
+cta_description: "Nehmen Sie jetzt Kontakt mit uns auf. Wir beraten Sie gerne."
+cta_button: "Kontakt aufnehmen"
+cta_aria: "Kontaktformular öffnen"
+
+# Formular
+form_sending: "Wird gesendet…"
+form_success: "Vielen Dank! Ihre Nachricht wurde gesendet."
+form_error: "Fehler. Bitte versuchen Sie es später erneut."
+
+# Carousel
+carousel_prev: "Vorheriges"
+carousel_next: "Nächstes"
+carousel_dots_label: "Foliennavigation"
 swipe_hint: "Wischen oder Ziehen zum Blättern"
+
+# Lightbox
+lightbox_close: "Bild schließen"
+lightbox_zoom_in: "Vergrößern"
+lightbox_zoom_out: "Verkleinern"
+
+# PDF / Editorial
 pdf_download: "Vollständige PDF (Download)"
 digital_magazine: "Digitales Magazin"
 media_title: "Medien zum Produkt"
@@ -11,30 +67,15 @@ schliessen: "Schließen"
 vorherige_seite: "Vorherige Seite"
 naechste_seite: "Nächste Seite"
 seite: "Seite"
+von: "von"
 digitale_handouts: "Digitale Handouts"
 kein_papier: "Kein Papier. Direkt zum Mitnehmen."
-products_title: "Unsere Lösungen"
-products_description: "Digitale Meldeverfahren für moderne Unternehmen"
-products_cta_title: "Interesse an unseren Lösungen?"
-products_cta_description: "Buchen Sie eine kostenlose Beratung."
-products_cta_button: "Kontakt aufnehmen"
-skip_to_main: "Zum Hauptinhalt springen"
-main_nav_label: "Hauptnavigation"
-mobile_menu_label: "Mobile Navigation"
-menu_open: "Menü öffnen"
-menu_close: "Menü schließen"
-language_switcher_label: "Sprache wechseln"
-form_sending: "Wird gesendet…"
-form_success: "Vielen Dank! Ihre Nachricht wurde gesendet."
-form_error: "Fehler. Bitte versuchen Sie es später erneut."
-carousel_prev: "Vorheriges"
-carousel_next: "Nächstes"
-lightbox_close: "Bild schließen"
-lightbox_zoom_in: "Vergrößern"
-lightbox_zoom_out: "Verkleinern"
-cta_heading: "Haben Sie Fragen?"
-cta_description: "Nehmen Sie jetzt Kontakt mit uns auf. Wir beraten Sie gerne."
-cta_button: "Kontakt aufnehmen"
-cta_aria: "Kontaktformular öffnen"
+step: "Schritt"
+
+# Video
 video_no_support: "Ihr Browser unterstützt Video nicht."
-von: "von"
+
+# Empty State
+empty_state_title: "Noch keine Inhalte verfügbar"
+empty_state_description: "Derzeit sind keine Inhalte veröffentlicht. Schauen Sie bald wieder vorbei!"
+empty_state_cta: "Zur Startseite"

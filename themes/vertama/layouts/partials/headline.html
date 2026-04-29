@@ -1,28 +1,27 @@
-<!-- layouts/partials/headline.html -->
+{{/* headline.html
+Usage: {{ partial "headline.html" (dict "level" "h2" "text" "..." "id" "my-heading" "description" "..." "underline" true "textColor" "text-vertama" "maxWidth" "max-w-3xl") }}
+*/}}
 
-{{ $level := .level | default "h1" }}
-{{ $text := .text }}
-{{ $underline := .underline | default false }}
+{{ $level       := .level       | default "h1" }}
+{{ $text        := .text }}
+{{ $id          := .id }}
+{{ $underline   := .underline   | default false }}
 {{ $description := .description }}
-{{ $textColor := .textColor | default "text-vertama" }}
-{{ $maxWidth := .maxWidth | default "max-w-3xl" }}
+{{ $textColor   := .textColor   | default "text-vertama" }}
+{{ $maxWidth    := .maxWidth    | default "max-w-3xl" }}
 
 <div class="mb-6">
-  <!-- Headline mit optionaler Underline -->
   <div class="{{ if $underline }}border-b-2 border-vertama pb-3 mb-6{{ end }}">
     {{ if eq $level "h1" }}
-    <h1 class="text-4xl font-bold {{ $textColor }}">{{ $text }}</h1>
+    <h1 {{ with $id }}id="{{ . }}"{{ end }} class="text-4xl font-bold {{ $textColor }}">{{ $text }}</h1>
     {{ else if eq $level "h2" }}
-    <h2 class="text-3xl font-bold {{ $textColor }}">{{ $text }}</h2>
+    <h2 {{ with $id }}id="{{ . }}"{{ end }} class="text-3xl font-bold {{ $textColor }}">{{ $text }}</h2>
     {{ else if eq $level "h3" }}
-    <h3 class="text-2xl font-bold {{ $textColor }}">{{ $text }}</h3>
+    <h3 {{ with $id }}id="{{ . }}"{{ end }} class="text-2xl font-bold {{ $textColor }}">{{ $text }}</h3>
     {{ end }}
   </div>
 
-  <!-- Optionale Description -->
-  {{ if $description }}
-  <p class="text-lg text-slate-700 {{ $maxWidth }}">
-    {{ $description }}
-  </p>
+  {{ with $description }}
+  <p class="text-lg text-slate-700 {{ $maxWidth }}">{{ . }}</p>
   {{ end }}
 </div>

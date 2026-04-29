@@ -9,39 +9,36 @@
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 
     <!-- Theme color for mobile browsers -->
-    <meta name="theme-color" content="#005e7b">
+    <meta name="theme-color" content="{{ .Site.Params.brand.themeColor | default "#005e7b" }}">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="{{ "/images/Vertama_Icon.svg" | relURL }}">
+    <link rel="icon" type="image/svg+xml" href="{{ (.Site.Params.brand.icon | default "/images/favicon.svg") | relURL }}">
 
     <!-- Tailwind CSS CDN - KEIN Build-Prozess! -->
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script>
-        // Tailwind Config
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'vertama': '#005e7b',
-                        'vertama-medium': '#007599',
-                        'vertama-light': '#008ab5',
-                        'vertama-gray': '#575656',
+                        'vertama':            '#005e7b',
+                        'vertama-medium':     '#007599',
+                        'vertama-light':      '#008ab5',
+                        'vertama-gray':       '#575656',
                         'vertama-gray-light': '#EEEEEE',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                     },
-                    // Wir fügen eigene Utilities für die Inter-Features hinzu
                     fontFeatureSettings: {
-                        'tnum': '"tnum"',           // Tabellenziffern (alle Zahlen gleich breit)
-                        'cv11': '"cv11"',           // Geschwungenes kleines 'l' (bessere Unterscheidung)
-                        'ss01': '"ss01"',           // Offenes 'a'
-                        'case': '"case"',           // Großbuchstaben-Formen optimieren
+                        'tnum': '"tnum"',
+                        'cv11': '"cv11"',
+                        'ss01': '"ss01"',
+                        'case': '"case"',
                     }
                 }
             },
             plugins: [
-                // Plugin, um die oben definierten Settings als Klassen verfügbar zu machen
                 function({ addUtilities, theme }) {
                     const settings = theme('fontFeatureSettings');
                     const utilities = Object.entries(settings).map(([key, value]) => ({
@@ -53,8 +50,6 @@
         }
     </script>
 
-
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ "css/theme.css" | relURL }}">
 
@@ -63,9 +58,11 @@
     {{ block "head" . }}{{ end }}
 </head>
 <body class="font-sans text-slate-700 antialiased min-h-screen flex flex-col bg-white">
+
 <!-- Skip Link (Accessibility) -->
-<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-vertama focus:text-white focus:rounded">
-    Zum Hauptinhalt springen
+<a href="#main-content"
+   class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-vertama focus:text-white focus:rounded focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-vertama">
+    {{ i18n "skip_to_main" }}
 </a>
 
 {{ partial "header/header.html" . }}
@@ -81,8 +78,6 @@
 {{ if .Params.use_animations }}
 <script type="module">
     import { animate, inView } from "https://cdn.skypack.dev/motion";
-
-    // Animationen nur wenn der Nutzer keine Reduzierung bevorzugt
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!prefersReduced) {
         inView('.fade-in', ({ target }) => {

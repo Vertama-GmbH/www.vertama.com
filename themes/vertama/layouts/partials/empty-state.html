@@ -1,9 +1,11 @@
-<!-- Empty State Partial - wiederverwendbar für alle Sections -->
-<!-- Usage: {{ partial "empty-state.html" (dict "icon" "document" "title" "Keine Inhalte" "description" "Text..." "cta_text" "Button" "cta_url" "/") }} -->
+{{/* empty-state.html
+Usage: {{ partial "empty-state.html" (dict "icon" "document" "title" "..." "description" "..." "cta_text" "..." "cta_url" "/") }}
+icon: "document" | "news" | "box" | (default: info circle)
+*/}}
 
 <div class="text-center py-20 px-5">
-    <!-- Icon -->
-    <div class="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
+
+    <div class="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6" aria-hidden="true">
         {{ if eq .icon "document" }}
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
@@ -29,21 +31,19 @@
         {{ end }}
     </div>
 
-    <!-- Title -->
     <h3 class="text-2xl font-bold text-slate-900 mb-3">
-        {{ .title | default "Noch keine Inhalte verfügbar" }}
+        {{ .title | default (i18n "empty_state_title") }}
     </h3>
 
-    <!-- Description -->
     <p class="text-slate-600 max-w-md mx-auto mb-8 leading-relaxed">
-        {{ .description | default "Derzeit sind keine Inhalte veröffentlicht. Schauen Sie bald wieder vorbei!" }}
+        {{ .description | default (i18n "empty_state_description") }}
     </p>
 
-    <!-- Optional CTA Button -->
     {{ if .cta_url }}
     <a href="{{ .cta_url }}"
-       class="inline-block bg-vertama text-white px-6 py-3 rounded-lg font-semibold hover:bg-vertama-light transition-colors">
-        {{ .cta_text | default "Zur Startseite" }}
+       class="inline-flex items-center gap-2 bg-vertama text-white px-6 py-3 rounded-lg font-semibold hover:bg-vertama-light transition-colors focus:outline-none focus:ring-2 focus:ring-vertama focus:ring-offset-2">
+        {{ .cta_text | default (i18n "empty_state_cta") }}
     </a>
     {{ end }}
+
 </div>

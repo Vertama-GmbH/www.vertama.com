@@ -1,11 +1,11 @@
-{{- $id := .id | default "carousel" -}}
-{{- $mode := .mode | default "cards" -}}
-{{- $items := .items -}}
-{{- $count := len $items -}}
+{{- $id          := .id   | default "carousel" -}}
+{{- $mode        := .mode | default "cards" -}}
+{{- $items       := .items -}}
+{{- $count       := len $items -}}
 {{- $isScreenshots := eq $mode "screenshots" -}}
-{{- $isCards := eq $mode "cards" -}}
-{{- $desktopWidth := cond $isCards "md:w-[50%]" "md:w-[75%]" -}}
-{{- $mobileWidth := cond $isCards "w-[88%]" "w-[90%]" -}}
+{{- $isCards       := eq $mode "cards" -}}
+{{- $desktopWidth  := cond $isCards "md:w-[50%]" "md:w-[75%]" -}}
+{{- $mobileWidth   := cond $isCards "w-[88%]" "w-[90%]" -}}
 
 <section id="{{ $id }}-section" class="max-w-6xl mx-auto overflow-hidden">
   <div class="px-4 md:px-5 mb-6 md:mb-8 text-center md:text-left">
@@ -13,11 +13,11 @@
   </div>
 
   {{ if lt $count 3 }}
+  {{/* --- Static Grid für < 3 Items --- */}}
   <div class="mx-auto px-4 md:px-5
-  {{ if eq $count 1 }}max-w-3xl flex justify-center
-  {{ else if $isScreenshots }}max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6
-  {{ else }}max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6
-  {{ end }}">
+    {{ if eq $count 1 }}max-w-3xl flex justify-center
+    {{ else }}max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6
+    {{ end }}">
     {{ range $items }}
     <div class="rounded-3xl shadow-lg overflow-hidden border-2 border-slate-200 bg-white">
       {{ if $isScreenshots }}
@@ -42,8 +42,10 @@
   </div>
 
   {{ else }}
+  {{/* --- Carousel für ≥ 3 Items --- */}}
   <div class="relative px-0 md:px-4">
-    <div id="{{ $id }}-track-container" class="relative w-full {{ if $isScreenshots }}h-[380px] sm:h-[480px] md:h-auto md:aspect-video md:min-h-[500px]{{ else }}min-h-[100px]{{ end }}">
+    <div id="{{ $id }}-track-container"
+         class="relative w-full {{ if $isScreenshots }}h-[380px] sm:h-[480px] md:h-auto md:aspect-video md:min-h-[500px]{{ else }}min-h-[100px]{{ end }}">
 
       <button id="{{ $id }}-prev"
               class="absolute left-0 top-0 bottom-0 z-50 w-12 md:w-20 group flex items-center justify-center bg-transparent border-none outline-none focus:ring-2 focus:ring-vertama focus:ring-offset-2 rounded"
@@ -92,9 +94,12 @@
     </div>
   </div>
 
-  <p class="text-center text-xs text-slate-400 mt-3 md:hidden">{{ i18n "swipe_hint" }}</p>
+  <p class="text-center text-xs text-slate-400 mt-3 md:hidden" aria-hidden="true">
+    {{ i18n "swipe_hint" }}
+  </p>
 
-  <div class="flex justify-center gap-2 mt-4" role="tablist" aria-label="{{ i18n "carousel_next" }}">
+  {{/* Dots — aria-label fix: war fälschlicherweise "carousel_next" */}}
+  <div class="flex justify-center gap-2 mt-4" role="tablist" aria-label="{{ i18n "carousel_dots_label" }}">
   {{ range $i, $e := $items }}
   <button class="c-dot h-1.5 rounded-full transition-all duration-400"
           role="tab"
@@ -121,7 +126,9 @@ onclick="if(event.target === this) closeLightbox()">
           id="lightbox-close-btn"
           aria-label="{{ i18n "lightbox_close" }}"
   class="text-slate-900 hover:text-vertama p-2 bg-white rounded-full shadow-lg transition-transform active:scale-90 focus:outline-none focus:ring-2 focus:ring-vertama">
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+    <path d="M18 6L6 18M6 6l12 12"/>
+  </svg>
   </button>
 </div>
 
@@ -135,26 +142,6 @@ onclick="if(event.target === this) closeLightbox()">
 </div>
 {{ end }}
 
-<style>
-    .img-initial {
-        max-height: calc(100vh - 140px);
-        width: auto;
-        object-fit: contain;
-    }
-    .c-item {
-        overflow: hidden;
-        border-radius: 1.5rem;
-    }
-    #lightbox-img {
-        transition: transform 0.3s ease-in-out;
-        touch-action: pinch-zoom;
-    }
-    .img-zoomed {
-        transform: scale(1.5);
-        cursor: zoom-out !important;
-    }
-</style>
-
 <script>
   (function() {
     const section  = document.getElementById('{{ $id }}-section');
@@ -164,7 +151,6 @@ onclick="if(event.target === this) closeLightbox()">
     const lbCap    = document.getElementById('lightbox-caption');
     const lbClose  = document.getElementById('lightbox-close-btn');
 
-    // Speichert das Element, das die Lightbox geöffnet hat
     let lightboxTrigger = null;
 
     // --- Lightbox ---
@@ -176,7 +162,6 @@ onclick="if(event.target === this) closeLightbox()">
       lbCap.textContent = caption || '';
       lb.classList.replace('hidden', 'flex');
       document.body.style.overflow = 'hidden';
-      // Fokus auf Schließen-Button setzen
       lbClose?.focus();
     };
 
@@ -186,7 +171,6 @@ onclick="if(event.target === this) closeLightbox()">
       document.body.style.overflow = '';
       lbImg.classList.remove('img-zoomed');
       lbImg.style.transform = 'scale(1)';
-      // Fokus zurück zum Auslöser
       lightboxTrigger?.focus();
     };
 
@@ -199,12 +183,11 @@ onclick="if(event.target === this) closeLightbox()">
       );
     };
 
-    // Escape + Fokus-Falle in der Lightbox
+    // Escape + Fokus-Falle
     document.addEventListener('keydown', e => {
       if (!lb || lb.classList.contains('hidden')) return;
       if (e.key === 'Escape') { window.closeLightbox(); return; }
       if (e.key === 'Tab') {
-        // Fokus bleibt im Dialog
         const focusable = lb.querySelectorAll('button, [tabindex="0"]');
         const first = focusable[0];
         const last  = focusable[focusable.length - 1];
@@ -231,7 +214,7 @@ onclick="if(event.target === this) closeLightbox()">
         let diff = i - current;
         if (diff > TOTAL / 2) diff -= TOTAL;
         if (diff < -TOTAL / 2) diff += TOTAL;
-        const abs     = Math.abs(diff);
+        const abs      = Math.abs(diff);
         const isCenter = abs === 0;
         let tx = 0, scale = 1, opacity = 0;
 
@@ -244,15 +227,14 @@ onclick="if(event.target === this) closeLightbox()">
         }
 
         Object.assign(item.style, {
-          transform:     `translateX(calc(-50% + ${tx}%)) scale(${scale})`,
-          zIndex:         20 - abs,
-          opacity:        opacity,
-          visibility:     opacity === 0 ? 'hidden' : 'visible',
-          pointerEvents:  isCenter ? 'auto' : 'none',
-          filter:         isCenter ? 'none' : 'saturate(0.4) brightness(0.88)'
+          transform:    `translateX(calc(-50% + ${tx}%)) scale(${scale})`,
+          zIndex:        20 - abs,
+          opacity:       opacity,
+          visibility:    opacity === 0 ? 'hidden' : 'visible',
+          pointerEvents: isCenter ? 'auto' : 'none',
+          filter:        isCenter ? 'none' : 'saturate(0.4) brightness(0.88)'
         });
 
-        // ARIA: nur aktives Item sichtbar für Screen Reader
         item.setAttribute('aria-hidden', isCenter ? 'false' : 'true');
       });
 
@@ -305,7 +287,6 @@ onclick="if(event.target === this) closeLightbox()">
     document.getElementById('{{ $id }}-next').onclick = () => { current = (current + 1) % TOTAL; update(); };
     document.getElementById('{{ $id }}-prev').onclick = () => { current = (current - 1 + TOTAL) % TOTAL; update(); };
 
-    // Dot-Klick
     dots.forEach((dot, i) => { dot.onclick = () => { current = i; update(); }; });
 
     // Swipe

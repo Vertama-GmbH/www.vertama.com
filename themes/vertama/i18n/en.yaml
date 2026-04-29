@@ -1,7 +1,63 @@
+# i18n English — themes/vertama/i18n/en.yaml
+
+# Navigation
+skip_to_main: "Skip to main content"
+main_nav_label: "Main navigation"
+mobile_menu_label: "Mobile navigation"
+menu_open: "Open menu"
+menu_close: "Close menu"
+language_switcher_label: "Change language"
+
+# Footer
+footer_heading: "Footer"
+footer_legal: "Legal"
+footer_nav_label: "Navigation"
+
+# Social Links
+social_label: "Social media links"
+social_linkedin: "Visit us on LinkedIn (opens in new window)"
+social_twitter: "Follow us on Twitter (opens in new window)"
+social_github: "Visit us on GitHub (opens in new window)"
+social_email: "Send us an email"
+
+# Products
 back_to_products: "Back to products"
 details_ansehen: "View details"
-step: "Step"
+products_title: "Our Solutions"
+products_description: "Digital reporting processes for modern companies"
+products_cta_title: "Interested in our solutions?"
+products_cta_description: "Book a free consultation."
+products_cta_button: "Get in touch"
+
+# News
+latest_news_label: "Latest news"
+latest_news_subtitle: "Latest update"
+read_more: "Read more"
+all_news: "View all news"
+
+# CTA Section
+cta_heading: "Have Questions?"
+cta_description: "Get in touch with us now. We're happy to help."
+cta_button: "Contact Us"
+cta_aria: "Open contact form"
+
+# Form
+form_sending: "Sending…"
+form_success: "Thank you! Your message has been sent."
+form_error: "Error. Please try again later."
+
+# Carousel
+carousel_prev: "Previous"
+carousel_next: "Next"
+carousel_dots_label: "Slide navigation"
 swipe_hint: "Swipe or drag to browse"
+
+# Lightbox
+lightbox_close: "Close image"
+lightbox_zoom_in: "Zoom in"
+lightbox_zoom_out: "Zoom out"
+
+# PDF / Editorial
 pdf_download: "Download full PDF"
 digital_magazine: "Digital Magazine"
 media_title: "Product media"
@@ -11,30 +67,15 @@ schliessen: "Close"
 vorherige_seite: "Previous page"
 naechste_seite: "Next page"
 seite: "Page"
+von: "of"
 digitale_handouts: "Digital Handouts"
 kein_papier: "No paper. Take it with you."
-products_title: "Our Solutions"
-products_description: "Digital reporting processes for modern companies"
-products_cta_title: "Interested in our solutions?"
-products_cta_description: "Book a free consultation."
-products_cta_button: "Get in touch"
-skip_to_main: "Skip to main content"
-main_nav_label: "Main navigation"
-mobile_menu_label: "Mobile navigation"
-menu_open: "Open menu"
-menu_close: "Close menu"
-language_switcher_label: "Change language"
-form_sending: "Sending…"
-form_success: "Thank you! Your message has been sent."
-form_error: "Error. Please try again later."
-carousel_prev: "Previous"
-carousel_next: "Next"
-lightbox_close: "Close image"
-lightbox_zoom_in: "Zoom in"
-lightbox_zoom_out: "Zoom out"
-cta_heading: "Have Questions?"
-cta_description: "Get in touch with us now. We're happy to help."
-cta_button: "Contact Us"
-cta_aria: "Open contact form"
+step: "Step"
+
+# Video
 video_no_support: "Your browser does not support video."
-von: "of"
+
+# Empty State
+empty_state_title: "No content available yet"
+empty_state_description: "No content has been published yet. Check back soon!"
+empty_state_cta: "Go to homepage"

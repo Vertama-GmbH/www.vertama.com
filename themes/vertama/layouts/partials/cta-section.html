@@ -5,17 +5,21 @@
 {{- if $ctx.Page -}}{{- $page = $ctx.Page -}}{{- end -}}
 {{- end -}}
 
-{{- $lang       := $page.Language.Lang | default "de" -}}
-{{- $contactUrl := cond (eq $lang "de") "/de/kontakt/" "/en/contact/" -}}
+{{- $lang := $page.Language.Lang | default "de" -}}
+
+{{- /* Kontakt-URLs aus params, mit Fallback */ -}}
+{{- $contactUrl := cond (eq $lang "de")
+($page.Site.Params.contact.urlDe | default "/de/kontakt/")
+($page.Site.Params.contact.urlEn | default "/en/contact/") -}}
 
 {{- /* Defaults aus i18n, überschreibbar per Parameter */ -}}
-{{- $heading     := i18n "cta_heading" -}}
-{{- $description := i18n "cta_description" -}}
-{{- $buttonText  := i18n "cta_button" -}}
-{{- $buttonUrl   := $contactUrl -}}
+{{- $heading       := i18n "cta_heading" -}}
+{{- $description   := i18n "cta_description" -}}
+{{- $buttonText    := i18n "cta_button" -}}
+{{- $buttonUrl     := $contactUrl -}}
 {{- $buttonVariant := "primary" -}}
-{{- $showBorder  := true -}}
-{{- $headingId   := "cta-heading" -}}
+{{- $showBorder    := true -}}
+{{- $headingId     := "cta-heading" -}}
 
 {{- if reflect.IsMap $ctx -}}
 {{- $heading       = $ctx.heading       | default $heading -}}

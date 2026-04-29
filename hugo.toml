@@ -35,6 +35,16 @@ twitter = "https://twitter.com/vertama"
 github = "https://github.com/vertama"
 email = "info@vertama.com"
 
+[params.brand]
+icon        = "/images/Vertama_Icon.svg"
+logo        = "/images/Vertama_Name_Only.svg"
+logoFull    = "/images/Logo_Vertama_CMYK.svg"
+themeColor  = "#005e7b"
+
+[params.contact]
+urlDe = "/de/kontakt/"
+urlEn = "/en/contact/"
+
 [languages]
 
 # --- DEUTSCH ---
@@ -73,6 +83,11 @@ weight = 4
 name = 'Kontakt'
 url = '/de/kontakt/'
 weight = 5
+
+[[languages.de.menu.footer_nav]]
+name = 'Healthcare Services'
+url = '/de/healthcareservices/'
+weight = 1
 
 [[languages.de.menu.footer_nav]]
 name = 'Partner und Kunden'
@@ -155,11 +170,6 @@ weight = 4
 name = 'Contact'
 url = '/en/contact/'
 weight = 5
-
-[[languages.de.menu.footer_nav]]
-name = 'Healthcare Services'
-url = '/de/healthcareservices/'
-weight = 1
 
 [[languages.en.menu.footer_nav]]
 name = 'Healthcare Services'
