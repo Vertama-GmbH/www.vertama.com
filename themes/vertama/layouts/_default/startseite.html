@@ -93,12 +93,12 @@
       </h2>
     </div>
 
-    <div class="relative max-w-3xl">
+    <div class="relative max-w-4xl">
       <div class="relative h-64 overflow-hidden" id="anim-stage">
         {{/* Pause/Play */}}
-        <button id="anim-toggle" class="absolute top-3 right-3 z-30 w-8 h-8 flex items-center justify-center text-slate-300 hover:text-vertama transition-colors">
-          <svg id="anim-icon-pause" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 9v6m4-6v6" stroke-width="2" stroke-linecap="round"/></svg>
-          <svg id="anim-icon-play" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z" fill="currentColor"/></svg>
+        <button id="anim-toggle" class="absolute top-3 right-3 z-30 w-12 h-12 flex items-center justify-center text-slate-900 hover:text-vertama transition-colors">
+          <svg id="anim-icon-pause" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 9v6m4-6v6" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg id="anim-icon-play" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z" fill="currentColor"/></svg>
         </button>
 
         {{/* KIS */}}
@@ -198,75 +198,147 @@
 
 <style>
     .anim-doc { position: absolute; pointer-events: none; z-index: 20; opacity: 0; display: flex; flex-direction: column; align-items: center; }
-    .anim-doc-inner { width: 32px; height: 38px; background: white; border: 2px solid #005e7b; border-radius: 5px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,94,123,0.2); position: relative; }
-    .anim-doc-inner::before { content: ''; position: absolute; top: -1px; right: -1px; width: 10px; height: 10px; background: #f1f5f9; border-left: 2px solid #005e7b; border-bottom: 2px solid #005e7b; border-radius: 0 0 0 4px; }
+    .anim-doc-inner { width: 32px; height: 38px; background: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,94,123,0.2); position: relative; }
+    .anim-doc-inner::before { content: ''; position: absolute; top: -1px; right: -1px; width: 10px; height: 10px; background: #f1f5f9; border-left: 1px solid #005e7b; border-bottom: 1px solid #005e7b; border-radius: 0 0 0 4px; }
     .authority-tack { animation: authority-tack 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards; }
     @keyframes authority-tack { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
 </style>
 
 <script>
   (function() {
-    const AUTHORITIES = ['Gesundheitsamt', 'Standesamt', 'Krankenkasse', 'RKI'];
-    const DOC_TYPES = ['IfSG', 'PStG', 'DIVI', 'DiGG'];
+    const DOC_MAP = {
+      'ELIM':  'Gesundheitsamt',
+      'BELIM': 'Krankenhaus',
+      'DiGG':  'Standesamt',
+      'DuBA':  'Behörde',
+      'DIVI':  'Intensivregister',
+      'DiGT':  'Standesamt',
+      'ELIM+': 'Gesundheitsamt'
+    };
+    const DOC_TYPES = Object.keys(DOC_MAP);
+
     const canvas = document.getElementById('anim-canvas');
-    const hub = document.getElementById('anim-hub');
-    const hubCount = document.getElementById('anim-hub-count');
     const authBox = document.getElementById('authority-box');
     const authLabel = document.getElementById('authority-label');
 
     let paused = false;
     let collected = [];
-    let authIndex = 0;
+    let docIdx = 0;
+    let nextSlot = 0;
+    let dispatching = false;
 
-    function animate(el, start, ctrl, end, duration, onComplete) {
-      const startTime = performance.now();
+    function slotX(idx, w) {
+      const base = w * 0.5 - 44;
+      return base + idx * 44 - 16;
+    }
+
+    function bezier(el, s, c, e, dur, cb) {
+      const t0 = performance.now();
       function step(now) {
         if (paused) { requestAnimationFrame(step); return; }
-        const t = Math.min((now - startTime) / duration, 1);
-        const e = t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
-        const x = (1-e)*(1-e)*start.x + 2*(1-e)*e*ctrl.x + e*e*end.x;
-        const y = (1-e)*(1-e)*start.y + 2*(1-e)*e*ctrl.y + e*e*end.y;
-        el.style.left = x + 'px'; el.style.top = y + 'px';
-        el.style.opacity = t < 0.1 ? t*10 : t > 0.9 ? (1-t)*10 : 1;
-        if (t < 1) requestAnimationFrame(step); else onComplete();
+        const t = Math.min((now - t0) / dur, 1);
+        const u = t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+        el.style.left = ((1-u)*(1-u)*s.x + 2*(1-u)*u*c.x + u*u*e.x) + 'px';
+        el.style.top  = ((1-u)*(1-u)*s.y + 2*(1-u)*u*c.y + u*u*e.y) + 'px';
+        el.style.opacity = t < 0.08 ? t / 0.08 : 1;
+        t < 1 ? requestAnimationFrame(step) : cb();
       }
       requestAnimationFrame(step);
     }
 
+    function fadeOut(el, dur, cb) {
+      const t0 = performance.now();
+      function step(now) {
+        if (paused) { requestAnimationFrame(step); return; }
+        const t = Math.min((now - t0) / dur, 1);
+        el.style.opacity = 1 - t;
+        t < 1 ? requestAnimationFrame(step) : cb();
+      }
+      requestAnimationFrame(step);
+    }
+
+    function changeLabel(text) {
+      authLabel.style.opacity = 0;
+      setTimeout(() => {
+        authLabel.textContent = text;
+        authLabel.style.opacity = 1;
+      }, 300);
+    }
+
     function spawn() {
-      if (paused || collected.length >= 3) return;
-      const label = DOC_TYPES[Math.floor(Math.random()*DOC_TYPES.length)];
+      if (paused || nextSlot >= 3 || dispatching) return;
+
+      const label = DOC_TYPES[docIdx % DOC_TYPES.length];
+      docIdx++;
+
+      const slotIdx = 2 - nextSlot;
+      nextSlot++;
+
       const doc = document.createElement('div');
       doc.className = 'anim-doc';
+      doc.dataset.type = label;
       doc.innerHTML = `<div class="anim-doc-inner"><span style="font-size:7px;font-weight:900;color:#005e7b">${label}</span></div>`;
       canvas.appendChild(doc);
+
       const w = canvas.offsetWidth, h = canvas.offsetHeight;
-      animate(doc, {x: w*0.13, y: h*0.5}, {x: w*0.3, y: h*0.1}, {x: w*0.5-16, y: h*0.15}, 900, () => {
-        collected.push(doc);
-        hub.style.opacity = 1; hubCount.textContent = collected.length;
-        if (collected.length >= 3) setTimeout(dispatch, 400);
-      });
+      const targetX = slotX(slotIdx, w);
+      const targetY = h * 0.08;
+
+      bezier(doc,
+        {x: w*0.1, y: h*0.46},
+        {x: w*0.25, y: h*0.0},
+        {x: targetX, y: targetY},
+        1400,
+        () => {
+          doc.style.left = targetX + 'px';
+          doc.style.top  = targetY + 'px';
+          doc.style.opacity = '1';
+          collected.push(doc);
+          if (collected.length >= 3) setTimeout(dispatch, 800);
+        }
+      );
     }
 
     function dispatch() {
-      if (paused || collected.length === 0) return;
-      const items = [...collected]; collected = []; hub.style.opacity = 0;
+      if (paused || collected.length === 0 || dispatching) return;
+      dispatching = true;
+      const items = [...collected];
+      collected = [];
+      nextSlot = 0;
+
       items.forEach((doc, i) => {
+        const offset = i * 1400;
+
+        // Label wechselt 400ms nach Abflug — doc braucht noch 500ms bis Ankunft
+        setTimeout(() => {
+          changeLabel(DOC_MAP[doc.dataset.type] || 'Behörde');
+        }, offset + 400);
+
         setTimeout(() => {
           const w = canvas.offsetWidth, h = canvas.offsetHeight;
-          animate(doc, {x: parseFloat(doc.style.left), y: parseFloat(doc.style.top)}, {x: w*0.65, y: h*0.25}, {x: w*0.82, y: h*0.5}, 600, () => {
-            doc.remove(); // FIX: Dokument wird gelöscht
-            authBox.classList.remove('authority-tack'); void authBox.offsetWidth; authBox.classList.add('authority-tack');
-            if (i === items.length - 1) {
-              authIndex = (authIndex + 1) % AUTHORITIES.length;
-              authLabel.style.opacity = 0;
-              setTimeout(() => { authLabel.textContent = AUTHORITIES[authIndex]; authLabel.style.opacity = 1; }, 300);
+          bezier(doc,
+            {x: parseFloat(doc.style.left), y: parseFloat(doc.style.top)},
+            {x: w*0.64, y: h*0.14},
+            {x: w*0.80, y: h*0.44},
+            900,
+            () => {
+              fadeOut(doc, 180, () => {
+                doc.remove();
+                authBox.classList.remove('authority-tack');
+                void authBox.offsetWidth;
+                authBox.classList.add('authority-tack');
+                if (i === items.length - 1) {
+                  dispatching = false;
+                }
+              });
             }
-          });
-        }, i * 300);
+          );
+        }, offset);
       });
     }
-    setInterval(spawn, 2000);
+
+    setInterval(spawn, 2800);
+
     document.getElementById('anim-toggle').onclick = () => {
       paused = !paused;
       document.getElementById('anim-icon-pause').classList.toggle('hidden');
