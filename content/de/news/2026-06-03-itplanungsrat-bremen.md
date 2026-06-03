@@ -4,7 +4,7 @@ date: 2023-06-03
 translationKey: "news-2026-06-03-itplanungsrat-bremen"
 sources:
   - url: "https://www.linkedin.com/posts/spt-digitale-anwendungen-des-it-plr-abt-4-senator-f%C3%BCr-finanzen-bremen_digitaleverwaltung-geburtsanzeige-kielermodell-activity-7465671162128285696-Al3H?utm_source=share&utm_medium=member_desktop&rcm=ACoAACdredsB50iw5RrPzrGhqIAy_xAenOE9eMw"
-    label: "LinkedIn.de"
+  - label: "LinkedIn.de"
 ---
 
 Das Kieler Modell ist nicht nur ein tolles Beispiel für End-to-End Digitalisierung von Verwaltungsprozessen, es wird auch von wichtigen Playern innerhalb der Verwaltung als Effizienzbringer propagiert. 
