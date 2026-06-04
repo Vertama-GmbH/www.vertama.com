@@ -101,25 +101,29 @@
         </button>
 
         {{/* Start-Icon */}}
-        <div class="absolute left-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 z-10">
+        <div class="absolute left-8 top-1/2 -translate-y-1/2 flex flex-col items-center z-10">
           <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#005e7b" stroke-width="1.5">
             <path d="M12 7v4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/>
             <path d="M14 9h-4"/>
             <path d="M18 11h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2"/>
             <path d="M18 21V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16"/>
           </svg>
-          <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest">KIS</span>
+          <div class="h-8 flex items-start justify-center mt-2">
+            <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest text-center leading-tight max-w-[80px]">KIS</span>
+          </div>
         </div>
 
         {{/* Ziel-Icon */}}
-        <div class="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-2 z-10">
+        <div class="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col items-center z-10">
           <svg id="authority-box" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5">
             <path d="M10 12h4"/><path d="M10 8h4"/>
             <path d="M14 21v-3a2 2 0 0 0-4 0v3"/>
             <path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/>
             <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/>
           </svg>
-          <span id="authority-label" class="text-[9px] font-black text-slate-400 uppercase tracking-widest text-center leading-tight max-w-[80px]" style="transition: opacity 0.3s;">Gesundheitsamt</span>
+          <div class="h-8 flex items-start justify-center mt-2">
+            <span id="authority-label" class="text-[9px] font-black text-slate-400 uppercase tracking-widest text-center leading-tight max-w-[80px]" style="transition: opacity 0.3s;">{{ i18n "anim_authority_initial" }}</span>
+          </div>
         </div>
 
         <div id="anim-canvas" class="absolute inset-0 pointer-events-none"></div>
@@ -127,10 +131,11 @@
     </div>
 
     <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+      {{/* Steps */}}
       {{ $steps := slice
-      (dict "n" "01" "t" "Anbinden" "d" "Integration in Ihr bestehendes KIS über Standardschnittstellen.")
-      (dict "n" "02" "t" "Konfigurieren" "d" "Feineinstellung der Melde-Workflows nach Ihren Vorgaben.")
-      (dict "n" "03" "t" "Profitieren" "d" "Zeitersparnis ab dem ersten Tag durch automatisierte Abläufe.")
+      (dict "n" "01" "t" (i18n "anim_step1_t") "d" (i18n "anim_step1_d"))
+      (dict "n" "02" "t" (i18n "anim_step2_t") "d" (i18n "anim_step2_d"))
+      (dict "n" "03" "t" (i18n "anim_step3_t") "d" (i18n "anim_step3_d"))
       }}
       {{ range $steps }}
       <div class="m-6 relative group">
@@ -152,7 +157,7 @@
   <div class="max-w-6xl mx-auto px-5 mb-10 text-center">
     <h2 class="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">{{ i18n "products_title" }}</h2>
   </div>
-  {{ $produkte := (where .Site.RegularPages "Section" "produkte") }}
+  {{ $produkte := where .Site.RegularPages "Section" (cond (eq .Site.Language.Lang "de") "produkte" "products") }}
   {{ partial "carousel.html" (dict "id" "main-loop" "items" $produkte) }}
 </section>
 
@@ -194,13 +199,13 @@
 <script>
   (function() {
     const DOC_MAP = {
-      'ELIM':  'Gesundheitsamt',
-      'BELIM': 'Robert-Koch-Institut',
-      'DiGG':  'Standesamt',
-      'DuBA':  'Behörde',
-      'DIVI':  'Intensivregister',
-      'DiGT':  'Standesamt',
-      'ELIM+': 'Gesundheitsamt'
+      'ELIM':  '{{ i18n "anim_dest_ELIM" }}',
+      'BELIM': '{{ i18n "anim_dest_BELIM" }}',
+      'DiGG':  '{{ i18n "anim_dest_DiGG" }}',
+      'DuBA':  '{{ i18n "anim_dest_DuBA" }}',
+      'DIVI':  '{{ i18n "anim_dest_DIVI" }}',
+      'DiGT':  '{{ i18n "anim_dest_DiGT" }}',
+      'ELIM+': '{{ i18n "anim_dest_ELIMplus" }}'
     };
     const DOC_TYPES = Object.keys(DOC_MAP);
 

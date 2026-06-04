@@ -20,7 +20,7 @@ firmName = 'VERTAMA GmbH'
 [params.event_redirect]
 enabled     = false
 url         = "/DMEA26/"
-default_url = "/de/healthcareservices/"
+default_url = "/de/startseite/"
 start       = "2026-04-21T00:00:00Z"
 end         = "2026-04-23T23:59:59Z"
 
@@ -60,8 +60,8 @@ copyrightText = 'Alle Rechte vorbehalten'
 footerSlogan = 'Digitalisierung von Meldeverfahren für moderne Unternehmen. Schnell, sicher, effizient.'
 
 [[languages.de.menu.main]]
-name = 'Healthcare Services'
-url = '/de/healthcareservices/'
+name = 'Startseite'
+url = '/de/startseite/'
 weight = 1
 
 [[languages.de.menu.main]]
@@ -85,8 +85,8 @@ url = '/de/kontakt/'
 weight = 5
 
 [[languages.de.menu.footer_nav]]
-name = 'Healthcare Services'
-url = '/de/healthcareservices/'
+name = 'Startseite'
+url = '/de/startseite/'
 weight = 1
 
 [[languages.de.menu.footer_nav]]
@@ -147,8 +147,8 @@ copyrightText = 'All rights reserved'
 footerSlogan = 'Digitizing reporting procedures for modern companies. Fast, secure, efficient.'
 
 [[languages.en.menu.main]]
-name = 'Healthcare Services'
-url = '/en/healthcare-services/'
+name = 'Home'
+url = '/en/home/'
 weight = 1
 
 [[languages.en.menu.main]]
@@ -172,8 +172,8 @@ url = '/en/contact/'
 weight = 5
 
 [[languages.en.menu.footer_nav]]
-name = 'Healthcare Services'
-url = '/en/healthcare-services/'
+name = 'Home'
+url = '/en/home/'
 weight = 1
 
 [[languages.en.menu.footer_nav]]
