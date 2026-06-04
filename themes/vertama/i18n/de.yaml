@@ -23,7 +23,7 @@ social_email: "Senden Sie uns eine E-Mail"
 # Produkte
 back_to_products: "Zurück zu den Produkten"
 details_ansehen: "Details ansehen"
-products_title: "Unsere Lösungen"
+products_title: "Unsere Produktfamilie"
 products_description: "Digitale Meldeverfahren für moderne Unternehmen"
 products_cta_title: "Interesse an unseren Lösungen?"
 products_cta_description: "Buchen Sie eine kostenlose Beratung."
@@ -86,4 +86,3 @@ hero_subline: "Vertama ermöglicht rechtssichere End-to-End-Kommunikation zwisch
 anim_title: "Maximale Effizienz im klinischen Meldewesen"
 partner_label: "Unsere Produkte sind im SAP-Store erhältlich"
 hero_cta_primary: "Unsere Produkte"
-products_title: "Unsere Produktfamilie"
