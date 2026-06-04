@@ -21,6 +21,6 @@ In Kiel and Hanover, birth registration is now fully automated: A midwife or hos
 
 The result: a time savings of 7.5 person-days per month at the Kiel Registry Office alone. Faster birth certificates for parents. And a noticeable reduction in the workload for hospital staff.
 
-𝐔𝐧𝐝 𝐝𝐚𝐬 𝐁𝐞𝐬𝐭𝐞: Most hospitals in Germany could implement the solution immediately. The registry offices are ready. Now it just needs to be put to use.  
+**And best of all**: Most hospitals in Germany could implement the solution immediately. The registry offices are ready. Now it just needs to be put to use.  
 The “Kiel Model” is leading the way, and other municipalities and states are already on board.  
 The infrastructure is in place. The standards have been set. The practical test has been passed.
