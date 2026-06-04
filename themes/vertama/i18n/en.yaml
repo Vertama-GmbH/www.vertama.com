@@ -81,7 +81,6 @@ empty_state_description: "No content has been published yet. Check back soon!"
 empty_state_cta: "Go to homepage"
 
 # Main-Page
-latest_news_label: "News"
 hero_headline: "Reporting Processes<br><span class='text-transparent bg-clip-text bg-gradient-to-r from-vertama-light to-white'>as a Service.</span>"
 hero_subline: "Vertama enables legally compliant end-to-end communication between hospitals and government agencies and simplifies compliance with legal reporting requirements."
 anim_title: "Maximum Efficiency in Clinical Reporting"
