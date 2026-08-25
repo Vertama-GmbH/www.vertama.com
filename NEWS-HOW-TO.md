@@ -12,9 +12,10 @@ Der typische Ablauf für eine neue Meldung:
 2. **Vertamas Rolle klären** — bevor der Artikel geschrieben wird: Was ist Vertamas konkreter Beitrag? Externer Dienstleister? Technologiepartner? Referenzkunde? Marktkontext?
 3. **Artikel schreiben** — aus Vertamas Perspektive, nicht als Wiedergabe der Quelle. Kurz, sachlich, ohne PR-Sprache.
 4. **Verlinkung zu Produktseiten** — wenn relevant: DiGG (`/de/produkte/digg/`), ELIM (`/de/produkte/elim/`), DIGT (`/de/produkte/digt/`) verlinken.
-5. **Englische Version** — immer beide Sprachen. EN-Artikel darf kürzer sein; wenn Quellen auf Deutsch sind, kurz hinweisen.
-6. **`translationKey`** — gleicher Wert in DE + EN, Format: `news-YYYY-MM-DD-slug`.
-7. **Committen & pushen.**
+5. **Medien ablegen** (optional) — Bilder und Videos in die entsprechenden Ordner (siehe unten).
+6. **Englische Version** — immer beide Sprachen. EN-Artikel darf kürzer sein; wenn Quellen auf Deutsch sind, kurz hinweisen.
+7. **`translationKey`** — gleicher Wert in DE + EN, Format: `news-YYYY-MM-DD-slug`.
+8. **Committen & pushen.**
 
 ### Tonalität
 
@@ -45,18 +46,21 @@ Der typische Ablauf für eine neue Meldung:
 ---
 title: "Produktlaunch: Neue Features für ELIM"
 date: 2026-03-20
+category: "Produktupdate"
+description: "Kurze Zusammenfassung für die Übersichtsseite und SEO — ein bis zwei Sätze."
 translationKey: "news-2026-03-20-produktlaunch"
+cover_image: "images/news/2026-03-20-produktlaunch/cover.webp"
+cover_alt: "Screenshot des neuen ELIM Dashboards"
 sources:
   - url: "https://example.com/pressemeldung"
     label: "example.com"
 ---
 
-Wir freuen uns, heute neue Features vorzustellen.
+Erster Absatz des Artikels hier.
 
 **Was ist neu?**
 
-- Feature A
-- Feature B
+Zweiter Absatz hier.
 ```
 
 ### Front Matter Felder
@@ -65,8 +69,12 @@ Wir freuen uns, heute neue Features vorzustellen.
 |---|---|---|
 | `title` | ✅ | Überschrift der News |
 | `date` | ✅ | Datum im Format `YYYY-MM-DD` |
-| `translationKey` | — | Gleicher Wert in DE + EN verknüpft die Sprachversionen für den Language Switcher. Empfehlung: `"news-YYYY-MM-DD-slug"` |
-| `sources` | — | Liste der Quellen. Jeder Eintrag hat `url` und `label`. Bei einer Quelle wird „Quelle" angezeigt, bei mehreren „Quellen". |
+| `category` | ✅ | Kategorie für den Filter. Erlaubte Werte: `Produktupdate`, `Unternehmensnews`, `Auszeichnung`, `Technologie`, `Event` |
+| `description` | — | Kurztext für Übersichtsseite und SEO. Wenn leer, wird der Anfang des Artikels verwendet — besser immer setzen. |
+| `translationKey` | — | Gleicher Wert in DE + EN verknüpft die Sprachversionen. Format: `"news-YYYY-MM-DD-slug"` |
+| `cover_image` | — | Pfad zum Titelbild. Erscheint auf der Übersichtsseite und oben im Artikel. |
+| `cover_alt` | — | Beschreibung des Titelbilds — Pflicht wenn `cover_image` gesetzt ist. |
+| `sources` | — | Liste der Quellen. Jeder Eintrag hat `url` und `label`. |
 
 **Beispiel mit einer Quelle:**
 ```yaml
@@ -84,11 +92,165 @@ sources:
     label: "other.com"
 ```
 
-### 2. Committen & pushen
+---
+
+## Medien: Bilder und Videos
+
+### Bilder
+
+#### Wo ablegen?
+
+Bilder kommen in den `assets/`-Ordner des Projekts. Für jede News einen eigenen Unterordner anlegen, benannt nach dem Slug der MD-Datei:
+
+```
+assets/
+  images/
+    news/
+      2026-03-20-produktlaunch/
+        cover.webp          ← Titelbild (im Front Matter referenziert)
+        screenshot-1.webp   ← weitere Bilder für den Artikeltext
+        diagramm.webp
+```
+
+#### Format und Größe
+
+- Format: **WebP** — kleinere Dateigröße, bessere Ladezeit. JPG geht auch, PNG möglichst vermeiden.
+- Titelbild: **1200 × 630 px**, max. **300 KB**
+- Bilder im Text: max. **1200 px** breit, max. **500 KB**
+- Konvertierung und Komprimierung kostenlos im Browser: [squoosh.app](https://squoosh.app)
+
+Hugo erzeugt beim Build automatisch verschiedene Größen für unterschiedliche Bildschirme — kein weiterer Aufwand nötig.
+
+#### Titelbild (Front Matter)
+
+```yaml
+cover_image: "images/news/2026-03-20-produktlaunch/cover.webp"
+cover_alt: "Screenshot ELIM Dashboard mit neuem Meldungsassistenten"
+```
+
+#### Bilder im Artikeltext
+
+Bilder werden mit normaler Markdown-Syntax eingebunden — einfach an die Stelle im Text setzen wo sie inhaltlich passen:
+
+```markdown
+![Alt-Text](images/news/2026-03-20-produktlaunch/screenshot-1.webp "Optionale Bildunterschrift")
+```
+
+- Text in `[...]` → Alt-Text für Barrierefreiheit und SEO — immer ausfüllen
+- Text in `"..."` am Ende → optionale Bildunterschrift unter dem Bild
+
+**Beispiel:**
+
+```markdown
+Mit ELIM 3.0 reduziert sich der Aufwand erheblich.
+
+![Screenshot des Meldungsassistenten](images/news/2026-03-20-elim-3/assistent.webp "Der Assistent führt schrittweise durch den Prozess")
+
+Die KIS-Integration wurde für alle gängigen Systeme überarbeitet.
+```
+
+---
+
+### Videos
+
+Videos werden als Shortcodes in den Artikeltext eingebunden — an beliebiger Stelle, so oft wie nötig.
+
+#### YouTube-Video
+
+```
+{{</* youtube VIDEO-ID */>}}
+```
+
+Die Video-ID steht in der YouTube-URL:
+`https://www.youtube.com/watch?v=`**`dQw4w9WgXcQ`**
+
+**Beispiel:**
+
+```markdown
+Hier ist eine Demo des neuen Prozesses:
+
+{{</* youtube dQw4w9WgXcQ */>}}
+
+Der Prozess dauert insgesamt unter drei Minuten.
+```
+
+#### Lokales Video (MP4)
+
+Lokale Videos kommen ebenfalls in den `assets/`-Ordner:
+
+```
+assets/
+  videos/
+    news/
+      2026-03-20-produktlaunch/
+        demo.mp4
+```
+
+Einbindung im Artikel:
+
+```
+{{</* video file="videos/news/2026-03-20-produktlaunch/demo.mp4" caption="Optionale Beschriftung" */>}}
+```
+
+#### Wann YouTube, wann lokal?
+
+| | YouTube | Lokal (MP4) |
+|---|---|---|
+| Öffentliche Videos | ✅ bevorzugt | — |
+| Interne Videos | — | ✅ |
+| Ladezeit | ✅ schneller | ⚠️ abhängig von Dateigröße |
+| Datenschutz | ⚠️ YouTube-Cookies | ✅ kein Drittanbieter |
+
+Lokale MP4-Dateien: max. **50 MB**, Auflösung max. **1080p**.
+
+---
+
+## Vollständiges Beispiel
+
+```markdown
+---
+title: "ELIM 3.0: Schnellere Infektionsmeldungen"
+date: 2026-03-20
+category: "Produktupdate"
+description: "Mit ELIM 3.0 verkürzt sich der Meldeprozess nach §6/7 IfSG auf wenige Klicks."
+translationKey: "news-2026-03-20-elim-3"
+cover_image: "images/news/2026-03-20-elim-3/cover.webp"
+cover_alt: "Screenshot ELIM 3.0 Dashboard"
+sources:
+  - url: "https://www.gesetze-im-internet.de/ifsg/"
+    label: "gesetze-im-internet.de"
+---
+
+Mit ELIM 3.0 reduziert sich der Aufwand für Infektionsschutzmeldungen nach §6/7 IfSG erheblich.
+
+**Was ist neu?**
+
+Der neue Meldungsassistent prüft Eingaben in Echtzeit auf Plausibilität.
+
+![Screenshot des Meldungsassistenten](images/news/2026-03-20-elim-3/assistent.webp "Schritt-für-Schritt durch den Meldeprozess")
+
+Eine Demo des vollständigen Prozesses:
+
+{{</* youtube dQw4w9WgXcQ */>}}
+
+ELIM 3.0 ist ab sofort für alle Bestandskunden verfügbar.
+```
+
+---
+
+## Committen & pushen
 
 ```bash
-git add content/de/news/2026-03-20-produktlaunch.md
-git commit -m "News: Produktlaunch neue Features"
+# Nur MD-Datei (ohne Medien):
+git add content/de/news/2026-03-20-elim-3.md
+git commit -m "News: ELIM 3.0"
+git push
+
+# Mit Bildern und/oder Videos:
+git add content/de/news/2026-03-20-elim-3.md
+git add assets/images/news/2026-03-20-elim-3/
+git add assets/videos/news/2026-03-20-elim-3/    # falls vorhanden
+git commit -m "News: ELIM 3.0 mit Medien"
 git push
 ```
 
@@ -133,15 +295,27 @@ Gleicher Ablauf, anderer Pfad:
 
 **Pfad:** `content/en/news/YYYY-MM-DD-slug.md`
 
+Bilder und Videos müssen **nicht** doppelt abgelegt werden — beide Sprachversionen referenzieren denselben Pfad in `assets/`:
+
+```yaml
+# content/de/news/2026-03-20-elim-3.md
+cover_image: "images/news/2026-03-20-elim-3/cover.webp"
+
+# content/en/news/2026-03-20-elim-3.md
+cover_image: "images/news/2026-03-20-elim-3/cover.webp"  ← identisch
+```
+
 ---
 
 ## Dateiname-Konvention
 
 **Format:** `YYYY-MM-DD-beschreibender-slug.md`
 
+Der Slug im Dateinamen bestimmt auch den Ordnernamen für Medien — kurz und beschreibend halten.
+
 ✅ Korrekt:
-- `2026-03-20-produktlaunch.md`
-- `2026-12-31-jahresrueckblick.md`
+- `2026-03-20-produktlaunch.md` → Medien in `assets/images/news/2026-03-20-produktlaunch/`
+- `2026-12-31-jahresrueckblick.md` → Medien in `assets/images/news/2026-12-31-jahresrueckblick/`
 
 ❌ Falsch:
 - `produktlaunch.md` (kein Datum)
@@ -153,4 +327,4 @@ Gleicher Ablauf, anderer Pfad:
 
 Push auf `main` triggert automatisch den GitHub Actions Workflow `.github/workflows/deploy-pages.yml`, der Hugo baut und auf GitHub Pages deployed.
 
-Kein separater News-Build-Schritt nötig — Hugo verarbeitet alle Markdown-Dateien in `content/`.
+Kein separater News-Build-Schritt nötig — Hugo verarbeitet alle Markdown-Dateien in `content/` und alle Medien in `assets/` automatisch.

@@ -100,3 +100,14 @@ anim_dest_DiGT: "Standesamt"
 anim_dest_ELIMplus: "Gesundheitsamt"
 partner_label: "Unsere Produkte sind im SAP-Store erhältlich"
 hero_cta_primary: "Unsere Produkte"
+
+
+# News
+highlight_label: "Highlight"
+all_news_label: "Alle Meldungen"
+back_to_news: "Aktuelles"
+date_label: "Datum"
+source_label: "Quelle"
+sources_label: "Quellen"
+news_empty: "Bald gibt es hier Neuigkeiten."
+filter_all: "Alle"

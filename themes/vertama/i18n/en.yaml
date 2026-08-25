@@ -100,3 +100,13 @@ anim_dest_DiGT: "Registry Office"
 anim_dest_ELIMplus: "Public Health Department"
 partner_label: "Our products are available in the SAP Store"
 hero_cta_primary: "Our products"
+
+# News
+highlight_label: "Highlight"
+all_news_label: "All News"
+back_to_news: "News"
+date_label: "Date"
+source_label: "Source"
+sources_label: "Sources"
+news_empty: "No news yet."
+filter_all: "All"
