@@ -30,23 +30,13 @@
     <a href="{{ $first.RelPermalink }}"
        class="group flex flex-col lg:flex-row bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-md transition-shadow">
 
-      {{/* Medium — nur wenn vorhanden */}}
-      {{ if $first.Params.cover_video }}
-      <div class="lg:w-2/5 aspect-video lg:aspect-auto bg-slate-900 relative overflow-hidden shrink-0">
-        {{ if $first.Params.cover_image }}
-        <img src="{{ $first.Params.cover_image }}" alt="{{ $first.Params.cover_alt }}"
-             class="w-full h-full object-cover opacity-60">
-        {{ end }}
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
-            <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
-          </div>
-        </div>
-      </div>
-      {{ else if $first.Params.cover_image }}
+      {{/* Medium — auf Übersicht immer nur cover_image, nie Video */}}
+      {{ if $first.Params.cover_image }}
       <div class="lg:w-2/5 aspect-video lg:aspect-auto overflow-hidden shrink-0">
-        <img src="{{ $first.Params.cover_image }}" alt="{{ $first.Params.cover_alt }}"
-             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <img src="{{ $first.Params.cover_image }}"
+             alt="{{ $first.Params.cover_alt }}"
+             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+             loading="eager">
       </div>
       {{ end }}
 

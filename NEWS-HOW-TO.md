@@ -49,7 +49,7 @@ date: 2026-03-20
 category: "Produktupdate"
 description: "Kurze Zusammenfassung für die Übersichtsseite und SEO — ein bis zwei Sätze."
 translationKey: "news-2026-03-20-produktlaunch"
-cover_image: "images/news/2026-03-20-produktlaunch/cover.webp"
+cover_image: "/assets/images/news/2026-03-20-produktlaunch/cover.webp"
 cover_alt: "Screenshot des neuen ELIM Dashboards"
 sources:
   - url: "https://example.com/pressemeldung"
@@ -72,9 +72,19 @@ Zweiter Absatz hier.
 | `category` | ✅ | Kategorie für den Filter. Erlaubte Werte: `Produktupdate`, `Unternehmensnews`, `Auszeichnung`, `Technologie`, `Event` |
 | `description` | — | Kurztext für Übersichtsseite und SEO. Wenn leer, wird der Anfang des Artikels verwendet — besser immer setzen. |
 | `translationKey` | — | Gleicher Wert in DE + EN verknüpft die Sprachversionen. Format: `"news-YYYY-MM-DD-slug"` |
-| `cover_image` | — | Pfad zum Titelbild. Erscheint auf der Übersichtsseite und oben im Artikel. |
+| `cover_image` | — | Pfad zum Titelbild — erscheint auf der Übersichtsseite und oben im Artikel wenn kein `cover_video` gesetzt ist. |
 | `cover_alt` | — | Beschreibung des Titelbilds — Pflicht wenn `cover_image` gesetzt ist. |
+| `cover_video` | — | Pfad zu einem lokalen Video (MP4) — erscheint auf der Detailseite anstelle des Titelbilds. Auf der Übersichtsseite wird stattdessen `cover_image` angezeigt. |
 | `sources` | — | Liste der Quellen. Jeder Eintrag hat `url` und `label`. |
+
+**Wichtig:** Wenn `cover_video` gesetzt ist, sollte immer auch `cover_image` gesetzt sein — das Bild wird dann auf der Übersichtsseite als Vorschau verwendet.
+
+**Beispiel mit Video:**
+```yaml
+cover_image: "/assets/images/news/2026-03-20-produktlaunch/cover.webp"
+cover_alt: "Vorschaubild für die Übersichtsseite"
+cover_video: "/assets/videos/news/2026-03-20-produktlaunch/demo.mp4"
+```
 
 **Beispiel mit einer Quelle:**
 ```yaml
@@ -96,35 +106,37 @@ sources:
 
 ## Medien: Bilder und Videos
 
-### Bilder
+### Wo ablegen?
 
-#### Wo ablegen?
-
-Bilder kommen in den `assets/`-Ordner des Projekts. Für jede News einen eigenen Unterordner anlegen, benannt nach dem Slug der MD-Datei:
+Alle Medien kommen in `docs/assets/` — für jede News einen eigenen Unterordner anlegen, benannt nach dem Slug der MD-Datei:
 
 ```
-assets/
+docs/assets/
   images/
     news/
       2026-03-20-produktlaunch/
-        cover.webp          ← Titelbild (im Front Matter referenziert)
+        cover.webp          ← Titelbild (cover_image im Front Matter)
         screenshot-1.webp   ← weitere Bilder für den Artikeltext
-        diagramm.webp
+  videos/
+    news/
+      2026-03-20-produktlaunch/
+        demo.mp4            ← Cover-Video (cover_video im Front Matter)
+        erklaerung.mp4      ← weitere Videos für den Artikeltext
 ```
+
+### Bilder
 
 #### Format und Größe
 
-- Format: **WebP** — kleinere Dateigröße, bessere Ladezeit. JPG geht auch, PNG möglichst vermeiden.
+- Format: **WebP** bevorzugt — kleinere Dateigröße, bessere Ladezeit. JPG geht auch, PNG möglichst vermeiden.
 - Titelbild: **1200 × 630 px**, max. **300 KB**
 - Bilder im Text: max. **1200 px** breit, max. **500 KB**
 - Konvertierung und Komprimierung kostenlos im Browser: [squoosh.app](https://squoosh.app)
 
-Hugo erzeugt beim Build automatisch verschiedene Größen für unterschiedliche Bildschirme — kein weiterer Aufwand nötig.
-
 #### Titelbild (Front Matter)
 
 ```yaml
-cover_image: "images/news/2026-03-20-produktlaunch/cover.webp"
+cover_image: "/assets/images/news/2026-03-20-produktlaunch/cover.webp"
 cover_alt: "Screenshot ELIM Dashboard mit neuem Meldungsassistenten"
 ```
 
@@ -133,7 +145,7 @@ cover_alt: "Screenshot ELIM Dashboard mit neuem Meldungsassistenten"
 Bilder werden mit normaler Markdown-Syntax eingebunden — einfach an die Stelle im Text setzen wo sie inhaltlich passen:
 
 ```markdown
-![Alt-Text](images/news/2026-03-20-produktlaunch/screenshot-1.webp "Optionale Bildunterschrift")
+![Alt-Text](/assets/images/news/2026-03-20-produktlaunch/screenshot-1.webp "Optionale Bildunterschrift")
 ```
 
 - Text in `[...]` → Alt-Text für Barrierefreiheit und SEO — immer ausfüllen
@@ -144,7 +156,7 @@ Bilder werden mit normaler Markdown-Syntax eingebunden — einfach an die Stelle
 ```markdown
 Mit ELIM 3.0 reduziert sich der Aufwand erheblich.
 
-![Screenshot des Meldungsassistenten](images/news/2026-03-20-elim-3/assistent.webp "Der Assistent führt schrittweise durch den Prozess")
+![Screenshot des Meldungsassistenten](/assets/images/news/2026-03-20-elim-3/assistent.webp "Der Assistent führt schrittweise durch den Prozess")
 
 Die KIS-Integration wurde für alle gängigen Systeme überarbeitet.
 ```
@@ -153,10 +165,24 @@ Die KIS-Integration wurde für alle gängigen Systeme überarbeitet.
 
 ### Videos
 
-Videos werden als Shortcodes in den Artikeltext eingebunden — an beliebiger Stelle, so oft wie nötig.
+#### Cover-Video (Front Matter)
 
-#### YouTube-Video
+Erscheint auf der Detailseite anstelle des Titelbilds. Auf der Übersichtsseite wird stattdessen `cover_image` gezeigt.
 
+```yaml
+cover_video: "/assets/videos/news/2026-03-20-produktlaunch/demo.mp4"
+```
+
+#### Videos im Artikeltext
+
+Lokale Videos und YouTube-Videos können per Shortcode frei im Text platziert werden:
+
+**Lokales Video:**
+```
+{{</* video file="/assets/videos/news/2026-03-20-produktlaunch/erklaerung.mp4" caption="Optionale Beschriftung" */>}}
+```
+
+**YouTube-Video:**
 ```
 {{</* youtube VIDEO-ID */>}}
 ```
@@ -171,25 +197,9 @@ Hier ist eine Demo des neuen Prozesses:
 
 {{</* youtube dQw4w9WgXcQ */>}}
 
-Der Prozess dauert insgesamt unter drei Minuten.
-```
+Und hier eine detaillierte Erklärung des technischen Ablaufs:
 
-#### Lokales Video (MP4)
-
-Lokale Videos kommen ebenfalls in den `assets/`-Ordner:
-
-```
-assets/
-  videos/
-    news/
-      2026-03-20-produktlaunch/
-        demo.mp4
-```
-
-Einbindung im Artikel:
-
-```
-{{</* video file="videos/news/2026-03-20-produktlaunch/demo.mp4" caption="Optionale Beschriftung" */>}}
+{{</* video file="/assets/videos/news/2026-03-20-elim-3/technisch.mp4" caption="Technischer Ablauf ELIM 3.0" */>}}
 ```
 
 #### Wann YouTube, wann lokal?
@@ -214,8 +224,9 @@ date: 2026-03-20
 category: "Produktupdate"
 description: "Mit ELIM 3.0 verkürzt sich der Meldeprozess nach §6/7 IfSG auf wenige Klicks."
 translationKey: "news-2026-03-20-elim-3"
-cover_image: "images/news/2026-03-20-elim-3/cover.webp"
+cover_image: "/assets/images/news/2026-03-20-elim-3/cover.webp"
 cover_alt: "Screenshot ELIM 3.0 Dashboard"
+cover_video: "/assets/videos/news/2026-03-20-elim-3/demo.mp4"
 sources:
   - url: "https://www.gesetze-im-internet.de/ifsg/"
     label: "gesetze-im-internet.de"
@@ -227,9 +238,9 @@ Mit ELIM 3.0 reduziert sich der Aufwand für Infektionsschutzmeldungen nach §6/
 
 Der neue Meldungsassistent prüft Eingaben in Echtzeit auf Plausibilität.
 
-![Screenshot des Meldungsassistenten](images/news/2026-03-20-elim-3/assistent.webp "Schritt-für-Schritt durch den Meldeprozess")
+![Screenshot des Meldungsassistenten](/assets/images/news/2026-03-20-elim-3/assistent.webp "Schritt-für-Schritt durch den Meldeprozess")
 
-Eine Demo des vollständigen Prozesses:
+Eine Erklärung auf YouTube:
 
 {{</* youtube dQw4w9WgXcQ */>}}
 
@@ -248,8 +259,8 @@ git push
 
 # Mit Bildern und/oder Videos:
 git add content/de/news/2026-03-20-elim-3.md
-git add assets/images/news/2026-03-20-elim-3/
-git add assets/videos/news/2026-03-20-elim-3/    # falls vorhanden
+git add docs/assets/images/news/2026-03-20-elim-3/
+git add docs/assets/videos/news/2026-03-20-elim-3/    # falls vorhanden
 git commit -m "News: ELIM 3.0 mit Medien"
 git push
 ```
@@ -295,14 +306,14 @@ Gleicher Ablauf, anderer Pfad:
 
 **Pfad:** `content/en/news/YYYY-MM-DD-slug.md`
 
-Bilder und Videos müssen **nicht** doppelt abgelegt werden — beide Sprachversionen referenzieren denselben Pfad in `assets/`:
+Bilder und Videos müssen **nicht** doppelt abgelegt werden — beide Sprachversionen referenzieren denselben Pfad in `docs/assets/`:
 
 ```yaml
 # content/de/news/2026-03-20-elim-3.md
-cover_image: "images/news/2026-03-20-elim-3/cover.webp"
+cover_image: "/assets/images/news/2026-03-20-elim-3/cover.webp"
 
 # content/en/news/2026-03-20-elim-3.md
-cover_image: "images/news/2026-03-20-elim-3/cover.webp"  ← identisch
+cover_image: "/assets/images/news/2026-03-20-elim-3/cover.webp"  ← identisch
 ```
 
 ---
@@ -311,15 +322,16 @@ cover_image: "images/news/2026-03-20-elim-3/cover.webp"  ← identisch
 
 **Format:** `YYYY-MM-DD-beschreibender-slug.md`
 
-Der Slug im Dateinamen bestimmt auch den Ordnernamen für Medien — kurz und beschreibend halten.
+Der Slug im Dateinamen bestimmt auch den Ordnernamen für Medien — kurz und beschreibend halten, **keine Leerzeichen, keine Sonderzeichen**.
 
 ✅ Korrekt:
-- `2026-03-20-produktlaunch.md` → Medien in `assets/images/news/2026-03-20-produktlaunch/`
-- `2026-12-31-jahresrueckblick.md` → Medien in `assets/images/news/2026-12-31-jahresrueckblick/`
+- `2026-03-20-produktlaunch.md` → Medien in `docs/assets/images/news/2026-03-20-produktlaunch/`
+- `2026-12-31-jahresrueckblick.md` → Medien in `docs/assets/images/news/2026-12-31-jahresrueckblick/`
 
 ❌ Falsch:
 - `produktlaunch.md` (kein Datum)
 - `20-03-2026-news.md` (falsches Datumsformat)
+- `Kein Handlungsbedarf.png` (Leerzeichen im Dateinamen — immer mit Bindestrichen: `kein-handlungsbedarf.png`)
 
 ---
 
@@ -327,4 +339,4 @@ Der Slug im Dateinamen bestimmt auch den Ordnernamen für Medien — kurz und be
 
 Push auf `main` triggert automatisch den GitHub Actions Workflow `.github/workflows/deploy-pages.yml`, der Hugo baut und auf GitHub Pages deployed.
 
-Kein separater News-Build-Schritt nötig — Hugo verarbeitet alle Markdown-Dateien in `content/` und alle Medien in `assets/` automatisch.
+Kein separater News-Build-Schritt nötig — Hugo verarbeitet alle Markdown-Dateien in `content/` automatisch. Medien in `docs/assets/` werden direkt als statische Dateien ausgeliefert.

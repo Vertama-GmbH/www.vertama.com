@@ -1,0 +1,24 @@
+{{- $src     := .Destination -}}
+{{- $alt     := .Text -}}
+{{- $caption := .Title -}}
+{{- $img     := resources.Get $src -}}
+
+<figure class="my-8">
+  {{ if $img }}
+  {{- $webp    := $img.Process "resize 1200x webp q85" -}}
+  {{- $webp_md := $img.Process "resize 800x webp q85" -}}
+  {{- $webp_sm := $img.Process "resize 400x webp q85" -}}
+  {{- $fb      := $img.Process "resize 1200x jpg q85" -}}
+  <picture>
+    <source srcset="{{ $webp_sm.RelPermalink }} 400w, {{ $webp_md.RelPermalink }} 800w, {{ $webp.RelPermalink }} 1200w"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 720px"
+            type="image/webp">
+    <img src="{{ $fb.RelPermalink }}" alt="{{ $alt }}"
+         class="w-full rounded-2xl object-cover"
+         width="{{ $img.Width }}" height="{{ $img.Height }}" loading="lazy">
+  </picture>
+  {{ else }}
+  <img src="{{ $src }}" alt="{{ $alt }}" class="w-full rounded-2xl object-cover" loading="lazy">
+  {{ end }}
+  {{ with $caption }}<figcaption class="text-xs text-slate-400 text-center mt-2">{{ . }}</figcaption>{{ end }}
+</figure>
