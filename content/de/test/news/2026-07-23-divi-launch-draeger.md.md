@@ -1,7 +1,8 @@
 ---
 title: "Produktlaunch: DIVI mit Dräger ICM"
 date: 2026-07-23
-
+type: "test/news"
+layout: "single"
 ---
 
 

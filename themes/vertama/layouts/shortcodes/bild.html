@@ -1,0 +1,32 @@
+{{- $src     := .Get "src" -}}
+{{- $alt     := .Get "alt" | default "" -}}
+{{- $caption := .Get "caption" -}}
+{{- $size    := .Get "size" | default "large" -}}
+{{- $float   := .Get "float" | default "none" -}}
+
+{{- $widthClass := "w-full" -}}
+{{- $floatClass := "" -}}
+{{- $wrapClass  := "my-8 clear-both" -}}
+
+{{- if eq $size "small" -}}
+{{- $widthClass = "w-full max-w-[300px]" -}}
+{{- else if eq $size "medium" -}}
+{{- $widthClass = "w-full max-w-[500px]" -}}
+{{- end -}}
+
+{{- if eq $float "right" -}}
+{{- $floatClass = "float-right ml-6 mb-4 -mt-[1.6em]" -}}
+{{- else if eq $float "left" -}}
+{{- $floatClass = "float-left mr-6 mb-4 -mt-[1.6em]" -}}
+{{- end -}}
+
+<figure class="{{ $wrapClass }}">
+  <div class="{{ $widthClass }} {{ $floatClass }}">
+    <img src="{{ $src }}" alt="{{ $alt }}"
+         class="w-full rounded-2xl object-cover"
+         loading="lazy">
+    {{ with $caption }}
+    <figcaption class="text-xs text-slate-400 text-center mt-2">{{ . }}</figcaption>
+    {{ end }}
+  </div>
+</figure>

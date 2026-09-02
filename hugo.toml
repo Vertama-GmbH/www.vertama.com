@@ -17,6 +17,15 @@ unsafe = true
 description = 'VERTAMA GmbH - Digitale Lösungen für Gesundheitswesen'
 firmName = 'VERTAMA GmbH'
 
+[pagination]
+pagerSize = 10
+
+[params.news]
+featured = ["2026-07-13-test_news", "2026-07-14-test_news", "2026-07-15-test_news"]
+
+[params.news.pagination]
+pagerSize = 15
+
 [params.event_redirect]
 enabled     = false
 url         = "/DMEA26/"
