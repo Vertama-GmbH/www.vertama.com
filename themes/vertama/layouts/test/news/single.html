@@ -29,13 +29,23 @@
   {{ else if .Params.cover_image }}
   {{ $fit   := .Params.cover_fit   | default "cover" }}
   {{ $focus := .Params.cover_focus | default "center" }}
-  <div class="mb-10 rounded-2xl overflow-hidden {{ if eq $fit "contain" }}bg-slate-50{{ end }}">
-  <img src="{{ .Params.cover_image }}"
-       alt="{{ .Params.cover_alt }}"
-       class="w-full {{ if eq $fit "contain" }}object-contain max-h-[600px]{{ else }}object-cover max-h-[480px]{{ end }}"
-  style="{{ if eq $fit "cover" }}object-position: {{ $focus }};{{ end }}"
-  loading="eager" fetchpriority="high">
-</div>
+
+  {{ if eq $fit "contain" }}
+  <div class="mb-10 bg-slate-50 rounded-2xl p-2 flex items-center justify-center">
+    <img src="{{ .Params.cover_image }}"
+         alt="{{ .Params.cover_alt }}"
+         class="max-w-full max-h-[600px] rounded-xl"
+         loading="eager" fetchpriority="high">
+  </div>
+  {{ else }}
+  <div class="mb-10 rounded-2xl overflow-hidden">
+    <img src="{{ .Params.cover_image }}"
+         alt="{{ .Params.cover_alt }}"
+         class="w-full object-cover max-h-[480px]"
+         style="object-position: {{ $focus }};"
+         loading="eager" fetchpriority="high">
+  </div>
+  {{ end }}
   {{ else }}
   {{/* kein Cover — Abstand trotzdem einfügen damit Layout stimmig bleibt */}}
   <div class="mb-10"></div>
