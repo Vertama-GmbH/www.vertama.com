@@ -30,7 +30,11 @@ Der typische Ablauf für eine neue Meldung:
 |---------|-------------|------|
 | DiGG | Digitale Geburtsanzeige, Kreißsaal → Standesamt (M2M, OSCI, XPersonenstand) | `/de/produkte/digg/` |
 | ELIM | Elektronische Meldungen an RKI und Gesundheitsämter, §6/7 IfSG | `/de/produkte/elim/` |
-| DIGT | Digitale Todesbescheinigung | `/de/produkte/digt/` |
+| BELIM | Digitale Bettenbelegsmeldung | `/de/produkte/belim/` |
+| DuBA | Digitale Behörden-Anträge | `/de/produkte/duba/` |
+| DIVI | Meldung der Intensivkapazitäten | `/de/produkte/divi/` |
+| DiGT | Digitale Sterbefallanzeige | `/de/produkte/digt/` |
+| ELIM+ | Meldungen von Schnelltest nach  | `/de/produkte/elimplus/` |
 
 ---
 
@@ -69,32 +73,50 @@ Zweiter Absatz hier.
 |---|---|---|
 | `title` | ✅ | Überschrift der News |
 | `date` | ✅ | Datum im Format `YYYY-MM-DD` |
-| `category` | ✅ | Kategorie für den Filter. Erlaubte Werte: `Produktupdate`, `Unternehmensnews`, `Auszeichnung`, `Technologie`, `Event` |
+| `category` | — | Kategorie der News. Erlaubte Werte: `Produktupdate`, `Unternehmensnews`, `Auszeichnung`, `Technologie`, `Event`. Filter sind aktuell deaktiviert, das Feld sollte für spätere Nutzung bereits gepflegt werden. |
 | `description` | — | Kurztext für Übersichtsseite und SEO. Wenn leer, wird der Anfang des Artikels verwendet — besser immer setzen. |
 | `translationKey` | — | Gleicher Wert in DE + EN verknüpft die Sprachversionen. Format: `"news-YYYY-MM-DD-slug"` |
 | `cover_image` | — | Pfad zum Titelbild — erscheint auf der Übersichtsseite und oben im Artikel wenn kein `cover_video` gesetzt ist. |
 | `cover_alt` | — | Beschreibung des Titelbilds — Pflicht wenn `cover_image` gesetzt ist. |
+| `cover_fit` | — | Darstellung des Titelbilds. `cover` (Standard) füllt den Rahmen, kann leicht abschneiden. `contain` zeigt das ganze Bild mit abgerundeten Ecken. |
+| `cover_focus` | — | Fokuspunkt bei `cover_fit: cover`. Steuert welcher Bildbereich sichtbar bleibt. Standard: `center`. Weitere Werte: `top`, `bottom`, `left`, `right`, `50% 20%` (custom). |
 | `cover_video` | — | Pfad zu einem lokalen Video (MP4) — erscheint auf der Detailseite anstelle des Titelbilds. Auf der Übersichtsseite wird stattdessen `cover_image` angezeigt. |
 | `sources` | — | Liste der Quellen. Jeder Eintrag hat `url` und `label`. |
 
-**Wichtig:** Wenn `cover_video` gesetzt ist, sollte immer auch `cover_image` gesetzt sein — das Bild wird dann auf der Übersichtsseite als Vorschau verwendet.
+**Wichtig:** Wenn `cover_video` gesetzt ist, sollte immer auch `cover_image` gesetzt sein — das Bild wird auf der Übersichtsseite als Vorschau verwendet.
 
-**Beispiel mit Video:**
+**Beispiele:**
+
 ```yaml
+# Titelbild, füllt den Rahmen (Standard)
+cover_image: "/assets/images/news/2026-03-20-produktlaunch/cover.webp"
+cover_alt: "Vorschaubild"
+
+# Titelbild, zeigt das ganze Bild ohne Abschneiden
+cover_image: "/assets/images/news/2026-03-20-produktlaunch/cover.webp"
+cover_alt: "Vorschaubild"
+cover_fit: "contain"
+
+# Titelbild mit Fokus oben (z.B. Gesicht im oberen Bildbereich)
+cover_image: "/assets/images/news/2026-03-20-produktlaunch/cover.webp"
+cover_alt: "Vorschaubild"
+cover_focus: "top"
+
+# Mit Cover-Video — Bild erscheint auf Übersicht, Video auf Detailseite
 cover_image: "/assets/images/news/2026-03-20-produktlaunch/cover.webp"
 cover_alt: "Vorschaubild für die Übersichtsseite"
 cover_video: "/assets/videos/news/2026-03-20-produktlaunch/demo.mp4"
 ```
 
-**Beispiel mit einer Quelle:**
+**Quellen:**
+
 ```yaml
+# Eine Quelle
 sources:
   - url: "https://example.com/artikel"
     label: "example.com"
-```
 
-**Beispiel mit mehreren Quellen:**
-```yaml
+# Mehrere Quellen
 sources:
   - url: "https://example.com/artikel"
     label: "example.com"
@@ -104,11 +126,30 @@ sources:
 
 ---
 
+## Highlight-News steuern
+
+Die Highlight-News oben auf der Übersichtsseite werden zentral in der `hugo.toml` gesteuert — unabhängig vom Frontmatter der einzelnen Artikel:
+
+```toml
+[params.news]
+  featured = [
+    "2026-07-13-kiel-model",
+    "2026-03-20-elim-3"
+  ]
+```
+
+- Die Werte sind die **Dateinamen ohne `.md`** der jeweiligen News
+- Reihenfolge im Array = Reihenfolge im Carousel
+- Erste News erscheint groß, weitere als kleinere Cards daneben
+- Alle nicht-featured News erscheinen als kompakte Liste darunter, paginiert
+
+---
+
 ## Medien: Bilder und Videos
 
 ### Wo ablegen?
 
-Alle Medien kommen in `docs/assets/` — für jede News einen eigenen Unterordner anlegen, benannt nach dem Slug der MD-Datei:
+Alle Medien kommen in `docs/assets/` — für jede News einen eigenen Unterordner anlegen, benannt nach dem Slug der MD-Datei (ohne Leerzeichen, ohne Sonderzeichen):
 
 ```
 docs/assets/
@@ -132,6 +173,7 @@ docs/assets/
 - Titelbild: **1200 × 630 px**, max. **300 KB**
 - Bilder im Text: max. **1200 px** breit, max. **500 KB**
 - Konvertierung und Komprimierung kostenlos im Browser: [squoosh.app](https://squoosh.app)
+- **Keine Leerzeichen im Dateinamen** — immer Bindestriche verwenden: `kein-handlungsbedarf.webp` statt `Kein Handlungsbedarf.png`
 
 #### Titelbild (Front Matter)
 
@@ -151,15 +193,31 @@ Bilder werden mit normaler Markdown-Syntax eingebunden — einfach an die Stelle
 - Text in `[...]` → Alt-Text für Barrierefreiheit und SEO — immer ausfüllen
 - Text in `"..."` am Ende → optionale Bildunterschrift unter dem Bild
 
+#### Bilder mit Textumfluss (`bild`-Shortcode)
+
+Für Bilder die vom Text umflossen werden sollen, gibt es den `bild`-Shortcode:
+
+```
+{{< bild src="/assets/images/news/slug/screenshot.webp" alt="Beschreibung" size="medium" float="right" caption="Bildunterschrift" >}}
+```
+
+| Parameter | Werte | Standard |
+|---|---|---|
+| `src` | Bildpfad | — (Pflicht) |
+| `alt` | Alt-Text | leer |
+| `caption` | Bildunterschrift | — |
+| `size` | `small` (300px), `medium` (500px), `large` (volle Breite) | `large` |
+| `float` | `left`, `right`, `none` | `none` |
+
 **Beispiel:**
 
 ```markdown
-Mit ELIM 3.0 reduziert sich der Aufwand erheblich.
+{{< bild src="/assets/images/news/2026-03-20-elim-3/screenshot.webp" alt="Dashboard" size="medium" float="right" caption="Das neue Dashboard" >}}
 
-![Screenshot des Meldungsassistenten](/assets/images/news/2026-03-20-elim-3/assistent.webp "Der Assistent führt schrittweise durch den Prozess")
-
-Die KIS-Integration wurde für alle gängigen Systeme überarbeitet.
+Dieser Text fließt links neben dem Bild. Lorem ipsum dolor sit amet...
 ```
+
+**Hinweis:** Den Shortcode immer **vor** dem Text platzieren dem das Bild zugeordnet ist.
 
 ---
 
@@ -179,28 +237,16 @@ Lokale Videos und YouTube-Videos können per Shortcode frei im Text platziert we
 
 **Lokales Video:**
 ```
-{{</* video file="/assets/videos/news/2026-03-20-produktlaunch/erklaerung.mp4" caption="Optionale Beschriftung" */>}}
+{{< video file="/assets/videos/news/2026-03-20-produktlaunch/erklaerung.mp4" caption="Optionale Beschriftung" >}}
 ```
 
 **YouTube-Video:**
 ```
-{{</* youtube VIDEO-ID */>}}
+{{< youtube VIDEO-ID >}}
 ```
 
 Die Video-ID steht in der YouTube-URL:
 `https://www.youtube.com/watch?v=`**`dQw4w9WgXcQ`**
-
-**Beispiel:**
-
-```markdown
-Hier ist eine Demo des neuen Prozesses:
-
-{{</* youtube dQw4w9WgXcQ */>}}
-
-Und hier eine detaillierte Erklärung des technischen Ablaufs:
-
-{{</* video file="/assets/videos/news/2026-03-20-elim-3/technisch.mp4" caption="Technischer Ablauf ELIM 3.0" */>}}
-```
 
 #### Wann YouTube, wann lokal?
 
@@ -238,11 +284,13 @@ Mit ELIM 3.0 reduziert sich der Aufwand für Infektionsschutzmeldungen nach §6/
 
 Der neue Meldungsassistent prüft Eingaben in Echtzeit auf Plausibilität.
 
-![Screenshot des Meldungsassistenten](/assets/images/news/2026-03-20-elim-3/assistent.webp "Schritt-für-Schritt durch den Meldeprozess")
+{{< bild src="/assets/images/news/2026-03-20-elim-3/assistent.webp" alt="Screenshot Meldungsassistent" size="medium" float="right" caption="Schritt-für-Schritt durch den Meldeprozess" >}}
+
+Die KIS-Integration wurde für alle gängigen Systeme überarbeitet. Eine Batch-Funktion erlaubt die gleichzeitige Bearbeitung mehrerer Meldungen — relevant bei Ausbruchsgeschehen.
 
 Eine Erklärung auf YouTube:
 
-{{</* youtube dQw4w9WgXcQ */>}}
+{{< youtube dQw4w9WgXcQ >}}
 
 ELIM 3.0 ist ab sofort für alle Bestandskunden verfügbar.
 ```
@@ -331,7 +379,7 @@ Der Slug im Dateinamen bestimmt auch den Ordnernamen für Medien — kurz und be
 ❌ Falsch:
 - `produktlaunch.md` (kein Datum)
 - `20-03-2026-news.md` (falsches Datumsformat)
-- `Kein Handlungsbedarf.png` (Leerzeichen im Dateinamen — immer mit Bindestrichen: `kein-handlungsbedarf.png`)
+- `Kein Handlungsbedarf.png` (Leerzeichen im Dateinamen — immer Bindestriche: `kein-handlungsbedarf.png`)
 
 ---
 
