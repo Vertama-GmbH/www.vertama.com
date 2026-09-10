@@ -175,10 +175,10 @@ docs/assets/
 
 #### Format und Größe
 
-- Format: **WebP** bevorzugt — kleinere Dateigröße, bessere Ladezeit. JPG geht auch, PNG möglichst vermeiden.
+- **Format:** **WebP** wird empfohlen (kleinere Dateigröße, bessere Ladezeit), ist aber **kein Muss** — normale JPGs (oder PNGs) funktionieren ebenfalls.
+- ⚠️ **Aufgepasst:** wenn statt z.B. JPG oder PNG, WebP genutzt werden möchte, muss das Bild erst konvertiert werden (z. B. über [squoosh.app](https://squoosh.app)).
 - Titelbild: **1200 × 630 px**, max. **300 KB**
 - Bilder im Text: max. **1200 px** breit, max. **500 KB**
-- Konvertierung und Komprimierung kostenlos im Browser: [squoosh.app](https://squoosh.app)
 - **Keine Leerzeichen im Dateinamen** — immer Bindestriche verwenden: `kein-handlungsbedarf.webp` statt `Kein Handlungsbedarf.png`
 
 #### Titelbild (Front Matter)
