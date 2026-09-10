@@ -1,6 +1,8 @@
 ---
 title: "Produktlaunch: DIVI mit Dräger ICM"
 date: 2026-07-23
+cover_image: "/assets/images/news/2026-07-13-test_news/Kein Handlungsbedarf.png"
+cover_alt: "This is a test yo"
 type: "test/news"
 layout: "single"
 ---

@@ -162,28 +162,71 @@
 </section>
 
 {{/* ─────────────────────────────────────────────
-6. NEWS CARD
+NEWS CARD (Flexibel für Bild, Video oder beides)
 ────────────────────────────────────────────── */}}
-{{ range first 1 (where .Site.RegularPages "Section" "news") }}
+{{ range first 1 (where .Site.RegularPages "Section" (cond (eq .Site.Language.Lang "de") "news" "news")) }}
+{{ $hasImage := .Params.cover_image }}
+{{ $hasVideo := .Params.cover_video }}
+{{ $hasMedia := or $hasImage $hasVideo }}
+
 <section class="py-12 px-5 border-t border-slate-100">
   <div class="max-w-6xl mx-auto">
     <div class="relative bg-white border border-slate-100 rounded-3xl shadow-xl overflow-hidden group">
-      <div class="p-8 md:p-10">
-        <div class="flex items-center gap-4 mb-4">
-          <span class="px-3 py-1 bg-vertama/10 text-vertama text-[10px] font-black uppercase tracking-widest rounded-full">{{ .Params.category | default "Update" }}</span>
-          <time class="text-slate-400 text-sm font-medium">{{ .Date.Format "02.01.2006" }}</time>
+      <div class="flex flex-col {{ if $hasMedia }}lg:flex-row{{ end }} items-stretch">
+
+        {{/* Medien-Spalte (Links auf Desktop) */}}
+        {{ if $hasMedia }}
+        <div class="lg:w-2/5 overflow-hidden flex flex-col justify-center {{ if $hasVideo }}bg-slate-900{{ else if eq .Params.cover_fit "contain" }}bg-slate-50 p-4 sm:p-6{{ else }}bg-slate-100{{ end }}">
+        {{ if $hasVideo }}
+        {{/* Video hat Vorrang als interaktives Element */}}
+        <div class="relative aspect-video w-full h-full">
+          {{ if strings.HasPrefix $hasVideo "https" }}
+          <iframe src="{{ $hasVideo }}" class="w-full h-full" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+          {{ else }}
+          <video controls class="w-full h-full object-cover" preload="metadata">
+            <source src="{{ $hasVideo }}" type="video/mp4">
+          </video>
+          {{ end }}
         </div>
-        <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3 group-hover:text-vertama transition-colors">{{ .Title }}</h3>
-        <p class="text-slate-500 text-base mb-5">{{ .Description | default .Summary }}</p>
-        <div class="flex items-center gap-6">
-          <a href="{{ .Permalink }}" class="text-vertama font-bold flex items-center gap-2 hover:gap-3 transition-all">
-            {{ i18n "read_more" }}
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7" stroke-width="2" stroke-linecap="round"/></svg>
+        {{ else if $hasImage }}
+        {{/* Nur Bild vorhanden — mit responsiver Höhenbegrenzung für Tablet/Mobile */}}
+        <img src="{{ $hasImage }}" alt="{{ .Params.cover_alt }}"
+             class="w-full h-48 sm:h-64 md:h-72 lg:h-full {{ if eq .Params.cover_fit "contain" }}object-contain max-h-[280px] lg:max-h-none{{ else }}object-cover{{ end }} group-hover:scale-105 transition-transform duration-500">
+        {{ end }}
+      </div>
+      {{ end }}
+
+      {{/* Text-Spalte (Rechts auf Desktop) */}}
+      <div class="{{ if $hasMedia }}lg:w-3/5{{ else }}w-full{{ end }} p-8 md:p-10 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-4 mb-4">
+              <span class="px-3 py-1 bg-[#005e7b]/10 text-[#005e7b] text-[10px] font-black uppercase tracking-widest rounded-full">
+                {{ .Params.category | default "Update" }}
+              </span>
+            <time class="text-slate-400 text-sm font-medium">{{ .Date.Format "02.01.2006" }}</time>
+          </div>
+          <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3 group-hover:text-[#005e7b] transition-colors">
+            {{ .Title }}
+          </h3>
+          <p class="text-slate-500 text-base mb-5">
+            {{ .Description | default (.Summary | plainify | truncate 120) }}
+          </p>
+        </div>
+        <div class="flex items-center gap-6 pt-4 border-t border-slate-100">
+          <a href="{{ .Permalink }}" class="text-[#005e7b] font-bold flex items-center gap-2 hover:gap-3 transition-all">
+            {{ i18n "read_more" | default "Mehr lesen" }}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7" stroke-linecap="round"/></svg>
           </a>
-          <a href="/de/news/" class="text-slate-400 text-sm font-bold hover:text-slate-600">{{ i18n "all_news" }}</a>
+          <a href="{{ .Site.Language.Lang | printf "/%s/news/" }}" class="text-slate-400 text-sm font-bold hover:text-slate-600">
+          {{ i18n "all_news" | default "Alle Meldungen" }}
+          </a>
         </div>
       </div>
+
     </div>
+  </div>
   </div>
 </section>
 {{ end }}

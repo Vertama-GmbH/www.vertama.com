@@ -21,7 +21,7 @@ firmName = 'VERTAMA GmbH'
 pagerSize = 10
 
 [params.news]
-featured = ["2026-07-13-test_news", "2026-07-14-test_news", "2026-07-15-test_news"]
+featured = []
 
 [params.news.pagination]
 pagerSize = 15

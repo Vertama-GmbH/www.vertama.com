@@ -128,14 +128,20 @@ sources:
 
 ## Highlight-News steuern
 
-Die Highlight-News oben auf der Übersichtsseite werden zentral in der `hugo.toml` gesteuert — unabhängig vom Frontmatter der einzelnen Artikel:
+Die Highlight-News oben auf der Übersichtsseite können auf zwei Arten gesteuert werden:
+
+### Option A: Automatisch (Standard)
+Wenn in der `hugo.toml` nichts konfiguriert ist, greift das System vollautomatisch und zeigt die **neuesten 3 Beiträge** als Highlights im Carousel an.
+
+### Option B: Manuell über die `hugo.toml`
+Um bestimmte, ältere oder besonders wichtig angeqinnte Artikel fest oben zu fixieren, können sie zentral in der `hugo.toml` eingetragen werden:
 
 ```toml
 [params.news]
-  featured = [
+featured = [
     "2026-07-13-kiel-model",
     "2026-03-20-elim-3"
-  ]
+]
 ```
 
 - Die Werte sind die **Dateinamen ohne `.md`** der jeweiligen News
