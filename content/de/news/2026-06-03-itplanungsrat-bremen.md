@@ -2,6 +2,8 @@
 title: "Kieler Modell in aller Munde"
 date: 2026-06-03
 translationKey: "news-2026-06-03-itplanungsrat-bremen"
+cover_image: "/assets/images/news/2026-06-03-KielinallerMunde/KielerModelinallerMunde.jpg"
+cover_alt: "Grafik zum Kieler Model"
 sources:
   - url: "https://www.linkedin.com/posts/spt-digitale-anwendungen-des-it-plr-abt-4-senator-f%C3%BCr-finanzen-bremen_digitaleverwaltung-geburtsanzeige-kielermodell-activity-7465671162128285696-Al3H?utm_source=share&utm_medium=member_desktop&rcm=ACoAACdredsB50iw5RrPzrGhqIAy_xAenOE9eMw"
     label: "LinkedIn.de"
