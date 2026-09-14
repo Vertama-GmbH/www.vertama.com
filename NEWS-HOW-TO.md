@@ -34,7 +34,7 @@ Der typische Ablauf für eine neue Meldung:
 | DuBA | Digitale Behörden-Anträge | `/de/produkte/duba/` |
 | DIVI | Meldung der Intensivkapazitäten | `/de/produkte/divi/` |
 | DiGT | Digitale Sterbefallanzeige | `/de/produkte/digt/` |
-| ELIM+ | Meldungen von Schnelltest nach  | `/de/produkte/elimplus/` |
+| ELIM+ | Meldungen von Schnelltest | `/de/produkte/elimplus/` |
 
 ---
 
@@ -77,29 +77,35 @@ Zweiter Absatz hier.
 | `description` | — | Kurztext für Übersichtsseite und SEO. Wenn leer, wird der Anfang des Artikels verwendet — besser immer setzen. |
 | `translationKey` | — | Gleicher Wert in DE + EN verknüpft die Sprachversionen. Format: `"news-YYYY-MM-DD-slug"` |
 | `cover_image` | — | Pfad zum Titelbild — erscheint auf der Übersichtsseite und oben im Artikel wenn kein `cover_video` gesetzt ist. |
-| `cover_alt` | — | Beschreibung des Titelbilds — Pflicht wenn `cover_image` gesetzt ist. |
-| `cover_fit` | — | Darstellung des Titelbilds. `cover` (Standard) füllt den Rahmen, kann leicht abschneiden. `contain` zeigt das ganze Bild mit abgerundeten Ecken. |
+| `cover_alt` | ✅ *(wenn `cover_image` gesetzt)* | Beschreibung des Titelbilds — Pflicht sobald `cover_image` gesetzt ist. |
+| `cover_fit` | — | Darstellung des Titelbilds. `scale-down` (**Standard**) skaliert das Bild nur herunter, wenn es größer als der Rahmen ist (schneidet nichts ab). `cover` füllt den Rahmen komplett aus (kann Ränder abschneiden). `contain` skaliert das Bild immer komplett in den Bereich ein. |
 | `cover_focus` | — | Fokuspunkt bei `cover_fit: cover`. Steuert welcher Bildbereich sichtbar bleibt. Standard: `center`. Weitere Werte: `top`, `bottom`, `left`, `right`, `50% 20%` (custom). |
-| `cover_video` | — | Pfad zu einem lokalen Video (MP4) — erscheint auf der Detailseite anstelle des Titelbilds. Auf der Übersichtsseite wird stattdessen `cover_image` angezeigt. |
+| `cover_video` | — | Video anstelle des Titelbilds auf der Detailseite. Entweder ein Pfad zu einem lokalen MP4 (z.B. `/assets/videos/news/slug/demo.mp4`) **oder** eine bereits einbettungsfähige `https`-URL (z.B. `https://www.youtube.com/embed/VIDEO-ID` — **keine** normale `youtube.com/watch?v=...`-URL, die wird von YouTube per X-Frame-Options blockiert). Auf der Übersichtsseite wird weiterhin `cover_image` angezeigt. |
 | `sources` | — | Liste der Quellen. Jeder Eintrag hat `url` und `label`. |
 
-**Wichtig:** Wenn `cover_video` gesetzt ist, sollte immer auch `cover_image` gesetzt sein — das Bild wird auf der Übersichtsseite als Vorschau verwendet.
+**Wichtig:** Wenn `cover_video` gesetzt ist, sollte immer auch `cover_image` gesetzt sein — das Bild wird auf der Übersichtsseite als Vorschaubild verwendet.
 
 **Beispiele:**
 
 ```yaml
-# Titelbild, füllt den Rahmen (Standard)
+# Titelbild (Standard: scale-down — skaliert nur herunter, falls zu groß)
 cover_image: "/assets/images/news/2026-03-20-produktlaunch/cover.webp"
 cover_alt: "Vorschaubild"
 
-# Titelbild, zeigt das ganze Bild ohne Abschneiden
+# Titelbild, skaliert ganz ein, ohne etwas abzuschneiden
 cover_image: "/assets/images/news/2026-03-20-produktlaunch/cover.webp"
 cover_alt: "Vorschaubild"
 cover_fit: "contain"
 
-# Titelbild mit Fokus oben (z.B. Gesicht im oberen Bildbereich)
+# Titelbild, füllt den Rahmen komplett aus (kann ggf. an den Rändern beschneiden)
 cover_image: "/assets/images/news/2026-03-20-produktlaunch/cover.webp"
 cover_alt: "Vorschaubild"
+cover_fit: "cover"
+
+# Titelbild mit Fokus oben (nur relevant bei cover_fit: cover)
+cover_image: "/assets/images/news/2026-03-20-produktlaunch/cover.webp"
+cover_alt: "Vorschaubild"
+cover_fit: "cover"
 cover_focus: "top"
 
 # Mit Cover-Video — Bild erscheint auf Übersicht, Video auf Detailseite
@@ -131,23 +137,23 @@ sources:
 Die Highlight-News oben auf der Übersichtsseite können auf zwei Arten gesteuert werden:
 
 ### Option A: Automatisch (Standard)
-Wenn in der `hugo.toml` nichts konfiguriert ist, greift das System vollautomatisch und zeigt die **neuesten 3 Beiträge** als Highlights im Carousel an.
+Wenn in der `hugo.toml` nichts konfiguriert ist (oder `featured = []` hinterlegt ist, oder ein ungültiger Slug angegeben wurde), greift das System vollautomatisch und zeigt die **neuesten 3 Beiträge** als Highlights im Carousel an.
 
 ### Option B: Manuell über die `hugo.toml`
-Um bestimmte, ältere oder besonders wichtig angeqinnte Artikel fest oben zu fixieren, können sie zentral in der `hugo.toml` eingetragen werden:
+Um bestimmte, ältere oder besonders wichtige Artikel fest oben zu fixieren, können sie zentral in der `hugo.toml` eingetragen werden:
 
 ```toml
 [params.news]
-featured = [
+  featured = [
     "2026-07-13-kiel-model",
     "2026-03-20-elim-3"
-]
+  ]
 ```
 
 - Die Werte sind die **Dateinamen ohne `.md`** der jeweiligen News
 - Reihenfolge im Array = Reihenfolge im Carousel
 - Erste News erscheint groß, weitere als kleinere Cards daneben
-- Alle nicht-featured News erscheinen als kompakte Liste darunter, paginiert
+- Alle News erscheinen unabhängig davon immer auch ganz normal in der chronologischen Liste darunter
 
 ---
 
@@ -175,9 +181,9 @@ docs/assets/
 
 #### Format und Größe
 
-- **Format:** **WebP** wird empfohlen (kleinere Dateigröße, bessere Ladezeit), ist aber **kein Muss** — normale JPGs (oder PNGs) funktionieren ebenfalls.
-- ⚠️ **Aufgepasst:** wenn statt z.B. JPG oder PNG, WebP genutzt werden möchte, muss das Bild erst konvertiert werden (z. B. über [squoosh.app](https://squoosh.app)).
-- Titelbild: **1200 × 630 px**, max. **300 KB**
+- **Format:** **WebP** wird empfohlen (kleinere Dateigröße, bessere Ladezeit), ist aber **kein Muss** — normale JPGs oder PNGs funktionieren ebenfalls.
+- **Hinweis zu WebP:** Bitte konvertiere das Bild bei Bedarf über ein Tool wie [squoosh.app](https://squoosh.app). Eine einfache Änderung der Dateiendung (z. B. von `.jpg` auf `.webp`) reicht technisch nicht aus.
+- Titelbild: idealerweise ca. **1200 × 630 px**, max. **300 KB**
 - Bilder im Text: max. **1200 px** breit, max. **500 KB**
 - **Keine Leerzeichen im Dateinamen** — immer Bindestriche verwenden: `kein-handlungsbedarf.webp` statt `Kein Handlungsbedarf.png`
 
@@ -234,8 +240,14 @@ Dieser Text fließt links neben dem Bild. Lorem ipsum dolor sit amet...
 Erscheint auf der Detailseite anstelle des Titelbilds. Auf der Übersichtsseite wird stattdessen `cover_image` gezeigt.
 
 ```yaml
+# Lokales MP4
 cover_video: "/assets/videos/news/2026-03-20-produktlaunch/demo.mp4"
+
+# YouTube — muss eine einbettungsfähige embed-URL sein, keine watch-URL
+cover_video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
 ```
+
+**Wichtig:** Bei YouTube immer die `/embed/VIDEO-ID`-Form verwenden. Eine normale `youtube.com/watch?v=...`-URL wird von YouTube geblockt und zeigt nur eine leere Fläche.
 
 #### Videos im Artikeltext
 
@@ -243,7 +255,7 @@ Lokale Videos und YouTube-Videos können per Shortcode frei im Text platziert we
 
 **Lokales Video:**
 ```
-{{< video file="/assets/videos/news/2026-03-20-produktlaunch/erklaerung.mp4" caption="Optionale Beschriftung" >}}
+{{< video src="/assets/videos/news/2026-03-20-produktlaunch/erklaerung.mp4" caption="Optionale Beschriftung" >}}
 ```
 
 **YouTube-Video:**
