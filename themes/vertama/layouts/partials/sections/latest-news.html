@@ -18,7 +18,7 @@
 
                 <div class="flex items-center gap-4 mb-4">
                     {{ with .Params.category }}
-                    <span class="px-3 py-1 rounded-full bg-vertama/10 text-vertama text-xs font-semibold">
+                    <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
             {{ . }}
           </span>
                     {{ end }}
@@ -37,7 +37,7 @@
 
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="{{ .Permalink }}"
-                       class="inline-flex items-center gap-2 text-sm font-semibold text-vertama hover:gap-3 transition-all focus:outline-none focus:ring-2 focus:ring-vertama focus:ring-offset-2 rounded">
+                       class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded">
                         {{ i18n "read_more" }}
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7 7 7-7 7"/>
@@ -46,7 +46,7 @@
 
                     {{ $newsUrl := printf "/%s/news/" $.Site.Language.Lang }}
                     <a href="{{ $newsUrl }}"
-                       class="inline-flex items-center gap-2 px-6 py-2.5 border-2 border-slate-300 hover:bg-slate-50 text-slate-600 rounded text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-vertama focus:ring-offset-2 transition-all">
+                       class="inline-flex items-center gap-2 px-6 py-2.5 border-2 border-slate-300 hover:bg-slate-50 text-slate-600 rounded text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all">
                         {{ i18n "all_news" }}
                     </a>
                 </div>

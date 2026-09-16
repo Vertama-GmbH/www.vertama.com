@@ -7,7 +7,7 @@
 
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
       <div>
-        <p class="text-xs font-bold tracking-[0.2em] uppercase text-vertama-light mb-1" aria-hidden="true">
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-primary-light mb-1" aria-hidden="true">
           {{ i18n "digital_magazine" }}
         </p>
         <h2 id="editorial-heading" class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -19,7 +19,7 @@
       <a href="{{ $e.pdf_url | relURL }}"
          download
          aria-label="{{ i18n "pdf_download" }}"
-      class="inline-flex items-center gap-2 px-6 py-3 bg-vertama text-white rounded-lg font-bold hover:bg-vertama-light transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-vertama focus:ring-offset-2">
+      class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-bold hover:bg-primary-light transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
@@ -34,7 +34,7 @@
            role="region"
            aria-label="{{ $e.title | default (i18n "digital_magazine") }}"
       tabindex="0"
-      style="scrollbar-width: thin; scrollbar-color: #005e7b #f1f5f9;">
+      style="scrollbar-width: thin; scrollbar-color: var(--color-primary) #f1f5f9;">
 
       {{ range $i, $src := $e.pages }}
       {{ $pageNum := add $i 1 }}
@@ -84,7 +84,7 @@
     .animate-bounce-x { animation: bounce-x 1.5s infinite; }
     #editorial-viewport::-webkit-scrollbar        { height: 6px; }
     #editorial-viewport::-webkit-scrollbar-track  { background: #f1f5f9; }
-    #editorial-viewport::-webkit-scrollbar-thumb  { background: #005e7b; border-radius: 10px; }
+    #editorial-viewport::-webkit-scrollbar-thumb  { background: var(--color-primary); border-radius: 10px; }
 </style>
 
 <script>

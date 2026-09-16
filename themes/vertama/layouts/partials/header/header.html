@@ -28,7 +28,7 @@
         {{- $active := hasPrefix $.RelPermalink .URL -}}
         <a href="{{ .URL | relURL }}"
            {{ if $active }}aria-current="page"{{ end }}
-           class="text-base font-semibold transition-colors duration-200 px-2 py-1 border-b-2 {{ if $active }}text-vertama border-vertama{{ else }}text-slate-600 border-transparent hover:text-vertama hover:border-vertama{{ end }}">
+           class="text-base font-semibold transition-colors duration-200 px-2 py-1 border-b-2 {{ if $active }}text-primary border-primary{{ else }}text-slate-600 border-transparent hover:text-primary hover:border-primary{{ end }}">
             {{ .Name }}
         </a>
         {{ end }}
@@ -37,7 +37,7 @@
         </nav>
 
         <button id="nav-toggle"
-                class="lg:hidden relative z-[90] p-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-vertama focus:ring-offset-2 rounded"
+                class="lg:hidden relative z-[90] p-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
                 aria-label="{{ i18n "menu_open" }}"
         aria-expanded="false"
         aria-controls="mobile-menu"
@@ -67,7 +67,7 @@ aria-hidden="true">
 {{- $active := hasPrefix $.RelPermalink .URL -}}
 <a href="{{ .URL | relURL }}"
    {{ if $active }}aria-current="page"{{ end }}
-   class="text-4xl font-bold border-b border-slate-100 pb-4 {{ if $active }}text-vertama{{ else }}text-slate-900{{ end }}">
+   class="text-4xl font-bold border-b border-slate-100 pb-4 {{ if $active }}text-primary{{ else }}text-slate-900{{ end }}">
     {{ .Name }}
 </a>
 {{ end }}

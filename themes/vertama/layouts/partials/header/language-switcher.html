@@ -7,13 +7,13 @@
   {{ range $index, $page := $translations }}
   {{ if eq .Language.Lang $currentLang }}
   {{/* Aktive Sprache */}}
-  <span class="text-[#005e7b] uppercase" aria-current="page">
+  <span class="text-primary uppercase" aria-current="page">
                 {{ .Language.Lang }}
             </span>
   {{ else }}
   {{/* Link zur anderen Sprache */}}
   <a href="{{ .Permalink }}"
-     class="text-slate-400 uppercase hover:text-[#005e7b] transition-colors"
+     class="text-slate-400 uppercase hover:text-primary transition-colors"
      hreflang="{{ .Language.Lang }}">
     {{ .Language.Lang }}
   </a>

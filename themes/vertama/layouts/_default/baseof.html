@@ -21,11 +21,9 @@
             theme: {
                 extend: {
                     colors: {
-                        'vertama':            '#005e7b',
-                        'vertama-medium':     '#007599',
-                        'vertama-light':      '#008ab5',
-                        'vertama-gray':       '#575656',
-                        'vertama-gray-light': '#EEEEEE',
+                        'primary':       '{{ .Site.Params.brand.colors.primary      | default "#005e7b" }}',
+                        'primary-light': '{{ .Site.Params.brand.colors.primaryLight | default "#008ab5" }}',
+                        'primary-dark':  '{{ .Site.Params.brand.colors.primaryDark  | default "#002d3a" }}',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -50,6 +48,16 @@
         }
     </script>
 
+    <!-- Brand-Farben als CSS-Custom-Properties — für Stellen außerhalb von Tailwind-Klassen
+         (style-Attribute, SVG stroke/fill, JS). Einzige Quelle: params.brand.colors in hugo.toml. -->
+    <style>
+        :root {
+            --color-primary:       {{ .Site.Params.brand.colors.primary      | default "#005e7b" }};
+            --color-primary-light: {{ .Site.Params.brand.colors.primaryLight | default "#008ab5" }};
+            --color-primary-dark:  {{ .Site.Params.brand.colors.primaryDark  | default "#002d3a" }};
+        }
+    </style>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ "css/theme.css" | relURL }}">
 
@@ -61,7 +69,7 @@
 
 <!-- Skip Link (Accessibility) -->
 <a href="#main-content"
-   class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-vertama focus:text-white focus:rounded focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-vertama">
+   class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary">
     {{ i18n "skip_to_main" }}
 </a>
 

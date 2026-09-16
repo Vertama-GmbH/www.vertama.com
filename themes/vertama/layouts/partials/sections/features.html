@@ -6,13 +6,13 @@
         <p class="max-w-2xl mx-auto text-lg px-4 text-slate-600">
             {{ .Params.features.description | default "Wir bieten maßgeschneiderte Software-Architekturen für die Herausforderungen der modernen Datenverarbeitung." }}
         </p>
-        <div class="w-20 h-1 mx-auto mt-6 rounded-full bg-[#008ab5]/20" aria-hidden="true"></div>
+        <div class="w-20 h-1 mx-auto mt-6 rounded-full bg-primary-light/20" aria-hidden="true"></div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8" role="list">
         {{ range .Params.features.items }}
         <div class="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden p-6" role="listitem">
-            <div class="w-14 h-14 bg-indigo-50 text-[#008ab5] rounded-2xl flex items-center justify-center mb-6" aria-hidden="true">
+            <div class="w-14 h-14 bg-indigo-50 text-primary-light rounded-2xl flex items-center justify-center mb-6" aria-hidden="true">
                 {{ if eq .icon "shield" }}
                 <svg class="lucide lucide-shield-check" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>

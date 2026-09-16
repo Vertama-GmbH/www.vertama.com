@@ -1,8 +1,8 @@
 {{ define "main" }}
 <div class="max-w-[1280px] mx-auto px-6 pt-10 pb-20">
 
-  <div class="flex items-baseline justify-between border-b-2 border-[#005e7b] pb-3 mb-10">
-    <h1 class="text-3xl font-bold text-[#005e7b]">
+  <div class="flex items-baseline justify-between border-b-2 border-primary pb-3 mb-10">
+    <h1 class="text-3xl font-bold text-primary">
       {{ .Title }}{{ if gt .Paginator.PageNumber 1 }} — Seite {{ .Paginator.PageNumber }}{{ end }}
     </h1>
   </div>
@@ -29,7 +29,7 @@
   {{ if $rest }}
   {{ if and .Site.Params.news.featured (eq $paginator.PageNumber 1) }}
   <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4 mt-10">
-    {{ i18n "all_news_label" | default "Alle Meldungen" }}
+    {{ i18n "all_news_label" }}
   </p>
   {{ end }}
 
@@ -39,7 +39,7 @@
       <a href="{{ .RelPermalink }}"
          class="block py-5 hover:bg-slate-50 -mx-3 px-3 rounded-lg transition-colors">
         <div class="grid grid-cols-[1fr_auto] gap-x-8 gap-y-1">
-          <h2 class="text-base font-bold text-slate-900 group-hover:text-[#005e7b] transition-colors leading-snug col-start-1">
+          <h2 class="text-base font-bold text-slate-900 group-hover:text-primary transition-colors leading-snug col-start-1">
             {{ .Title }}
           </h2>
           <time class="text-slate-400 text-xs whitespace-nowrap self-start col-start-2 text-right pt-0.5">
@@ -50,8 +50,8 @@
           </p>
           {{ with .Params.sources }}
           <div class="col-start-1 mt-1 flex flex-wrap gap-x-3 gap-y-1 items-center">
-        <span class="text-xs font-bold uppercase tracking-widest text-[#005e7b]">
-          {{ if gt (len .) 1 }}{{ i18n "sources_label" | default "Quellen" }}{{ else }}{{ i18n "source_label" | default "Quelle" }}{{ end }}:
+        <span class="text-xs font-bold uppercase tracking-widest text-primary">
+          {{ if gt (len .) 1 }}{{ i18n "sources_label" }}{{ else }}{{ i18n "source_label" }}{{ end }}:
         </span>
             {{ range . }}
             <span class="text-xs text-slate-400">{{ .label }}</span>
@@ -69,7 +69,7 @@
   <nav class="flex items-center justify-center gap-1 mt-12" aria-label="Seitennavigation">
     {{ if $paginator.HasPrev }}
     <a href="{{ $paginator.Prev.URL }}"
-       class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:border-[#005e7b] hover:text-[#005e7b] transition-colors">
+       class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:border-primary hover:text-primary transition-colors">
       <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
     </a>
     {{ else }}
@@ -80,12 +80,12 @@
 
     {{ range $paginator.Pagers }}
     {{ if eq . $paginator }}
-    <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-[#005e7b] text-white text-sm font-bold">
+    <span class="w-9 h-9 flex items-center justify-center rounded-lg bg-primary text-white text-sm font-bold">
       {{ .PageNumber }}
     </span>
     {{ else }}
     <a href="{{ .URL }}"
-       class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:border-[#005e7b] hover:text-[#005e7b] transition-colors text-sm font-medium">
+       class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:border-primary hover:text-primary transition-colors text-sm font-medium">
       {{ .PageNumber }}
     </a>
     {{ end }}
@@ -93,7 +93,7 @@
 
     {{ if $paginator.HasNext }}
     <a href="{{ $paginator.Next.URL }}"
-       class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:border-[#005e7b] hover:text-[#005e7b] transition-colors">
+       class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:border-primary hover:text-primary transition-colors">
       <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
     </a>
     {{ else }}
@@ -106,7 +106,7 @@
   {{ end }}
 
   {{ else }}
-  <p class="text-slate-400">{{ i18n "news_empty" | default "Bald gibt es hier Neuigkeiten." }}</p>
+  <p class="text-slate-400">{{ i18n "news_empty" }}</p>
   {{ end }}
 
 </div>

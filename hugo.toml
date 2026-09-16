@@ -50,6 +50,11 @@ logo        = "/images/Vertama_Name_Only.svg"
 logoFull    = "/images/Logo_Vertama_CMYK.svg"
 themeColor  = "#005e7b"
 
+[params.brand.colors]
+primary      = "#005e7b"
+primaryLight = "#008ab5"
+primaryDark  = "#002d3a"
+
 [params.contact]
 urlDe = "/de/kontakt/"
 urlEn = "/en/contact/"

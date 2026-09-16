@@ -5,13 +5,13 @@
 ────────────────────────────────────────────── */}}
 {{ range first 1 (where .Site.RegularPages "Section" "news") }}
 <a href="{{ .Permalink }}"
-   class="flex items-center justify-center gap-3 px-4 py-2 bg-slate-50 border-b border-slate-200 text-slate-600 text-sm hover:bg-vertama/5 transition-all group"
+   class="flex items-center justify-center gap-3 px-4 py-2 bg-slate-50 border-b border-slate-200 text-slate-600 text-sm hover:bg-primary/5 transition-all group"
    aria-label="{{ i18n "latest_news_label" }}: {{ .Title }}">
 <span class="relative flex h-2 w-2 shrink-0" aria-hidden="true">
-    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-vertama opacity-75"></span>
-    <span class="relative inline-flex rounded-full h-2 w-2 bg-vertama"></span>
+    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
   </span>
-<span class="font-black uppercase tracking-widest text-[10px] text-vertama shrink-0">{{ i18n "latest_news_label"}}</span>
+<span class="font-black uppercase tracking-widest text-[10px] text-primary shrink-0">{{ i18n "latest_news_label"}}</span>
 <span class="font-medium truncate max-w-[220px] md:max-w-none">{{ .Title }}</span>
 <svg class="w-4 h-4 opacity-40 group-hover:translate-x-1 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
   <path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -30,8 +30,8 @@
          class="w-full h-full object-cover  "
          loading="eager">
     <div class="absolute inset-0
-                bg-gradient-to-t from-vertama via-vertama/90 to-transparent
-                md:bg-gradient-to-t md:from-vertama md:via-vertama/90 md:to-transparent"></div>
+                bg-gradient-to-t from-primary via-primary/90 to-transparent
+                md:bg-gradient-to-t md:from-primary md:via-primary/90 md:to-transparent"></div>
   </div>
 
   <div class="relative z-10 w-full max-w-6xl mx-auto px-5 pb-16 pt-32">
@@ -84,7 +84,7 @@
 {{/* ─────────────────────────────────────────────
 4. ANIMATION
 ────────────────────────────────────────────── */}}
-<section class="py-16 px-5 overflow-hidden border-y border-slate-100 bg-vertama-light/5" aria-labelledby="animation-heading">
+<section class="py-16 px-5 overflow-hidden border-y border-slate-100 bg-primary-light/5" aria-labelledby="animation-heading">
   <div class="max-w-6xl mx-auto">
     <div class="mb-10">
       <h2 id="animation-heading" class="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
@@ -95,14 +95,14 @@
     <div class="relative max-w-4xl">
       <div class="relative h-64 overflow-hidden" id="anim-stage">
 
-        <button id="anim-toggle" class="absolute top-3 right-3 z-30 w-12 h-12 flex items-center justify-center text-slate-400 hover:text-vertama transition-colors">
+        <button id="anim-toggle" class="absolute top-3 right-3 z-30 w-12 h-12 flex items-center justify-center text-slate-400 hover:text-primary transition-colors">
           <svg id="anim-icon-pause" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 9v6m4-6v6" stroke-width="2" stroke-linecap="round"/></svg>
           <svg id="anim-icon-play" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z" fill="currentColor"/></svg>
         </button>
 
         {{/* Start-Icon */}}
         <div class="absolute left-8 top-1/2 -translate-y-1/2 flex flex-col items-center z-10">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#005e7b" stroke-width="1.5">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5">
             <path d="M12 7v4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/>
             <path d="M14 9h-4"/>
             <path d="M18 11h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2"/>
@@ -139,7 +139,7 @@
       }}
       {{ range $steps }}
       <div class="m-6 relative group">
-        <div class="text-8xl font-black text-slate-200 absolute -top-10 -left-4 group-hover:text-vertama/10 transition-colors">{{ .n }}</div>
+        <div class="text-8xl font-black text-slate-200 absolute -top-10 -left-4 group-hover:text-primary/10 transition-colors">{{ .n }}</div>
         <div class="relative">
           <h3 class="text-xl font-bold text-slate-900 mb-3">{{ .t }}</h3>
           <p class="text-slate-600 leading-relaxed">{{ .d }}</p>
@@ -202,12 +202,12 @@ NEWS CARD (Flexibel für Bild, Video oder beides)
       <div class="{{ if $hasMedia }}lg:w-3/5{{ else }}w-full{{ end }} p-8 md:p-10 flex flex-col justify-between">
         <div>
           <div class="flex items-center gap-4 mb-4">
-              <span class="px-3 py-1 bg-[#005e7b]/10 text-[#005e7b] text-[10px] font-black uppercase tracking-widest rounded-full">
+              <span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest rounded-full">
                 {{ .Params.category | default "Update" }}
               </span>
             <time class="text-slate-400 text-sm font-medium">{{ .Date.Format "02.01.2006" }}</time>
           </div>
-          <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3 group-hover:text-[#005e7b] transition-colors">
+          <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
             {{ .Title }}
           </h3>
           <p class="text-slate-500 text-base mb-5">
@@ -215,12 +215,12 @@ NEWS CARD (Flexibel für Bild, Video oder beides)
           </p>
         </div>
         <div class="flex items-center gap-6 pt-4 border-t border-slate-100">
-          <a href="{{ .Permalink }}" class="text-[#005e7b] font-bold flex items-center gap-2 hover:gap-3 transition-all">
-            {{ i18n "read_more" | default "Mehr lesen" }}
+          <a href="{{ .Permalink }}" class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+            {{ i18n "read_more" }}
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7" stroke-linecap="round"/></svg>
           </a>
           <a href="{{ .Site.Language.Lang | printf "/%s/news/" }}" class="text-slate-400 text-sm font-bold hover:text-slate-600">
-          {{ i18n "all_news" | default "Alle Meldungen" }}
+          {{ i18n "all_news" }}
           </a>
         </div>
       </div>
@@ -234,7 +234,7 @@ NEWS CARD (Flexibel für Bild, Video oder beides)
 <style>
     .anim-doc { position: absolute; pointer-events: none; z-index: 20; opacity: 0; display: flex; flex-direction: column; align-items: center; }
     .anim-doc-inner { width: 40px; height: 48px; background: white; border-radius: 4px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,94,123,0.2); position: relative; }
-    .anim-doc-inner::before { content: ''; position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; background: #f1f5f9; border-left: 1px solid #005e7b; border-bottom: 1px solid #005e7b; border-radius: 0 0 0 4px; }
+    .anim-doc-inner::before { content: ''; position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; background: #f1f5f9; border-left: 1px solid var(--color-primary); border-bottom: 1px solid var(--color-primary); border-radius: 0 0 0 4px; }
     .authority-tack { animation: authority-tack 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards; }
     @keyframes authority-tack { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
 </style>
@@ -312,7 +312,7 @@ NEWS CARD (Flexibel für Bild, Video oder beides)
       const doc = document.createElement('div');
       doc.className = 'anim-doc';
       doc.dataset.type = label;
-      doc.innerHTML = `<div class="anim-doc-inner"><span style="font-size:8px;font-weight:900;color:#005e7b">${label}</span></div>`;
+      doc.innerHTML = `<div class="anim-doc-inner"><span style="font-size:8px;font-weight:900;color:var(--color-primary)">${label}</span></div>`;
       canvas.appendChild(doc);
 
       const w = canvas.offsetWidth, h = canvas.offsetHeight;

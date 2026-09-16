@@ -2,16 +2,16 @@
   <a href="{{ .Permalink }}"
      aria-label="{{ .Params.card_content.title | default .Title }}"
      class="group flex flex-col h-full w-full border-2 border-slate-200 rounded-3xl p-6 md:p-8
-            hover:border-vertama hover:shadow-2xl hover:shadow-vertama/5 transition-all duration-500
-            focus:outline-none focus:ring-4 focus:ring-vertama focus:ring-offset-2 relative z-10 overflow-hidden">
+            hover:border-primary hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500
+            focus:outline-none focus:ring-4 focus:ring-primary focus:ring-offset-2 relative z-10 overflow-hidden">
 
     <div class="mb-4 shrink-0">
-      <h3 class="text-2xl font-bold text-slate-900 group-hover:text-vertama transition-colors line-clamp-2">
+      <h3 class="text-2xl font-bold text-slate-900 group-hover:text-primary transition-colors line-clamp-2">
         {{ .Params.card_content.title | default .Title }}
       </h3>
 
       {{ with (.Params.card_content.tagline | default .Params.tagline) }}
-      <p class="text-[10px] font-bold text-vertama uppercase tracking-widest mt-2">
+      <p class="text-[10px] font-bold text-primary uppercase tracking-widest mt-2">
         {{ . }}
       </p>
       {{ end }}
@@ -22,7 +22,7 @@
         {{ if .Params.card_content.benefits }}
         {{ range first 4 .Params.card_content.benefits }}
         <li class="flex items-start gap-3 text-sm leading-relaxed">
-          <svg class="w-4 h-4 text-vertama flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg class="w-4 h-4 text-primary flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
           </svg>
           <span>{{ . }}</span>
@@ -34,7 +34,7 @@
       </ul>
     </div>
 
-    <div class="flex items-center gap-2 mt-auto pt-4 group-hover:text-vertama transition-all group-hover:translate-x-1"
+    <div class="flex items-center gap-2 mt-auto pt-4 group-hover:text-primary transition-all group-hover:translate-x-1"
          aria-hidden="true">
       <span class="text-sm font-bold">{{ i18n "details_ansehen" }}</span>
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
