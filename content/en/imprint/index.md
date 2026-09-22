@@ -12,7 +12,7 @@ Managing Director: Andre Sturm
 
 ## Contact
 
-E-Mail: [info@vertama.de](mailto:info@vertama.de)
+E-Mail: [info@vertama.com](mailto:info@vertama.com)
 
 ## Register Entry
 

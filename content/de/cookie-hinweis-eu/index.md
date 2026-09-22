@@ -57,5 +57,4 @@ Am Treptower Park 75<br>
 12435 Berlin<br>
 Deutschland<br>
 Website: [https://vertama.com](https://vertama.com)<br>
-E-Mail: [info@vertama.de](mailto:info@vertama.de)<br>
-Telefon: +49 30 609 85858577
+E-Mail: [info@vertama.com](mailto:info@vertama.com)
