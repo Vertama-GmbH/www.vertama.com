@@ -16,7 +16,7 @@ unified. Nothing is applied on top; everything arises from within.
 - Typography is not decoration. It carries meaning, hierarchy, and character. Choices of
   scale, weight, tracking, and leading are never arbitrary.
 - Spacing creates rhythm and communicates relationship. Every gap is a decision.
-- Color has semantic weight. The `vertama` teal is not a brand accent — it is the primary
+- Color has semantic weight. The `primary` teal is not a brand accent — it is the primary
   signal of trust and action. Use it where it earns its place.
 - Restraint over flourish. This site serves healthcare professionals. Clarity and quiet
   confidence communicate trust. Visual noise does the opposite.
@@ -39,10 +39,11 @@ Adequate is not the standard.
 
 ## 2. Color System
 
-<| Token | Hex | Usage |
+| Token | Hex | Usage |
 |-------|-----|-------|
-| `vertama` | `#005e7b` | Primary brand, CTAs, active nav, headings, links |
-| `vertama-light` | `#008ab5` | Hover states, gradient end, badges |
+| `primary` | `#005e7b` | Primary brand, CTAs, active nav, headings, links |
+| `primary-light` | `#008ab5` | Hover states, gradient end, badges |
+| `primary-dark` | `#002d3a` | Dark decorative backgrounds (e.g. event hero) |
 | `slate-900` | `#0f172a` | High-contrast headings |
 | `slate-600` | `#64748b` | Body text |
 | `slate-500` | `#64748b` | Secondary text, nav links |
@@ -51,9 +52,16 @@ Adequate is not the standard.
 | `slate-100` | `#f1f5f9` | Card backgrounds |
 | `slate-50` | `#f8fafc` | Footer background, subtle sections |
 
-**Rule:** The `vertama` color must appear actively on every page above the fold — not only on hover. Use it for the primary CTA, key headings, or section anchors.
+**Rule:** The `primary` color must appear actively on every page above the fold — not only on hover. Use it for the primary CTA, key headings, or section anchors.
 
-**Pending alignment:** The old Avada site used `#008ab5` (vertama-light) for large decorative headings (H1, section titles), while this styleguide assigns `#005e7b` (vertama) as primary. The correct usage needs to be confirmed against the master brand identity document before being considered settled. Until then, `#005e7b` is used consistently throughout the new theme.
+**Pending alignment:** The old Avada site used `#008ab5` (`primary-light`) for large decorative headings (H1, section titles), while this styleguide assigns `#005e7b` (`primary`) as primary. The correct usage needs to be confirmed against the master brand identity document before being considered settled. Until then, `#005e7b` is used consistently throughout the new theme.
+
+**Token source (as of 16.09.2026):** These three values live in exactly one place —
+`[params.brand.colors]` in `hugo.toml`. The Tailwind config and the `--color-primary*` CSS
+custom properties in `baseof.html` both read from there, so changing a brand color means
+editing `hugo.toml` only. See also [STYLEGUIDE-COMPARISON.md](STYLEGUIDE-COMPARISON.md) —
+these same three hex values are also used, under different token names, in the elim (V.ap)
+product.
 
 ---
 
@@ -143,14 +151,14 @@ Prefer multiples of 4 (Tailwind's scale). Key values in use:
 - ...
 
 ### Social Icons
-- Bare SVG, 16×16, `text-slate-400 hover:text-[#005e7b]`
+- Bare SVG, 16×16, `text-slate-700 hover:text-primary`
 - No border/background circles — intentional minimal style
 
 ### Prose / Article Content
 - Wrap in `<article class="prose ...">` for Tailwind typography
 - `max-w-65ch` constraint on `.prose`
-- Links: `#005e7b`, underline, hover `#008ab5`
-- Blockquotes: transparent background, `3px solid #0481a6` left border, no italic
+- Links: `primary` (`#005e7b`), underline, hover `primary-light` (`#008ab5`)
+- Blockquotes: `prose-blockquote:border-primary` (Tailwind Typography plugin override)
 
 ---
 
