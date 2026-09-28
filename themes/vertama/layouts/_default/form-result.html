@@ -28,7 +28,7 @@
 
         <!-- CTAs -->
         {{ if $success }}
-        <a href="{{ if $de }}/de/healthcareservices/{{ else }}/en/healthcare-services/{{ end }}"
+        <a href="{{ if $de }}/de/{{ else }}/en/{{ end }}"
            class="inline-block px-8 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-light transition-colors text-sm tracking-wide">
             {{ if $de }}Zurück zur Startseite{{ else }}Back to Homepage{{ end }}
         </a>
