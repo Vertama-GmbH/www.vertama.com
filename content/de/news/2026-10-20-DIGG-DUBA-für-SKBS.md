@@ -1,3 +1,4 @@
+---
 title: "Produktivstart: DIGG und DUBA beim SKBS"
 date: 2026-10-20
 category: "Pressemitteilung"
@@ -6,6 +7,7 @@ translationKey: "2026-10-20-DIGG-DUBA-für-SKBS-eng"
 cover_image: "/assets/images/logos/brand/vertama-logo.png"
 cover_alt: "Vertama Logo"
 
+---
 
 Pressemitteilung
 
