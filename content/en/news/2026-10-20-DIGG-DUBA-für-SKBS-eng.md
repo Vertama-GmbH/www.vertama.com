@@ -1,11 +1,13 @@
+---
 title: "Go-live: DIGG and DUBA at SKBS"
 date: 2026-10-20
 category: "Pressemitteilung"
-description: "**Städtisches Klinikum Braunschweig und Vertama digitalisieren Behördenkommunikation: Geburtsanzeigen und Gerichtsanträge direkt aus dem KIS**"
+description: "Städtisches Klinikum Braunschweig und Vertama digitalisieren Behördenkommunikation: Geburtsanzeigen und Gerichtsanträge direkt aus dem KIS"
 translationKey: "2026-10-20-DIGG-DUBA-für-SKBS-eng"
 cover_image: "/assets/images/logos/brand/vertama-logo.png"
 cover_alt: "Vertama Logo"
 
+---
 
 Press Release
 
