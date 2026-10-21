@@ -59,9 +59,7 @@ Adequate is not the standard.
 **Token source (as of 16.09.2026):** These three values live in exactly one place —
 `[params.brand.colors]` in `hugo.toml`. The Tailwind config and the `--color-primary*` CSS
 custom properties in `baseof.html` both read from there, so changing a brand color means
-editing `hugo.toml` only. See also [STYLEGUIDE-COMPARISON.md](STYLEGUIDE-COMPARISON.md) —
-these same three hex values are also used, under different token names, in the elim (V.ap)
-product.
+editing `hugo.toml` only.
 
 ---
 

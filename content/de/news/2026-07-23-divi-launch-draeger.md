@@ -3,8 +3,8 @@ title: "Produktlaunch: DIVI mit Dräger ICM"
 date: 2026-07-23
 category: "Pressemitteilung"
 description: "Produktlaunch: DIVI mit Dräger ICM"
-translationKey: "2026-07-23-divi-launch-draeger"
-cover_image: "/assets/images/logos/partners/Dräger_Logo_Quadrat.png"
+translationKey: "news-2026-07-23-divi-launch-draeger"
+cover_image: "/assets/images/logos/partners/draeger.png"
 cover_alt: "Dräger Logo"
 
 ---
@@ -35,17 +35,17 @@ Die Daten für die weitere Nutzung liefert der Integrated Care Manager (ICM) von
 
 **Dräger. Technik für das Leben®**
 
-Dräger ist ein international führendes Unternehmen der Medizin- und Sicherheitstechnik. Unsere Produkte schützen, unterstützen und retten Leben. 1889 gegründet, erzielte Dräger 2025 weltweit einen Umsatz von rund 3,5 Mrd. Euro. Das Lübecker Unternehmen ist in mehr als 190 Ländern vertreten und beschäftigt weltweit mehr als 16.000 Mitarbeiterinnen und Mitarbeiter. Weitere Informationen unter [www.draeger.com](https://deu01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.draeger.com%2F&data=05%7C02%7Carmin.treptau%40vertama.com%7C76b7ce5bfeb04465115808ded6aaf68b%7C69a916b48f8c4f26958357a586d8138b%7C1%7C0%7C639184227561029052%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=XyyNgJQL%2FEcEkTDkpQmJu1bNGMH9XQwQmd4cIONkp6A%3D&reserved=0)
+Dräger ist ein international führendes Unternehmen der Medizin- und Sicherheitstechnik. Unsere Produkte schützen, unterstützen und retten Leben. 1889 gegründet, erzielte Dräger 2025 weltweit einen Umsatz von rund 3,5 Mrd. Euro. Das Lübecker Unternehmen ist in mehr als 190 Ländern vertreten und beschäftigt weltweit mehr als 16.000 Mitarbeiterinnen und Mitarbeiter. Weitere Informationen unter [www.draeger.com](https://www.draeger.com)
 
 Über Vertama:
 
 **Meldeprozesse as a Service**
 
 Vertama ist Spezialist für die Beschleunigung von Arbeitsabläufen durch die Entwicklung und Implementierung von barrierefreien, digitalen Workflows. Mit Produkten wie ELIM (Elektronische Infektionsmeldung) und BELIM (Bettenbelegmeldung) digitalisiert und automatisiert Vertama das medizinische Meldewesen durch echte End-to-End Kommunikation.  
-Weitere Informationen unter [www.vertama.com](file:///C:/Users/armin/Desktop/www.vertama.com)
+Weitere Informationen unter [www.vertama.com](https://www.vertama.com)
 
-Pressekontakt:
-Vertama GmbH
-Andre Sturm (Geschäftsführer)
-Am Treptower Park 75
+Pressekontakt:  
+Vertama GmbH  
+Andre Sturm (Geschäftsführer)  
+Am Treptower Park 75  
 12435 Berlin

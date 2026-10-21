@@ -168,6 +168,9 @@ NEWS CARD (Flexibel für Bild, Video oder beides)
 {{ $hasImage := .Params.cover_image }}
 {{ $hasVideo := .Params.cover_video }}
 {{ $hasMedia := or $hasImage $hasVideo }}
+{{/* Bildverhalten wie in news-featured.html: Default scale-down, nie croppen */}}
+{{ $fit := .Params.cover_fit | default "scale-down" }}
+{{ $needsPadding := or (eq $fit "contain") (eq $fit "scale-down") }}
 
 <section class="py-12 px-5 border-t border-slate-100">
   <div class="max-w-6xl mx-auto">
@@ -176,7 +179,7 @@ NEWS CARD (Flexibel für Bild, Video oder beides)
 
         {{/* Medien-Spalte (Links auf Desktop) */}}
         {{ if $hasMedia }}
-        <div class="lg:w-2/5 overflow-hidden flex flex-col justify-center {{ if $hasVideo }}bg-slate-900{{ else if eq .Params.cover_fit "contain" }}bg-slate-50 p-4 sm:p-6{{ else }}bg-slate-100{{ end }}">
+        <div class="lg:w-2/5 overflow-hidden flex flex-col justify-center {{ if $hasVideo }}bg-slate-900{{ else if $needsPadding }}items-center bg-slate-50 p-4 sm:p-6{{ else }}bg-slate-100{{ end }}">
         {{ if $hasVideo }}
         {{/* Video hat Vorrang als interaktives Element */}}
         <div class="relative aspect-video w-full h-full">
@@ -193,7 +196,11 @@ NEWS CARD (Flexibel für Bild, Video oder beides)
         {{ else if $hasImage }}
         {{/* Nur Bild vorhanden — mit responsiver Höhenbegrenzung für Tablet/Mobile */}}
         <img src="{{ $hasImage }}" alt="{{ .Params.cover_alt }}"
-             class="w-full h-48 sm:h-64 md:h-72 lg:h-full {{ if eq .Params.cover_fit "contain" }}object-contain max-h-[280px] lg:max-h-none{{ else }}object-cover{{ end }} group-hover:scale-105 transition-transform duration-500">
+             class="w-full h-48 sm:h-64 md:h-72 lg:h-full
+                    {{ if eq $fit "contain" }}object-contain max-h-[280px] lg:max-h-none
+                    {{ else if eq $fit "scale-down" }}object-scale-down max-h-[280px] lg:max-h-none
+                    {{ else }}object-cover{{ end }}
+                    group-hover:scale-105 transition-transform duration-500">
         {{ end }}
       </div>
       {{ end }}
