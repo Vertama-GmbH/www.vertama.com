@@ -13,7 +13,7 @@ cover_alt: "Vertama Logo"
 
 **Keine Betroffenheit durch aktuelle PHP-Sicherheitslücke**
 
-Berlin, den 22.10.2026 - Derzeit sorgt die als extrem kritisch eingestufte PHP-Sicherheitslücke weltweit für gavierende Probleme. 
+Berlin, den 22.10.2026 - Derzeit sorgt die als extrem kritisch eingestufte PHP-Sicherheitslücke weltweit für gravierende Probleme. 
 Zu dieser Thematik möchten wir wie folgt informieren:
 
 Vertama setzt keinerlei PHP-Systeme ein, weder in den Produktlinien noch in der Betriebsinfrastruktur. 
