@@ -10,7 +10,7 @@ cover_alt: "Logo Immanuel Klinik Rüdersdorf, Universitätsklinikum der MHB"
 
 ---
 
-## **Pressemitteilung**
+**Pressemitteilung**
 
 **Rechtssicher. Digital. Ohne Umwege: Immanuel Klinik Rüdersdorf, Universitätsklinikum der MHB, übermittelt Unterbringungsanträge direkt aus dem KIS ans Gericht**
 
