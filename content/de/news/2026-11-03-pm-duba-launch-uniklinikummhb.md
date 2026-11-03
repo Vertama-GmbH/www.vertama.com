@@ -5,7 +5,7 @@ date: 2026-11-03
 category: "News"
 description: "Immanuel Klinik Rüdersdorf übermittelt Unterbringungsanträge direkt aus dem KIS ans Gericht"
 
-cover_image: "/assets/images/news/2026-11-03-Logo_ImmanuelKlinikRüdersdorf/2026-11-03-Logo_ImmanuelKlinikRüdersdorf.png
+cover_image: "/assets/images/news/2026-11-03-Logo_ImmanuelKlinikRüdersdorf/2026-11-03-Logo_ImmanuelKlinikRüdersdorf.png"
 cover_alt: "Logo Immanuel Klinik Rüdersdorf, Universitätsklinikum der MHB"
 
 ---
