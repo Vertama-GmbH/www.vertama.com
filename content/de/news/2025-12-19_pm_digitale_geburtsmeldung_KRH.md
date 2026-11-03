@@ -10,7 +10,7 @@ cover_image: "/assets/images/news/25-12-19_pm_digitale_geburtsmeldung_KRH/25-12-
 cover_alt: "Von links nach rechts: Cordula Drautz, Dezernentin für Finanzen und Digitalisierung der Region Hannover, Ortrud Wendt, Bürgermeisterin von Burgwedel, Serena Spitzner, Teamleitung Standesamt, Andrea Stroker, Leitung des Ordnungs- und Sozialamts, Jantje Blume, Hebamme am KRH Klinikum Großburgwedel, Daniel Ewert-Schönstein, Senior-IT-Projektleiter des KRH Klinikum Region Hannover, Dr. Tim Kaufeld, Geschäftsführender Kaufmännischer und Ärztlicher Direktor des KRH Klinikum Großburgwedel, Dr. Christian Herrmann, Geschäftsbereichsleitung Digitale Medizin am KRH. Foto: KRH Klinikum Region Hannover."
 sources:
   - url: "https://www.krh.de/das-krh/aktuelle-meldungen/burgwedel-setzt-neuen-standard"
-    label: "/www.krh.de"
+    label: "www.krh.de"
 ---
 
 19.12.2025 / Pressemitteilung
