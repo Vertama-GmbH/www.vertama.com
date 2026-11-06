@@ -13,8 +13,8 @@ Public repo — the site is built directly from this repository.
 - **Live site:** https://www.vertama.com
 - **Default language:** German (`/de/`)
 - **Active languages:** DE, EN (French removed March 2026, archived in `content-archive-fr.md`)
-- **Hugo version:** check `.github/workflows/deploy-pages.yml` for pinned version
-- **publishDir:** `docs/` (not `public/`) — static files in `docs/` are served directly
+- **Hugo version:** pinned in `.hugo-version`. CI and `scripts/build.sh` read it.
+- **staticDir:** `docs/` — Hugo copies these static files into the build. The build goes to `public/` (gitignored).
 
 ---
 
@@ -23,7 +23,7 @@ Public repo — the site is built directly from this repository.
 ```bash
 make dev          # Hugo dev server at http://localhost:1313 with live reload
 make dev-static   # Python static server for docs/ at http://localhost:8000
-make build        # Hugo build to docs/
+make build        # Hugo build to public/ with the pinned Hugo version
 ```
 
 Push to `main` → GitHub Actions → Hugo build → GitHub Pages deploy (automatic).
@@ -41,7 +41,7 @@ themes/vertama/
     _default/       Page templates (baseof.html, single.html, list.html, partners.html, ...)
     partials/       Reusable partials (header, footer, nav, ...)
   static/           Theme-level static assets
-docs/               Hugo publishDir — also contains static assets
+docs/               Hugo staticDir — static assets, copied into the build
   assets/
     images/
       logos/        Partner, customer, network, investor logos (semantic structure)

@@ -10,8 +10,7 @@ dev-static:
 	python3 -m http.server 8000 --directory docs
 
 build:
-	@echo "Building Hugo site..."
-	hugo
+	scripts/build.sh
 
 clean:
 	@echo "Cleaning build artifacts..."

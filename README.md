@@ -14,7 +14,7 @@ content/         Hugo content (Markdown)
 themes/vertama/  Custom Hugo theme
   layouts/       Page templates
   static/        Theme-level static assets
-docs/            Hugo publishDir — static files served directly
+docs/            Hugo staticDir — static files, copied into the build
   assets/        Images and other shared assets
 .github/
   workflows/     deploy-pages.yml — Hugo build + GitHub Pages deploy
