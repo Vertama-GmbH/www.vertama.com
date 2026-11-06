@@ -13,6 +13,6 @@ sources:
 
 Die Session zeigte, wie Geburts- und Sterbefallmeldungen zwischen Krankenhausinformationssystemen und Standesämtern vollständig maschinell abgewickelt werden können – ohne Medienbruch, ohne manuelle Doppelerfassung. Die AKDB stellt mit ihrer Middleware OK.Komm die sichere Übertragungsinfrastruktur bereit; Vertama liefert die Prozesslogik, die Kliniken und Behörden verbindet.
 
-Darüber hinaus wurde DuBA vorgestellt: die digitale Übermittlung von Unterbringungsanweisungen und gerichtlichen Entscheidungen an Zivilgerichte über das besondere elektronische Behördenpostfach (beBPo) – ein Bereich, in dem die Zusammenarbeit zwischen AKDB und Vertama besonders zum Tragen kommt.
+Darüber hinaus wurde DUBA vorgestellt: die digitale Übermittlung von Unterbringungsanweisungen und gerichtlichen Entscheidungen an Zivilgerichte über das besondere elektronische Behördenpostfach (beBPo) – ein Bereich, in dem die Zusammenarbeit zwischen AKDB und Vertama besonders zum Tragen kommt.
 
 Die Smart Country Convention ist eine der zentralen deutschen Fachmessen für die Digitalisierung der öffentlichen Verwaltung.

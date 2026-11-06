@@ -42,7 +42,7 @@ downloads:
   - name: "ELIM Infoflyer 2026"
     url: "/assets/downloads/DMEA26/ELIM_Website_Flyer.pdf"
     size: "5.5 MB"
-  - name: "DuBA Infoflyer 2026"
+  - name: "DUBA Infoflyer 2026"
     url: "/assets/downloads/DMEA26/DUBA_Website_Flyer.pdf"
     size: "3.9 MB"
   - name: "DIVI Infoflyer 2026"

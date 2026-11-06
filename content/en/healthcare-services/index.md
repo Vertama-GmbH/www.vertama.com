@@ -47,7 +47,7 @@ params:
       subtitle: "Digital Death Notification"
       icon: "/assets/images/icons/products/product-digt.png"
       description: "The digital death notification reduces the reporting burden for preliminary determination of death, death certificates, autopsy reports, and corpse passports. Data is transferred daily to the relevant registry office via a parameter call in the HIS. Each submission is acknowledged by a confirmation of receipt sent to the reporting institution."
-    - name: "DuBA"
+    - name: "DUBA"
       subtitle: "Digital Communication with Authorities"
       icon: "/assets/images/icons/products/product-duba.png"
       description: "Communication between hospitals and courts or authorities, e.g. for applications for commitment orders, is subject to strict security requirements. Via beBPo (besonderes elektronisches Behördenpostfach – the German secure authority mailbox), our solution connects the addressing and encryption procedure directly with the HIS infrastructure."

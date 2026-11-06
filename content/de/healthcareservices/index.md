@@ -47,7 +47,7 @@ params:
       subtitle: "Digitale Todesanzeige"
       icon: "/assets/images/icons/products/product-digt.png"
       description: "Die digitale Todesanzeige entlastet die Meldeprozesse für vorläufige Feststellung des Todes, Todesbescheinigung, Obduktionsschein und Leichenpass. Mittels Parameteraufruf im KIS werden die Daten täglich an das jeweilige Standesamt übertragen. Der Meldeprozess wird jeweils durch eine Empfangsbestätigung an die meldende Einrichtung quittiert."
-    - name: "DuBA"
+    - name: "DUBA"
       subtitle: "Digitale Behörden-Anträge"
       icon: "/assets/images/icons/products/product-duba.png"
       description: "Die Kommunikation zwischen Krankenhäusern und Gerichten oder Behörden, z. B. zur Beantragung von Unterbringungsanweisungen, unterliegt strengen Sicherheitsanforderungen. Über beBPo (besonderes elektronisches Behördenpostfach) verknüpft unsere Lösung das Addressier- und Verschlüsselungsverfahren direkt mit der KIS-Infrastruktur."

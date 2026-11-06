@@ -1,5 +1,5 @@
 ---
-title: "DuBA"
+title: "DUBA"
 description: "Digitale Unterbringungsanträge"
 tagline: "Rechtskonforme Anträge. Digital. Direkt."
 layout: "single"
@@ -22,9 +22,9 @@ media:
 
 hero:
   badge: "Behördenanträge"
-  headline: "DuBA – Digitale Behörden-Anträge"
+  headline: "DUBA – Digitale Behörden-Anträge"
   subheadline: "Rechtskonforme Anträge. Digital. Direkt."
-  description: "DuBA ist die innovative Lösung für psychiatrische Einrichtungen, die rechtliche Antragsverfahren nicht länger als zeitraubende Bürokratie erleben wollen. Der cloudbasierte Dienst digitalisiert und automatisiert den gesamten Prozess der Unterbringungsanträge – schnell, sicher und nahtlos aus dem KIS heraus."
+  description: "DUBA ist die innovative Lösung für psychiatrische Einrichtungen, die rechtliche Antragsverfahren nicht länger als zeitraubende Bürokratie erleben wollen. Der cloudbasierte Dienst digitalisiert und automatisiert den gesamten Prozess der Unterbringungsanträge – schnell, sicher und nahtlos aus dem KIS heraus."
 
 cta_primary:
   text: "Demo anfragen"
@@ -35,16 +35,16 @@ cta_secondary:
   url: "#features"
 
 features:
-  title: "Warum DuBA?"
+  title: "Warum DUBA?"
   description: "Weniger Aufwand. Mehr Effizienz. Für komfortable Kommunikation zu Gerichten."
   items:
     - icon: "zap"
       title: "Nahtlos integriert"
-      description: "DuBA ist vollständig in das KIS eingebettet und fügt sich optimal in bestehende Abläufe ein."
+      description: "DUBA ist vollständig in das KIS eingebettet und fügt sich optimal in bestehende Abläufe ein."
     
     - icon: "shield"
       title: "Rechtskonform und zertifiziert"
-      description: "DuBA erfüllt alle verfahrensrechtlichen Vorgaben gemäß FamFG, BGB und PsychKG sowie den aktuellen Standards für den elektronischen Rechtsverkehr."
+      description: "DUBA erfüllt alle verfahrensrechtlichen Vorgaben gemäß FamFG, BGB und PsychKG sowie den aktuellen Standards für den elektronischen Rechtsverkehr."
     
     - icon: "clock"
       title: "Schneller zur Entscheidung"
@@ -55,7 +55,7 @@ features:
       description: "Keine doppelte Dateneingabe. Kein händisches Versenden. Kein Risiko durch falsche Formate oder veraltete Formulare."
 
 how_it_works:
-  title: "So funktioniert DuBA im Klinikalltag"
+  title: "So funktioniert DUBA im Klinikalltag"
   description: "Vier einfache Schritte vom Antrag bis zum Gerichtsbeschluss"
   steps:
     - title: "Formular aufrufen"
@@ -72,7 +72,7 @@ how_it_works:
 
 efficiency:
   title: "Effizienz für Ärzt:innen – Rechtssicherheit für Kliniken"
-  description: "Mit DuBA reichen Ärzt:innen Anträge an Betreuungsgerichte direkt aus der Patientenakte ein – mit wenigen Klicks, rechtssicher und voll digital."
+  description: "Mit DUBA reichen Ärzt:innen Anträge an Betreuungsgerichte direkt aus der Patientenakte ein – mit wenigen Klicks, rechtssicher und voll digital."
   benefits:
     - "Das intelligente Formularsystem übernimmt alle vorhandenen Patientendaten aus dem Krankenhausinformationssystem (KIS)"
     - "Strukturiert sie im rechtskonformen XJustiz-Format"
@@ -81,7 +81,7 @@ efficiency:
 
 compliance:
   title: "Datensicherheit? Bei uns Standard."
-  description: "DuBA nutzt modernste Verschlüsselungs- und Sicherheitsmechanismen. Alle Patientendaten bleiben geschützt."
+  description: "DUBA nutzt modernste Verschlüsselungs- und Sicherheitsmechanismen. Alle Patientendaten bleiben geschützt."
   items:
     - icon: "🔒"
       title: "Ende-zu-Ende Verschlüsselung"
@@ -101,14 +101,14 @@ compliance:
 
 governikus:
   title: "Digitale Kommunikation mit Gerichten – ganz einfach"
-  description: "Dank der integrierten Anbindung an die Governikus Vibiblia REST-Schnittstelle versendet DuBA Anträge direkt über das beBPo – ohne umständliche Plugins, ohne Outlook, aber mit vollständiger Kontrolle und Nachverfolgbarkeit."
+  description: "Dank der integrierten Anbindung an die Governikus Vibiblia REST-Schnittstelle versendet DUBA Anträge direkt über das beBPo – ohne umständliche Plugins, ohne Outlook, aber mit vollständiger Kontrolle und Nachverfolgbarkeit."
 
 benefits:
-  title: "DuBA – Weniger Aufwand. Mehr Rechtssicherheit."
+  title: "DUBA – Weniger Aufwand. Mehr Rechtssicherheit."
   description: "Für ein Gesundheitssystem, das Zeit für Menschen schafft."
 
 card_content:
-  title: "DuBA"
+  title: "DUBA"
   tagline: "Digitale Unterbringungsanträge"
   benefits:
     - "Gerichte erwarten digitale Kommunikation gemäß OZG (Online Zugangsgesetz)"
@@ -116,7 +116,7 @@ card_content:
     - "Datentransport über EGVP-Infrastruktur und das besondere Behördenpostfach (BeBPo)"
 
 cta_section:
-  title: "DuBA – Weniger Aufwand. Mehr Effizienz."
+  title: "DUBA – Weniger Aufwand. Mehr Effizienz."
   description: "Für komfortable Kommunikation zu Gerichten."
   button_text: "Jetzt Demo anfragen"
   url: "/de/kontakt/?product=duba"
@@ -124,13 +124,13 @@ cta_section:
   secondary_url: "mailto:andre.sturm@vertama.com"
 ---
 
-## DuBA – Behördenanträge digital und rechtssicher
+## DUBA – Behördenanträge digital und rechtssicher
 
-Die Kommunikation zwischen psychiatrischen Einrichtungen und Betreuungsgerichten unterliegt strengen rechtlichen und sicherheitstechnischen Anforderungen. DuBA digitalisiert diesen Prozess vollständig.
+Die Kommunikation zwischen psychiatrischen Einrichtungen und Betreuungsgerichten unterliegt strengen rechtlichen und sicherheitstechnischen Anforderungen. DUBA digitalisiert diesen Prozess vollständig.
 
 ### Schluss mit Papierkram und Faxgeräten
 
-Keine handschriftlichen Formulare mehr. Keine Faxe. Kein Papierkram. DuBA übernimmt:
+Keine handschriftlichen Formulare mehr. Keine Faxe. Kein Papierkram. DUBA übernimmt:
 - Automatische Datenübernahme aus dem KIS
 - Strukturierung im XJustiz-Format
 - Verschlüsselte Übermittlung über beBPo
@@ -138,7 +138,7 @@ Keine handschriftlichen Formulare mehr. Keine Faxe. Kein Papierkram. DuBA übern
 
 ### Direkt aus der Patientenakte
 
-DuBA integriert sich nahtlos in Ihren psychiatrischen Workflow:
+DUBA integriert sich nahtlos in Ihren psychiatrischen Workflow:
 - Button "Antrag stellen" in Patientenakte
 - Formular ist bereits vorausgefüllt
 - Nur medizinische Begründung ergänzen
@@ -146,7 +146,7 @@ DuBA integriert sich nahtlos in Ihren psychiatrischen Workflow:
 
 ### Rechtskonform und zertifiziert
 
-DuBA erfüllt alle verfahrensrechtlichen Anforderungen:
+DUBA erfüllt alle verfahrensrechtlichen Anforderungen:
 - **FamFG** (Familiengerichtsverfahren)
 - **BGB** (Bürgerliches Gesetzbuch)
 - **PsychKG** (Psychisch-Kranken-Gesetz)
@@ -162,7 +162,7 @@ Die Übermittlung erfolgt über das besondere elektronische Behördenpostfach (b
 
 ### Governikus Vibiblia REST-Schnittstelle
 
-DuBA nutzt die moderne Governikus-Infrastruktur:
+DUBA nutzt die moderne Governikus-Infrastruktur:
 - Keine umständlichen Plugins
 - Kein Outlook erforderlich
 - Direkte REST-API Integration
@@ -178,7 +178,7 @@ DuBA nutzt die moderne Governikus-Infrastruktur:
 - Manuelle Ablage in Akte
 - Zeit: 30-60 Minuten pro Antrag
 
-**Mit DuBA:**
+**Mit DUBA:**
 - Daten bereits vorausgefüllt
 - Nur medizinische Begründung ergänzen
 - Digitale Übermittlung mit Bestätigung
@@ -191,7 +191,7 @@ DuBA nutzt die moderne Governikus-Infrastruktur:
 
 Wenn das Gericht entschieden hat:
 1. Beschluss wird verschlüsselt zurückgesendet
-2. DuBA empfängt und entschlüsselt automatisch
+2. DUBA empfängt und entschlüsselt automatisch
 3. Dokument wird in Patientenakte abgelegt
 4. Benachrichtigung an zuständigen Arzt
 
@@ -199,7 +199,7 @@ Keine manuelle Bearbeitung mehr nötig.
 
 ### Unterstützte Antragsarten
 
-DuBA unterstützt alle gängigen Unterbringungsanträge:
+DUBA unterstützt alle gängigen Unterbringungsanträge:
 - Unterbringung nach BGB
 - Unterbringung nach PsychKG
 - Verlängerungsanträge
@@ -208,7 +208,7 @@ DuBA unterstützt alle gängigen Unterbringungsanträge:
 
 ### Technische Integration
 
-DuBA integriert sich in Ihre Psychiatrie-IT:
+DUBA integriert sich in Ihre Psychiatrie-IT:
 - SAP IS-H / i.s.h.med (Psychiatrie-Module)
 - Oracle Health (Cerner)
 - ORBIS (Psychiatrie)
@@ -216,7 +216,7 @@ DuBA integriert sich in Ihre Psychiatrie-IT:
 
 ### Datenschutz & Sicherheit
 
-Unterbringungsanträge enthalten höchst sensible Daten. DuBA schützt diese durch:
+Unterbringungsanträge enthalten höchst sensible Daten. DUBA schützt diese durch:
 - Ende-zu-Ende Verschlüsselung
 - Keine dauerhafte zentrale Speicherung
 - Zugriffskontrolle und Audit-Logs
@@ -226,7 +226,7 @@ Unterbringungsanträge enthalten höchst sensible Daten. DuBA schützt diese dur
 
 ### Für psychiatrische Einrichtungen entwickelt
 
-DuBA wurde speziell für die Anforderungen psychiatrischer Kliniken entwickelt:
+DUBA wurde speziell für die Anforderungen psychiatrischer Kliniken entwickelt:
 - Berücksichtigt alle rechtlichen Besonderheiten
 - Unterstützt komplexe Antragsszenarien
 - Flexible Workflow-Anpassungen möglich

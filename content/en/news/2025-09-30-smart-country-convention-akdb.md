@@ -13,6 +13,6 @@ sources:
 
 The session demonstrated how birth and death notifications can be handled end-to-end as machine-to-machine processes between hospital information systems and civil registry offices — without paper, without manual re-entry. AKDB provides the secure transmission infrastructure via its OK.Komm middleware; Vertama delivers the process logic that connects clinics and public authorities.
 
-The presentation also covered DuBA: the digital transmission of judicial commitment orders and court decisions via Germany's secure government mailbox infrastructure (beBPo) — an area where the AKDB and Vertama partnership is particularly significant.
+The presentation also covered DUBA: the digital transmission of judicial commitment orders and court decisions via Germany's secure government mailbox infrastructure (beBPo) — an area where the AKDB and Vertama partnership is particularly significant.
 
 The Smart Country Convention is one of Germany's leading trade fairs for the digitalization of public administration.

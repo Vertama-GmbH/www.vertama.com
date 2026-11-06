@@ -1,5 +1,5 @@
 ---
-title: "DuBA"
+title: "DUBA"
 description: "Digital Placement Applications"
 tagline: "Legally compliant applications. Digital. Direct."
 layout: "single"
@@ -13,17 +13,17 @@ media:
       title: "Digital, Judicial Applications"
     screenshots:
       - file: "/assets/images/products/duba/DUBA_Screenshot_Formulare_Auswahlseite.png"
-        alt: "DuBA - Overview Page"
+        alt: "DUBA - Overview Page"
         caption: "Overview of available forms"
       - file: "/assets/images/products/duba/DUBA_Screenshot_Meldeformular.png"
-        alt: "DuBA - Form"
+        alt: "DUBA - Form"
         caption: "Overview of the form"
 
 hero:
   badge: "Authority Applications"
-  headline: "DuBA – Digital Authority Applications"
+  headline: "DUBA – Digital Authority Applications"
   subheadline: "Legally compliant applications. Digital. Direct."
-  description: "DuBA is the innovative solution for psychiatric facilities that no longer want to experience legal application processes as time-consuming bureaucracy. The cloud-based service digitizes and automates the entire placement application process – quickly, securely, and seamlessly from within the HIS."
+  description: "DUBA is the innovative solution for psychiatric facilities that no longer want to experience legal application processes as time-consuming bureaucracy. The cloud-based service digitizes and automates the entire placement application process – quickly, securely, and seamlessly from within the HIS."
 
 cta_primary:
   text: "Request a Demo"
@@ -34,16 +34,16 @@ cta_secondary:
   url: "#features"
 
 features:
-  title: "Why DuBA?"
+  title: "Why DUBA?"
   description: "Less effort. More efficiency. For convenient communication with courts."
   items:
     - icon: "zap"
       title: "Seamlessly Integrated"
-      description: "DuBA is fully embedded into the HIS and fits optimally into existing workflows."
+      description: "DUBA is fully embedded into the HIS and fits optimally into existing workflows."
     
     - icon: "shield"
       title: "Legally Compliant and Certified"
-      description: "DuBA fulfills all procedural requirements according to FamFG, BGB, and PsychKG, as well as current standards for electronic legal communication."
+      description: "DUBA fulfills all procedural requirements according to FamFG, BGB, and PsychKG, as well as current standards for electronic legal communication."
     
     - icon: "clock"
       title: "Faster Decisions"
@@ -54,7 +54,7 @@ features:
       description: "No double data entry. No manual mailing. No risk from incorrect formats or outdated forms."
 
 how_it_works:
-  title: "How DuBA Works in Everyday Clinical Practice"
+  title: "How DUBA Works in Everyday Clinical Practice"
   description: "Four simple steps from application to court order"
   steps:
     - title: "Open Form"
@@ -71,7 +71,7 @@ how_it_works:
 
 efficiency:
   title: "Efficiency for Physicians – Legal Certainty for Clinics"
-  description: "With DuBA, physicians submit applications to guardianship courts directly from the patient record – with just a few clicks, legally secure, and fully digital."
+  description: "With DUBA, physicians submit applications to guardianship courts directly from the patient record – with just a few clicks, legally secure, and fully digital."
   benefits:
     - "The intelligent form system adopts all existing patient data from the Hospital Information System (HIS)"
     - "Structures it in the legally compliant XJustiz format"
@@ -80,7 +80,7 @@ efficiency:
 
 compliance:
   title: "Data Security? Standard for Us."
-  description: "DuBA uses state-of-the-art encryption and security mechanisms. All patient data remains protected."
+  description: "DUBA uses state-of-the-art encryption and security mechanisms. All patient data remains protected."
   items:
     - icon: "🔒"
       title: "End-to-End Encryption"
@@ -100,14 +100,14 @@ compliance:
 
 governikus:
   title: "Digital Communication with Courts – Made Easy"
-  description: "Thanks to the integrated connection to the Governikus Vibiblia REST interface, DuBA sends applications directly via the beBPo – without cumbersome plugins, without Outlook, but with full control and traceability."
+  description: "Thanks to the integrated connection to the Governikus Vibiblia REST interface, DUBA sends applications directly via the beBPo – without cumbersome plugins, without Outlook, but with full control and traceability."
 
 benefits:
-  title: "DuBA – Less Effort. More Legal Certainty."
+  title: "DUBA – Less Effort. More Legal Certainty."
   description: "For a healthcare system that creates time for people."
 
 card_content:
-  title: "DuBA"
+  title: "DUBA"
   tagline: "Digital Placement Applications"
   benefits:
     - "Courts expect digital communication in accordance with the OZG (Online Access Act)"
@@ -115,7 +115,7 @@ card_content:
     - "Data transport via EGVP infrastructure and the special authorities' mailbox (beBPo)"
 
 cta_section:
-  title: "DuBA – Less Effort. More Efficiency."
+  title: "DUBA – Less Effort. More Efficiency."
   description: "For convenient communication with courts."
   button_text: "Request a Demo Now"
   url: "/en/contact/?product=duba"
@@ -123,13 +123,13 @@ cta_section:
   secondary_url: "mailto:andre.sturm@vertama.com"
 ---
 
-## DuBA – Authority Applications Digital and Legally Secure
+## DUBA – Authority Applications Digital and Legally Secure
 
-Communication between psychiatric facilities and guardianship courts is subject to strict legal and security requirements. DuBA fully digitizes this process.
+Communication between psychiatric facilities and guardianship courts is subject to strict legal and security requirements. DUBA fully digitizes this process.
 
 ### No More Paperwork and Fax Machines
 
-No more handwritten forms. No more faxes. No more paperwork. DuBA takes over:
+No more handwritten forms. No more faxes. No more paperwork. DUBA takes over:
 - Automatic data transfer from the HIS
 - Structuring in the XJustiz format
 - Encrypted transmission via beBPo
@@ -137,7 +137,7 @@ No more handwritten forms. No more faxes. No more paperwork. DuBA takes over:
 
 ### Directly from the Patient Record
 
-DuBA integrates seamlessly into your psychiatric workflow:
+DUBA integrates seamlessly into your psychiatric workflow:
 - "Submit Application" button in the patient record
 - Form is already pre-filled
 - Only add the medical justification
@@ -145,7 +145,7 @@ DuBA integrates seamlessly into your psychiatric workflow:
 
 ### Legally Compliant and Certified
 
-DuBA meets all procedural requirements:
+DUBA meets all procedural requirements:
 - **FamFG** (Act on Proceedings in Family Matters)
 - **BGB** (German Civil Code)
 - **PsychKG** (Mental Health Acts)
@@ -161,7 +161,7 @@ Transmission takes place via the special electronic mailbox for authorities (beB
 
 ### Governikus Vibiblia REST Interface
 
-DuBA uses the modern Governikus infrastructure:
+DUBA uses the modern Governikus infrastructure:
 - No cumbersome plugins
 - No Outlook required
 - Direct REST API integration
@@ -177,7 +177,7 @@ DuBA uses the modern Governikus infrastructure:
 - Manual filing in the record
 - Time: 30-60 minutes per application
 
-**With DuBA:**
+**With DUBA:**
 - Data already pre-filled
 - Only add medical justification
 - Digital transmission with confirmation
@@ -190,7 +190,7 @@ DuBA uses the modern Governikus infrastructure:
 
 Once the court has decided:
 1. The order is sent back encrypted
-2. DuBA automatically receives and decrypts it
+2. DUBA automatically receives and decrypts it
 3. Document is filed in the patient record
 4. Notification sent to the responsible physician
 
@@ -198,7 +198,7 @@ No manual processing required anymore.
 
 ### Supported Application Types
 
-DuBA supports all common placement applications:
+DUBA supports all common placement applications:
 - Placement under the BGB
 - Placement under the PsychKG
 - Extension requests
@@ -207,7 +207,7 @@ DuBA supports all common placement applications:
 
 ### Technical Integration
 
-DuBA integrates into your psychiatric IT:
+DUBA integrates into your psychiatric IT:
 - SAP IS-H / i.s.h.med (Psychiatry Modules)
 - Oracle Health (Cerner)
 - ORBIS (Psychiatry)
@@ -215,7 +215,7 @@ DuBA integrates into your psychiatric IT:
 
 ### Data Protection & Security
 
-Placement applications contain highly sensitive data. DuBA protects this through:
+Placement applications contain highly sensitive data. DUBA protects this through:
 - End-to-end encryption
 - No permanent centralized storage
 - Access control and audit logs
@@ -225,7 +225,7 @@ Placement applications contain highly sensitive data. DuBA protects this through
 
 ### Developed for Psychiatric Facilities
 
-DuBA was specifically developed for the needs of psychiatric clinics:
+DUBA was specifically developed for the needs of psychiatric clinics:
 - Considers all legal specifics
 - Supports complex application scenarios
 - Flexible workflow adjustments possible
