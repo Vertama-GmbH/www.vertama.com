@@ -36,10 +36,12 @@ Push to `main` → GitHub Actions → Hugo build → GitHub Pages deploy (automa
 content/
   de/               German pages (Hugo Markdown)
   en/               English pages (Hugo Markdown)
+data/
+  logos.toml        Customer, partner, network, investor logos on the partner page (order = display order)
 themes/vertama/
   layouts/
     _default/       Page templates (baseof.html, single.html, list.html, partners.html, ...)
-    partials/       Reusable partials (header, footer, nav, ...)
+    partials/       Reusable partials (header, footer, nav, logo-grid, ...)
   static/           Theme-level static assets
 docs/               Hugo staticDir — static assets, copied into the build
   assets/
@@ -88,6 +90,19 @@ Create `content/de/news/YYYY-MM-DD-slug.md`. See `NEWS-HOW-TO.md` for front matt
 Create `content/de/my-page/index.md` with `layout`, `title`, `translationKey`.
 Create matching `content/en/my-page/index.md` with same `translationKey`.
 If a corresponding static file exists in `docs/`, `git rm` it first.
+
+**Logo on the partner page (customer, partner, network, investor):**
+Put the logo in `docs/assets/images/logos/<group>/` (`customers`, `partners`, `network`,
+`investors`; lowercase, hyphens, no umlauts — e.g. `draeger.png`), then add an entry
+under the matching `[[customers]]` / `[[partners]]` / `[[network]]` / `[[investors]]`
+in `data/logos.toml`: `name` (alt text), `url` (link target), `logo` (file name only).
+List order is display order; DE and EN pages both read the same file
+(`site.Data.logos.<group>`), rendered by `partials/logo-grid.html`.
+Content lists like this belong in `data/`, not `hugo.toml` — a typo there only breaks
+one list, not the whole site config.
+
+**Only `main`.** This repo works without branches — every change goes to `main`, and a
+push to `main` deploys. Unfinished work stays uncommitted locally until it's ready.
 
 ---
 

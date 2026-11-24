@@ -43,193 +43,34 @@
 {{ end }}
 
 {{ define "main" }}
+{{/* Alle Logos kommen aus data/logos.toml — Reihenfolge dort = Reihenfolge hier */}}
+{{ $logos := site.Data.logos }}
+{{ $de := eq .Site.Language.Lang "de" }}
 <div class="max-w-[1280px] mx-auto px-6 pt-10 pb-24">
 
   {{/* ── KUNDEN ─────────────────────────────────────────── */}}
   <div class="flex items-baseline justify-between border-b-2 border-primary pb-3 mb-10">
-    <h1 class="text-3xl font-bold text-primary">{{ if eq .Site.Language.Lang "de" }}Kunden{{ else }}Customers{{ end }}</h1>
+    <h1 class="text-3xl font-bold text-primary">{{ if $de }}Kunden{{ else }}Customers{{ end }}</h1>
   </div>
-
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-20">
-
-    <a href="https://www.muenchen-klinik.de/krankenhaus/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInLeft" data-dur="0.7">
-      <img src="/assets/images/logos/customers/muenchen-klinik.png" alt="München Klinik" loading="lazy">
-    </a>
-
-    <a href="https://www.sjk.de" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInUp" data-dur="0.6">
-      <img src="/assets/images/logos/customers/sjk-berlin-tempelhof.png" alt="St. Joseph Krankenhaus Berlin" loading="lazy">
-    </a>
-
-    <a href="https://www.sanktgeorg.de/klinikum-st-georg-krankenhaus-medizin-in-leipzig.html" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInRight" data-dur="0.7">
-      <img src="/assets/images/logos/customers/klinikum-st-georg.png" alt="Klinikum St. Georg" loading="lazy">
-    </a>
-
-    <a href="https://www.franziskus-berlin.de/de" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInLeft" data-dur="0.7">
-      <img src="/assets/images/logos/customers/franziskus-berlin.png" alt="Franziskus Krankenhaus Berlin" loading="lazy">
-    </a>
-
-    <a href="https://immanuelalbertinen.de/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInUp" data-dur="0.6">
-      <img src="/assets/images/logos/customers/immanuel-albertinen.png" alt="Immanuel Albertinen Diakonie" loading="lazy">
-    </a>
-
-    <a href="https://www.uniklinikum-saarland.de/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInRight" data-dur="0.7">
-      <img src="/assets/images/logos/customers/uniklinikum-saarland.png" alt="Uniklinikum des Saarlandes" loading="lazy">
-    </a>
-
-    <a href="https://skbs.de/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInLeft" data-dur="0.7">
-      <img src="/assets/images/logos/customers/klinikum-braunschweig.png" alt="Städtisches Klinikum Braunschweig" loading="lazy">
-    </a>
-
-    <a href="https://www.ukrb.de/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInUp" data-dur="0.6">
-      <img src="/assets/images/logos/customers/uniklinik-ruppin.png" alt="Uniklinik Ruppin-Brandenburg" loading="lazy">
-    </a>
-
-    <a href="https://www.havelland-kliniken.de/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInRight" data-dur="0.7">
-      <img src="/assets/images/logos/customers/havelland-kliniken.png" alt="Havelland Kliniken" loading="lazy">
-    </a>
-
-    <a href="https://www.kreuznacherdiakonie.de/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInLeft" data-dur="0.7">
-      <img src="/assets/images/logos/customers/kreuznacher-diakonie.png" alt="Kreuznacher Diakonie" loading="lazy">
-    </a>
-
-    <a href="https://www.klinikum-nuernberg.de/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInUp" data-dur="0.6">
-      <img src="/assets/images/logos/customers/klinikum-nuernberg.png" alt="Klinikum Nürnberg" loading="lazy">
-    </a>
-
-    <a href="https://www.kh-nuernberger-land.de/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInRight" data-dur="0.7">
-      <img src="/assets/images/logos/customers/krankenhaeuser-nuernberger-land.png" alt="Krankenhäuser Nürnberger Land" loading="lazy">
-    </a>
-
-    <a href="https://klinikum-bremerhaven.de/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInLeft" data-dur="0.7">
-      <img src="/assets/images/logos/customers/klinikum-bremerhaven.png" alt="Klinikum Bremerhaven" loading="lazy">
-    </a>
-
-    <a href="https://www.klinikumchemnitz.de/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInUp" data-dur="0.6">
-      <img src="/assets/images/logos/customers/klinikum-chemnitz.png" alt="Klinikum Chemnitz" loading="lazy">
-    </a>
-
-    <a href="https://www.shk-ndh.de/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInRight" data-dur="0.7">
-      <img src="/assets/images/logos/customers/suedharz-klinikum.png" alt="Suedharz Klinikum" loading="lazy">
-    </a>
-
-    <a href="https://www.zollernalb-klinikum.de/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInLeft" data-dur="0.7">
-      <img src="/assets/images/logos/customers/zollernalb-klinikum.png" alt="Zollernalb Klinikum" loading="lazy">
-    </a>
-
-    <a href="https://www.thoraxklinik-heidelberg.de/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInUp" data-dur="0.6">
-      <img src="/assets/images/logos/customers/thoraxklinik-heidelberg.png" alt="Thoraxklinik Heidelberg" loading="lazy">
-    </a>
-
-  </div>
+  {{ partial "logo-grid.html" (dict "items" $logos.customers "folder" "customers" "grid" "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-20") }}
 
   {{/* ── PARTNER ─────────────────────────────────────────── */}}
   <div class="flex items-baseline justify-between border-b-2 border-primary pb-3 mb-10">
     <h2 class="text-3xl font-bold text-primary">Partner</h2>
   </div>
-
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-20">
-
-    <a href="https://www.sap.com/germany/index.html" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInLeft" data-dur="0.7">
-      <img src="/assets/images/logos/partners/sap.png" alt="SAP" loading="lazy">
-    </a>
-
-    <a href="https://www.retarus.com/de/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInUp" data-dur="0.6">
-      <img src="/assets/images/logos/partners/retarus.png" alt="Retarus" loading="lazy">
-    </a>
-
-    <a href="https://www.cerner.com/de/de/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInRight" data-dur="0.7">
-      <img src="/assets/images/logos/partners/oracle-cerner.png" alt="Oracle Cerner" loading="lazy">
-    </a>
-
-    <a href="https://www.sinch.com" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInLeft" data-dur="0.7">
-      <img src="/assets/images/logos/partners/sinch.png" alt="Sinch" loading="lazy">
-    </a>
-
-    <a href="https://protechinc.com/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInUp" data-dur="0.6">
-      <img src="/assets/images/logos/partners/pro-technology.png" alt="Pro Technology" loading="lazy">
-    </a>
-
-    <a href="https://www.tikitay.de" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInRight" data-dur="0.7">
-      <img src="/assets/images/logos/partners/tikitay.png" alt="Tikitay" loading="lazy">
-    </a>
-
-    <a href="https://www.ciconsult.de" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInLeft" data-dur="0.7">
-      <img src="/assets/images/logos/partners/ciconsult.png" alt="CI Consult" loading="lazy">
-    </a>
-
-    <a href="https://entscheiderfabrik.com/news/vertama-wird-weiterer-foerderer-unseres-eco-systems" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInUp" data-dur="0.6">
-      <img src="/assets/images/logos/partners/entscheiderfabrik.png" alt="Entscheiderfabrik" loading="lazy">
-    </a>
-
-    <a href="https://healex.systems" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInRight" data-dur="0.7">
-      <img src="/assets/images/logos/partners/healex.png" alt="Healex" loading="lazy">
-    </a>
-
-  </div>
+  {{ partial "logo-grid.html" (dict "items" $logos.partners "folder" "partners" "grid" "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-20") }}
 
   {{/* ── NETZWERK ─────────────────────────────────────────── */}}
   <div class="flex items-baseline justify-between border-b-2 border-primary pb-3 mb-10">
     <h2 class="text-3xl font-bold text-primary">Netzwerk</h2>
   </div>
-
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-20">
-
-    <a href="https://www.sap-healthcarepartner.com/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInLeft" data-dur="0.7">
-      <img src="/assets/images/logos/network/sap-silver.jpg" alt="SAP Healthcare Partner" loading="lazy">
-    </a>
-
-    <a href="https://www.sibb.de" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInUp" data-dur="0.6">
-      <img src="/assets/images/logos/network/sibb.png" alt="SIBB" loading="lazy">
-    </a>
-
-    <a href="https://www.bitkom.org" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInRight" data-dur="0.7">
-      <img src="/assets/images/logos/network/bitkom.png" alt="Bitkom" loading="lazy">
-    </a>
-
-  </div>
+  {{ partial "logo-grid.html" (dict "items" $logos.network "folder" "network" "grid" "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-20") }}
 
   {{/* ── INVESTOREN ─────────────────────────────────────────── */}}
   <div class="flex items-baseline justify-between border-b-2 border-primary pb-3 mb-10">
-    <h2 class="text-3xl font-bold text-primary">{{ if eq .Site.Language.Lang "de" }}Investoren{{ else }}Investors{{ end }}</h2>
+    <h2 class="text-3xl font-bold text-primary">{{ if $de }}Investoren{{ else }}Investors{{ end }}</h2>
   </div>
-
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-8">
-
-    <a href="https://www.htgf.de/de/portfolio/htgffamily/vertama/" target="_blank" rel="noopener"
-       class="logo-tile logo-animate" data-anim="fadeInLeft" data-dur="0.7">
-      <img src="/assets/images/logos/investors/htgf.jpg" alt="High-Tech Gründerfonds" loading="lazy">
-    </a>
-
-  </div>
+  {{ partial "logo-grid.html" (dict "items" $logos.investors "folder" "investors" "grid" "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-8") }}
 
 </div>
 {{ end }}

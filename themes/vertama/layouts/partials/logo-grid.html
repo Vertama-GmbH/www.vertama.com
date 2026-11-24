@@ -1,0 +1,16 @@
+{{/* Logo-Raster für partners.html.
+     items:  Liste aus data/logos.toml (name, url, logo)
+     folder: Unterordner in docs/assets/images/logos/
+     grid:   Spalten- und Abstandsklassen des Rasters
+     Animation wechselt links / hoch / rechts */}}
+{{ $folder := .folder }}
+{{ $anims := slice (dict "name" "fadeInLeft" "dur" "0.7") (dict "name" "fadeInUp" "dur" "0.6") (dict "name" "fadeInRight" "dur" "0.7") }}
+<div class="grid {{ .grid }}">
+  {{ range $i, $l := .items }}
+  {{ $a := index $anims (mod $i 3) }}
+  <a href="{{ $l.url }}" target="_blank" rel="noopener"
+     class="logo-tile logo-animate" data-anim="{{ $a.name }}" data-dur="{{ $a.dur }}">
+    <img src="/assets/images/logos/{{ $folder }}/{{ $l.logo }}" alt="{{ $l.name }}" loading="lazy">
+  </a>
+  {{ end }}
+</div>

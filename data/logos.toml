@@ -1,0 +1,165 @@
+# Logos auf /de/partner-und-kunden/ und /en/partner-and-customer/.
+# Reihenfolge der Einträge = Reihenfolge auf der Seite.
+# logo: nur der Dateiname im Ordner docs/assets/images/logos/<gruppe>/
+#   (Kleinbuchstaben, Bindestriche, keine Umlaute — z.B. draeger.png)
+
+# ─── Kunden — Logos in docs/assets/images/logos/customers/ ───
+
+[[customers]]
+name = "München Klinik"
+url  = "https://www.muenchen-klinik.de/krankenhaus/"
+logo = "muenchen-klinik.png"
+
+[[customers]]
+name = "St. Joseph Krankenhaus Berlin"
+url  = "https://www.sjk.de"
+logo = "sjk-berlin-tempelhof.png"
+
+[[customers]]
+name = "Klinikum St. Georg"
+url  = "https://www.sanktgeorg.de/klinikum-st-georg-krankenhaus-medizin-in-leipzig.html"
+logo = "klinikum-st-georg.png"
+
+[[customers]]
+name = "Franziskus Krankenhaus Berlin"
+url  = "https://www.franziskus-berlin.de/de"
+logo = "franziskus-berlin.png"
+
+[[customers]]
+name = "Immanuel Albertinen Diakonie"
+url  = "https://immanuelalbertinen.de/"
+logo = "immanuel-albertinen.png"
+
+[[customers]]
+name = "Uniklinikum des Saarlandes"
+url  = "https://www.uniklinikum-saarland.de/"
+logo = "uniklinikum-saarland.png"
+
+[[customers]]
+name = "Städtisches Klinikum Braunschweig"
+url  = "https://skbs.de/"
+logo = "klinikum-braunschweig.png"
+
+[[customers]]
+name = "Uniklinik Ruppin-Brandenburg"
+url  = "https://www.ukrb.de/"
+logo = "uniklinik-ruppin.png"
+
+[[customers]]
+name = "Havelland Kliniken"
+url  = "https://www.havelland-kliniken.de/"
+logo = "havelland-kliniken.png"
+
+[[customers]]
+name = "Kreuznacher Diakonie"
+url  = "https://www.kreuznacherdiakonie.de/"
+logo = "kreuznacher-diakonie.png"
+
+[[customers]]
+name = "Klinikum Nürnberg"
+url  = "https://www.klinikum-nuernberg.de/"
+logo = "klinikum-nuernberg.png"
+
+[[customers]]
+name = "Krankenhäuser Nürnberger Land"
+url  = "https://www.kh-nuernberger-land.de/"
+logo = "krankenhaeuser-nuernberger-land.png"
+
+[[customers]]
+name = "Klinikum Bremerhaven"
+url  = "https://klinikum-bremerhaven.de/"
+logo = "klinikum-bremerhaven.png"
+
+[[customers]]
+name = "Klinikum Chemnitz"
+url  = "https://www.klinikumchemnitz.de/"
+logo = "klinikum-chemnitz.png"
+
+[[customers]]
+name = "Suedharz Klinikum"
+url  = "https://www.shk-ndh.de/"
+logo = "suedharz-klinikum.png"
+
+[[customers]]
+name = "Zollernalb Klinikum"
+url  = "https://www.zollernalb-klinikum.de/"
+logo = "zollernalb-klinikum.png"
+
+[[customers]]
+name = "Thoraxklinik Heidelberg"
+url  = "https://www.thoraxklinik-heidelberg.de/"
+logo = "thoraxklinik-heidelberg.png"
+
+
+# ─── Partner — Logos in docs/assets/images/logos/partners/ ───
+
+[[partners]]
+name = "SAP"
+url  = "https://www.sap.com/germany/index.html"
+logo = "sap.png"
+
+[[partners]]
+name = "Retarus"
+url  = "https://www.retarus.com/de/"
+logo = "retarus.png"
+
+[[partners]]
+name = "Oracle Cerner"
+url  = "https://www.cerner.com/de/de/"
+logo = "oracle-cerner.png"
+
+[[partners]]
+name = "Sinch"
+url  = "https://www.sinch.com"
+logo = "sinch.png"
+
+[[partners]]
+name = "Pro Technology"
+url  = "https://protechinc.com/"
+logo = "pro-technology.png"
+
+[[partners]]
+name = "Tikitay"
+url  = "https://www.tikitay.de"
+logo = "tikitay.png"
+
+[[partners]]
+name = "CI Consult"
+url  = "https://www.ciconsult.de"
+logo = "ciconsult.png"
+
+[[partners]]
+name = "Entscheiderfabrik"
+url  = "https://entscheiderfabrik.com/news/vertama-wird-weiterer-foerderer-unseres-eco-systems"
+logo = "entscheiderfabrik.png"
+
+[[partners]]
+name = "Healex"
+url  = "https://healex.systems"
+logo = "healex.png"
+
+
+# ─── Netzwerk — Logos in docs/assets/images/logos/network/ ───
+
+[[network]]
+name = "SAP Healthcare Partner"
+url  = "https://www.sap-healthcarepartner.com/"
+logo = "sap-silver.jpg"
+
+[[network]]
+name = "SIBB"
+url  = "https://www.sibb.de"
+logo = "sibb.png"
+
+[[network]]
+name = "Bitkom"
+url  = "https://www.bitkom.org"
+logo = "bitkom.png"
+
+
+# ─── Investoren — Logos in docs/assets/images/logos/investors/ ───
+
+[[investors]]
+name = "High-Tech Gründerfonds"
+url  = "https://www.htgf.de/de/portfolio/htgffamily/vertama/"
+logo = "htgf.jpg"
