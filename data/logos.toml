@@ -94,9 +94,19 @@ logo = "thoraxklinik-heidelberg.png"
 # ─── Partner — Logos in docs/assets/images/logos/partners/ ───
 
 [[partners]]
+name = "KH-IT Bundesverband der Krankenhaus-IT-Leiterinnen/Leiter"
+url  = "https://kh-it.gmbh/"
+logo = "KH-IT-Logo_Original_mit-Schriftzug.png"
+
+[[partners]]
 name = "SAP"
 url  = "https://www.sap.com/germany/index.html"
 logo = "sap.png"
+
+[[partners]]
+name = "Oracle Cerner"
+url  = "https://www.cerner.com/de/de/"
+logo = "oracle-cerner.png"
 
 [[partners]]
 name = "Retarus"
@@ -104,9 +114,9 @@ url  = "https://www.retarus.com/de/"
 logo = "retarus.png"
 
 [[partners]]
-name = "Oracle Cerner"
-url  = "https://www.cerner.com/de/de/"
-logo = "oracle-cerner.png"
+name = "Entscheiderfabrik"
+url  = "https://entscheiderfabrik.com/news/vertama-wird-weiterer-foerderer-unseres-eco-systems"
+logo = "entscheiderfabrik.png"
 
 [[partners]]
 name = "Sinch"
@@ -127,11 +137,6 @@ logo = "tikitay.png"
 name = "CI Consult"
 url  = "https://www.ciconsult.de"
 logo = "ciconsult.png"
-
-[[partners]]
-name = "Entscheiderfabrik"
-url  = "https://entscheiderfabrik.com/news/vertama-wird-weiterer-foerderer-unseres-eco-systems"
-logo = "entscheiderfabrik.png"
 
 [[partners]]
 name = "Healex"
